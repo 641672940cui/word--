@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中物理公式记忆强化训练系统</title>
+    <style>
+        :root {
+            --primary: #4A90D9;
+            --success: #27AE60;
+            --danger: #E74C3C;
+            --warning: #F39C12;
+            --bg: #F5F7FA;
+            --card: #FFFFFF;
+            --text: #2C3E50;
+            --border: #E0E6ED;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 头部 */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        .header .icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 4px;
+        }
+        .header p {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        /* 卡片 */
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .card h2 {
+            font-size: 1.2em;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card h2 .emoji {
+            font-size: 1.3em;
+        }
+
+        /* 按钮 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+        .btn-outline {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 0.85em;
+        }
+        .btn-lg {
+            padding: 14px 32px;
+            font-size: 1.1em;
+            border-radius: 12px;
+        }
+        .btn-block {
+            display: flex;
+            width: 100%;
+        }
+
+        /* 按钮组 */
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        /* 问题区 */
+        .question-area {
+            display: none;
+        }
+        .question-area.active {
+            display: block;
+        }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .chapter-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            background: #EBF5FB;
+            color: #2980B9;
+        }
+        .progress-text {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        .question-text {
+            font-size: 1.15em;
+            font-weight: 500;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: #F8F9FA;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        .options-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-item {
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1em;
+            position: relative;
+        }
+        .option-item:hover {
+            border-color: var(--primary);
+            background: #F0F6FF;
+        }
+        .option-item.selected {
+            border-color: var(--primary);
+            background: #E8F0FE;
+            font-weight: 600;
+        }
+        .option-item.correct {
+            border-color: var(--success);
+            background: #D5F5E3;
+            color: #1a6b3a;
+        }
+        .option-item.wrong {
+            border-color: var(--danger);
+            background: #FADBD8;
+            color: #a93226;
+        }
+        .option-item.disabled {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        .option-letter {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            border-radius: 50%;
+            background: #e0e0e0;
+            margin-right: 10px;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+        .option-item.selected .option-letter {
+            background: var(--primary);
+            color: white;
+        }
+        .option-item.correct .option-letter {
+            background: var(--success);
+            color: white;
+        }
+        .option-item.wrong .option-letter {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* 反馈区 */
+        .feedback {
+            display: none;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+        .feedback.show {
+            display: block;
+        }
+        .feedback.correct-fb {
+            background: #D5F5E3;
+            color: #1a6b3a;
+            border: 1px solid #27AE60;
+        }
+        .feedback.wrong-fb {
+            background: #FADBD8;
+            color: #a93226;
+            border: 1px solid #E74C3C;
+        }
+        .explanation {
+            margin-top: 8px;
+            font-weight: 400;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        /* 结果区 */
+        .result-card {
+            text-align: center;
+            padding: 30px;
+        }
+        .result-score {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .result-emoji {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+        .accuracy-bar {
+            height: 12px;
+            border-radius: 6px;
+            background: #e0e0e0;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+        .accuracy-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.6s ease;
+        }
+
+        /* 公式表 */
+        .formula-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            margin-top: 12px;
+        }
+        .formula-table th,
+        .formula-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .formula-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: #555;
+        }
+        .formula-table tr:hover {
+            background: #fafbfc;
+        }
+        .formula-highlight {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .tip-text {
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        /* 统计 */
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .stat-value {
+            font-weight: 600;
+        }
+        .chapter-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 6px 0;
+        }
+        .chapter-bar .bar {
+            flex: 1;
+            height: 8px;
+            border-radius: 4px;
+            background: #e0e0e0;
+            overflow: hidden;
+        }
+        .chapter-bar .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        /* 隐藏/显示 */
+        .hidden {
+            display: none !important;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .header h1 {
+                font-size: 1.4em;
+            }
+            .card {
+                padding: 16px;
+            }
+            .btn-group {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .question-text {
+                font-size: 1em;
+            }
+            .option-item {
+                padding: 12px 14px;
+                font-size: 0.9em;
+            }
+            .formula-table {
+                font-size: 0.75em;
+            }
+            .formula-table th,
+            .formula-table td {
+                padding: 6px 4px;
+            }
+        }
+
+        /* 动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .card {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        .pulse {
+            animation: pulse 0.5s ease;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .toast-success {
+            background: var(--success);
+        }
+        .toast-info {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="icon">⚛️</div>
+            <h1>初中物理公式记忆强化训练</h1>
+            <p>速度 · 密度 · 重力 · 压强 · 液体压强 · 浮力 · 功 · 功率 · 机械效率</p>
+        </div>
+
+        <!-- 主菜单 -->
+        <div id="main-menu">
+            <div class="card">
+                <h2><span class="emoji">📋</span> 选择练习模式</h2>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="startRandomPractice()">
+                        🎲 随机练习
+                    </button>
+                    <button class="btn btn-success" onclick="showChapterSelect()">
+                        📚 分章节练习
+                    </button>
+                    <button class="btn btn-warning" onclick="startWrongPractice()">
+                        🔄 错题重练 <span id="wrong-count-badge" style="background:#fff3;padding:2px 8px;border-radius:10px;font-size:0.85em;">0</span>
+                    </button>
+                    <button class="btn btn-outline" onclick="showFormulaSheet()">
+                        📝 公式速记表
+                    </button>
+                    <button class="btn btn-outline" onclick="showStatistics()">
+                        📊 学习统计
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 章节选择 -->
+        <div id="chapter-select" class="card hidden">
+            <h2><span class="emoji">📚</span> 选择章节</h2>
+            <div id="chapter-list" class="btn-group"></div>
+            <button class="btn btn-outline btn-sm" style="margin-top:12px;" onclick="goToMenu()">← 返回主菜单</button>
+        </div>
+
+        <!-- 题目数量选择 -->
+        <div id="question-count-select" class="card hidden">
+            <h2><span class="emoji">🔢</span> 选择题目数量</h2>
+            <p style="color:#888;margin-bottom:12px;">当前题库共 <span id="available-count">0</span> 题可选</p>
+            <div class="btn-group" id="count-options">
+                <button class="btn btn-primary" onclick="startWithCount(5)">5 题</button>
+                <button class="btn btn-primary" onclick="startWithCount(10)">10 题</button>
+                <button class="btn btn-primary" onclick="startWithCount(15)">15 题</button>
+                <button class="btn btn-primary" onclick="startWithCount(20)">20 题</button>
+                <button class="btn btn-success" onclick="startWithCount(-1)">全部题目</button>
+            </div>
+            <button class="btn btn-outline btn-sm" style="margin-top:12px;" onclick="goToMenu()">← 返回主菜单</button>
+        </div>
+
+        <!-- 答题区 -->
+        <div id="quiz-area" class="card question-area hidden">
+            <div class="question-header">
+                <span class="chapter-badge" id="quiz-chapter">章节</span>
+                <span class="progress-text" id="quiz-progress">第 1/10 题</span>
+            </div>
+            <div class="question-text" id="quiz-question"></div>
+            <ul class="options-list" id="quiz-options"></ul>
+            <div class="feedback" id="quiz-feedback">
+                <div id="feedback-text"></div>
+                <div class="explanation" id="feedback-explanation"></div>
+            </div>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+                <button class="btn btn-primary hidden" id="btn-next" onclick="nextQuestion()">下一题 ▶</button>
+                <button class="btn btn-success hidden" id="btn-finish" onclick="finishQuiz()">查看结果 🏆</button>
+                <button class="btn btn-outline btn-sm" onclick="confirmQuit()">退出练习</button>
+            </div>
+        </div>
+
+        <!-- 结果区 -->
+        <div id="result-area" class="card question-area hidden">
+            <div class="result-card">
+                <div class="result-emoji" id="result-emoji"></div>
+                <div class="result-score" id="result-score"></div>
+                <p style="color:#888;" id="result-text"></p>
+                <div class="accuracy-bar">
+                    <div class="accuracy-fill" id="accuracy-fill" style="width:0%;background:var(--success);"></div>
+                </div>
+                <p style="margin-top:8px;" id="result-detail"></p>
+                <div class="btn-group" style="margin-top:16px;">
+                    <button class="btn btn-warning" id="btn-retry-wrong" onclick="retryWrong()" style="display:none;">
+                        🔄 重练错题
+                    </button>
+                    <button class="btn btn-primary" onclick="goToMenu()">返回主菜单</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 公式速记表 -->
+        <div id="formula-sheet" class="card hidden">
+            <h2><span class="emoji">📝</span> 公式速记表</h2>
+            <div style="overflow-x:auto;">
+                <table class="formula-table">
+                    <thead>
+                        <tr>
+                            <th>物理量</th><th>符号</th><th>单位</th><th>公式</th><th>记忆贴士</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>速度</td><td class="formula-highlight">v</td><td>m/s</td><td>v = s/t</td><td class="tip-text">s=Space(距离) t=Time(时间)</td></tr>
+                        <tr><td>密度</td><td class="formula-highlight">ρ</td><td>kg/m³</td><td>ρ = m/V</td><td class="tip-text">m=mass(质量) V=Volume(体积)</td></tr>
+                        <tr><td>重力</td><td class="formula-highlight">G</td><td>N</td><td>G = mg</td><td class="tip-text">g=9.8N/kg，重力与质量成正比</td></tr>
+                        <tr><td>压强</td><td class="formula-highlight">p</td><td>Pa</td><td>p = F/S</td><td class="tip-text">F=Force(力) S=Surface(面积)</td></tr>
+                        <tr><td>液体压强</td><td>-</td><td>Pa</td><td>p = ρgh</td><td class="tip-text">h=height(深度)，从液面算起</td></tr>
+                        <tr><td>浮力</td><td class="formula-highlight">F<sub>浮</sub></td><td>N</td><td>F<sub>浮</sub>=ρ<sub>液</sub>gV<sub>排</sub></td><td class="tip-text">阿基米德原理：排开液体的重力</td></tr>
+                        <tr><td>功</td><td class="formula-highlight">W</td><td>J</td><td>W = Fs</td><td class="tip-text">力×力的方向上的距离才做功</td></tr>
+                        <tr><td>功率</td><td class="formula-highlight">P</td><td>W</td><td>P = W/t = Fv</td><td class="tip-text">功率=功/时间，表示做功快慢</td></tr>
+                        <tr><td>机械效率</td><td class="formula-highlight">η</td><td>%</td><td>η = W<sub>有</sub>/W<sub>总</sub></td><td class="tip-text">η<1，有用功<总功</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-outline btn-sm" style="margin-top:16px;" onclick="goToMenu()">← 返回主菜单</button>
+        </div>
+
+        <!-- 统计 -->
+        <div id="statistics-area" class="card hidden">
+            <h2><span class="emoji">📊</span> 学习统计</h2>
+            <div class="stat-item"><span>总答题次数</span><span class="stat-value" id="stat-total">0</span></div>
+            <div class="stat-item"><span>总正确数</span><span class="stat-value" style="color:var(--success);" id="stat-correct">0</span></div>
+            <div class="stat-item"><span>总正确率</span><span class="stat-value" id="stat-accuracy">0%</span></div>
+            <div class="stat-item"><span>待复习错题</span><span class="stat-value" style="color:var(--danger);" id="stat-wrong">0</span></div>
+            <h3 style="margin-top:16px;font-size:0.95em;">各章节掌握情况</h3>
+            <div id="chapter-stats"></div>
+            <button class="btn btn-outline btn-sm" style="margin-top:16px;" onclick="goToMenu()">← 返回主菜单</button>
+            <button class="btn btn-danger btn-sm" style="margin-top:16px;margin-left:8px;" onclick="resetAllData()">🗑️ 重置所有数据</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script>
+        // ==================== 题库数据 ====================
+        const questionBank = [
+            // 速度 (6题)
+            { chapter: "速度", question: "速度的国际单位是？", options: ["km/h", "m/s", "cm/s", "km/s"], answer: 1,
+                explanation: "速度的国际单位是米/秒(m/s)，km/h是常用单位" },
+            { chapter: "速度", question: "速度公式v=s/t中，s代表什么（英文原意）？", options: ["Speed", "Space", "Surface",
+                    "Second"
+                ], answer: 1, explanation: "s代表Space(空间距离)，t代表Time(时间)" },
+            { chapter: "速度", question: "某物体10秒内运动50米，其速度为？", options: ["0.2 m/s", "2 m/s", "5 m/s", "500 m/s"],
+                answer: 2, explanation: "v=s/t=50/10=5 m/s" },
+            { chapter: "速度", question: "下列哪个不是速度的单位？", options: ["m/s", "km/h", "m·s", "cm/s"], answer: 2,
+                explanation: "m·s是米·秒，不是速度单位。速度单位是长度/时间" },
+            { chapter: "速度", question: "速度的英文原意是？", options: ["Vector", "Velocity", "Volume", "Viscosity"], answer: 1,
+                explanation: "Velocity是速度的英文，v是其首字母" },
+            { chapter: "速度", question: "一辆车以20m/s匀速行驶，5秒行驶多少米？", options: ["4m", "25m", "100m", "500m"], answer: 2,
+                explanation: "s=vt=20×5=100m" },
+            // 密度 (6题)
+            { chapter: "密度", question: "密度的符号是哪个希腊字母？", options: ["α", "β", "ρ", "γ"], answer: 2,
+                explanation: "密度的符号是希腊字母ρ(rho)" },
+            { chapter: "密度", question: "密度公式ρ=m/V中，V代表？", options: ["Velocity", "Volume", "Vector", "Voltage"],
+                answer: 1, explanation: "V代表Volume(体积)，密度=质量/体积" },
+            { chapter: "密度", question: "某物体质量100g，体积20cm³，密度为？", options: ["0.2 g/cm³", "5 g/cm³", "2000 g/cm³",
+                    "2 g/cm³"
+                ], answer: 1, explanation: "ρ=m/V=100/20=5 g/cm³" },
+            { chapter: "密度", question: "密度的国际单位是？", options: ["g/cm³", "kg/m³", "g/m³", "kg/cm³"], answer: 1,
+                explanation: "密度的国际单位是kg/m³" },
+            { chapter: "密度", question: "1 g/cm³ 等于多少 kg/m³？", options: ["10", "100", "1000", "10000"], answer: 2,
+                explanation: "1 g/cm³ = 1000 kg/m³（因为1kg=1000g, 1m³=10⁶cm³）" },
+            { chapter: "密度", question: "水的密度约等于？", options: ["0.1 g/cm³", "1 g/cm³", "10 g/cm³", "100 g/cm³"],
+                answer: 1, explanation: "水的密度约为1 g/cm³（或1000 kg/m³）" },
+            // 重力 (6题)
+            { chapter: "重力", question: "重力的符号G来源于哪个英文单词？", options: ["Gram", "Gravity", "Great", "Ground"],
+                answer: 1, explanation: "G来源于Gravity(重力)" },
+            { chapter: "重力", question: "重力的单位是？", options: ["焦耳(J)", "瓦特(W)", "牛顿(N)", "帕斯卡(Pa)"], answer: 2,
+                explanation: "力（包括重力）的单位是牛顿(N)" },
+            { chapter: "重力", question: "g的取值通常为？", options: ["9.8 N/kg", "98 N/kg", "0.98 N/kg", "1 N/kg"], answer: 0,
+                explanation: "g≈9.8 N/kg，表示1kg物体受到的重力为9.8N" },
+            { chapter: "重力", question: "重力公式G=mg中，m代表？", options: ["米", "质量", "密度", "力"], answer: 1,
+                explanation: "m代表mass(质量)，单位是kg" },
+            { chapter: "重力", question: "质量为5kg的物体，重力约为？", options: ["5N", "49N", "50N", "0.5N"], answer: 1,
+                explanation: "G=mg=5×9.8=49N" },
+            { chapter: "重力", question: "重力与什么成正比？", options: ["体积", "密度", "质量", "速度"], answer: 2,
+                explanation: "G=mg，g是常数，所以重力与质量成正比" },
+            // 压强 (6题)
+            { chapter: "压强", question: "压强的符号p来源于？", options: ["Power", "Pressure", "Pascal", "Pound"], answer: 1,
+                explanation: "p来源于Pressure(压力/压强)" },
+            { chapter: "压强", question: "1帕斯卡等于？", options: ["1 N/m²", "1 N·m", "1 J/s", "1 kg/m²"], answer: 0,
+                explanation: "1 Pa = 1 N/m²" },
+            { chapter: "压强", question: "压强公式p=F/S中，S代表？", options: ["Speed", "Space", "Surface", "Second"],
+            answer: 2, explanation: "S代表Surface(受力面积)，F是Force(力)" },
+            { chapter: "压强", question: "增大压强的方法是？", options: ["增大受力面积", "减小压力", "减小受力面积", "同时增大受力面积和压力"],
+                answer: 2, explanation: "p=F/S，减小S可以增大压强（如刀刃磨薄）" },
+            { chapter: "压强", question: "下列哪个不是压强的单位？", options: ["Pa", "N/m²", "N·m", "千帕"], answer: 2,
+                explanation: "N·m是功的单位（焦耳），不是压强单位" },
+            { chapter: "压强", question: "压力为100N，受力面积为2m²，压强为？", options: ["200Pa", "50Pa", "0.02Pa", "102Pa"],
+                answer: 1, explanation: "p=F/S=100/2=50Pa" },
+            // 液体压强 (6题)
+            { chapter: "液体压强", question: "液体压强公式p=ρgh中，h代表？", options: ["Height", "Hour", "Hundred", "Heat"],
+                answer: 0, explanation: "h代表Height(深度)，必须从液面算起" },
+            { chapter: "液体压强", question: "h的测量起点是？", options: ["容器底部", "液面", "物体顶部", "任意位置"], answer: 1,
+                explanation: "h必须从液面算起，是到测量点的竖直距离" },
+            { chapter: "液体压强", question: "液体压强与什么无关？", options: ["液体密度", "深度", "容器形状", "重力加速度"], answer: 2,
+                explanation: "液体压强只与ρ、g、h有关，与容器形状无关" },
+            { chapter: "液体压强", question: "同种液体中，深度增加，压强如何变化？", options: ["不变", "减小", "增大", "先增后减"], answer: 2,
+                explanation: "p=ρgh，h增大，p增大（正比关系）" },
+            { chapter: "液体压强", question: "ρ=1000kg/m³，h=10m，g=10N/kg，压强为？", options: ["1000Pa", "10000Pa",
+                    "100000Pa", "1000000Pa"
+                ], answer: 2, explanation: "p=ρgh=1000×10×10=100000Pa" },
+            { chapter: "液体压强", question: "液体压强产生的原因是？", options: ["液体有质量", "液体有流动性且受重力", "液体有颜色", "液体有温度"],
+                answer: 1, explanation: "液体因受重力且有流动性，对容器底和侧壁产生压强" },
+            // 浮力 (6题)
+            { chapter: "浮力", question: "阿基米德原理描述的是？", options: ["重力", "浮力", "摩擦力", "弹力"], answer: 1,
+                explanation: "阿基米德原理：F浮=ρ液gV排，即浮力=排开液体的重力" },
+            { chapter: "浮力", question: "F浮=ρ液gV排中，V排代表？", options: ["物体总体积", "排开液体的体积", "容器体积", "液体体积"],
+            answer: 1, explanation: "V排是排开液体的体积，即物体浸入液体中的体积" },
+            { chapter: "浮力", question: "物体浸没在水中，浮力大小取决于？", options: ["物体质量", "物体密度", "排开水的重力", "水深"], answer: 2,
+                explanation: "根据阿基米德原理，浮力=排开液体的重力" },
+            { chapter: "浮力", question: "浮力的方向是？", options: ["向下", "水平", "竖直向上", "沿物体运动方向"], answer: 2,
+                explanation: "浮力方向始终竖直向上，与重力方向相反" },
+            { chapter: "浮力", question: "铁块在水中下沉，是因为？", options: ["不受浮力", "浮力小于重力", "浮力大于重力", "没有排开水"],
+            answer: 1, explanation: "铁块受浮力，但浮力<重力，所以下沉" },
+            { chapter: "浮力", question: "10cm³物体完全浸没在水中，排开水的质量为？", options: ["1g", "10g", "100g", "1000g"],
+                answer: 1, explanation: "V排=10cm³，水的密度1g/cm³，m=ρV=10g" },
+            // 功和功率 (8题)
+            { chapter: "功", question: "功的符号W代表？", options: ["Watt", "Work", "Weight", "Width"], answer: 1,
+                explanation: "W代表Work(功)，单位是焦耳(J)" },
+            { chapter: "功", question: "做功的两个必要因素是？", options: ["力和时间", "力和距离", "力和力的方向上的距离", "质量和距离"], answer: 2,
+                explanation: "必须有力(F)且在力的方向上有距离(s)才做功" },
+            { chapter: "功", question: "下列哪种情况不做功？", options: ["推车前进", "提水水平行走", "举重向上", "拉物体移动"], answer: 1,
+                explanation: "提水水平行走时，力向上但移动方向水平，力方向上无距离，不做功" },
+            { chapter: "功率", question: "功率的单位瓦特，符号为？", options: ["J", "N", "W", "P"], answer: 2,
+                explanation: "功率单位瓦特符号是W(Watt)，注意与功的符号W区分" },
+            { chapter: "功率", question: "P=W/t表示？", options: ["做功的多少", "做功的快慢", "力的大小", "能量的大小"], answer: 1,
+                explanation: "功率是表示做功快慢的物理量" },
+            { chapter: "功率", question: "功率公式P=Fv中，v代表？", options: ["体积", "速度", "电压", "粘性"], answer: 1,
+                explanation: "v代表速度(velocity)，P=Fv是功率的另一种表达式" },
+            { chapter: "功率", question: "100J的功在5秒内完成，功率为？", options: ["500W", "20W", "0.05W", "105W"], answer: 1,
+                explanation: "P=W/t=100/5=20W" },
+            { chapter: "机械效率", question: "机械效率η总是？", options: [">1", "=1", "<1", "≤0"], answer: 2,
+                explanation: "有用功永远小于总功，所以η<1" },
+            // 综合 (2题)
+            { chapter: "综合", question: "下列哪个是功率的单位？", options: ["焦耳", "牛顿", "瓦特", "帕斯卡"], answer: 2,
+                explanation: "瓦特(W)是功率单位，焦耳(J)是功的单位" },
+            { chapter: "综合", question: "下列哪个物理量的单位是帕斯卡(Pa)？", options: ["力", "压强", "功", "功率"], answer: 1,
+                explanation: "帕斯卡(Pa)是压强单位，1Pa=1N/m²" },
+        ];
+
+        // ==================== 状态管理 ====================
+        let appState = {
+            currentMode: null, // 'random' | 'chapter' | 'wrong'
+            selectedChapter: null,
+            currentQuestions: [],
+            currentIndex: 0,
+            score: 0,
+            wrongQuestions: [], // 错题对象数组
+            answered: false,
+            selectedOption: null,
+            quizFinished: false,
+            pendingCount: 0,
+            // 持久化统计 (使用localStorage)
+            stats: {
+                totalAttempts: 0,
+                totalCorrect: 0,
+                chapterStats: {}, // {chapter: {total, correct}}
+                wrongQuestionData: [] // 错题的question文本(用于去重)
+            }
+        };
+
+        // ==================== 持久化 ====================
+        function saveStats() {
+            localStorage.setItem('physics_trainer_stats', JSON.stringify(appState.stats));
+        }
+
+        function loadStats() {
+            const saved = localStorage.getItem('physics_trainer_stats');
+            if (saved) {
+                try {
+                    appState.stats = JSON.parse(saved);
+                } catch (e) {
+                    // 数据损坏则重置
+                    appState.stats = {
+                        totalAttempts: 0,
+                        totalCorrect: 0,
+                        chapterStats: {},
+                        wrongQuestionData: []
+                    };
+                }
+            }
+        }
+
+        function resetAllData() {
+            if (confirm('确定要重置所有学习数据吗？此操作不可恢复！')) {
+                appState.stats = {
+                    totalAttempts: 0,
+                    totalCorrect: 0,
+                    chapterStats: {},
+                    wrongQuestionData: []
+                };
+                appState.wrongQuestions = [];
+                saveStats();
+                showToast('数据已重置', 'info');
+                updateAllUI();
+                goToMenu();
+            }
+        }
+
+        // ==================== UI工具函数 ====================
+        function hideAll() {
+            document.getElementById('main-menu').classList.add('hidden');
+            document.getElementById('chapter-select').classList.add('hidden');
+            document.getElementById('question-count-select').classList.add('hidden');
+            document.getElementById('quiz-area').classList.remove('active');
+            document.getElementById('quiz-area').classList.add('hidden');
+            document.getElementById('result-area').classList.remove('active');
+            document.getElementById('result-area').classList.add('hidden');
+            document.getElementById('formula-sheet').classList.add('hidden');
+            document.getElementById('statistics-area').classList.add('hidden');
+        }
+
+        function showElement(id) {
+            document.getElementById(id).classList.remove('hidden');
+            if (id === 'quiz-area' || id === 'result-area') {
+                document.getElementById(id).classList.add('active');
+            }
+        }
+
+        function goToMenu() {
+            hideAll();
+            document.getElementById('main-menu').classList.remove('hidden');
+            updateWrongCountBadge();
+            appState.quizFinished = false;
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast toast-' + type;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2000);
+        }
+
+        function updateWrongCountBadge() {
+            const badge = document.getElementById('wrong-count-badge');
+            const count = appState.stats.wrongQuestionData.length;
+            badge.textContent = count;
+            if (count === 0) {
+                badge.style.display = 'none';
+            } else {
+                badge.style.display = 'inline';
+            }
+        }
+
+        function updateAllUI() {
+            updateWrongCountBadge();
+        }
+
+        // ==================== 练习模式 ====================
+        function startRandomPractice() {
+            appState.currentMode = 'random';
+            appState.selectedChapter = null;
+            const available = questionBank.length;
+            document.getElementById('available-count').textContent = available;
+            hideAll();
+            showElement('question-count-select');
+            // 更新按钮状态
+            const btns = document.querySelectorAll('#count-options .btn');
+            btns.forEach(btn => {
+                const countText = btn.textContent.trim();
+                let count = 0;
+                if (countText === '全部题目') count = -1;
+                else count = parseInt(countText);
+                if (count > available && count !== -1) {
+                    btn.disabled = true;
+                    btn.style.opacity = '0.5';
+                } else {
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                }
+            });
+        }
+
+        function showChapterSelect() {
+            appState.currentMode = 'chapter';
+            hideAll();
+            showElement('chapter-select');
+            const chapters = [...new Set(questionBank.map(q => q.chapter))];
+            const chapterList = document.getElementById('chapter-list');
+            chapterList.innerHTML = '';
+            chapters.forEach(ch => {
+                const count = questionBank.filter(q => q.chapter === ch).length;
+                const btn = document.createElement('button');
+                btn.className = 'btn btn-success';
+                btn.textContent = `${ch} (${count}题)`;
+                btn.onclick = () => selectChapter(ch);
+                chapterList.appendChild(btn);
+            });
+        }
+
+        function selectChapter(chapter) {
+            appState.selectedChapter = chapter;
+            const available = questionBank.filter(q => q.chapter === chapter).length;
+            document.getElementById('available-count').textContent = available;
+            hideAll();
+            showElement('question-count-select');
+        }
+
+        function startWithCount(count) {
+            let pool = [];
+            if (appState.currentMode === 'random') {
+                pool = [...questionBank];
+            } else if (appState.currentMode === 'chapter') {
+                pool = questionBank.filter(q => q.chapter === appState.selectedChapter);
+            }
+
+            if (count === -1 || count >= pool.length) {
+                count = pool.length;
+            }
+            // 随机选count题
+            const shuffled = [...pool].sort(() => Math.random() - 0.5);
+            appState.currentQuestions = shuffled.slice(0, count);
+            appState.currentIndex = 0;
+            appState.score = 0;
+            appState.wrongQuestions = [];
+            appState.quizFinished = false;
+            appState.pendingCount = count;
+            startQuiz();
+        }
+
+        function startWrongPractice() {
+            if (appState.stats.wrongQuestionData.length === 0) {
+                showToast('🎉 没有错题记录！继续保持！', 'success');
+                return;
+            }
+            appState.currentMode = 'wrong';
+            // 从题库中匹配错题
+            const wrongTexts = new Set(appState.stats.wrongQuestionData);
+            const matchedQuestions = questionBank.filter(q => wrongTexts.has(q.question));
+            if (matchedQuestions.length === 0) {
+                showToast('错题已全部清除（可能题库已更新）', 'info');
+                appState.stats.wrongQuestionData = [];
+                saveStats();
+                updateAllUI();
+                return;
+            }
+            const shuffled = [...matchedQuestions].sort(() => Math.random() - 0.5);
+            appState.currentQuestions = shuffled;
+            appState.currentIndex = 0;
+            appState.score = 0;
+            appState.wrongQuestions = [];
+            appState.quizFinished = false;
+            appState.pendingCount = shuffled.length;
+            startQuiz();
+        }
+
+        function startQuiz() {
+            hideAll();
+            showElement('quiz-area');
+            document.getElementById('btn-next').classList.add('hidden');
+            document.getElementById('btn-finish').classList.add('hidden');
+            document.getElementById('quiz-feedback').classList.remove('show', 'correct-fb', 'wrong-fb');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            if (appState.currentIndex >= appState.currentQuestions.length) {
+                finishQuiz();
+                return;
+            }
+            const q = appState.currentQuestions[appState.currentIndex];
+            document.getElementById('quiz-chapter').textContent = q.chapter;
+            document.getElementById('quiz-progress').textContent =
+                `第 ${appState.currentIndex + 1}/${appState.currentQuestions.length} 题`;
+            document.getElementById('quiz-question').textContent = q.question;
+            const optionsList = document.getElementById('quiz-options');
+            const labels = ['A', 'B', 'C', 'D'];
+            optionsList.innerHTML = '';
+            q.options.forEach((opt, i) => {
+                const li = document.createElement('li');
+                li.className = 'option-item';
+                li.innerHTML = `<span class="option-letter">${labels[i]}</span>${opt}`;
+                li.onclick = () => selectOption(i, li);
+                optionsList.appendChild(li);
+            });
+            document.getElementById('quiz-feedback').classList.remove('show', 'correct-fb', 'wrong-fb');
+            document.getElementById('btn-next').classList.add('hidden');
+            document.getElementById('btn-finish').classList.add('hidden');
+            appState.answered = false;
+            appState.selectedOption = null;
+        }
+
+        function selectOption(index, element) {
+            if (appState.answered) return;
+            appState.answered = true;
+            appState.selectedOption = index;
+            const q = appState.currentQuestions[appState.currentIndex];
+            const isCorrect = (index === q.answer);
+            // 标记所有选项
+            const allOptions = document.querySelectorAll('#quiz-options .option-item');
+            allOptions.forEach((opt, i) => {
+                opt.classList.add('disabled');
+                if (i === q.answer) opt.classList.add('correct');
+                if (i === index && !isCorrect) opt.classList.add('wrong');
+                if (i === index) opt.classList.add('selected');
+            });
+            // 显示反馈
+            const feedback = document.getElementById('quiz-feedback');
+            const fbText = document.getElementById('feedback-text');
+            const fbExp = document.getElementById('feedback-explanation');
+            feedback.classList.add('show');
+            if (isCorrect) {
+                feedback.classList.add('correct-fb');
+                feedback.classList.remove('wrong-fb');
+                fbText.textContent = '✅ 正确！';
+                appState.score++;
+            } else {
+                feedback.classList.add('wrong-fb');
+                feedback.classList.remove('correct-fb');
+                const labels = ['A', 'B', 'C', 'D'];
+                fbText.textContent = `❌ 错误！正确答案是 ${labels[q.answer]}`;
+                appState.wrongQuestions.push(q);
+                // 更新持久化错题
+                if (!appState.stats.wrongQuestionData.includes(q.question)) {
+                    appState.stats.wrongQuestionData.push(q.question);
+                }
+            }
+            fbExp.textContent = '💡 ' + q.explanation;
+            // 更新统计
+            appState.stats.totalAttempts++;
+            if (isCorrect) appState.stats.totalCorrect++;
+            if (!appState.stats.chapterStats[q.chapter]) {
+                appState.stats.chapterStats[q.chapter] = { total: 0, correct: 0 };
+            }
+            appState.stats.chapterStats[q.chapter].total++;
+            if (isCorrect) appState.stats.chapterStats[q.chapter].correct++;
+            saveStats();
+            // 显示按钮
+            if (appState.currentIndex < appState.currentQuestions.length - 1) {
+                document.getElementById('btn-next').classList.remove('hidden');
+                document.getElementById('btn-finish').classList.add('hidden');
+            } else {
+                document.getElementById('btn-next').classList.add('hidden');
+                document.getElementById('btn-finish').classList.remove('hidden');
+            }
+            updateWrongCountBadge();
+        }
+
+        function nextQuestion() {
+            appState.currentIndex++;
+            document.getElementById('btn-next').classList.add('hidden');
+            document.getElementById('btn-finish').classList.add('hidden');
+            document.getElementById('quiz-feedback').classList.remove('show', 'correct-fb', 'wrong-fb');
+            renderQuestion();
+        }
+
+        function confirmQuit() {
+            if (appState.quizFinished) {
+                goToMenu();
+                return;
+            }
+            if (confirm('确定要退出当前练习吗？已作答的题目会保留统计。')) {
+                appState.quizFinished = true;
+                goToMenu();
+            }
+        }
+
+        function finishQuiz() {
+            appState.quizFinished = true;
+            hideAll();
+            showElement('result-area');
+            const total = appState.currentQuestions.length;
+            const correct = appState.score;
+            const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+            // 表情
+            let emoji = '';
+            if (accuracy >= 90) emoji = '🌟';
+            else if (accuracy >= 70) emoji = '👍';
+            else if (accuracy >= 60) emoji = '📚';
+            else emoji = '💪';
+            document.getElementById('result-emoji').textContent = emoji;
+            document.getElementById('result-score').textContent = `${correct}/${total}`;
+            document.getElementById('result-text').textContent =
+                accuracy >= 90 ? '优秀！继续保持！' :
+                accuracy >= 70 ? '不错，还有提升空间！' :
+                accuracy >= 60 ? '需要加强练习哦！' : '建议先复习公式速记表！';
+            document.getElementById('accuracy-fill').style.width = accuracy + '%';
+            if (accuracy >= 80) document.getElementById('accuracy-fill').style.background = 'var(--success)';
+            else if (accuracy >= 60) document.getElementById('accuracy-fill').style.background = 'var(--warning)';
+            else document.getElementById('accuracy-fill').style.background = 'var(--danger)';
+            document.getElementById('result-detail').textContent = `正确率: ${accuracy}%`;
+            // 错题重练按钮
+            const retryBtn = document.getElementById('btn-retry-wrong');
+            if (appState.wrongQuestions.length > 0) {
+                retryBtn.style.display = 'inline-flex';
+                retryBtn.textContent = `🔄 重练错题 (${appState.wrongQuestions.length}题)`;
+            } else {
+                retryBtn.style.display = 'none';
+            }
+        }
+
+        function retryWrong() {
+            if (appState.wrongQuestions.length === 0) {
+                showToast('没有错题可重练', 'info');
+                return;
+            }
+            // 去重
+            const uniqueWrong = [];
+            const seen = new Set();
+            appState.wrongQuestions.forEach(q => {
+                if (!seen.has(q.question)) {
+                    uniqueWrong.push(q);
+                    seen.add(q.question);
+                }
+            });
+            appState.currentQuestions = [...uniqueWrong];
+            appState.currentIndex = 0;
+            appState.score = 0;
+            appState.wrongQuestions = [];
+            appState.quizFinished = false;
+            appState.pendingCount = uniqueWrong.length;
+            appState.currentMode = 'wrong';
+            hideAll();
+            startQuiz();
+        }
+
+        // ==================== 公式表 ====================
+        function showFormulaSheet() {
+            hideAll();
+            showElement('formula-sheet');
+        }
+
+        // ==================== 统计 ====================
+        function showStatistics() {
+            hideAll();
+            showElement('statistics-area');
+            document.getElementById('stat-total').textContent = appState.stats.totalAttempts;
+            document.getElementById('stat-correct').textContent = appState.stats.totalCorrect;
+            const accuracy = appState.stats.totalAttempts > 0 ?
+                Math.round((appState.stats.totalCorrect / appState.stats.totalAttempts) * 100) + '%' :
+                '0%';
+            document.getElementById('stat-accuracy').textContent = accuracy;
+            document.getElementById('stat-wrong').textContent = appState.stats.wrongQuestionData.length;
+            // 章节统计
+            const chapterStatsDiv = document.getElementById('chapter-stats');
+            const chapters = [...new Set(questionBank.map(q => q.chapter))];
+            chapterStatsDiv.innerHTML = '';
+            chapters.forEach(ch => {
+                const stats = appState.stats.chapterStats[ch] || { total: 0, correct: 0 };
+                const rate = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+                const barColor = rate >= 80 ? 'var(--success)' : rate >= 60 ? 'var(--warning)' :
+                    'var(--danger)';
+                const div = document.createElement('div');
+                div.className = 'chapter-bar';
+                div.style.margin = '8px 0';
+                div.innerHTML = `
+                    <span style="width:70px;font-size:0.85em;">${ch}</span>
+                    <div class="bar">
+                        <div class="bar-fill" style="width:${rate}%;background:${barColor};"></div>
+                    </div>
+                    <span style="width:40px;text-align:right;font-size:0.85em;">${rate}%</span>
+                    <span style="font-size:0.75em;color:#888;">(${stats.correct}/${stats.total})</span>
+                `;
+                chapterStatsDiv.appendChild(div);
+            });
+        }
+
+        // ==================== 初始化 ====================
+        function init() {
+            loadStats();
+            updateAllUI();
+            goToMenu();
+        }
+
+        // 键盘快捷键
+        document.addEventListener('keydown', function(e) {
+            if (appState.quizFinished) return;
+            if (document.getElementById('quiz-area').classList.contains('active') && !appState
+                .answered) {
+                const key = e.key.toUpperCase();
+                const map = { 'A': 0, 'B': 1, 'C': 2, 'D': 3, '1': 0, '2': 1, '3': 2, '4': 3 };
+                if (map[key] !== undefined) {
+                    const options = document.querySelectorAll('#quiz-options .option-item');
+                    if (options[map[key]]) {
+                        options[map[key]].click();
+                    }
+                }
+            }
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (appState.answered && !appState.quizFinished) {
+                    if (!document.getElementById('btn-next').classList.contains('hidden')) {
+                        nextQuestion();
+                    } else if (!document.getElementById('btn-finish').classList.contains('hidden')) {
+                        finishQuiz();
+                    }
+                    e.preventDefault();
+                }
+            }
+        });
+
+        // 启动
+        init();
+        console.log('🚀 初中物理公式记忆强化训练系统已就绪！');
+        console.log('💡 提示：答题时可直接按 A/B/C/D 键选择答案，按 Enter 键进入下一题');
+    </script>
+</body>
+</html>
