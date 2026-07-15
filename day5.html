@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 · 校园生活 | 高中英语700核心词</title>
+    <style>
+        :root{--primary:#4A6CF7;--primary-light:#EEF1FE;--success:#10B981;--warning:#F59E0B;--danger:#EF4444;--bg:#F0F2F8;--card:#FFFFFF;--text:#1E293B;--text-secondary:#64748B;--border:#E2E8F0;--radius:14px;--radius-sm:10px;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;}
+        .container{max-width:500px;margin:0 auto;padding:14px 14px 40px;}
+        .top-bar{display:flex;align-items:center;gap:10px;padding:12px 0 10px;position:sticky;top:0;background:var(--bg);z-index:10;}
+        .back-btn{width:36px;height:36px;border-radius:50%;background:var(--card);border:1px solid var(--border);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-decoration:none;color:var(--text);}
+        .back-btn:active{background:#F1F5F9;transform:scale(0.95);}
+        .day-badge{background:var(--primary);color:#fff;padding:5px 14px;border-radius:18px;font-size:13px;font-weight:700;}
+        .top-bar .title-area{flex:1;min-width:0;}
+        .top-bar .main-title{font-size:17px;font-weight:700;}
+        .top-bar .sub-title{font-size:11px;color:var(--text-secondary);}
+        .mini-progress{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px;border:1px solid var(--border);}
+        .mini-progress .prog-icon{font-size:16px;}
+        .mini-progress .prog-bar-wrap{flex:1;height:6px;background:#E2E8F0;border-radius:3px;overflow:hidden;}
+        .mini-progress .prog-bar-fill{height:100%;background:var(--primary);border-radius:3px;transition:width 0.5s;width:0%;}
+        .mini-progress .prog-text{font-size:12px;font-weight:600;color:var(--primary);white-space:nowrap;}
+        .group-tabs{display:flex;gap:2px;background:#E2E8F0;border-radius:11px;padding:3px;margin-bottom:8px;}
+        .group-tab{flex:1;padding:9px 6px;text-align:center;font-size:13px;font-weight:600;border-radius:9px;cursor:pointer;border:none;background:transparent;color:var(--text-secondary);transition:all 0.2s;}
+        .group-tab.active{background:var(--card);color:var(--primary);box-shadow:0 1px 3px rgba(0,0,0,0.06);}
+        .word-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+        .word-card{background:var(--card);border-radius:var(--radius);padding:16px;cursor:pointer;transition:all 0.2s;border:1.5px solid transparent;position:relative;}
+        .word-card:active{border-color:var(--primary);background:#F8FAFF;transform:scale(0.99);}
+        .word-card .card-sentence{font-size:18px;font-weight:500;color:var(--text);line-height:1.55;margin-bottom:8px;}
+        .word-card .card-sentence .hl-word{background:#FFF3CD;padding:2px 6px;border-radius:4px;font-weight:700;color:#92400E;white-space:nowrap;}
+        .word-card .card-info{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary);}
+        .word-card .card-word-en{font-weight:700;color:var(--primary);font-size:14px;}
+        .word-card .card-word-zh{color:#94A3B8;}
+        .word-card .card-tags{margin-left:auto;display:flex;gap:4px;align-items:center;}
+        .word-card .tag-multi{font-size:10px;color:#94A3B8;background:#F1F5F9;padding:2px 7px;border-radius:8px;font-weight:600;}
+        .tag-status.know{color:#10B981;font-size:11px;font-weight:600;}
+        .tag-status.unsure{color:#F59E0B;font-size:11px;font-weight:600;}
+        .tag-status.dunno{color:#EF4444;font-size:11px;font-weight:600;}
+        .word-card .speak-btn{width:30px;height:30px;border-radius:50%;background:#EEF2FF;border:none;font-size:14px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+        .word-card .speak-btn:active{background:#DDE4FE;transform:scale(0.9);}
+        .overlay{position:fixed;inset:0;background:rgba(15,23,42,0.55);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+        .overlay.show{opacity:1;pointer-events:auto;}
+        .detail-card{background:#fff;border-radius:20px;padding:24px 20px;width:100%;max-width:380px;box-shadow:0 24px 48px rgba(0,0,0,0.22);animation:popIn 0.3s ease;max-height:85vh;overflow-y:auto;}
+        @keyframes popIn{from{transform:scale(0.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+        .detail-card .d-word{font-size:30px;font-weight:800;text-align:center;}
+        .detail-card .d-pron{font-size:13px;color:#94A3B8;text-align:center;margin-bottom:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+        .detail-card .meaning-block{background:#F8FAFC;border-radius:10px;padding:12px 14px;margin-bottom:8px;border-left:3px solid var(--primary);}
+        .detail-card .meaning-num{font-size:11px;color:var(--primary);font-weight:700;margin-bottom:2px;}
+        .detail-card .meaning-zh{font-size:16px;font-weight:600;margin:2px 0;}
+        .detail-card .meaning-ex{font-size:14px;color:#64748B;font-style:italic;line-height:1.4;}
+        .detail-card .meaning-ex .hl-word{background:#FFF3CD;padding:1px 4px;border-radius:3px;font-weight:700;color:#92400E;font-style:normal;}
+        .detail-card .status-row{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+        .status-btn{padding:9px 16px;border-radius:18px;border:2px solid #E2E8F0;background:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+        .status-btn.know-btn{border-color:#10B981;color:#10B981;}
+        .status-btn.unsure-btn{border-color:#F59E0B;color:#F59E0B;}
+        .status-btn.dunno-btn{border-color:#EF4444;color:#EF4444;}
+        .status-btn.selected{color:#fff;font-weight:700;}
+        .status-btn.know-btn.selected{background:#10B981;border-color:#10B981;}
+        .status-btn.unsure-btn.selected{background:#F59E0B;border-color:#F59E0B;}
+        .status-btn.dunno-btn.selected{background:#EF4444;border-color:#EF4444;}
+        .detail-card .close-detail-btn{display:block;margin:14px auto 0;padding:9px 26px;border-radius:18px;border:none;background:#F1F5F9;font-size:14px;cursor:pointer;font-weight:500;}
+        .section-header{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;margin:18px 0 8px;}
+        .section-header .icon{font-size:18px;}
+        .wq-item{background:var(--card);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;border:1px solid var(--border);}
+        .wq-item .wq-q{font-size:14px;font-weight:500;margin-bottom:8px;line-height:1.5;}
+        .wq-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+        .wq-opt{padding:9px 6px;border:2px solid #E2E8F0;border-radius:8px;text-align:center;font-size:13px;cursor:pointer;background:#fff;transition:all 0.2s;font-weight:500;word-break:break-word;}
+        .wq-opt:active{transform:scale(0.96);}
+        .wq-opt.picked{border-color:var(--primary);background:#EEF2FF;outline:2px solid var(--primary);outline-offset:-2px;}
+        .wq-opt.correct{border-color:#10B981!important;background:#D1FAE5!important;color:#065F46!important;outline:none!important;}
+        .wq-opt.wrong{border-color:#EF4444!important;background:#FEE2E2!important;color:#991B1B!important;outline:none!important;}
+        .wq-opt:disabled{pointer-events:none;opacity:0.85;}
+        .quiz-fb{font-size:13px;font-weight:600;margin:4px 0 2px;min-height:20px;}
+        .btn-row{display:flex;gap:8px;}
+        .btn-row .btn{flex:1;}
+        .reading-block{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;margin-top:16px;}
+        .reading-block .passage-section{padding:18px 16px 14px;border-bottom:1px dashed #E2E8F0;}
+        .reading-block .passage-title{font-size:15px;font-weight:700;margin-bottom:10px;}
+        .reading-block .passage-text{font-size:15px;line-height:2;color:#334155;}
+        .reading-block .passage-text p{margin-bottom:14px;text-indent:1.5em;}
+        .reading-block .passage-text p:last-child{margin-bottom:0;}
+        .reading-block .passage-text .hl{background:#FFF3CD;padding:2px 5px;border-radius:4px;font-weight:700;color:#92400E;}
+        .reading-block .passage-text .hl-d1{background:#E8F5E9;padding:2px 5px;border-radius:4px;font-weight:600;color:#2E7D32;}
+        .reading-block .passage-text .hl-d2{background:#E3F2FD;padding:2px 5px;border-radius:4px;font-weight:600;color:#1565C0;}
+        .reading-block .quiz-section{padding:14px 16px;background:#FAFBFC;}
+        .reading-block .quiz-section .section-label{font-size:13px;font-weight:700;color:var(--primary);margin-bottom:10px;}
+        .reading-quiz-item{margin-bottom:12px;}
+        .reading-quiz-item .rq-q{font-size:14px;font-weight:500;margin-bottom:6px;line-height:1.4;}
+        .rq-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+        .rq-opt{padding:9px 6px;border:2px solid #E2E8F0;border-radius:8px;text-align:center;font-size:12px;cursor:pointer;background:#fff;font-weight:500;word-break:break-word;transition:all 0.2s;}
+        .rq-opt:active{transform:scale(0.96);}
+        .rq-opt.picked{border-color:var(--primary);background:#EEF2FF;outline:2px solid var(--primary);outline-offset:-2px;}
+        .rq-opt.correct{border-color:#10B981!important;background:#D1FAE5!important;color:#065F46!important;outline:none!important;}
+        .rq-opt.wrong{border-color:#EF4444!important;background:#FEE2E2!important;color:#991B1B!important;outline:none!important;}
+        .rq-opt:disabled{pointer-events:none;opacity:0.85;}
+        .btn{display:block;width:100%;padding:13px;border-radius:22px;border:none;font-size:15px;font-weight:700;cursor:pointer;text-align:center;margin:10px 0;transition:all 0.2s;}
+        .btn-primary{background:var(--primary);color:#fff;box-shadow:0 4px 12px rgba(74,108,247,0.25);}
+        .btn-primary:active{background:#3651D5;transform:scale(0.98);}
+        .btn-outline{background:#fff;border:2px solid var(--primary);color:var(--primary);}
+        .btn-outline:active{background:var(--primary-light);}
+        .btn-danger{background:#fff;border:2px solid var(--danger);color:var(--danger);}
+        .btn-danger:active{background:#FEF2F2;}
+        .btn:disabled{background:#CBD5E1!important;color:#94A3B8!important;box-shadow:none!important;pointer-events:none;border-color:#CBD5E1!important;}
+        .score-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+        .score-overlay.show{opacity:1;pointer-events:auto;}
+        .score-card{background:#fff;border-radius:22px;padding:30px 22px;text-align:center;width:100%;max-width:310px;box-shadow:0 24px 48px rgba(0,0,0,0.25);animation:popIn 0.35s ease;}
+        .score-card .big-emoji{font-size:56px;margin-bottom:4px;}
+        .score-card .score-num{font-size:50px;font-weight:900;color:var(--primary);}
+        .score-card .score-label{font-size:14px;color:var(--text-secondary);margin:4px 0 6px;}
+        .score-card .score-detail{font-size:12px;color:#94A3B8;margin-bottom:16px;}
+        .reset-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);}
+        .reset-section .reset-title{font-size:13px;color:var(--text-secondary);margin-bottom:8px;text-align:center;}
+        .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#1E293B;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:500;z-index:300;opacity:0;pointer-events:none;transition:opacity 0.3s;white-space:nowrap;}
+        .toast.show{opacity:1;}
+        .passage-note{font-size:11px;color:#94A3B8;margin-top:8px;font-style:italic;}
+        .passage-note span{display:inline-block;margin-right:10px;}
+        .passage-note .leg-new{background:#FFF3CD;padding:1px 6px;border-radius:3px;color:#92400E;font-weight:600;}
+        .passage-note .leg-d1{background:#E8F5E9;padding:1px 6px;border-radius:3px;color:#2E7D32;font-weight:600;}
+        .passage-note .leg-d2{background:#E3F2FD;padding:1px 6px;border-radius:3px;color:#1565C0;font-weight:600;}
+    </style>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+<div class="overlay" id="detailOverlay"><div class="detail-card" id="detailCard"></div></div>
+<div class="score-overlay" id="scoreOverlay"><div class="score-card"><div class="big-emoji" id="scoreEmoji"></div><div class="score-num" id="scoreNum"></div><div class="score-label" id="scoreLabel"></div><div class="score-detail" id="scoreDetail"></div><button class="btn btn-primary" onclick="closeScore()">👍 知道了</button></div></div>
+
+<div class="container">
+<div class="top-bar"><a class="back-btn" href="index.html">←</a><div class="title-area"><div class="main-title">Day 5 · 校园生活</div><div class="sub-title">🎓 活动与关系 · 成长与告别</div></div><div class="day-badge">DAY 5</div></div>
+<div class="mini-progress"><span class="prog-icon">📊</span><div class="prog-bar-wrap"><div class="prog-bar-fill" id="progBar"></div></div><span class="prog-text" id="progText">0/4</span></div>
+<div class="group-tabs"><button class="group-tab active" onclick="switchGroup(1)">📗 第一组 (1-10)</button><button class="group-tab" onclick="switchGroup(2)">📘 第二组 (11-20)</button></div>
+<div class="word-list" id="wordList"></div>
+<div class="section-header"><span class="icon">📝</span> 词义选择 · <span id="wqGroupLabel">第一组</span> <span style="font-weight:400;font-size:12px;color:#94A3B8;">(10题)</span></div>
+<div id="wordQuizArea"></div><div class="quiz-fb" id="wordQuizFB"></div>
+<div class="btn-row" id="wordQuizBtns"><button class="btn btn-primary" id="wordQuizSubmit" onclick="submitWordQuiz()">✅ 提交词义选择</button><button class="btn btn-outline" id="wordQuizRetry" onclick="retryWordQuiz()" style="display:none;">🔄 重新练习</button></div>
+<div class="reading-block">
+<div class="passage-section"><div class="passage-title">📖 今日短文</div><div class="passage-text" id="passageText"></div>
+<div class="passage-note"><span><span class="leg-new">黄色</span> Day 5 新词</span><span><span class="leg-d1">绿色</span> Day 4 复现</span><span><span class="leg-d2">蓝色</span> Day 1-3 复现</span></div></div>
+<div class="quiz-section"><div class="section-label">📋 Reading Comprehension</div><div id="readingQuizArea"></div><div class="quiz-fb" id="readingQuizFB"></div>
+<div class="btn-row" id="readingQuizBtns"><button class="btn btn-primary" id="readingQuizSubmit" onclick="submitReadingQuiz()" disabled>🔒 先完成两组词义选择</button><button class="btn btn-outline" id="readingQuizRetry" onclick="retryReadingQuiz()" style="display:none;">🔄 重新练习</button></div></div></div>
+<div class="reset-section"><div class="reset-title">⚠️ 重置本日进度</div><button class="btn btn-danger" onclick="resetAll()">🗑️ 重置本日全部进度</button></div>
+<div style="height:20px;"></div>
+</div>
+
+<script>
+const wordsData={
+1:{en:'organize',zh:'组织',sentence:'Our class decided to <b>organize</b> a charity sale to help the poor.',meanings:[{zh:'组织；筹备',ex:'We decided to <b>organize</b> a charity sale.'}]},
+2:{en:'attend',zh:'参加；出席',sentence:'All students are required to <b>attend</b> the school sports meeting.',meanings:[{zh:'参加；出席',ex:'All students must <b>attend</b> the sports meeting.'},{zh:'上（学）',ex:'She <b>attends</b> No.1 Middle School.'}]},
+3:{en:'compete',zh:'竞争',sentence:'Ten teams will <b>compete</b> in the English speech contest next week.',meanings:[{zh:'竞争；比赛',ex:'Ten teams will <b>compete</b> in the contest.'}]},
+4:{en:'cooperate',zh:'合作',sentence:'The project taught us how to <b>cooperate</b> with people we don\'t know well.',meanings:[{zh:'合作；协作',ex:'We learned to <b>cooperate</b> with strangers.'}]},
+5:{en:'relationship',zh:'关系',sentence:'Building good <b>relationships</b> with classmates makes school life much happier.',meanings:[{zh:'关系；联系',ex:'Good <b>relationships</b> make school life happier.'}]},
+6:{en:'influence',zh:'影响',sentence:'The friends you choose can have a great <b>influence</b> on your attitude toward study.',meanings:[{zh:'影响 (n.)',ex:'Friends have a great <b>influence</b> on your attitude.'},{zh:'影响 (v.)',ex:'His words deeply <b>influenced</b> me.'}]},
+7:{en:'encourage',zh:'鼓励',sentence:'A good teacher will always <b>encourage</b> you to try again after failure.',meanings:[{zh:'鼓励；激励',ex:'A good teacher will <b>encourage</b> you to try again.'}]},
+8:{en:'support',zh:'支持',sentence:'Knowing that my parents <b>support</b> me gives me the courage to take risks.',meanings:[{zh:'支持；拥护',ex:'My parents <b>support</b> me.'},{zh:'支撑 (v.)',ex:'The bridge is <b>supported</b> by strong pillars.'}]},
+9:{en:'admire',zh:'钦佩；欣赏',sentence:'I deeply <b>admire</b> students who stay calm and focused under pressure.',meanings:[{zh:'钦佩；赞赏',ex:'I <b>admire</b> students who stay calm under pressure.'}]},
+10:{en:'inspire',zh:'激励；鼓舞',sentence:'Her story <b>inspired</b> many of us to work harder for our dreams.',meanings:[{zh:'激励；鼓舞',ex:'Her story <b>inspired</b> us to work harder.'}]},
+11:{en:'graduate',zh:'毕业',sentence:'After we <b>graduate</b> from high school, we will go our separate ways.',meanings:[{zh:'毕业 (v.)',ex:'We will <b>graduate</b> from high school.'},{zh:'毕业生 (n.)',ex:'He is a high school <b>graduate</b>.'}]},
+12:{en:'opportunity',zh:'机会',sentence:'Every difficulty you overcome is an <b>opportunity</b> to grow stronger.',meanings:[{zh:'机会；时机',ex:'Every difficulty is an <b>opportunity</b> to grow.'}]},
+13:{en:'experience',zh:'经验；经历',sentence:'The whole high school <b>experience</b> shapes who you become as a person.',meanings:[{zh:'经历 (n.)',ex:'High school is a valuable <b>experience</b>.'},{zh:'经验 (n.)',ex:'She has years of teaching <b>experience</b>.'},{zh:'体验 (v.)',ex:'I <b>experienced</b> real happiness that day.'}]},
+14:{en:'develop',zh:'发展；培养',sentence:'Club activities help you <b>develop</b> skills that textbooks cannot teach.',meanings:[{zh:'发展；培养',ex:'Club activities help you <b>develop</b> skills.'},{zh:'开发；研制',ex:'They are <b>developing</b> a new app.'}]},
+15:{en:'skill',zh:'技能',sentence:'Communication is a <b>skill</b> that will benefit you for the rest of your life.',meanings:[{zh:'技能；技巧',ex:'Communication is a valuable <b>skill</b>.'}]},
+16:{en:'talent',zh:'天赋；才能',sentence:'Hard work often beats <b>talent</b> when talent doesn\'t work hard.',meanings:[{zh:'天赋；才能',ex:'Hard work often beats <b>talent</b>.'}]},
+17:{en:'responsible',zh:'负责的',sentence:'As a class monitor, you must be <b>responsible</b> for your decisions.',meanings:[{zh:'负责的；有责任的',ex:'You must be <b>responsible</b> for your decisions.'}]},
+18:{en:'independent',zh:'独立的',sentence:'High school is where you learn to be <b>independent</b> and make your own choices.',meanings:[{zh:'独立的；自主的',ex:'Learn to be <b>independent</b>.'}]},
+19:{en:'balance',zh:'平衡',sentence:'Finding a <b>balance</b> between study and rest is key to long-term success.',meanings:[{zh:'平衡 (n.)',ex:'Find a <b>balance</b> between study and rest.'},{zh:'使平衡 (v.)',ex:'You need to <b>balance</b> work and life.'}]},
+20:{en:'goal',zh:'目标',sentence:'Set a clear <b>goal</b> for each week, and you will be surprised by your progress.',meanings:[{zh:'目标；目的',ex:'Set a clear <b>goal</b> for each week.'}]}};
+const g1=[1,2,3,4,5,6,7,8,9,10],g2=[11,12,13,14,15,16,17,18,19,20];
+const wq={
+1:[{q:'"<b>organize</b> a charity sale" 中 organize 的意思是？',opts:['取消','组织','破坏','观察'],ans:1},{q:'"<b>attend</b> the school sports meeting" 中 attend 的意思是？',opts:['逃避','参加','组织','取消'],ans:1},{q:'"<b>compete</b> in the English speech contest" 中 compete 的意思是？',opts:['合作','演讲','竞争','放弃'],ans:2},{q:'"how to <b>cooperate</b> with people" 中 cooperate 的意思是？',opts:['竞争','争吵','合作','忽视'],ans:2},{q:'"Building good <b>relationships</b>" 中 relationships 的意思是？',opts:['关系','建筑','规则','分数'],ans:0},{q:'"a great <b>influence</b> on your attitude" 中 influence 的意思是？',opts:['兴趣','影响','问题','答案'],ans:1},{q:'"<b>encourage</b> you to try again" 中 encourage 的意思是？',opts:['阻止','鼓励','批评','忽视'],ans:1},{q:'"my parents <b>support</b> me" 中 support 的意思是？',opts:['反对','支持','质疑','忘记'],ans:1},{q:'"I deeply <b>admire</b> students who..." 中 admire 的意思是？',opts:['嫉妒','钦佩','讨厌','忽视'],ans:1},{q:'"Her story <b>inspired</b> many of us" 中 inspired 的意思是？',opts:['吓到','激励','困惑','阻止'],ans:1}],
+2:[{q:'"<b>graduate</b> from high school" 中 graduate 的意思是？',opts:['入学','毕业','逃学','转学'],ans:1},{q:'"an <b>opportunity</b> to grow stronger" 中 opportunity 的意思是？',opts:['问题','机会','困难','借口'],ans:1},{q:'"The whole high school <b>experience</b>" 中 experience 的意思是？',opts:['考试','经历','课本','老师'],ans:1},{q:'"<b>develop</b> skills" 中 develop 的意思是？',opts:['忽略','发展培养','破坏','隐藏'],ans:1},{q:'"Communication is a <b>skill</b>" 中 skill 的意思是？',opts:['天赋','技能','问题','任务'],ans:1},{q:'"Hard work often beats <b>talent</b>" 中 talent 的意思是？',opts:['努力','运气','天赋','金钱'],ans:2},{q:'"be <b>responsible</b> for your decisions" 中 responsible 的意思是？',opts:['逃避的','负责的','恐惧的','自由的'],ans:1},{q:'"learn to be <b>independent</b>" 中 independent 的意思是？',opts:['依赖的','独立的','懒惰的','困惑的'],ans:1},{q:'"a <b>balance</b> between study and rest" 中 balance 的意思是？',opts:['冲突','平衡','选择','问题'],ans:1},{q:'"Set a clear <b>goal</b> for each week" 中 goal 的意思是？',opts:['目标','规则','奖励','惩罚'],ans:0}]};
+const psg=`
+<p>Looking back on my first term, what I value most is not any single test <span class="hl-d1">score</span> but the <span class="hl">relationships</span> I built and the <span class="hl">experience</span> I gained. When our class decided to <span class="hl">organize</span> a cultural festival, I learned what it truly means to <span class="hl">cooperate</span>. Everyone had different <span class="hl">talents</span> and <span class="hl">skills</span>, and our job was to bring them together rather than <span class="hl">compete</span> against one another. A good leader must be <span class="hl">responsible</span> yet open to feedback—a <span class="hl">balance</span> that takes practice to <span class="hl">develop</span>.</p>
+<p>I was lucky to <span class="hl">attend</span> a talk by a former student who <span class="hl">graduated</span> years ago and went on to become a doctor. Her story <span class="hl">inspired</span> everyone in the room. She spoke honestly about the <span class="hl-d2">pressure</span> she faced and the people who <span class="hl">encouraged</span> her when she wanted to give up. "The friends who <span class="hl">support</span> you through hard times are the ones who truly <span class="hl">influence</span> your life," she said. I couldn't agree more. The classmates I <span class="hl">admire</span> most are not always the top scorers but those who lift others up.</p>
+<p>As we grow more <span class="hl">independent</span>, we begin to understand that every choice has consequences. Whether you use your free period to <span class="hl-d1">revise</span> or scroll through your phone is a decision only you can make. Setting a clear <span class="hl">goal</span> for each day helps you stay on track. And when an <span class="hl">opportunity</span> presents itself—a competition, a leadership role, a chance to speak—take it. These moments <span class="hl-d1">prepare</span> you for the bigger challenges ahead.</p>
+<p>High school is not just about <span class="hl-d2">achieving</span> high grades. It's about learning who you are and who you want to become. The <span class="hl-d2">effort</span> you put in, the <span class="hl-d2">patience</span> you show, and the courage you <span class="hl-d2">develop</span> along the way will shape your future far more than any exam <span class="hl-d1">score</span> ever could.</p>`;
+const rq=[
+{q:'What does the writer value most about the first term?',opts:['Test scores','Relationships and experience','Awards and prizes','Homework completion'],ans:1},
+{q:'What did the former student talk about in her speech?',opts:['How to get high scores','The pressure she faced and the people who supported her','How to avoid competition','The importance of talent over effort'],ans:1},
+{q:'According to the passage, what kind of classmates does the writer admire most?',opts:['The top scorers','Those who lift others up','Those who never make mistakes','The most talented ones'],ans:1},
+{q:'What does the passage say about opportunities?',opts:['They should be avoided','They only come to top students','You should take them when they appear','They are not important'],ans:2},
+{q:'What is the main idea of the last paragraph?',opts:['Grades are the most important thing','High school is only about preparing for exams','Personal growth matters more than exam scores','Talent determines your future'],ans:2}];
+
+let cg=1,ws={},a1={},a2={},s1=false,s2=false,ra={},rs=false;
+const SK='vocab700_day5_v1';
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1800);}
+function ld(){try{return JSON.parse(localStorage.getItem(SK)||'{}');}catch(e){return{};}}
+function sd(d){localStorage.setItem(SK,JSON.stringify(d));}
+function speak(w){if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.78;speechSynthesis.speak(u);}}
+function up(){let d=0;if(Object.keys(ws).length>=10)d++;if(s1&&s2)d=Math.max(d,2);if(rs)d=Math.max(d,3);if(d>=3&&s1&&s2&&rs)d=4;const p=d/4*100;document.getElementById('progBar').style.width=p+'%';document.getElementById('progText').textContent=d+'/4';if(d===4){document.getElementById('progBar').style.background='#10B981';document.getElementById('progText').style.color='#10B981';}else{document.getElementById('progBar').style.background='var(--primary)';document.getElementById('progText').style.color='var(--primary)';}}
+function cur(){return s1&&s2;}
+function sw(g){cg=g;document.querySelectorAll('.group-tab').forEach((t,i)=>t.classList.toggle('active',i===g-1));document.getElementById('wqGroupLabel').textContent=g===1?'第一组':'第二组';rwl();rwq();uwq();}
+function uwq(){const sb=cg===1?s1:s2;document.getElementById('wordQuizSubmit').style.display=sb?'none':'block';document.getElementById('wordQuizRetry').style.display=sb?'block':'none';document.getElementById('wordQuizFB').textContent=sb?'该组已提交，可重新练习':'';}
+function rwl(){const ids=cg===1?g1:g2;let h='';ids.forEach(id=>{const w=wordsData[id],st=ws[id];let t='';if(w.meanings.length>1)t+='<span class="tag-multi">+'+(w.meanings.length-1)+'义</span>';if(st==='know')t+='<span class="tag-status know">✅</span>';else if(st==='unsure')t+='<span class="tag-status unsure">🤔</span>';else if(st==='dunno')t+='<span class="tag-status dunno">❌</span>';h+=`<div class="word-card" onclick="od(${id})"><div class="card-sentence">${w.sentence}</div><div class="card-info"><span class="card-word-en">${w.en}</span><span class="card-word-zh">${w.zh}</span><span class="card-tags">${t}</span><button class="speak-btn" onclick="event.stopPropagation();speak('${w.en.replace(/'/g,"\\'")}')">🔊</button></div></div>`;});document.getElementById('wordList').innerHTML=h;}
+function od(id){const w=wordsData[id],st=ws[id];let m='';w.meanings.forEach((x,i)=>{m+=`<div class="meaning-block"><div class="meaning-num">义项 ${i+1}</div><div class="meaning-zh">${x.zh}</div><div class="meaning-ex">${x.ex}</div></div>`;});document.getElementById('detailCard').innerHTML=`<div class="d-word">${w.en}</div><div class="d-pron" onclick="speak('${w.en.replace(/'/g,"\\'")}')">🔊 点击听发音</div>${m}<div class="status-row"><button class="status-btn know-btn ${st==='know'?'selected':''}" onclick="ms(${id},'know')">✅ 认识</button><button class="status-btn unsure-btn ${st==='unsure'?'selected':''}" onclick="ms(${id},'unsure')">🤔 模糊</button><button class="status-btn dunno-btn ${st==='dunno'?'selected':''}" onclick="ms(${id},'dunno')">❌ 不认识</button></div><button class="close-detail-btn" onclick="cd()">关闭</button>`;document.getElementById('detailOverlay').classList.add('show');speak(w.en);}
+function cd(){document.getElementById('detailOverlay').classList.remove('show');}
+function ms(id,s){ws[id]=s;rwl();od(id);toast({know:'已标记：认识 ✅',unsure:'已标记：模糊 🤔',dunno:'已标记：不认识 ❌'}[s]);up();sd({...ld(),wordStatuses:ws});}
+function rwq(){const qd=wq[cg],ans=cg===1?a1:a2,sb=cg===1?s1:s2;let h='';qd.forEach((q,qi)=>{h+=`<div class="wq-item"><div class="wq-q">${qi+1}. ${q.q}</div><div class="wq-opts">`;q.opts.forEach((o,oi)=>{const pk=ans[qi]===oi,cr=sb&&q.ans===oi,wr=sb&&ans[qi]===oi&&oi!==q.ans;let cl='';if(pk&&!sb)cl='picked';if(cr)cl='correct';if(wr)cl='wrong';h+=`<button class="wq-opt ${cl}" id="wq_${qi}_${oi}" onclick="pw(${qi},${oi})" ${sb?'disabled':''}>${o}</button>`;});h+=`</div></div>`;});document.getElementById('wordQuizArea').innerHTML=h;}
+function pw(qi,oi){const sb=cg===1?s1:s2;if(sb)return;const ans=cg===1?a1:a2;for(let i=0;i<4;i++){const b=document.getElementById('wq_'+qi+'_'+i);if(b)b.classList.remove('picked');}const b=document.getElementById('wq_'+qi+'_'+oi);if(b)b.classList.add('picked');ans[qi]=oi;if(cg===1)a1=ans;else a2=ans;}
+function swq(){const sb=cg===1?s1:s2;if(sb)return;const qd=wq[cg],ans=cg===1?a1:a2;let c=0;qd.forEach((q,qi)=>{const pk=ans[qi];for(let i=0;i<4;i++){const b=document.getElementById('wq_'+qi+'_'+i);if(!b)continue;b.disabled=true;b.classList.remove('picked');if(i===q.ans)b.classList.add('correct');if(i===pk&&i!==q.ans)b.classList.add('wrong');}if(pk===q.ans)c++;});const p=Math.round(c/10*100),fb=document.getElementById('wordQuizFB');fb.textContent=`词义选择：${c}/10 (${p}%)`;fb.style.color=p>=80?'#10B981':'#EF4444';if(cg===1)s1=true;else s2=true;uwq();up();if(cur()){document.getElementById('readingQuizSubmit').disabled=false;document.getElementById('readingQuizSubmit').textContent='📋 提交阅读理解';toast('两组词义选择完成！可以挑战阅读理解 🎉');}else toast('请继续完成'+(cg===1?'第二组':'第一组')+'的词义选择');sd({...ld(),['ws'+cg]:p,['s'+cg]:true,['a'+cg]:ans});}
+function rwqr(){if(cg===1){s1=false;a1={};}else{s2=false;a2={};}uwq();rwq();up();document.getElementById('wordQuizFB').textContent='';document.getElementById('readingQuizSubmit').disabled=true;document.getElementById('readingQuizSubmit').textContent='🔒 先完成两组词义选择';if(rs){rs=false;ra={};urq();rrq();document.getElementById('readingQuizFB').textContent='';}sd({...ld(),s1,s2,a1,a2,readingSubmitted:rs,readingAnswers:ra});toast('词义选择已重置 🔄');}
+function rpr(){document.getElementById('passageText').innerHTML=psg;rrq();}
+function rrq(){let h='';rq.forEach((q,qi)=>{h+=`<div class="reading-quiz-item"><div class="rq-q">${qi+1}. ${q.q}</div><div class="rq-opts">`;q.opts.forEach((o,oi)=>{const pk=ra[qi]===oi,cr=rs&&q.ans===oi,wr=rs&&ra[qi]===oi&&oi!==q.ans;let cl='';if(pk&&!rs)cl='picked';if(cr)cl='correct';if(wr)cl='wrong';h+=`<button class="rq-opt ${cl}" id="rq_${qi}_${oi}" onclick="pr(${qi},${oi})" ${rs?'disabled':''}>${o}</button>`;});h+=`</div></div>`;});document.getElementById('readingQuizArea').innerHTML=h;}
+function urq(){document.getElementById('readingQuizSubmit').style.display=rs?'none':'block';document.getElementById('readingQuizRetry').style.display=rs?'block':'none';}
+function pr(qi,oi){if(rs||document.getElementById('readingQuizSubmit').disabled)return;for(let i=0;i<4;i++){const b=document.getElementById('rq_'+qi+'_'+i);if(b)b.classList.remove('picked');}const b=document.getElementById('rq_'+qi+'_'+oi);if(b)b.classList.add('picked');ra[qi]=oi;}
+function srq(){if(rs||document.getElementById('readingQuizSubmit').disabled)return;let c=0;rq.forEach((q,qi)=>{const pk=ra[qi];for(let i=0;i<4;i++){const b=document.getElementById('rq_'+qi+'_'+i);if(!b)continue;b.disabled=true;b.classList.remove('picked');if(i===q.ans)b.classList.add('correct');if(i===pk&&i!==q.ans)b.classList.add('wrong');}if(pk===q.ans)c++;});const p=Math.round(c/5*100),fb=document.getElementById('readingQuizFB');fb.textContent=`阅读理解：${c}/5 (${p}%)`;fb.style.color=p>=80?'#10B981':'#EF4444';rs=true;urq();up();document.getElementById('scoreEmoji').textContent=p>=80?'🎉':'💪';document.getElementById('scoreNum').textContent=c+'/5';document.getElementById('scoreLabel').textContent=p>=80?'恭喜通关 Day 5！':'继续加油！';document.getElementById('scoreDetail').textContent=p>=80?'20个核心词 + 短文阅读，全部完成 ✅\n校园主题圆满完成！':'建议复习短文和单词后再试一次';document.getElementById('scoreOverlay').classList.add('show');sd({...ld(),readingScore:p,readingSubmitted:true,readingAnswers:ra,completed:p>=80});}
+function rrqr(){rs=false;ra={};urq();rrq();up();document.getElementById('readingQuizFB').textContent='';sd({...ld(),readingSubmitted:rs,readingAnswers:ra,completed:false});toast('阅读理解已重置 🔄');}
+function cs(){document.getElementById('scoreOverlay').classList.remove('show');}
+function rao(){if(confirm('确定要重置本日全部进度吗？')){ws={};a1={};a2={};s1=false;s2=false;ra={};rs=false;localStorage.removeItem(SK);cg=1;document.querySelectorAll('.group-tab').forEach((t,i)=>t.classList.toggle('active',i===0));document.getElementById('wqGroupLabel').textContent='第一组';document.getElementById('wordQuizSubmit').style.display='block';document.getElementById('wordQuizRetry').style.display='none';document.getElementById('wordQuizFB').textContent='';document.getElementById('readingQuizSubmit').disabled=true;document.getElementById('readingQuizSubmit').textContent='🔒 先完成两组词义选择';document.getElementById('readingQuizSubmit').style.display='block';document.getElementById('readingQuizRetry').style.display='none';document.getElementById('readingQuizFB').textContent='';document.getElementById('progBar').style.background='var(--primary)';document.getElementById('progText').style.color='var(--primary)';rwl();rwq();rpr();up();toast('已重置本日全部进度 🗑️');}}
+function init(){const d=ld();if(d.wordStatuses)ws=d.wordStatuses;if(d.s1!==undefined)s1=d.s1;if(d.s2!==undefined)s2=d.s2;if(d.readingSubmitted!==undefined)rs=d.readingSubmitted;if(d.a1)a1=d.a1;if(d.a2)a2=d.a2;if(d.readingAnswers)ra=d.readingAnswers;rwl();rwq();rpr();up();uwq();urq();if(cur()&&!rs){document.getElementById('readingQuizSubmit').disabled=false;document.getElementById('readingQuizSubmit').textContent='📋 提交阅读理解';}}
+document.getElementById('detailOverlay').addEventListener('click',function(e){if(e.target===this)cd();});
+document.getElementById('scoreOverlay').addEventListener('click',function(e){if(e.target===this)cs();});
+init();
+</script>
+</body>
+</html>
