@@ -3,1355 +3,416 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 1 · 校园与学习 | 高中英语600核心词</title>
+    <title>Day 1 · 校园与学习 | 高中英语700核心词</title>
     <style>
         :root {
-            --primary: #4A6CF7;
-            --primary-light: #EEF1FE;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --danger: #EF4444;
-            --bg: #F0F2F8;
-            --card: #FFFFFF;
-            --text: #1E293B;
-            --text-secondary: #64748B;
-            --border: #E2E8F0;
-            --radius: 14px;
-            --radius-sm: 10px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 14px;
-            padding-bottom: 40px;
-        }
-
-        /* ========== 顶栏 ========== */
-        .top-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 6px 0 10px;
-            position: sticky;
-            top: 0;
-            background: var(--bg);
-            z-index: 10;
-            padding-top: 12px;
-        }
-        .back-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--card);
-            border: 1px solid var(--border);
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all 0.2s;
-        }
-        .back-btn:active {
-            background: #F1F5F9;
-            transform: scale(0.95);
-        }
-        .day-badge {
-            background: var(--primary);
-            color: #fff;
-            padding: 5px 14px;
-            border-radius: 18px;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-        }
-        .top-bar .title-area {
-            flex: 1;
-            min-width: 0;
-        }
-        .top-bar .main-title {
-            font-size: 17px;
-            font-weight: 700;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .top-bar .sub-title {
-            font-size: 11px;
-            color: var(--text-secondary);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* ========== 进度条 ========== */
-        .mini-progress {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--card);
-            border-radius: var(--radius-sm);
-            padding: 10px 14px;
-            margin-bottom: 10px;
-            border: 1px solid var(--border);
-        }
-        .mini-progress .prog-icon {
-            font-size: 16px;
-        }
-        .mini-progress .prog-bar-wrap {
-            flex: 1;
-            height: 6px;
-            background: #E2E8F0;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .mini-progress .prog-bar-fill {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 3px;
-            transition: width 0.5s ease, background 0.3s;
-            width: 0%;
-        }
-        .mini-progress .prog-text {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--primary);
-            white-space: nowrap;
-        }
-
-        /* ========== 分组标签 ========== */
-        .group-tabs {
-            display: flex;
-            gap: 2px;
-            background: #E2E8F0;
-            border-radius: 11px;
-            padding: 3px;
-            margin-bottom: 8px;
-        }
-        .group-tab {
-            flex: 1;
-            padding: 9px 6px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 9px;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            transition: all 0.2s;
-        }
-        .group-tab.active {
-            background: var(--card);
-            color: var(--primary);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-        }
-
-        /* ========== 单词卡片（例句为核心） ========== */
-        .word-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-        .word-card {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 16px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1.5px solid transparent;
-            position: relative;
-        }
-        .word-card:active {
-            border-color: var(--primary);
-            background: #F8FAFF;
-            transform: scale(0.99);
-        }
-        .word-card .card-sentence {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--text);
-            line-height: 1.55;
-            margin-bottom: 8px;
-            letter-spacing: 0.1px;
-        }
-        .word-card .card-sentence .hl-word {
-            background: #FFF3CD;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 700;
-            color: #92400E;
-            white-space: nowrap;
-        }
-        .word-card .card-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-        .word-card .card-word-en {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 14px;
-        }
-        .word-card .card-word-zh {
-            color: #94A3B8;
-        }
-        .word-card .card-tags {
-            margin-left: auto;
-            display: flex;
-            gap: 4px;
-            align-items: center;
-        }
-        .word-card .tag-multi {
-            font-size: 10px;
-            color: #94A3B8;
-            background: #F1F5F9;
-            padding: 2px 7px;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-        .word-card .tag-status {
-            font-size: 11px;
-            font-weight: 600;
-        }
-        .tag-status.know {
-            color: #10B981;
-        }
-        .tag-status.unsure {
-            color: #F59E0B;
-        }
-        .tag-status.dunno {
-            color: #EF4444;
-        }
-        .word-card .speak-btn {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #EEF2FF;
-            border: none;
-            font-size: 14px;
-            cursor: pointer;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-        .word-card .speak-btn:active {
-            background: #DDE4FE;
-            transform: scale(0.9);
-        }
-
-        /* ========== 单词详情弹窗（多义项） ========== */
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.55);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        .overlay.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .detail-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 24px 20px;
-            width: 100%;
-            max-width: 380px;
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
-            animation: popIn 0.3s ease;
-            max-height: 85vh;
-            overflow-y: auto;
-        }
-        @keyframes popIn {
-            from {
-                transform: scale(0.9);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        .detail-card .d-word {
-            font-size: 30px;
-            font-weight: 800;
-            text-align: center;
-            letter-spacing: -0.3px;
-        }
-        .detail-card .d-pron {
-            font-size: 13px;
-            color: #94A3B8;
-            text-align: center;
-            margin-bottom: 14px;
-            cursor: pointer;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-        .detail-card .meaning-block {
-            background: #F8FAFC;
-            border-radius: 10px;
-            padding: 12px 14px;
-            margin-bottom: 8px;
-            border-left: 3px solid var(--primary);
-        }
-        .detail-card .meaning-num {
-            font-size: 11px;
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-        .detail-card .meaning-zh {
-            font-size: 16px;
-            font-weight: 600;
-            margin: 2px 0;
-        }
-        .detail-card .meaning-ex {
-            font-size: 14px;
-            color: #64748B;
-            font-style: italic;
-            line-height: 1.4;
-        }
-        .detail-card .meaning-ex .hl-word {
-            background: #FFF3CD;
-            padding: 1px 4px;
-            border-radius: 3px;
-            font-weight: 700;
-            color: #92400E;
-            font-style: normal;
-        }
-        .detail-card .status-row {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 16px;
-            flex-wrap: wrap;
-        }
-        .status-btn {
-            padding: 9px 16px;
-            border-radius: 18px;
-            border: 2px solid #E2E8F0;
-            background: #fff;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .status-btn.know-btn {
-            border-color: #10B981;
-            color: #10B981;
-        }
-        .status-btn.unsure-btn {
-            border-color: #F59E0B;
-            color: #F59E0B;
-        }
-        .status-btn.dunno-btn {
-            border-color: #EF4444;
-            color: #EF4444;
-        }
-        .status-btn.selected {
-            color: #fff;
-            font-weight: 700;
-        }
-        .status-btn.know-btn.selected {
-            background: #10B981;
-            border-color: #10B981;
-        }
-        .status-btn.unsure-btn.selected {
-            background: #F59E0B;
-            border-color: #F59E0B;
-        }
-        .status-btn.dunno-btn.selected {
-            background: #EF4444;
-            border-color: #EF4444;
-        }
-        .detail-card .close-detail-btn {
-            display: block;
-            margin: 14px auto 0;
-            padding: 9px 26px;
-            border-radius: 18px;
-            border: none;
-            background: #F1F5F9;
-            font-size: 14px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .detail-card .close-detail-btn:active {
-            background: #E2E8F0;
-        }
-
-        /* ========== 词义选择区 ========== */
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 15px;
-            font-weight: 700;
-            margin: 18px 0 8px;
-        }
-        .section-header .icon {
-            font-size: 18px;
-        }
-        .wq-item {
-            background: var(--card);
-            border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            margin-bottom: 8px;
-            border: 1px solid var(--border);
-        }
-        .wq-item .wq-q {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        .wq-opts {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-        }
-        .wq-opt {
-            padding: 9px 6px;
-            border: 2px solid #E2E8F0;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 13px;
-            cursor: pointer;
-            background: #fff;
-            transition: all 0.2s;
-            font-weight: 500;
-            word-break: break-word;
-        }
-        .wq-opt:active {
-            transform: scale(0.96);
-        }
-        .wq-opt.picked {
-            border-color: var(--primary);
-            background: #EEF2FF;
-            outline: 2px solid var(--primary);
-            outline-offset: -2px;
-        }
-        .wq-opt.correct {
-            border-color: #10B981 !important;
-            background: #D1FAE5 !important;
-            color: #065F46 !important;
-            outline: none !important;
-        }
-        .wq-opt.wrong {
-            border-color: #EF4444 !important;
-            background: #FEE2E2 !important;
-            color: #991B1B !important;
-            outline: none !important;
-        }
-        .wq-opt:disabled {
-            pointer-events: none;
-            opacity: 0.85;
-        }
-        .quiz-fb {
-            font-size: 13px;
-            font-weight: 600;
-            margin: 4px 0 2px;
-            min-height: 20px;
-        }
-
-        /* ========== 短文+阅读 紧邻卡片 ========== */
-        .reading-block {
-            background: var(--card);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            margin-top: 16px;
-        }
-        .reading-block .passage-section {
-            padding: 18px 16px 14px;
-            border-bottom: 1px dashed #E2E8F0;
-        }
-        .reading-block .passage-title {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .reading-block .passage-text {
-            font-size: 15px;
-            line-height: 2;
-            color: #334155;
-        }
-        .reading-block .passage-text .hl {
-            background: #FFF3CD;
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-weight: 700;
-            color: #92400E;
-        }
-        .reading-block .quiz-section {
-            padding: 14px 16px;
-            background: #FAFBFC;
-        }
-        .reading-block .quiz-section .section-label {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        .reading-quiz-item {
-            margin-bottom: 12px;
-        }
-        .reading-quiz-item .rq-q {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-        .rq-opts {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-        }
-        .rq-opt {
-            padding: 9px 6px;
-            border: 2px solid #E2E8F0;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            background: #fff;
-            font-weight: 500;
-            word-break: break-word;
-        }
-        .rq-opt:active {
-            transform: scale(0.96);
-        }
-        .rq-opt.picked {
-            border-color: var(--primary);
-            background: #EEF2FF;
-            outline: 2px solid var(--primary);
-            outline-offset: -2px;
-        }
-        .rq-opt.correct {
-            border-color: #10B981 !important;
-            background: #D1FAE5 !important;
-            color: #065F46 !important;
-            outline: none !important;
-        }
-        .rq-opt.wrong {
-            border-color: #EF4444 !important;
-            background: #FEE2E2 !important;
-            color: #991B1B !important;
-            outline: none !important;
-        }
-        .rq-opt:disabled {
-            pointer-events: none;
-            opacity: 0.85;
-        }
-
-        /* ========== 按钮 ========== */
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 13px;
-            border-radius: 22px;
-            border: none;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            text-align: center;
-            margin: 10px 0;
-            letter-spacing: 0.2px;
-            transition: all 0.2s;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(74, 108, 247, 0.25);
-        }
-        .btn-primary:active {
-            background: #3651D5;
-            transform: scale(0.98);
-        }
-        .btn:disabled {
-            background: #CBD5E1 !important;
-            color: #94A3B8 !important;
-            box-shadow: none !important;
-            pointer-events: none;
-        }
-
-        /* ========== 成绩弹窗 ========== */
-        .score-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.6);
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        .score-overlay.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .score-card {
-            background: #fff;
-            border-radius: 22px;
-            padding: 30px 22px;
-            text-align: center;
-            width: 100%;
-            max-width: 310px;
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
-            animation: popIn 0.35s ease;
-        }
-        .score-card .big-emoji {
-            font-size: 56px;
-            margin-bottom: 4px;
-        }
-        .score-card .score-num {
-            font-size: 50px;
-            font-weight: 900;
-            color: var(--primary);
-            letter-spacing: -1px;
-        }
-        .score-card .score-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin: 4px 0 6px;
-        }
-        .score-card .score-detail {
-            font-size: 12px;
-            color: #94A3B8;
-            margin-bottom: 16px;
-        }
-
-        /* Toast */
-        .toast {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1E293B;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            z-index: 300;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-            white-space: nowrap;
-        }
-        .toast.show {
-            opacity: 1;
-        }
+            --primary: #4A6CF7; --primary-light: #EEF1FE; --success: #10B981; --warning: #F59E0B;
+            --danger: #EF4444; --bg: #F0F2F8; --card: #FFFFFF; --text: #1E293B;
+            --text-secondary: #64748B; --border: #E2E8F0; --radius: 14px; --radius-sm: 10px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+            background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;
+            -webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;
+        }
+        .container{max-width:500px;margin:0 auto;padding:14px 14px 40px;}
+        .top-bar{display:flex;align-items:center;gap:10px;padding:12px 0 10px;position:sticky;top:0;background:var(--bg);z-index:10;}
+        .back-btn{width:36px;height:36px;border-radius:50%;background:var(--card);border:1px solid var(--border);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-decoration:none;color:var(--text);}
+        .back-btn:active{background:#F1F5F9;transform:scale(0.95);}
+        .day-badge{background:var(--primary);color:#fff;padding:5px 14px;border-radius:18px;font-size:13px;font-weight:700;}
+        .top-bar .title-area{flex:1;min-width:0;}
+        .top-bar .main-title{font-size:17px;font-weight:700;}
+        .top-bar .sub-title{font-size:11px;color:var(--text-secondary);}
+        .mini-progress{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px;border:1px solid var(--border);}
+        .mini-progress .prog-icon{font-size:16px;}
+        .mini-progress .prog-bar-wrap{flex:1;height:6px;background:#E2E8F0;border-radius:3px;overflow:hidden;}
+        .mini-progress .prog-bar-fill{height:100%;background:var(--primary);border-radius:3px;transition:width 0.5s;width:0%;}
+        .mini-progress .prog-text{font-size:12px;font-weight:600;color:var(--primary);white-space:nowrap;}
+        .group-tabs{display:flex;gap:2px;background:#E2E8F0;border-radius:11px;padding:3px;margin-bottom:8px;}
+        .group-tab{flex:1;padding:9px 6px;text-align:center;font-size:13px;font-weight:600;border-radius:9px;cursor:pointer;border:none;background:transparent;color:var(--text-secondary);transition:all 0.2s;}
+        .group-tab.active{background:var(--card);color:var(--primary);box-shadow:0 1px 3px rgba(0,0,0,0.06);}
+        .word-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+        .word-card{background:var(--card);border-radius:var(--radius);padding:16px;cursor:pointer;transition:all 0.2s;border:1.5px solid transparent;position:relative;}
+        .word-card:active{border-color:var(--primary);background:#F8FAFF;transform:scale(0.99);}
+        .word-card .card-sentence{font-size:18px;font-weight:500;color:var(--text);line-height:1.55;margin-bottom:8px;}
+        .word-card .card-sentence .hl-word{background:#FFF3CD;padding:2px 6px;border-radius:4px;font-weight:700;color:#92400E;white-space:nowrap;}
+        .word-card .card-info{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary);}
+        .word-card .card-word-en{font-weight:700;color:var(--primary);font-size:14px;}
+        .word-card .card-word-zh{color:#94A3B8;}
+        .word-card .card-tags{margin-left:auto;display:flex;gap:4px;align-items:center;}
+        .word-card .tag-multi{font-size:10px;color:#94A3B8;background:#F1F5F9;padding:2px 7px;border-radius:8px;font-weight:600;}
+        .tag-status.know{color:#10B981;font-size:11px;font-weight:600;}
+        .tag-status.unsure{color:#F59E0B;font-size:11px;font-weight:600;}
+        .tag-status.dunno{color:#EF4444;font-size:11px;font-weight:600;}
+        .word-card .speak-btn{width:30px;height:30px;border-radius:50%;background:#EEF2FF;border:none;font-size:14px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+        .word-card .speak-btn:active{background:#DDE4FE;transform:scale(0.9);}
+        .overlay{position:fixed;inset:0;background:rgba(15,23,42,0.55);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+        .overlay.show{opacity:1;pointer-events:auto;}
+        .detail-card{background:#fff;border-radius:20px;padding:24px 20px;width:100%;max-width:380px;box-shadow:0 24px 48px rgba(0,0,0,0.22);animation:popIn 0.3s ease;max-height:85vh;overflow-y:auto;}
+        @keyframes popIn{from{transform:scale(0.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+        .detail-card .d-word{font-size:30px;font-weight:800;text-align:center;}
+        .detail-card .d-pron{font-size:13px;color:#94A3B8;text-align:center;margin-bottom:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+        .detail-card .meaning-block{background:#F8FAFC;border-radius:10px;padding:12px 14px;margin-bottom:8px;border-left:3px solid var(--primary);}
+        .detail-card .meaning-num{font-size:11px;color:var(--primary);font-weight:700;margin-bottom:2px;}
+        .detail-card .meaning-zh{font-size:16px;font-weight:600;margin:2px 0;}
+        .detail-card .meaning-ex{font-size:14px;color:#64748B;font-style:italic;line-height:1.4;}
+        .detail-card .meaning-ex .hl-word{background:#FFF3CD;padding:1px 4px;border-radius:3px;font-weight:700;color:#92400E;font-style:normal;}
+        .detail-card .status-row{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+        .status-btn{padding:9px 16px;border-radius:18px;border:2px solid #E2E8F0;background:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+        .status-btn.know-btn{border-color:#10B981;color:#10B981;}
+        .status-btn.unsure-btn{border-color:#F59E0B;color:#F59E0B;}
+        .status-btn.dunno-btn{border-color:#EF4444;color:#EF4444;}
+        .status-btn.selected{color:#fff;font-weight:700;}
+        .status-btn.know-btn.selected{background:#10B981;border-color:#10B981;}
+        .status-btn.unsure-btn.selected{background:#F59E0B;border-color:#F59E0B;}
+        .status-btn.dunno-btn.selected{background:#EF4444;border-color:#EF4444;}
+        .detail-card .close-detail-btn{display:block;margin:14px auto 0;padding:9px 26px;border-radius:18px;border:none;background:#F1F5F9;font-size:14px;cursor:pointer;font-weight:500;}
+        .section-header{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;margin:18px 0 8px;}
+        .section-header .icon{font-size:18px;}
+        .wq-item{background:var(--card);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;border:1px solid var(--border);}
+        .wq-item .wq-q{font-size:14px;font-weight:500;margin-bottom:8px;line-height:1.5;}
+        .wq-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+        .wq-opt{padding:9px 6px;border:2px solid #E2E8F0;border-radius:8px;text-align:center;font-size:13px;cursor:pointer;background:#fff;transition:all 0.2s;font-weight:500;word-break:break-word;}
+        .wq-opt:active{transform:scale(0.96);}
+        .wq-opt.picked{border-color:var(--primary);background:#EEF2FF;outline:2px solid var(--primary);outline-offset:-2px;}
+        .wq-opt.correct{border-color:#10B981!important;background:#D1FAE5!important;color:#065F46!important;outline:none!important;}
+        .wq-opt.wrong{border-color:#EF4444!important;background:#FEE2E2!important;color:#991B1B!important;outline:none!important;}
+        .wq-opt:disabled{pointer-events:none;opacity:0.85;}
+        .quiz-fb{font-size:13px;font-weight:600;margin:4px 0 2px;min-height:20px;}
+        .btn-row{display:flex;gap:8px;}
+        .btn-row .btn{flex:1;}
+        .reading-block{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;margin-top:16px;}
+        .reading-block .passage-section{padding:18px 16px 14px;border-bottom:1px dashed #E2E8F0;}
+        .reading-block .passage-title{font-size:15px;font-weight:700;margin-bottom:10px;}
+        .reading-block .passage-text{font-size:15px;line-height:2;color:#334155;}
+        .reading-block .passage-text p{margin-bottom:14px;text-indent:1.5em;}
+        .reading-block .passage-text p:last-child{margin-bottom:0;}
+        .reading-block .passage-text .hl{background:#FFF3CD;padding:2px 5px;border-radius:4px;font-weight:700;color:#92400E;}
+        .reading-block .quiz-section{padding:14px 16px;background:#FAFBFC;}
+        .reading-block .quiz-section .section-label{font-size:13px;font-weight:700;color:var(--primary);margin-bottom:10px;}
+        .reading-quiz-item{margin-bottom:12px;}
+        .reading-quiz-item .rq-q{font-size:14px;font-weight:500;margin-bottom:6px;line-height:1.4;}
+        .rq-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+        .rq-opt{padding:9px 6px;border:2px solid #E2E8F0;border-radius:8px;text-align:center;font-size:12px;cursor:pointer;background:#fff;font-weight:500;word-break:break-word;transition:all 0.2s;}
+        .rq-opt:active{transform:scale(0.96);}
+        .rq-opt.picked{border-color:var(--primary);background:#EEF2FF;outline:2px solid var(--primary);outline-offset:-2px;}
+        .rq-opt.correct{border-color:#10B981!important;background:#D1FAE5!important;color:#065F46!important;outline:none!important;}
+        .rq-opt.wrong{border-color:#EF4444!important;background:#FEE2E2!important;color:#991B1B!important;outline:none!important;}
+        .rq-opt:disabled{pointer-events:none;opacity:0.85;}
+        .btn{display:block;width:100%;padding:13px;border-radius:22px;border:none;font-size:15px;font-weight:700;cursor:pointer;text-align:center;margin:10px 0;transition:all 0.2s;}
+        .btn-primary{background:var(--primary);color:#fff;box-shadow:0 4px 12px rgba(74,108,247,0.25);}
+        .btn-primary:active{background:#3651D5;transform:scale(0.98);}
+        .btn-outline{background:#fff;border:2px solid var(--primary);color:var(--primary);}
+        .btn-outline:active{background:var(--primary-light);}
+        .btn-danger{background:#fff;border:2px solid var(--danger);color:var(--danger);}
+        .btn-danger:active{background:#FEF2F2;}
+        .btn:disabled{background:#CBD5E1!important;color:#94A3B8!important;box-shadow:none!important;pointer-events:none;border-color:#CBD5E1!important;}
+        .score-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+        .score-overlay.show{opacity:1;pointer-events:auto;}
+        .score-card{background:#fff;border-radius:22px;padding:30px 22px;text-align:center;width:100%;max-width:310px;box-shadow:0 24px 48px rgba(0,0,0,0.25);animation:popIn 0.35s ease;}
+        .score-card .big-emoji{font-size:56px;margin-bottom:4px;}
+        .score-card .score-num{font-size:50px;font-weight:900;color:var(--primary);}
+        .score-card .score-label{font-size:14px;color:var(--text-secondary);margin:4px 0 6px;}
+        .score-card .score-detail{font-size:12px;color:#94A3B8;margin-bottom:16px;}
+        .reset-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);}
+        .reset-section .reset-title{font-size:13px;color:var(--text-secondary);margin-bottom:8px;text-align:center;}
+        .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#1E293B;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:500;z-index:300;opacity:0;pointer-events:none;transition:opacity 0.3s;white-space:nowrap;}
+        .toast.show{opacity:1;}
+        .passage-note{font-size:11px;color:#94A3B8;margin-top:8px;font-style:italic;}
     </style>
 </head>
 <body>
-
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
-
-    <!-- 单词详情弹窗 -->
-    <div class="overlay" id="detailOverlay">
-        <div class="detail-card" id="detailCard"></div>
+<div class="toast" id="toast"></div>
+<div class="overlay" id="detailOverlay"><div class="detail-card" id="detailCard"></div></div>
+<div class="score-overlay" id="scoreOverlay">
+    <div class="score-card">
+        <div class="big-emoji" id="scoreEmoji"></div>
+        <div class="score-num" id="scoreNum"></div>
+        <div class="score-label" id="scoreLabel"></div>
+        <div class="score-detail" id="scoreDetail"></div>
+        <button class="btn btn-primary" onclick="closeScore()">👍 知道了</button>
     </div>
+</div>
 
-    <!-- 成绩弹窗 -->
-    <div class="score-overlay" id="scoreOverlay">
-        <div class="score-card">
-            <div class="big-emoji" id="scoreEmoji"></div>
-            <div class="score-num" id="scoreNum"></div>
-            <div class="score-label" id="scoreLabel"></div>
-            <div class="score-detail" id="scoreDetail"></div>
-            <button class="btn btn-primary" onclick="closeScore()">👍 知道了</button>
-        </div>
+<div class="container">
+    <div class="top-bar">
+        <a class="back-btn" href="index.html">←</a>
+        <div class="title-area"><div class="main-title">Day 1 · 校园与学习</div><div class="sub-title">🏫 初入高中 · 适应与成长</div></div>
+        <div class="day-badge">DAY 1</div>
     </div>
-
-    <div class="container">
-        <!-- 顶栏 -->
-        <div class="top-bar">
-            <button class="back-btn" onclick="history.back()">←</button>
-            <div class="title-area">
-                <div class="main-title">Day 1 · 校园与学习</div>
-                <div class="sub-title">🏫 初入高中 · 适应与成长</div>
-            </div>
-            <div class="day-badge">DAY 1</div>
-        </div>
-
-        <!-- 进度条 -->
-        <div class="mini-progress">
-            <span class="prog-icon">📊</span>
-            <div class="prog-bar-wrap">
-                <div class="prog-bar-fill" id="progBar"></div>
-            </div>
-            <span class="prog-text" id="progText">0/4</span>
-        </div>
-
-        <!-- 分组标签 -->
-        <div class="group-tabs">
-            <button class="group-tab active" onclick="switchGroup(1)">📗 第一组 (1-10)</button>
-            <button class="group-tab" onclick="switchGroup(2)">📘 第二组 (11-20)</button>
-        </div>
-
-        <!-- 单词列表 -->
-        <div class="word-list" id="wordList"></div>
-
-        <!-- 词义选择（20题全覆盖，两组各10题） -->
-        <div class="section-header">
-            <span class="icon">📝</span> 词义选择 · <span id="wqGroupLabel">第一组</span> <span style="font-weight:400;font-size:12px;color:#94A3B8;">(10题)</span>
-        </div>
-        <div id="wordQuizArea"></div>
-        <div class="quiz-fb" id="wordQuizFB"></div>
+    <div class="mini-progress">
+        <span class="prog-icon">📊</span>
+        <div class="prog-bar-wrap"><div class="prog-bar-fill" id="progBar"></div></div>
+        <span class="prog-text" id="progText">0/4</span>
+    </div>
+    <div class="group-tabs">
+        <button class="group-tab active" onclick="switchGroup(1)">📗 第一组 (1-10)</button>
+        <button class="group-tab" onclick="switchGroup(2)">📘 第二组 (11-20)</button>
+    </div>
+    <div class="word-list" id="wordList"></div>
+    <div class="section-header"><span class="icon">📝</span> 词义选择 · <span id="wqGroupLabel">第一组</span> <span style="font-weight:400;font-size:12px;color:#94A3B8;">(10题)</span></div>
+    <div id="wordQuizArea"></div>
+    <div class="quiz-fb" id="wordQuizFB"></div>
+    <div class="btn-row" id="wordQuizBtns">
         <button class="btn btn-primary" id="wordQuizSubmit" onclick="submitWordQuiz()">✅ 提交词义选择</button>
-
-        <!-- 短文 + 阅读理解（紧邻） -->
-        <div class="reading-block">
-            <div class="passage-section">
-                <div class="passage-title">📖 今日短文</div>
-                <div class="passage-text" id="passageText"></div>
-            </div>
-            <div class="quiz-section">
-                <div class="section-label">📋 Reading Comprehension</div>
-                <div id="readingQuizArea"></div>
-                <div class="quiz-fb" id="readingQuizFB"></div>
+        <button class="btn btn-outline" id="wordQuizRetry" onclick="retryWordQuiz()" style="display:none;">🔄 重新练习</button>
+    </div>
+    <div class="reading-block">
+        <div class="passage-section">
+            <div class="passage-title">📖 今日短文</div>
+            <div class="passage-text" id="passageText"></div>
+            <div class="passage-note">💡 黄色高亮 = 本日新词</div>
+        </div>
+        <div class="quiz-section">
+            <div class="section-label">📋 Reading Comprehension</div>
+            <div id="readingQuizArea"></div>
+            <div class="quiz-fb" id="readingQuizFB"></div>
+            <div class="btn-row" id="readingQuizBtns">
                 <button class="btn btn-primary" id="readingQuizSubmit" onclick="submitReadingQuiz()" disabled>🔒 先完成两组词义选择</button>
+                <button class="btn btn-outline" id="readingQuizRetry" onclick="retryReadingQuiz()" style="display:none;">🔄 重新练习</button>
             </div>
         </div>
-
-        <div style="height: 20px;"></div>
     </div>
+    <div class="reset-section">
+        <div class="reset-title">⚠️ 重置本日进度（清除所有答案和标记）</div>
+        <button class="btn btn-danger" onclick="resetAll()">🗑️ 重置本日全部进度</button>
+    </div>
+    <div style="height:20px;"></div>
+</div>
 
-    <script>
-        // ==================== 数据层 ====================
+<script>
+// ==================== 数据层 ====================
+const wordsData = {
+    1:{en:'adjust',zh:'适应',sentence:'It took me a while to <b>adjust</b> to the faster pace of high school.',meanings:[{zh:'适应；调整',ex:'It took me a while to <b>adjust</b> to the faster pace.'},{zh:'调节（机器等）',ex:'He <b>adjusted</b> the seat to make himself comfortable.'}]},
+    2:{en:'challenge',zh:'挑战',sentence:'The first week was full of <b>challenges</b> I hadn\'t expected.',meanings:[{zh:'挑战 (n.)',ex:'The first week was full of <b>challenges</b>.'},{zh:'向…挑战 (v.)',ex:'He <b>challenged</b> me to a race.'}]},
+    3:{en:'pressure',zh:'压力',sentence:'The <b>pressure</b> to perform well made me nervous.',meanings:[{zh:'压力',ex:'The <b>pressure</b> to perform well made me nervous.'},{zh:'施加压力 (v.)',ex:'Don\'t <b>pressure</b> him too much.'}]},
+    4:{en:'expect',zh:'期望；预料',sentence:'My parents <b>expect</b> me to work harder than before.',meanings:[{zh:'期望；指望',ex:'My parents <b>expect</b> me to work harder.'},{zh:'预料；预计',ex:'I <b>expected</b> it to rain, but it didn\'t.'}]},
+    5:{en:'manage',zh:'设法做到；管理',sentence:'I wasn\'t sure how to <b>manage</b> so much homework.',meanings:[{zh:'设法做到；成功应对',ex:'I wasn\'t sure how to <b>manage</b> so much homework.'},{zh:'管理；经营',ex:'She <b>manages</b> a small bookstore.'}]},
+    6:{en:'struggle',zh:'挣扎；苦苦奋斗',sentence:'Many students <b>struggle</b> with the jump from middle school.',meanings:[{zh:'挣扎；苦苦奋斗',ex:'Many students <b>struggle</b> with the jump from middle school.'},{zh:'斗争；抗争 (n.)',ex:'It was a long <b>struggle</b> for freedom.'}]},
+    7:{en:'doubt',zh:'怀疑',sentence:'At first, I <b>doubted</b> whether I could keep up.',meanings:[{zh:'怀疑；不相信 (v.)',ex:'I <b>doubted</b> whether I could keep up.'},{zh:'疑问；疑虑 (n.)',ex:'There is no <b>doubt</b> that he is right.'}]},
+    8:{en:'confidence',zh:'信心',sentence:'But a small success gave me <b>confidence</b>.',meanings:[{zh:'信心；自信',ex:'A small success gave me <b>confidence</b>.'}]},
+    9:{en:'effort',zh:'努力',sentence:'Real <b>effort</b> makes a difference, I\'ve learned.',meanings:[{zh:'努力；尽力',ex:'Real <b>effort</b> makes a difference.'}]},
+    10:{en:'progress',zh:'进步',sentence:'Slow <b>progress</b> is still progress.',meanings:[{zh:'进步；进展 (n.)',ex:'Slow <b>progress</b> is still progress.'},{zh:'前进；进展 (v.)',ex:'The project is <b>progressing</b> well.'}]},
+    11:{en:'approach',zh:'方法；接近',sentence:'I needed a new <b>approach</b> to studying.',meanings:[{zh:'方法；方式 (n.)',ex:'I needed a new <b>approach</b> to studying.'},{zh:'接近；靠近 (v.)',ex:'As the exam <b>approaches</b>, I feel nervous.'}]},
+    12:{en:'recognize',zh:'认识到；认出',sentence:'I came to <b>recognize</b> my weak areas.',meanings:[{zh:'认识到；意识到',ex:'I came to <b>recognize</b> my weak areas.'},{zh:'认出',ex:'I didn\'t <b>recognize</b> her at first.'},{zh:'认可；承认',ex:'He is widely <b>recognized</b> as a great writer.'}]},
+    13:{en:'available',zh:'可获得的；有空的',sentence:'The library has many resources <b>available</b> for students.',meanings:[{zh:'可获得的；可用的',ex:'Many resources are <b>available</b> for students.'},{zh:'有空的（指人）',ex:'Is the doctor <b>available</b> now?'}]},
+    14:{en:'benefit',zh:'益处；受益',sentence:'Taking notes by hand has real <b>benefits</b>.',meanings:[{zh:'益处；好处 (n.)',ex:'Taking notes by hand has real <b>benefits</b>.'},{zh:'受益；得益 (v.)',ex:'You will <b>benefit</b> from this experience.'}]},
+    15:{en:'account for',zh:'解释……的原因',sentence:'That <b>accounts for</b> why I kept forgetting things.',meanings:[{zh:'解释……的原因',ex:'That <b>accounts for</b> why I kept forgetting things.'},{zh:'占……（比例）',ex:'Students <b>account for</b> 60% of the visitors.'}]},
+    16:{en:'perform',zh:'表现',sentence:'I began to <b>perform</b> better in class discussions.',meanings:[{zh:'表现；运转',ex:'I began to <b>perform</b> better in class discussions.'},{zh:'表演；演出',ex:'He <b>performed</b> a song on stage.'},{zh:'执行；实施',ex:'The doctor <b>performed</b> an operation.'}]},
+    17:{en:'gain',zh:'获得',sentence:'You <b>gain</b> more when you participate actively.',meanings:[{zh:'获得；赢得',ex:'You <b>gain</b> more when you participate actively.'},{zh:'增加（体重/速度）',ex:'He <b>gained</b> weight during the holiday.'}]},
+    18:{en:'patience',zh:'耐心',sentence:'Learning takes <b>patience</b> and time.',meanings:[{zh:'耐心；忍耐力',ex:'Learning takes <b>patience</b> and time.'}]},
+    19:{en:'stick with',zh:'坚持',sentence:'If you <b>stick with</b> it, results will come.',meanings:[{zh:'坚持；持续做',ex:'If you <b>stick with</b> it, results will come.'},{zh:'和……在一起',ex:'<b>Stick with</b> me and you\'ll be safe.'}]},
+    20:{en:'prove',zh:'证明',sentence:'My test scores <b>proved</b> that the new method worked.',meanings:[{zh:'证明；证实',ex:'My test scores <b>proved</b> that the new method worked.'},{zh:'结果是；最终显现为',ex:'The task <b>proved</b> to be harder than I thought.'}]},
+};
+const group1Ids=[1,2,3,4,5,6,7,8,9,10];
+const group2Ids=[11,12,13,14,15,16,17,18,19,20];
+const wordQuizByGroup = {
+    1:[{q:'"It took me a while to <b>adjust</b> to the faster pace." 中 adjust to 的意思是？',opts:['反对','适应','离开','抱怨'],ans:1},{q:'"The first week was full of <b>challenges</b> I hadn\'t expected." 中 challenges 的意思是？',opts:['礼物','朋友','挑战','错误'],ans:2},{q:'"The <b>pressure</b> to perform well made me nervous." 中 pressure 最接近的意思是？',opts:['快乐','压力','惊讶','自由'],ans:1},{q:'"My parents <b>expect</b> me to work harder." 中 expect 的意思是？',opts:['阻止','帮助','期望','允许'],ans:2},{q:'"I wasn\'t sure how to <b>manage</b> so much homework." 中 manage 的意思是？',opts:['忽视','扔掉','设法应对','抄写'],ans:2},{q:'"Many students <b>struggle</b> with the jump from middle school." 中 struggle 的意思是？',opts:['享受','轻松应对','苦苦奋斗','跳过'],ans:2},{q:'"I <b>doubted</b> whether I could keep up." 中 doubt 的意思是？',opts:['确信','怀疑','决定','忘记'],ans:1},{q:'"A small success gave me <b>confidence</b>." 中 confidence 的意思是？',opts:['金钱','恐惧','信心','疑惑'],ans:2},{q:'"Real <b>effort</b> makes a difference." 中 effort 的意思是？',opts:['运气','天赋','金钱','努力'],ans:3},{q:'"Slow <b>progress</b> is still progress." 这句话想表达什么？',opts:['进步不重要','慢速前进也是前进','必须快速进步','放弃进步'],ans:1}],
+    2:[{q:'"I needed a new <b>approach</b> to studying." 中 approach 的意思是？',opts:['朋友','课本','方法','考试'],ans:2},{q:'"I came to <b>recognize</b> my weak areas." 中 recognize 的意思是？',opts:['忽视','认识到','隐藏','赞美'],ans:1},{q:'"The library has many resources <b>available</b> for students." 中 available 的意思是？',opts:['昂贵的','可获得的','无用的','过时的'],ans:1},{q:'"Taking notes by hand has real <b>benefits</b>." 中 benefits 的意思是？',opts:['缺点','花费','益处','风险'],ans:2},{q:'"That <b>accounts for</b> why I kept forgetting things." 中 account for 的意思是？',opts:['计算','解释……的原因','占据','忽视'],ans:1},{q:'"I began to <b>perform</b> better in class discussions." 中 perform 的意思是？',opts:['表演','逃避','表现','睡觉'],ans:2},{q:'"You <b>gain</b> more when you participate actively." 中 gain 的意思是？',opts:['失去','获得','浪费','隐藏'],ans:1},{q:'"Learning takes <b>patience</b> and time." 中 patience 的意思是？',opts:['金钱','天赋','耐心','速度'],ans:2},{q:'"If you <b>stick with</b> it, results will come." 中 stick with 的意思是？',opts:['放弃','粘贴','坚持','离开'],ans:2},{q:'"My test scores <b>proved</b> that the new method worked." 中 prove 的意思是？',opts:['怀疑','证明','隐藏','破坏'],ans:1}],
+};
+const passageHTML = `
+<p>Starting high school is never easy. Most freshmen need time to <span class="hl">adjust</span> to the new environment, and I was no exception. The <span class="hl">pressure</span> came from everywhere—teachers <span class="hl">expected</span> more, homework piled up quickly, and I began to <span class="hl">struggle</span>. At one point, I <span class="hl">doubted</span> whether I had made the right choices.</p>
+<p>What saved me was changing my <span class="hl">approach</span>. My English teacher suggested that I <span class="hl">recognize</span> my weak spots instead of avoiding them. "There are plenty of tools <span class="hl">available</span>," she said. "You just need to find what works for you." She also pointed out that simply reading notes over and over <span class="hl">accounts for</span> very little real learning. The real <span class="hl">benefit</span> comes from testing yourself.</p>
+<p>I decided to try. I began to <span class="hl">manage</span> my time more wisely and put real <span class="hl">effort</span> into active recall. Slowly, I <span class="hl">gained</span> a sense of control. My <span class="hl">confidence</span> grew. I started to <span class="hl">perform</span> better, not because I was smarter, but because I had found a method and chose to <span class="hl">stick with</span> it.</p>
+<p>Looking back, the <span class="hl">challenge</span> of those first months <span class="hl">proved</span> to be valuable. Real <span class="hl">progress</span> requires <span class="hl">patience</span>—and the courage to admit when something isn't working.</p>
+`;
+const readingQuiz = [
+    {q:'Why did the writer feel pressure at the start of high school?',opts:['Because teachers expected more and homework increased','Because he had no friends','Because the school was too small','Because his parents didn\'t care'],ans:0},
+    {q:'What advice did the English teacher give?',opts:['Read notes again and again','Recognize weak spots and use available tools','Give up difficult subjects','Study alone without help'],ans:1},
+    {q:'According to the passage, what "accounts for very little real learning"?',opts:['Testing yourself','Participating in class','Simply reading notes over and over','Asking questions'],ans:2},
+    {q:'What change did the writer make that helped him improve?',opts:['He slept more','He used active recall and managed his time better','He copied homework from friends','He stopped attending class'],ans:1},
+    {q:'What lesson does the writer learn from the experience?',opts:['Talent matters more than effort','Progress requires patience and the right method','High school is too difficult to handle','Teachers are not helpful'],ans:1},
+];
 
-        // 单词数据（含多义项）
-        const wordsData = {
-            1: { en: 'adjust', zh: '适应',
-                sentence: 'It took me a while to <b>adjust</b> to the faster pace of high school.',
-                meanings: [
-                    { zh: '适应；调整', ex: 'It took me a while to <b>adjust</b> to the faster pace.' },
-                    { zh: '调节（机器等）', ex: 'He <b>adjusted</b> the seat to make himself comfortable.' }
-            ] },
-            2: { en: 'challenge', zh: '挑战',
-                sentence: 'The first week was full of <b>challenges</b> I hadn\'t expected.',
-                meanings: [
-                    { zh: '挑战 (n.)', ex: 'The first week was full of <b>challenges</b>.' },
-                    { zh: '向…挑战 (v.)', ex: 'He <b>challenged</b> me to a race.' }
-            ] },
-            3: { en: 'pressure', zh: '压力',
-                sentence: 'The <b>pressure</b> to perform well made me nervous.',
-                meanings: [
-                    { zh: '压力', ex: 'The <b>pressure</b> to perform well made me nervous.' },
-                    { zh: '施加压力 (v.)', ex: 'Don\'t <b>pressure</b> him too much.' }
-            ] },
-            4: { en: 'expect', zh: '期望；预料',
-                sentence: 'My parents <b>expect</b> me to work harder than before.',
-                meanings: [
-                    { zh: '期望；指望', ex: 'My parents <b>expect</b> me to work harder.' },
-                    { zh: '预料；预计', ex: 'I <b>expected</b> it to rain, but it didn\'t.' }
-            ] },
-            5: { en: 'manage', zh: '设法做到；管理',
-                sentence: 'I wasn\'t sure how to <b>manage</b> so much homework.',
-                meanings: [
-                    { zh: '设法做到；成功应对', ex: 'I wasn\'t sure how to <b>manage</b> so much homework.' },
-                    { zh: '管理；经营', ex: 'She <b>manages</b> a small bookstore.' }
-            ] },
-            6: { en: 'struggle', zh: '挣扎；苦苦奋斗',
-                sentence: 'Many students <b>struggle</b> with the jump from middle school.',
-                meanings: [
-                    { zh: '挣扎；苦苦奋斗', ex: 'Many students <b>struggle</b> with the jump from middle school.' },
-                    { zh: '斗争；抗争 (n.)', ex: 'It was a long <b>struggle</b> for freedom.' }
-            ] },
-            7: { en: 'doubt', zh: '怀疑',
-                sentence: 'At first, I <b>doubted</b> whether I could keep up.',
-                meanings: [
-                    { zh: '怀疑；不相信 (v.)', ex: 'I <b>doubted</b> whether I could keep up.' },
-                    { zh: '疑问；疑虑 (n.)', ex: 'There is no <b>doubt</b> that he is right.' }
-            ] },
-            8: { en: 'confidence', zh: '信心',
-                sentence: 'But a small success gave me <b>confidence</b>.',
-                meanings: [
-                    { zh: '信心；自信', ex: 'A small success gave me <b>confidence</b>.' },
-            ] },
-            9: { en: 'effort', zh: '努力',
-                sentence: 'Real <b>effort</b> makes a difference, I\'ve learned.',
-                meanings: [
-                    { zh: '努力；尽力', ex: 'Real <b>effort</b> makes a difference.' },
-            ] },
-            10: { en: 'progress', zh: '进步',
-                sentence: 'Slow <b>progress</b> is still progress.',
-                meanings: [
-                    { zh: '进步；进展 (n.)', ex: 'Slow <b>progress</b> is still progress.' },
-                    { zh: '前进；进展 (v.)', ex: 'The project is <b>progressing</b> well.' }
-            ] },
-            11: { en: 'approach', zh: '方法；接近',
-                sentence: 'I needed a new <b>approach</b> to studying.',
-                meanings: [
-                    { zh: '方法；方式 (n.)', ex: 'I needed a new <b>approach</b> to studying.' },
-                    { zh: '接近；靠近 (v.)', ex: 'As the exam <b>approaches</b>, I feel nervous.' }
-            ] },
-            12: { en: 'recognize', zh: '认识到；认出',
-                sentence: 'I came to <b>recognize</b> my weak areas.',
-                meanings: [
-                    { zh: '认识到；意识到', ex: 'I came to <b>recognize</b> my weak areas.' },
-                    { zh: '认出', ex: 'I didn\'t <b>recognize</b> her at first.' },
-                    { zh: '认可；承认', ex: 'He is widely <b>recognized</b> as a great writer.' }
-            ] },
-            13: { en: 'available', zh: '可获得的；有空的',
-                sentence: 'The library has many resources <b>available</b> for students.',
-                meanings: [
-                    { zh: '可获得的；可用的', ex: 'Many resources are <b>available</b> for students.' },
-                    { zh: '有空的（指人）', ex: 'Is the doctor <b>available</b> now?' }
-            ] },
-            14: { en: 'benefit', zh: '益处；受益',
-                sentence: 'Taking notes by hand has real <b>benefits</b>.',
-                meanings: [
-                    { zh: '益处；好处 (n.)', ex: 'Taking notes by hand has real <b>benefits</b>.' },
-                    { zh: '受益；得益 (v.)', ex: 'You will <b>benefit</b> from this experience.' }
-            ] },
-            15: { en: 'account for', zh: '解释……的原因',
-                sentence: 'That <b>accounts for</b> why I kept forgetting things.',
-                meanings: [
-                    { zh: '解释……的原因', ex: 'That <b>accounts for</b> why I kept forgetting things.' },
-                    { zh: '占……（比例）', ex: 'Students <b>account for</b> 60% of the visitors.' }
-            ] },
-            16: { en: 'perform', zh: '表现',
-                sentence: 'I began to <b>perform</b> better in class discussions.',
-                meanings: [
-                    { zh: '表现；运转', ex: 'I began to <b>perform</b> better in class discussions.' },
-                    { zh: '表演；演出', ex: 'He <b>performed</b> a song on stage.' },
-                    { zh: '执行；实施', ex: 'The doctor <b>performed</b> an operation.' }
-            ] },
-            17: { en: 'gain', zh: '获得',
-                sentence: 'You <b>gain</b> more when you participate actively.',
-                meanings: [
-                    { zh: '获得；赢得', ex: 'You <b>gain</b> more when you participate actively.' },
-                    { zh: '增加（体重/速度）', ex: 'He <b>gained</b> weight during the holiday.' }
-            ] },
-            18: { en: 'patience', zh: '耐心',
-                sentence: 'Learning takes <b>patience</b> and time.',
-                meanings: [
-                    { zh: '耐心；忍耐力', ex: 'Learning takes <b>patience</b> and time.' },
-            ] },
-            19: { en: 'stick with', zh: '坚持',
-                sentence: 'If you <b>stick with</b> it, results will come.',
-                meanings: [
-                    { zh: '坚持；持续做', ex: 'If you <b>stick with</b> it, results will come.' },
-                    { zh: '和……在一起', ex: '<b>Stick with</b> me and you\'ll be safe.' }
-            ] },
-            20: { en: 'prove', zh: '证明',
-                sentence: 'My test scores <b>proved</b> that the new method worked.',
-                meanings: [
-                    { zh: '证明；证实', ex: 'My test scores <b>proved</b> that the new method worked.' },
-                    { zh: '结果是；最终显现为', ex: 'The task <b>proved</b> to be harder than I thought.' }
-            ] },
-        };
+// ==================== 状态层 ====================
+let currentGroup=1,wordStatuses={},wordAnswersG1={},wordAnswersG2={},wordSubmittedG1=false,wordSubmittedG2=false,readingAnswers={},readingSubmitted=false;
+const STORAGE_KEY='vocab700_day1_v5';
 
-        // 分组ID
-        const group1Ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        const group2Ids = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._timeout);t._timeout=setTimeout(()=>t.classList.remove('show'),1800);}
+function loadData(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}catch(e){return{};}}
+function saveData(data){localStorage.setItem(STORAGE_KEY,JSON.stringify(data));}
+function speak(word){if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=0.78;speechSynthesis.speak(u);}}
+function updateProgress(){
+    let done=0;const keys=Object.keys(wordStatuses);
+    if(keys.length>=10)done++;
+    if(wordSubmittedG1&&wordSubmittedG2)done=Math.max(done,2);
+    if(readingSubmitted)done=Math.max(done,3);
+    if(done>=3&&wordSubmittedG1&&wordSubmittedG2&&readingSubmitted)done=4;
+    const pct=done/4*100;
+    document.getElementById('progBar').style.width=pct+'%';
+    document.getElementById('progText').textContent=done+'/4';
+    if(done===4){document.getElementById('progBar').style.background='#10B981';document.getElementById('progText').style.color='#10B981';}
+    else{document.getElementById('progBar').style.background='var(--primary)';document.getElementById('progText').style.color='var(--primary)';}
+}
+function canUnlockReading(){return wordSubmittedG1&&wordSubmittedG2;}
 
-        // 词义选择题（20题全覆盖，两组各10题）
-        const wordQuizByGroup = {
-            1: [
-                { q: '"It took me a while to <b>adjust</b> to the faster pace." 中 adjust to 的意思是？', opts: ['反对',
-                        '适应', '离开', '抱怨'
-                    ], ans: 1 },
-                { q: '"The first week was full of <b>challenges</b> I hadn\'t expected." 中 challenges 的意思是？',
-                    opts: ['礼物', '朋友', '挑战', '错误'], ans: 2 },
-                { q: '"The <b>pressure</b> to perform well made me nervous." 中 pressure 最接近的意思是？', opts: ['快乐', '压力',
-                        '惊讶', '自由'
-                    ], ans: 1 },
-                { q: '"My parents <b>expect</b> me to work harder." 中 expect 的意思是？', opts: ['阻止', '帮助', '期望', '允许'],
-                    ans: 2 },
-                { q: '"I wasn\'t sure how to <b>manage</b> so much homework." 中 manage 的意思是？', opts: ['忽视', '扔掉',
-                        '设法应对', '抄写'
-                    ], ans: 2 },
-                { q: '"Many students <b>struggle</b> with the jump from middle school." 中 struggle 的意思是？', opts: [
-                        '享受', '轻松应对', '苦苦奋斗', '跳过'
-                    ], ans: 2 },
-                { q: '"I <b>doubted</b> whether I could keep up." 中 doubt 的意思是？', opts: ['确信', '怀疑', '决定', '忘记'],
-                    ans: 1 },
-                { q: '"A small success gave me <b>confidence</b>." 中 confidence 的意思是？', opts: ['金钱', '恐惧', '信心',
-                        '疑惑'
-                    ], ans: 2 },
-                { q: '"Real <b>effort</b> makes a difference." 中 effort 的意思是？', opts: ['运气', '天赋', '金钱', '努力'],
-                    ans: 3 },
-                { q: '"Slow <b>progress</b> is still progress." 这句话想表达什么？', opts: ['进步不重要', '慢速前进也是前进', '必须快速进步',
-                        '放弃进步'
-                    ], ans: 1 },
-            ],
-            2: [
-                { q: '"I needed a new <b>approach</b> to studying." 中 approach 的意思是？', opts: ['朋友', '课本', '方法',
-                        '考试'], ans: 2 },
-                { q: '"I came to <b>recognize</b> my weak areas." 中 recognize 的意思是？', opts: ['忽视', '认识到', '隐藏',
-                        '赞美'], ans: 1 },
-                { q: '"The library has many resources <b>available</b> for students." 中 available 的意思是？', opts: [
-                        '昂贵的', '可获得的', '无用的', '过时的'
-                    ], ans: 1 },
-                { q: '"Taking notes by hand has real <b>benefits</b>." 中 benefits 的意思是？', opts: ['缺点', '花费', '益处',
-                        '风险'], ans: 2 },
-                { q: '"That <b>accounts for</b> why I kept forgetting things." 中 account for 的意思是？', opts: ['计算',
-                        '解释……的原因', '占据', '忽视'
-                    ], ans: 1 },
-                { q: '"I began to <b>perform</b> better in class discussions." 中 perform 的意思是？', opts: ['表演', '逃避',
-                        '表现', '睡觉'], ans: 2 },
-                { q: '"You <b>gain</b> more when you participate actively." 中 gain 的意思是？', opts: ['失去', '获得', '浪费',
-                        '隐藏'], ans: 1 },
-                { q: '"Learning takes <b>patience</b> and time." 中 patience 的意思是？', opts: ['金钱', '天赋', '耐心',
-                        '速度'], ans: 2 },
-                { q: '"If you <b>stick with</b> it, results will come." 中 stick with 的意思是？', opts: ['放弃', '粘贴', '坚持',
-                        '离开'], ans: 2 },
-                { q: '"My test scores <b>proved</b> that the new method worked." 中 prove 的意思是？', opts: ['怀疑', '证明',
-                        '隐藏', '破坏'
-                    ], ans: 1 },
-            ],
-        };
+function switchGroup(g){
+    currentGroup=g;
+    document.querySelectorAll('.group-tab').forEach((t,i)=>t.classList.toggle('active',i===g-1));
+    document.getElementById('wqGroupLabel').textContent=g===1?'第一组':'第二组';
+    renderWordList();renderWordQuiz();updateWordQuizUI();
+}
+function updateWordQuizUI(){
+    const submitted=currentGroup===1?wordSubmittedG1:wordSubmittedG2;
+    document.getElementById('wordQuizSubmit').style.display=submitted?'none':'block';
+    document.getElementById('wordQuizRetry').style.display=submitted?'block':'none';
+    document.getElementById('wordQuizFB').textContent=submitted?'该组已提交，可重新练习':'';
+}
+function renderWordList(){
+    const ids=currentGroup===1?group1Ids:group2Ids;let html='';
+    ids.forEach(id=>{
+        const w=wordsData[id],status=wordStatuses[id];let tags='';
+        if(w.meanings.length>1)tags+='<span class="tag-multi">+'+(w.meanings.length-1)+'义</span>';
+        if(status==='know')tags+='<span class="tag-status know">✅</span>';
+        else if(status==='unsure')tags+='<span class="tag-status unsure">🤔</span>';
+        else if(status==='dunno')tags+='<span class="tag-status dunno">❌</span>';
+        html+=`<div class="word-card" onclick="openDetail(${id})"><div class="card-sentence">${w.sentence}</div><div class="card-info"><span class="card-word-en">${w.en}</span><span class="card-word-zh">${w.zh}</span><span class="card-tags">${tags}</span><button class="speak-btn" onclick="event.stopPropagation();speak('${w.en.replace(/'/g,"\\'")}')">🔊</button></div></div>`;
+    });
+    document.getElementById('wordList').innerHTML=html;
+}
+function openDetail(id){
+    const w=wordsData[id],status=wordStatuses[id];let mHTML='';
+    w.meanings.forEach((m,i)=>{mHTML+=`<div class="meaning-block"><div class="meaning-num">义项 ${i+1}</div><div class="meaning-zh">${m.zh}</div><div class="meaning-ex">${m.ex}</div></div>`;});
+    document.getElementById('detailCard').innerHTML=`<div class="d-word">${w.en}</div><div class="d-pron" onclick="speak('${w.en.replace(/'/g,"\\'")}')">🔊 点击听发音</div>${mHTML}<div class="status-row"><button class="status-btn know-btn ${status==='know'?'selected':''}" onclick="markStatus(${id},'know')">✅ 认识</button><button class="status-btn unsure-btn ${status==='unsure'?'selected':''}" onclick="markStatus(${id},'unsure')">🤔 模糊</button><button class="status-btn dunno-btn ${status==='dunno'?'selected':''}" onclick="markStatus(${id},'dunno')">❌ 不认识</button></div><button class="close-detail-btn" onclick="closeDetail()">关闭</button>`;
+    document.getElementById('detailOverlay').classList.add('show');speak(w.en);
+}
+function closeDetail(){document.getElementById('detailOverlay').classList.remove('show');}
+function markStatus(id,s){wordStatuses[id]=s;renderWordList();openDetail(id);toast({know:'已标记：认识 ✅',unsure:'已标记：模糊 🤔',dunno:'已标记：不认识 ❌'}[s]);updateProgress();saveData({...loadData(),wordStatuses});}
 
-        // 短文
-        const passageHTML = `
-        Starting high school is never easy. Most freshmen need time to <span class="hl">adjust</span> to the new environment, and I was no exception. The <span class="hl">pressure</span> came from everywhere—teachers <span class="hl">expected</span> more, homework piled up quickly, and I began to <span class="hl">struggle</span>. At one point, I <span class="hl">doubted</span> whether I had made the right choices.
-
-        What saved me was changing my <span class="hl">approach</span>. My English teacher suggested that I <span class="hl">recognize</span> my weak spots instead of avoiding them. "There are plenty of tools <span class="hl">available</span>," she said. "You just need to find what works for you." She also pointed out that simply reading notes over and over <span class="hl">accounts for</span> very little real learning. The real <span class="hl">benefit</span> comes from testing yourself.
-
-        I decided to try. I began to <span class="hl">manage</span> my time more wisely and put real <span class="hl">effort</span> into active recall. Slowly, I <span class="hl">gained</span> a sense of control. My <span class="hl">confidence</span> grew. I started to <span class="hl">perform</span> better, not because I was smarter, but because I had found a method and chose to <span class="hl">stick with</span> it.
-
-        Looking back, the <span class="hl">challenge</span> of those first months <span class="hl">proved</span> to be valuable. Real <span class="hl">progress</span> requires <span class="hl">patience</span>—and the courage to admit when something isn't working.
-    `;
-
-        // 阅读理解（5题）
-        const readingQuiz = [
-            { q: 'Why did the writer feel pressure at the start of high school?', opts: [
-                    'Because teachers expected more and homework increased',
-                    'Because he had no friends', 'Because the school was too small',
-                    'Because his parents didn\'t care'
-                ], ans: 0 },
-            { q: 'What advice did the English teacher give?', opts: ['Read notes again and again',
-                    'Recognize weak spots and use available tools', 'Give up difficult subjects',
-                    'Study alone without help'
-                ], ans: 1 },
-            { q: 'According to the passage, what "accounts for very little real learning"?', opts: [
-                    'Testing yourself', 'Participating in class',
-                    'Simply reading notes over and over', 'Asking questions'
-                ], ans: 2 },
-            { q: 'What change did the writer make that helped him improve?', opts: ['He slept more',
-                    'He used active recall and managed his time better',
-                    'He copied homework from friends', 'He stopped attending class'
-                ], ans: 1 },
-            { q: 'What lesson does the writer learn from the experience?', opts: [
-                    'Talent matters more than effort',
-                    'Progress requires patience and the right method',
-                    'High school is too difficult to handle', 'Teachers are not helpful'
-                ], ans: 1 },
-        ];
-
-        // ==================== 状态层 ====================
-        let currentGroup = 1;
-        let wordStatuses = {};
-        let wordAnswersG1 = {};
-        let wordAnswersG2 = {};
-        let wordSubmittedG1 = false;
-        let wordSubmittedG2 = false;
-        let readingAnswers = {};
-        let readingSubmitted = false;
-
-        // ==================== 工具函数 ====================
-        function toast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg;
-            t.classList.add('show');
-            clearTimeout(t._timeout);
-            t._timeout = setTimeout(() => t.classList.remove('show'), 1800);
-        }
-
-        function loadData() {
-            try { return JSON.parse(localStorage.getItem('vocab600_day1_v3') || '{}'); } catch (e) { return {}; }
-        }
-
-        function saveData(data) {
-            localStorage.setItem('vocab600_day1_v3', JSON.stringify(data));
-        }
-
-        function speak(word) {
-            if ('speechSynthesis' in window) {
-                speechSynthesis.cancel();
-                const u = new SpeechSynthesisUtterance(word);
-                u.lang = 'en-US';
-                u.rate = 0.78;
-                speechSynthesis.speak(u);
-            }
-        }
-
-        function updateProgress() {
-            let done = 0;
-            const keys = Object.keys(wordStatuses);
-            if (keys.length >= 10) done++;
-            if (wordSubmittedG1 && wordSubmittedG2) done = Math.max(done, 2);
-            if (readingSubmitted) done = Math.max(done, 3);
-            if (done >= 3 && wordSubmittedG1 && wordSubmittedG2 && readingSubmitted) done = 4;
-
-            const pct = done / 4 * 100;
-            const bar = document.getElementById('progBar');
-            const text = document.getElementById('progText');
-            bar.style.width = pct + '%';
-            text.textContent = done + '/4';
-            if (done === 4) {
-                bar.style.background = '#10B981';
-                text.style.color = '#10B981';
-            }
-        }
-
-        function canUnlockReading() {
-            return wordSubmittedG1 && wordSubmittedG2;
-        }
-
-        // ==================== 分组切换 ====================
-        function switchGroup(g) {
-            currentGroup = g;
-            document.querySelectorAll('.group-tab').forEach((t, i) => t.classList.toggle('active', i === g - 1));
-            document.getElementById('wqGroupLabel').textContent = g === 1 ? '第一组' : '第二组';
-            renderWordList();
-            renderWordQuiz();
-            // 恢复该组的提交状态
-            const submitted = g === 1 ? wordSubmittedG1 : wordSubmittedG2;
-            document.getElementById('wordQuizSubmit').disabled = submitted;
-            document.getElementById('wordQuizFB').textContent = submitted ? '该组已提交 ✓' : '';
-            if (submitted) {
-                document.getElementById('wordQuizSubmit').textContent = '已提交 ✓';
-            } else {
-                document.getElementById('wordQuizSubmit').textContent = '✅ 提交词义选择';
-            }
-        }
-
-        // ==================== 单词列表（例句为核心） ====================
-        function renderWordList() {
-            const ids = currentGroup === 1 ? group1Ids : group2Ids;
-            const container = document.getElementById('wordList');
-            let html = '';
-            ids.forEach(id => {
-                const w = wordsData[id];
-                const status = wordStatuses[id];
-                let tagsHTML = '';
-                if (w.meanings.length > 1) tagsHTML +=
-                    '<span class="tag-multi">+' + (w.meanings.length - 1) + '义</span>';
-                if (status === 'know') tagsHTML += '<span class="tag-status know">✅</span>';
-                else if (status === 'unsure') tagsHTML += '<span class="tag-status unsure">🤔</span>';
-                else if (status === 'dunno') tagsHTML += '<span class="tag-status dunno">❌</span>';
-
-                html += `
-                <div class="word-card" onclick="openDetail(${id})">
-                  <div class="card-sentence">${w.sentence}</div>
-                  <div class="card-info">
-                    <span class="card-word-en">${w.en}</span>
-                    <span class="card-word-zh">${w.zh}</span>
-                    <span class="card-tags">${tagsHTML}</span>
-                    <button class="speak-btn" onclick="event.stopPropagation(); speak('${w.en.replace(/'/g, "\\'")}')">🔊</button>
-                  </div>
-                </div>`;
-            });
-            container.innerHTML = html;
-        }
-
-        // ==================== 单词详情弹窗（多义项） ====================
-        function openDetail(id) {
-            const w = wordsData[id];
-            let meaningsHTML = '';
-            w.meanings.forEach((m, i) => {
-                meaningsHTML += `
-                <div class="meaning-block">
-                  <div class="meaning-num">义项 ${i + 1}</div>
-                  <div class="meaning-zh">${m.zh}</div>
-                  <div class="meaning-ex">${m.ex}</div>
-                </div>`;
-            });
-
-            const status = wordStatuses[id];
-            const card = document.getElementById('detailCard');
-            card.innerHTML = `
-              <div class="d-word">${w.en}</div>
-              <div class="d-pron" onclick="speak('${w.en.replace(/'/g, "\\'")}')">🔊 点击听发音</div>
-              ${meaningsHTML}
-              <div class="status-row">
-                <button class="status-btn know-btn ${status==='know'?'selected':''}" onclick="markStatus(${id},'know')">✅ 认识</button>
-                <button class="status-btn unsure-btn ${status==='unsure'?'selected':''}" onclick="markStatus(${id},'unsure')">🤔 模糊</button>
-                <button class="status-btn dunno-btn ${status==='dunno'?'selected':''}" onclick="markStatus(${id},'dunno')">❌ 不认识</button>
-              </div>
-              <button class="close-detail-btn" onclick="closeDetail()">关闭</button>
-            `;
-            document.getElementById('detailOverlay').classList.add('show');
-            speak(w.en);
-        }
-
-        function closeDetail() {
-            document.getElementById('detailOverlay').classList.remove('show');
-        }
-
-        function markStatus(id, s) {
-            wordStatuses[id] = s;
-            renderWordList();
-            openDetail(id);
-            const labels = { know: '已标记：认识 ✅', unsure: '已标记：模糊 🤔', dunno: '已标记：不认识 ❌' };
-            toast(labels[s]);
-            updateProgress();
-            const data = loadData();
-            data.wordStatuses = wordStatuses;
-            saveData(data);
-        }
-
-        // ==================== 词义选择 ====================
-        function renderWordQuiz() {
-            const quizData = wordQuizByGroup[currentGroup];
-            const area = document.getElementById('wordQuizArea');
-            const answers = currentGroup === 1 ? wordAnswersG1 : wordAnswersG2;
-            const submitted = currentGroup === 1 ? wordSubmittedG1 : wordSubmittedG2;
-            let html = '';
-            quizData.forEach((q, qi) => {
-                html += `<div class="wq-item">
-                <div class="wq-q">${qi + 1}. ${q.q}</div>
-                <div class="wq-opts">`;
-                q.opts.forEach((opt, oi) => {
-                    const picked = answers[qi] === oi;
-                    const correct = submitted && q.ans === oi;
-                    const wrong = submitted && answers[qi] === oi && oi !== q.ans;
-                    let cls = '';
-                    if (picked && !submitted) cls = 'picked';
-                    if (correct) cls = 'correct';
-                    if (wrong) cls = 'wrong';
-                    const disabled = submitted ? 'disabled' : '';
-                    html +=
-                        `<button class="wq-opt ${cls}" id="wq_${qi}_${oi}" onclick="pickWordAnswer(${qi},${oi})" ${disabled}>${opt}</button>`;
-                });
-                html += `</div></div>`;
-            });
-            area.innerHTML = html;
-        }
-
-        function pickWordAnswer(qi, oi) {
-            const submitted = currentGroup === 1 ? wordSubmittedG1 : wordSubmittedG2;
-            if (submitted) return;
-            const answers = currentGroup === 1 ? wordAnswersG1 : wordAnswersG2;
-            for (let i = 0; i < 4; i++) {
-                const btn = document.getElementById('wq_' + qi + '_' + i);
-                if (btn) btn.classList.remove('picked');
-            }
-            const btn = document.getElementById('wq_' + qi + '_' + oi);
-            if (btn) btn.classList.add('picked');
-            answers[qi] = oi;
-            if (currentGroup === 1) wordAnswersG1 = answers;
-            else wordAnswersG2 = answers;
-        }
-
-        function submitWordQuiz() {
-            const submitted = currentGroup === 1 ? wordSubmittedG1 : wordSubmittedG2;
-            if (submitted) return;
-            const quizData = wordQuizByGroup[currentGroup];
-            const answers = currentGroup === 1 ? wordAnswersG1 : wordAnswersG2;
-            let correct = 0;
-            quizData.forEach((q, qi) => {
-                const picked = answers[qi];
-                for (let i = 0; i < 4; i++) {
-                    const btn = document.getElementById('wq_' + qi + '_' + i);
-                    if (!btn) continue;
-                    btn.disabled = true;
-                    btn.classList.remove('picked');
-                    if (i === q.ans) btn.classList.add('correct');
-                    if (i === picked && i !== q.ans) btn.classList.add('wrong');
-                }
-                if (picked === q.ans) correct++;
-            });
-
-            const pct = Math.round(correct / 10 * 100);
-            const fb = document.getElementById('wordQuizFB');
-            fb.textContent = `词义选择：${correct}/10 (${pct}%)`;
-            fb.style.color = pct >= 80 ? '#10B981' : '#EF4444';
-            document.getElementById('wordQuizSubmit').disabled = true;
-            document.getElementById('wordQuizSubmit').textContent = '已提交 ✓';
-
-            if (currentGroup === 1) wordSubmittedG1 = true;
-            else wordSubmittedG2 = true;
-            updateProgress();
-
-            // 两组都提交后解锁阅读
-            if (canUnlockReading()) {
-                document.getElementById('readingQuizSubmit').disabled = false;
-                document.getElementById('readingQuizSubmit').textContent = '📋 提交阅读理解';
-                toast('两组词义选择完成！可以挑战阅读理解 🎉');
-            } else {
-                const otherGroup = currentGroup === 1 ? '第二组' : '第一组';
-                toast('请继续完成' + otherGroup + '的词义选择');
-            }
-
-            const data = loadData();
-            if (currentGroup === 1) data.wordScoreG1 = pct;
-            else data.wordScoreG2 = pct;
-            data['wordSubmittedG' + currentGroup] = true;
-            saveData(data);
-        }
-
-        // ==================== 短文 + 阅读理解 ====================
-        function renderPassageAndReading() {
-            document.getElementById('passageText').innerHTML = passageHTML;
-            const area = document.getElementById('readingQuizArea');
-            let html = '';
-            readingQuiz.forEach((q, qi) => {
-                html += `<div class="reading-quiz-item">
-                <div class="rq-q">${qi + 1}. ${q.q}</div>
-                <div class="rq-opts">`;
-                q.opts.forEach((opt, oi) => {
-                    const picked = readingAnswers[qi] === oi;
-                    const correct = readingSubmitted && q.ans === oi;
-                    const wrong = readingSubmitted && readingAnswers[qi] === oi && oi !== q.ans;
-                    let cls = '';
-                    if (picked && !readingSubmitted) cls = 'picked';
-                    if (correct) cls = 'correct';
-                    if (wrong) cls = 'wrong';
-                    const disabled = readingSubmitted ? 'disabled' : '';
-                    html +=
-                        `<button class="rq-opt ${cls}" id="rq_${qi}_${oi}" onclick="pickReadingAnswer(${qi},${oi})" ${disabled}>${opt}</button>`;
-                });
-                html += `</div></div>`;
-            });
-            area.innerHTML = html;
-        }
-
-        function pickReadingAnswer(qi, oi) {
-            if (readingSubmitted || document.getElementById('readingQuizSubmit').disabled) return;
-            for (let i = 0; i < 4; i++) {
-                const btn = document.getElementById('rq_' + qi + '_' + i);
-                if (btn) btn.classList.remove('picked');
-            }
-            const btn = document.getElementById('rq_' + qi + '_' + oi);
-            if (btn) btn.classList.add('picked');
-            readingAnswers[qi] = oi;
-        }
-
-        function submitReadingQuiz() {
-            if (readingSubmitted || document.getElementById('readingQuizSubmit').disabled) return;
-            let correct = 0;
-            readingQuiz.forEach((q, qi) => {
-                const picked = readingAnswers[qi];
-                for (let i = 0; i < 4; i++) {
-                    const btn = document.getElementById('rq_' + qi + '_' + i);
-                    if (!btn) continue;
-                    btn.disabled = true;
-                    btn.classList.remove('picked');
-                    if (i === q.ans) btn.classList.add('correct');
-                    if (i === picked && i !== q.ans) btn.classList.add('wrong');
-                }
-                if (picked === q.ans) correct++;
-            });
-
-            const pct = Math.round(correct / 5 * 100);
-            const fb = document.getElementById('readingQuizFB');
-            fb.textContent = `阅读理解：${correct}/5 (${pct}%)`;
-            fb.style.color = pct >= 80 ? '#10B981' : '#EF4444';
-            document.getElementById('readingQuizSubmit').disabled = true;
-            document.getElementById('readingQuizSubmit').textContent = '已提交 ✓';
-            readingSubmitted = true;
-            updateProgress();
-
-            // 成绩弹窗
-            document.getElementById('scoreEmoji').textContent = pct >= 80 ? '🎉' : '💪';
-            document.getElementById('scoreNum').textContent = correct + '/5';
-            document.getElementById('scoreLabel').textContent = pct >= 80 ? '恭喜通关 Day 1！' : '继续加油！';
-            document.getElementById('scoreDetail').textContent = pct >= 80 ?
-                '20个核心词 + 短文阅读，全部完成 ✅' :
-                '建议复习短文和单词后再试一次';
-            document.getElementById('scoreOverlay').classList.add('show');
-
-            const data = loadData();
-            data.readingScore = pct;
-            data.readingSubmitted = true;
-            data.completed = pct >= 80;
-            saveData(data);
-        }
-
-        function closeScore() {
-            document.getElementById('scoreOverlay').classList.remove('show');
-        }
-
-        // ==================== 初始化 ====================
-        function init() {
-            const data = loadData();
-            if (data.wordStatuses) wordStatuses = data.wordStatuses;
-            if (data.wordSubmittedG1) wordSubmittedG1 = data.wordSubmittedG1;
-            if (data.wordSubmittedG2) wordSubmittedG2 = data.wordSubmittedG2;
-            if (data.readingSubmitted) readingSubmitted = data.readingSubmitted;
-            if (data.wordAnswersG1) wordAnswersG1 = data.wordAnswersG1;
-            if (data.wordAnswersG2) wordAnswersG2 = data.wordAnswersG2;
-            if (data.readingAnswers) readingAnswers = data.readingAnswers;
-
-            renderWordList();
-            renderWordQuiz();
-            renderPassageAndReading();
-            updateProgress();
-
-            // 恢复提交状态
-            if (wordSubmittedG1 && wordSubmittedG2) {
-                document.getElementById('readingQuizSubmit').disabled = false;
-                document.getElementById('readingQuizSubmit').textContent = readingSubmitted ? '已提交 ✓' :
-                    '📋 提交阅读理解';
-            }
-            if (readingSubmitted) {
-                document.getElementById('readingQuizSubmit').disabled = true;
-                document.getElementById('readingQuizSubmit').textContent = '已提交 ✓';
-            }
-            if (wordSubmittedG1 && currentGroup === 1) {
-                document.getElementById('wordQuizSubmit').disabled = true;
-                document.getElementById('wordQuizSubmit').textContent = '已提交 ✓';
-                document.getElementById('wordQuizFB').textContent = '该组已提交 ✓';
-            }
-            if (wordSubmittedG2 && currentGroup === 2) {
-                document.getElementById('wordQuizSubmit').disabled = true;
-                document.getElementById('wordQuizSubmit').textContent = '已提交 ✓';
-                document.getElementById('wordQuizFB').textContent = '该组已提交 ✓';
-            }
-        }
-
-        // 弹窗关闭事件
-        document.getElementById('detailOverlay').addEventListener('click', function(e) {
-            if (e.target === this) closeDetail();
+function renderWordQuiz(){
+    const quizData=wordQuizByGroup[currentGroup],answers=currentGroup===1?wordAnswersG1:wordAnswersG2,submitted=currentGroup===1?wordSubmittedG1:wordSubmittedG2;let html='';
+    quizData.forEach((q,qi)=>{
+        html+=`<div class="wq-item"><div class="wq-q">${qi+1}. ${q.q}</div><div class="wq-opts">`;
+        q.opts.forEach((opt,oi)=>{
+            const picked=answers[qi]===oi,correct=submitted&&q.ans===oi,wrong=submitted&&answers[qi]===oi&&oi!==q.ans;
+            let cls='';if(picked&&!submitted)cls='picked';if(correct)cls='correct';if(wrong)cls='wrong';
+            html+=`<button class="wq-opt ${cls}" id="wq_${qi}_${oi}" onclick="pickWordAnswer(${qi},${oi})" ${submitted?'disabled':''}>${opt}</button>`;
         });
-        document.getElementById('scoreOverlay').addEventListener('click', function(e) {
-            if (e.target === this) closeScore();
-        });
+        html+=`</div></div>`;
+    });
+    document.getElementById('wordQuizArea').innerHTML=html;
+}
+function pickWordAnswer(qi,oi){
+    const submitted=currentGroup===1?wordSubmittedG1:wordSubmittedG2;if(submitted)return;
+    const answers=currentGroup===1?wordAnswersG1:wordAnswersG2;
+    for(let i=0;i<4;i++){const btn=document.getElementById('wq_'+qi+'_'+i);if(btn)btn.classList.remove('picked');}
+    const btn=document.getElementById('wq_'+qi+'_'+oi);if(btn)btn.classList.add('picked');
+    answers[qi]=oi;if(currentGroup===1)wordAnswersG1=answers;else wordAnswersG2=answers;
+}
+function submitWordQuiz(){
+    const submitted=currentGroup===1?wordSubmittedG1:wordSubmittedG2;if(submitted)return;
+    const quizData=wordQuizByGroup[currentGroup],answers=currentGroup===1?wordAnswersG1:wordAnswersG2;let correct=0;
+    quizData.forEach((q,qi)=>{
+        const picked=answers[qi];
+        for(let i=0;i<4;i++){const btn=document.getElementById('wq_'+qi+'_'+i);if(!btn)continue;btn.disabled=true;btn.classList.remove('picked');if(i===q.ans)btn.classList.add('correct');if(i===picked&&i!==q.ans)btn.classList.add('wrong');}
+        if(picked===q.ans)correct++;
+    });
+    const pct=Math.round(correct/10*100),fb=document.getElementById('wordQuizFB');
+    fb.textContent=`词义选择：${correct}/10 (${pct}%)`;fb.style.color=pct>=80?'#10B981':'#EF4444';
+    if(currentGroup===1)wordSubmittedG1=true;else wordSubmittedG2=true;
+    updateWordQuizUI();updateProgress();
+    if(canUnlockReading()){document.getElementById('readingQuizSubmit').disabled=false;document.getElementById('readingQuizSubmit').textContent='📋 提交阅读理解';toast('两组词义选择完成！可以挑战阅读理解 🎉');}
+    else toast('请继续完成'+(currentGroup===1?'第二组':'第一组')+'的词义选择');
+    saveData({...loadData(),['wordScoreG'+currentGroup]:pct,['wordSubmittedG'+currentGroup]:true,['wordAnswersG'+currentGroup]:answers});
+}
+function retryWordQuiz(){
+    if(currentGroup===1){wordSubmittedG1=false;wordAnswersG1={};}else{wordSubmittedG2=false;wordAnswersG2={};}
+    updateWordQuizUI();renderWordQuiz();updateProgress();
+    document.getElementById('wordQuizFB').textContent='';
+    document.getElementById('readingQuizSubmit').disabled=true;
+    document.getElementById('readingQuizSubmit').textContent='🔒 先完成两组词义选择';
+    if(readingSubmitted){readingSubmitted=false;readingAnswers={};updateReadingQuizUI();renderReadingQuiz();document.getElementById('readingQuizFB').textContent='';}
+    saveData({...loadData(),wordSubmittedG1,wordSubmittedG2,wordAnswersG1,wordAnswersG2,readingSubmitted,readingAnswers});
+    toast('词义选择已重置，可以重新练习 🔄');
+}
 
-        init();
-    </script>
+function renderPassageAndReading(){document.getElementById('passageText').innerHTML=passageHTML;renderReadingQuiz();}
+function renderReadingQuiz(){
+    let html='';
+    readingQuiz.forEach((q,qi)=>{
+        html+=`<div class="reading-quiz-item"><div class="rq-q">${qi+1}. ${q.q}</div><div class="rq-opts">`;
+        q.opts.forEach((opt,oi)=>{
+            const picked=readingAnswers[qi]===oi,correct=readingSubmitted&&q.ans===oi,wrong=readingSubmitted&&readingAnswers[qi]===oi&&oi!==q.ans;
+            let cls='';if(picked&&!readingSubmitted)cls='picked';if(correct)cls='correct';if(wrong)cls='wrong';
+            html+=`<button class="rq-opt ${cls}" id="rq_${qi}_${oi}" onclick="pickReadingAnswer(${qi},${oi})" ${readingSubmitted?'disabled':''}>${opt}</button>`;
+        });
+        html+=`</div></div>`;
+    });
+    document.getElementById('readingQuizArea').innerHTML=html;
+}
+function updateReadingQuizUI(){
+    document.getElementById('readingQuizSubmit').style.display=readingSubmitted?'none':'block';
+    document.getElementById('readingQuizRetry').style.display=readingSubmitted?'block':'none';
+}
+function pickReadingAnswer(qi,oi){
+    if(readingSubmitted||document.getElementById('readingQuizSubmit').disabled)return;
+    for(let i=0;i<4;i++){const btn=document.getElementById('rq_'+qi+'_'+i);if(btn)btn.classList.remove('picked');}
+    const btn=document.getElementById('rq_'+qi+'_'+oi);if(btn)btn.classList.add('picked');readingAnswers[qi]=oi;
+}
+function submitReadingQuiz(){
+    if(readingSubmitted||document.getElementById('readingQuizSubmit').disabled)return;let correct=0;
+    readingQuiz.forEach((q,qi)=>{
+        const picked=readingAnswers[qi];
+        for(let i=0;i<4;i++){const btn=document.getElementById('rq_'+qi+'_'+i);if(!btn)continue;btn.disabled=true;btn.classList.remove('picked');if(i===q.ans)btn.classList.add('correct');if(i===picked&&i!==q.ans)btn.classList.add('wrong');}
+        if(picked===q.ans)correct++;
+    });
+    const pct=Math.round(correct/5*100),fb=document.getElementById('readingQuizFB');
+    fb.textContent=`阅读理解：${correct}/5 (${pct}%)`;fb.style.color=pct>=80?'#10B981':'#EF4444';
+    readingSubmitted=true;updateReadingQuizUI();updateProgress();
+    document.getElementById('scoreEmoji').textContent=pct>=80?'🎉':'💪';
+    document.getElementById('scoreNum').textContent=correct+'/5';
+    document.getElementById('scoreLabel').textContent=pct>=80?'恭喜通关 Day 1！':'继续加油！';
+    document.getElementById('scoreDetail').textContent=pct>=80?'20个核心词 + 短文阅读，全部完成 ✅':'建议复习短文和单词后再试一次';
+    document.getElementById('scoreOverlay').classList.add('show');
+    saveData({...loadData(),readingScore:pct,readingSubmitted:true,readingAnswers,completed:pct>=80});
+}
+function retryReadingQuiz(){
+    readingSubmitted=false;readingAnswers={};updateReadingQuizUI();renderReadingQuiz();updateProgress();
+    document.getElementById('readingQuizFB').textContent='';
+    saveData({...loadData(),readingSubmitted,readingAnswers,completed:false});
+    toast('阅读理解已重置，可以重新练习 🔄');
+}
+function closeScore(){document.getElementById('scoreOverlay').classList.remove('show');}
+
+function resetAll(){
+    if(confirm('确定要重置本日全部进度吗？所有答案和标记将被清除。')){
+        wordStatuses={};wordAnswersG1={};wordAnswersG2={};wordSubmittedG1=false;wordSubmittedG2=false;readingAnswers={};readingSubmitted=false;
+        localStorage.removeItem(STORAGE_KEY);
+        currentGroup=1;
+        document.querySelectorAll('.group-tab').forEach((t,i)=>t.classList.toggle('active',i===0));
+        document.getElementById('wqGroupLabel').textContent='第一组';
+        document.getElementById('wordQuizSubmit').style.display='block';
+        document.getElementById('wordQuizRetry').style.display='none';
+        document.getElementById('wordQuizFB').textContent='';
+        document.getElementById('readingQuizSubmit').disabled=true;
+        document.getElementById('readingQuizSubmit').textContent='🔒 先完成两组词义选择';
+        document.getElementById('readingQuizSubmit').style.display='block';
+        document.getElementById('readingQuizRetry').style.display='none';
+        document.getElementById('readingQuizFB').textContent='';
+        document.getElementById('progBar').style.background='var(--primary)';
+        document.getElementById('progText').style.color='var(--primary)';
+        renderWordList();renderWordQuiz();renderPassageAndReading();updateProgress();
+        toast('已重置本日全部进度 🗑️');
+    }
+}
+
+function init(){
+    const data=loadData();
+    if(data.wordStatuses)wordStatuses=data.wordStatuses;
+    if(data.wordSubmittedG1!==undefined)wordSubmittedG1=data.wordSubmittedG1;
+    if(data.wordSubmittedG2!==undefined)wordSubmittedG2=data.wordSubmittedG2;
+    if(data.readingSubmitted!==undefined)readingSubmitted=data.readingSubmitted;
+    if(data.wordAnswersG1)wordAnswersG1=data.wordAnswersG1;
+    if(data.wordAnswersG2)wordAnswersG2=data.wordAnswersG2;
+    if(data.readingAnswers)readingAnswers=data.readingAnswers;
+    renderWordList();renderWordQuiz();renderPassageAndReading();updateProgress();
+    updateWordQuizUI();updateReadingQuizUI();
+    if(canUnlockReading()&&!readingSubmitted){document.getElementById('readingQuizSubmit').disabled=false;document.getElementById('readingQuizSubmit').textContent='📋 提交阅读理解';}
+}
+document.getElementById('detailOverlay').addEventListener('click',function(e){if(e.target===this)closeDetail();});
+document.getElementById('scoreOverlay').addEventListener('click',function(e){if(e.target===this)closeScore();});
+init();
+</script>
 </body>
 </html>
