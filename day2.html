@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 2 - 像游戏通关一样适应高中 | 高中英语分级词汇</title>
+    <title>Day 2 - 像玩 Minecraft 一样适应高中 | 高中英语分级词汇</title>
     <style>
         :root {
             --primary: #4A6CF7;
@@ -22,6 +22,9 @@
             --radius-sm: 8px;
             --word-new: #4A6CF7;
             --word-old: #D97706;
+            --mc-green: #5D8A3C;
+            --mc-dirt: #8B6B4A;
+            --mc-stone: #7F8C8D;
         }
         *{margin:0;padding:0;box-sizing:border-box;}
         body{
@@ -58,16 +61,22 @@
             color:var(--primary);padding:6px 14px;border-radius:20px;font-size:0.85rem;font-weight:500;margin-bottom:12px;
         }
         .quote-box{
-            background:linear-gradient(135deg,#1a1a2e,#16213e);color:#e2e8f0;
+            background:linear-gradient(135deg,#2d1f0e,#4a3724);color:#e2e8f0;
             padding:16px 20px;border-radius:var(--radius-sm);margin-bottom:12px;
-            font-style:italic;font-size:0.95rem;border-left:4px solid #8B5CF6;
+            font-style:italic;font-size:0.95rem;border-left:4px solid var(--mc-green);
+            position:relative;overflow:hidden;
         }
-        .quote-author{color:#94a3b8;font-size:0.8rem;margin-top:4px;font-style:normal;}
+        .quote-box::after{
+            content:'';position:absolute;bottom:0;right:0;width:60px;height:60px;
+            background:radial-gradient(circle at bottom right, rgba(93,138,60,0.15) 0%, transparent 70%);
+            border-radius:50%;
+        }
+        .quote-author{color:#a89880;font-size:0.8rem;margin-top:4px;font-style:normal;}
         .progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
         .progress-title{font-weight:600;font-size:0.95rem;}
         .progress-percent{font-weight:700;color:var(--primary);font-size:0.9rem;}
         .progress-bar{height:8px;background:#E5E7EB;border-radius:4px;overflow:hidden;}
-        .progress-fill{height:100%;background:linear-gradient(90deg,#8B5CF6,#4A6CF7);border-radius:4px;transition:width 0.5s ease;width:0%;}
+        .progress-fill{height:100%;background:linear-gradient(90deg,var(--mc-green),var(--primary));border-radius:4px;transition:width 0.5s ease;width:0%;}
         .tab-nav{
             display:flex;gap:4px;background:var(--card);border-radius:var(--radius);padding:4px;
             margin-bottom:20px;box-shadow:var(--shadow);overflow-x:auto;
@@ -91,7 +100,7 @@
         .word-card:hover{border-color:#BFC7FF;box-shadow:0 2px 8px rgba(74,108,247,0.08);}
         .word-example-sentence{
             font-size:1rem;color:var(--text);line-height:1.6;margin-bottom:10px;
-            padding-left:12px;border-left:3px solid #8B5CF6;
+            padding-left:12px;border-left:3px solid var(--mc-green);
         }
         .word-example-sentence b{color:var(--primary);font-weight:700;cursor:pointer;padding:2px 4px;border-radius:3px;}
         .word-example-sentence b:hover{background:var(--primary-light);text-decoration:underline;}
@@ -177,15 +186,15 @@
         .reading-passage .old-word:hover{background:#FEF3C7;}
 
         .word-tooltip{
-            background:#1F2937;color:white;padding:10px 16px;border-radius:var(--radius-sm);
+            background:var(--mc-dirt);color:white;padding:10px 16px;border-radius:var(--radius-sm);
             font-size:0.85rem;margin-bottom:16px;display:none;line-height:1.5;
-            animation:fadeIn 0.2s ease;
+            animation:fadeIn 0.2s ease;border:2px solid #6b5335;
         }
         .word-tooltip.show{display:block;}
-        .word-tooltip .tip-word{font-size:1.1rem;font-weight:700;color:#60A5FA;}
-        .word-tooltip .tip-pos{color:#94a3b8;}
-        .word-tooltip .tip-zh{color:#34D399;font-weight:600;}
-        .word-tooltip .tip-from{color:#FBBF24;font-size:0.8rem;}
+        .word-tooltip .tip-word{font-size:1.1rem;font-weight:700;color:#FFD700;}
+        .word-tooltip .tip-pos{color:#c4b998;}
+        .word-tooltip .tip-zh{color:#80FF80;font-weight:600;}
+        .word-tooltip .tip-from{color:#FFB347;font-size:0.8rem;}
         @keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
 
         .btn{padding:10px 24px;border-radius:8px;border:none;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;margin:4px;}
@@ -237,11 +246,11 @@
 
 <div class="container">
     <div class="header-section">
-        <span class="topic-tag">🎮 像游戏通关一样适应高中</span>
+        <span class="topic-tag">⛏️ 像玩 Minecraft 一样适应高中</span>
         <div class="quote-box">
-            "It's dangerous to go alone! Take this."<br>
-            "Every new level brings new challenges — but also new skills."
-            <div class="quote-author">— Inspired by The Legend of Zelda & RPG Games</div>
+            "The first night is always the hardest — but you punch a tree, craft a crafting table, and start building your world."<br>
+            "Every block you place is a step forward. Every new tool unlocks new possibilities."
+            <div class="quote-author">— Inspired by Minecraft · "The universe is yours to shape."</div>
         </div>
         <div class="progress-header">
             <span class="progress-title">今日学习进度</span>
@@ -312,39 +321,39 @@
 <script>
 // ==================== 数据 ====================
 const vocabulary = [
-    {id:'v1',word:'adapt',pos:'v.',zh:'适应',example:'Just like entering a new game level, you need time to <b>adapt</b> to the new rules of senior high.'},
-    {id:'v2',word:'challenge',pos:'n.',zh:'挑战',example:'Every boss fight is a <b>challenge</b> — and so is every difficult subject in school.'},
-    {id:'v3',word:'pressure',pos:'n.',zh:'压力',example:'Too much <b>pressure</b> is like a health bar dropping too fast — you need to manage it.'},
-    {id:'v4',word:'balance',pos:'v./n.',zh:'平衡；均衡',example:'A good player knows how to <b>balance</b> attack and defense, just like study and rest.'},
-    {id:'v5',word:'schedule',pos:'n.',zh:'日程表',example:'Your daily <b>schedule</b> is like a quest log — it tells you what to do next.'},
-    {id:'v6',word:'independent',pos:'adj.',zh:'独立的',example:'In high school, you level up by becoming more <b>independent</b> in your thinking.'},
-    {id:'v7',word:'confident',pos:'adj.',zh:'自信的',example:'He felt more <b>confident</b> after solving that difficult math problem — like beating a tough boss.'},
-    {id:'v8',word:'goal',pos:'n.',zh:'目标',example:'My main <b>goal</b> this term is to unlock the "English Master" achievement.'},
-    {id:'v9',word:'method',pos:'n.',zh:'方法',example:'Finding a good learning <b>method</b> is like discovering the best strategy to clear a level.'},
-    {id:'v10',word:'attitude',pos:'n.',zh:'态度',example:'A positive <b>attitude</b> is your strongest weapon in any game — and in real life.'},
-    {id:'v11',word:'communicate',pos:'v.',zh:'交流',example:'In multiplayer games, you must <b>communicate</b> with teammates to win.'},
-    {id:'v12',word:'nervous',pos:'adj.',zh:'紧张的',example:'I always get <b>nervous</b> before a big exam, just like before a ranked match.'},
-    {id:'v13',word:'benefit',pos:'n./v.',zh:'益处；得益于',example:'Joining a club can give you extra XP — it <b>benefits</b> your personal growth.'},
-    {id:'v14',word:'opportunity',pos:'n.',zh:'机会',example:'This speech contest is a rare <b>opportunity</b> — like finding a golden chest!'},
-    {id:'v15',word:'volunteer',pos:'n./v.',zh:'志愿者；自愿做',example:'Many students <b>volunteer</b> to help in the library — like taking on side quests.'},
-    {id:'v16',word:'organize',pos:'v.',zh:'组织',example:'You should <b>organize</b> your notes like a well-sorted inventory.'},
-    {id:'v17',word:'manage',pos:'v.',zh:'管理；设法做成',example:'Can you <b>manage</b> your time well? It\'s like managing your mana and stamina.'},
-    {id:'v18',word:'reduce',pos:'v.',zh:'减少',example:'Listening to music is a good way to <b>reduce</b> stress — like a healing potion.'},
-    {id:'v19',word:'support',pos:'n./v.',zh:'支持',example:'The <b>support</b> from friends is like having a healer in your team.'},
-    {id:'v20',word:'enrich',pos:'v.',zh:'丰富；充实',example:'Extracurricular activities <b>enrich</b> your school life — they add new skills to your skill tree.'}
+    {id:'v1',word:'adapt',pos:'v.',zh:'适应',example:'In Minecraft, you must <b>adapt</b> to each new biome — just like adapting to each new subject in high school.'},
+    {id:'v2',word:'challenge',pos:'n.',zh:'挑战',example:'Every night in Survival mode brings a new <b>challenge</b> — creepers, skeletons, and difficult exams.'},
+    {id:'v3',word:'pressure',pos:'n.',zh:'压力',example:'Too much <b>pressure</b> is like your hunger bar dropping to zero — you need to find food fast.'},
+    {id:'v4',word:'balance',pos:'v./n.',zh:'平衡；均衡',example:'A smart player <b>balances</b> mining and building — just like balancing study and rest.'},
+    {id:'v5',word:'schedule',pos:'n.',zh:'日程表',example:'Your daily <b>schedule</b> is like a to-do list on a signpost — it guides your day.'},
+    {id:'v6',word:'independent',pos:'adj.',zh:'独立的',example:'In a single-player world, you must be completely <b>independent</b> — nobody else will gather wood for you.'},
+    {id:'v7',word:'confident',pos:'adj.',zh:'自信的',example:'After crafting your first diamond sword, you feel <b>confident</b> enough to explore any cave.'},
+    {id:'v8',word:'goal',pos:'n.',zh:'目标',example:'My main <b>goal</b> this term is to defeat the Ender Dragon — I mean, to master English grammar.'},
+    {id:'v9',word:'method',pos:'n.',zh:'方法',example:'Finding a good learning <b>method</b> is like discovering the best way to find ancient debris — it takes practice.'},
+    {id:'v10',word:'attitude',pos:'n.',zh:'态度',example:'A positive <b>attitude</b> is your strongest enchantment — it protects you from frustration.'},
+    {id:'v11',word:'communicate',pos:'v.',zh:'交流',example:'On multiplayer servers, you must <b>communicate</b> with teammates to build something amazing together.'},
+    {id:'v12',word:'nervous',pos:'adj.',zh:'紧张的',example:'I always get <b>nervous</b> before a big exam, just like before exploring a stronghold for the first time.'},
+    {id:'v13',word:'benefit',pos:'n./v.',zh:'益处；得益于',example:'Joining a club <b>benefits</b> you like a beacon gives you extra powers — speed, strength, and new friends.'},
+    {id:'v14',word:'opportunity',pos:'n.',zh:'机会',example:'Every competition is an <b>opportunity</b> — like finding a woodland mansion on your map.'},
+    {id:'v15',word:'volunteer',pos:'n./v.',zh:'志愿者；自愿做',example:'When you <b>volunteer</b> to help, it\'s like choosing to defend a village from a raid — noble and brave.'},
+    {id:'v16',word:'organize',pos:'v.',zh:'组织',example:'<b>Organize</b> your notes like a well-sorted chest room — everything in its right place.'},
+    {id:'v17',word:'manage',pos:'v.',zh:'管理；设法做成',example:'Can you <b>manage</b> your time like you manage your inventory? Full but never wasted.'},
+    {id:'v18',word:'reduce',pos:'v.',zh:'减少',example:'Listening to Minecraft music can <b>reduce</b> stress — it\'s like drinking a potion of healing.'},
+    {id:'v19',word:'support',pos:'n./v.',zh:'支持',example:'The <b>support</b> from friends is like an iron golem protecting your village — strong and reliable.'},
+    {id:'v20',word:'enrich',pos:'v.',zh:'丰富；充实',example:'Extracurricular activities <b>enrich</b> your life — they add new recipes to your crafting book.'}
 ];
 
 const choiceQuestions = [
-    {stem:'To <span class="quiz-blank">______</span> to the new school life faster, you should explore it like a new game map.',options:['A. adapt','B. adopt','C. adjust','D. admire'],answer:0,exp:'<strong>解析：</strong><strong>adapt to</strong> = 适应。adopt=采纳/adjust=调整(不与to连用)/admire=钦佩。<br>就像进入新游戏地图，你需要时间<strong>适应</strong>。'},
-    {stem:'Every difficult subject is a <span class="quiz-blank">______</span> — beat it and you level up!',options:['A. schedule','B. pressure','C. balance','D. challenge'],answer:3,exp:'<strong>解析：</strong>每门难课都是一个<strong>challenge</strong>（挑战），就像游戏里的Boss战。<br>schedule=日程表/pressure=压力/balance=平衡。'},
-    {stem:'A good player knows how to <span class="quiz-blank">______</span> attack and defense — just like study and rest.',options:['A. manage','B. reduce','C. balance','D. enrich'],answer:2,exp:'<strong>解析：</strong><strong>balance</strong> A and B = 在A和B之间保持平衡。<br>manage=管理/reduce=减少/enrich=丰富。'},
-    {stem:'Your daily study plan is like a quest log — a clear <span class="quiz-blank">______</span> tells you what to do next.',options:['A. goal','B. method','C. pressure','D. schedule'],answer:3,exp:'<strong>解析：</strong>清晰的<strong>schedule</strong>（日程表）就像任务日志。<br>goal=目标/method=方法/pressure=压力。'},
-    {stem:'In high school, you become more <span class="quiz-blank">______</span> — like a character who no longer needs tutorials.',options:['A. nervous','B. independent','C. confident','D. active'],answer:1,exp:'<strong>解析：</strong>变得更<strong>independent</strong>（独立），就像不需要新手教程的角色。<br>nervous=紧张的/confident=自信的/active=积极的。'},
-    {stem:'The <span class="quiz-blank">______</span> from teammates is like having a healer in your party.',options:['A. pressure','B. challenge','C. support','D. schedule'],answer:2,exp:'<strong>解析：</strong>来自朋友的<strong>support</strong>（支持）就像队伍里有治疗。<br>pressure=压力/challenge=挑战/schedule=日程表。'},
-    {stem:'A positive <span class="quiz-blank">______</span> is your strongest weapon — in games and in real life.',options:['A. attitude','B. method','C. goal','D. schedule'],answer:0,exp:'<strong>解析：</strong>积极的<strong>attitude</strong>（态度）是最强武器。<br>method=方法/goal=目标/schedule=日程表。'},
-    {stem:'Joining a club can <span class="quiz-blank">______</span> your school experience — like unlocking a new skill tree.',options:['A. reduce','B. enrich','C. manage','D. balance'],answer:1,exp:'<strong>解析：</strong>社团活动能<strong>enrich</strong>（丰富）校园经历。<br>reduce=减少/manage=管理/balance=平衡。'},
-    {stem:'Before a big exam, I feel <span class="quiz-blank">______</span> — just like before a ranked match.',options:['A. confident','B. independent','C. nervous','D. active'],answer:2,exp:'<strong>解析：</strong>大考前感到<strong>nervous</strong>（紧张），就像排位赛前。<br>confident=自信的/independent=独立的/active=积极的。'},
-    {stem:'Listening to music can <span class="quiz-blank">______</span> stress — like drinking a healing potion.',options:['A. enrich','B. balance','C. manage','D. reduce'],answer:3,exp:'<strong>解析：</strong>听音乐能<strong>reduce</strong>（减少）压力。<br>enrich=丰富/balance=平衡/manage=管理。'}
+    {stem:'In Minecraft, you must <span class="quiz-blank">______</span> to each new biome. High school is the same — every subject is a new world.',options:['A. adapt','B. adopt','C. adjust','D. admire'],answer:0,exp:'<strong>解析：</strong><strong>adapt to</strong> = 适应。就像进入新生物群系，你需要适应新环境。<br>adopt=采纳/adjust=调整(不与to连用)/admire=钦佩。'},
+    {stem:'Every night in Survival mode is a <span class="quiz-blank">______</span> — just like every difficult exam.',options:['A. schedule','B. pressure','C. balance','D. challenge'],answer:3,exp:'<strong>解析：</strong>每个生存模式的夜晚都是一场<strong>challenge</strong>（挑战）。<br>schedule=日程表/pressure=压力/balance=平衡。'},
+    {stem:'A smart player <span class="quiz-blank">______</span> mining and building — you need both to survive and thrive.',options:['A. manages','B. reduces','C. balances','D. enriches'],answer:2,exp:'<strong>解析：</strong><strong>balance</strong> A and B = 平衡挖矿和建造。<br>manage=管理/reduce=减少/enrich=丰富。'},
+    {stem:'Your daily <span class="quiz-blank">______</span> is like a signpost in your base — it tells you what to do today.',options:['A. goal','B. method','C. pressure','D. schedule'],answer:3,exp:'<strong>解析：</strong>每日<strong>schedule</strong>（日程表）就像基地里的告示牌。<br>goal=目标/method=方法/pressure=压力。'},
+    {stem:'In single-player, you must be <span class="quiz-blank">______</span> — nobody will mine iron for you.',options:['A. nervous','B. independent','C. confident','D. active'],answer:1,exp:'<strong>解析：</strong>单人模式下必须<strong>independent</strong>（独立）。<br>nervous=紧张的/confident=自信的/active=积极的。'},
+    {stem:'Friends\' <span class="quiz-blank">______</span> is like an iron golem — it protects you when things get hard.',options:['A. pressure','B. challenge','C. support','D. schedule'],answer:2,exp:'<strong>解析：</strong>朋友的<strong>support</strong>（支持）就像铁傀儡保护村庄。<br>pressure=压力/challenge=挑战/schedule=日程表。'},
+    {stem:'A positive <span class="quiz-blank">______</span> is like a Protection IV enchantment — it shields you from negativity.',options:['A. attitude','B. method','C. goal','D. schedule'],answer:0,exp:'<strong>解析：</strong>积极<strong>attitude</strong>（态度）= 保护IV附魔。<br>method=方法/goal=目标/schedule=日程表。'},
+    {stem:'Joining clubs can <span class="quiz-blank">______</span> your school life — like adding new recipes to your crafting table.',options:['A. reduce','B. enrich','C. manage','D. balance'],answer:1,exp:'<strong>解析：</strong>社团<strong>enrich</strong>（丰富）校园生活。<br>reduce=减少/manage=管理/balance=平衡。'},
+    {stem:'Before a big exam, I feel <span class="quiz-blank">______</span> — like entering a stronghold for the first time.',options:['A. confident','B. independent','C. nervous','D. active'],answer:2,exp:'<strong>解析：</strong>大考前感到<strong>nervous</strong>（紧张），像第一次进要塞。<br>confident=自信的/independent=独立的/active=积极的。'},
+    {stem:'Calm music can <span class="quiz-blank">______</span> stress — like drinking a potion of healing in battle.',options:['A. enrich','B. balance','C. manage','D. reduce'],answer:3,exp:'<strong>解析：</strong>平静的音乐能<strong>reduce</strong>（减少）压力，像喝下治疗药水。<br>enrich=丰富/balance=平衡/manage=管理。'}
 ];
 
 const sentenceAnalysis = [
@@ -359,7 +368,6 @@ const sentencePractice = [
 
 // ==================== 词汇知识库 ====================
 const allKnownWords = {
-    // Day 1 词汇
     'freshman':{zh:'新生',pos:'n.',day:1},
     'impression':{zh:'印象',pos:'n.',day:1},
     'curious':{zh:'好奇的',pos:'adj.',day:1},
@@ -380,7 +388,6 @@ const allKnownWords = {
     'experience':{zh:'经历；体验',pos:'n./v.',day:1},
     'gradually':{zh:'逐渐地',pos:'adv.',day:1},
     'realize':{zh:'意识到',pos:'v.',day:1},
-    // Day 2 词汇
     'adapt':{zh:'适应',pos:'v.',day:2},
     'challenge':{zh:'挑战',pos:'n.',day:2},
     'pressure':{zh:'压力',pos:'n.',day:2},
@@ -401,18 +408,16 @@ const allKnownWords = {
     'enrich':{zh:'丰富；充实',pos:'v.',day:2}
 };
 
-// Day 2 新词
 const day2NewWords = ['adapt','challenge','pressure','balance','schedule','independent','goal','method','attitude','communicate','benefit','opportunity','volunteer','organize','manage','reduce','support','enrich','nervous','confident'];
-// 注：nervous 和 confident 在 Day 1 也出现过，这里以 Day 2 为准（标蓝），实际逻辑可按需调整
 
-const readingText = `Starting high school feels like entering a brand-new game world. Every <span class="old-word" data-word="freshman" title="新生 (n.) · Day 1">freshman</span> is a new player, and the first <span class="old-word" data-word="impression" title="印象 (n.) · Day 1">impression</span> you make is like your character\'s introduction. At first, many students feel <span class="new-word" data-word="nervous" title="紧张的 (adj.) · 今日新词">nervous</span> — just like before a boss fight.<br><br>But here is the secret: every game has a learning curve. You need to <span class="new-word" data-word="adapt" title="适应 (v.) · 今日新词">adapt</span> to the new rules, and every difficult subject is just a <span class="new-word" data-word="challenge" title="挑战 (n.) · 今日新词">challenge</span> waiting to be beaten. Too much <span class="new-word" data-word="pressure" title="压力 (n.) · 今日新词">pressure</span> is like your health bar dropping too fast — you must learn to <span class="new-word" data-word="balance" title="平衡 (v.) · 今日新词">balance</span> study and rest. A clear <span class="new-word" data-word="schedule" title="日程表 (n.) · 今日新词">schedule</span> works like a quest log, guiding you through each day.<br><br>As you level up, you become more <span class="new-word" data-word="independent" title="独立的 (adj.) · 今日新词">independent</span> and <span class="new-word" data-word="confident" title="自信的 (adj.) · 今日新词">confident</span>. You find your own learning <span class="new-word" data-word="method" title="方法 (n.) · 今日新词">method</span> — the best strategy for each subject. A positive <span class="new-word" data-word="attitude" title="态度 (n.) · 今日新词">attitude</span> is your strongest weapon. When you <span class="new-word" data-word="communicate" title="交流 (v.) · 今日新词">communicate</span> with teammates, the game becomes easier. Joining clubs brings great <span class="new-word" data-word="benefit" title="益处 (n.) · 今日新词">benefit</span> — like unlocking side quests that <span class="new-word" data-word="enrich" title="丰富 (v.) · 今日新词">enrich</span> your adventure. The <span class="new-word" data-word="support" title="支持 (n.) · 今日新词">support</span> from friends is like having a healer in your party.<br><br>As Link learned in <i>The Legend of Zelda</i>, "It's dangerous to go alone." High school is the same — with the right team and a clear <span class="new-word" data-word="goal" title="目标 (n.) · 今日新词">goal</span>, every <span class="new-word" data-word="challenge" title="挑战 (n.) · 今日新词">challenge</span> becomes an <span class="new-word" data-word="opportunity" title="机会 (n.) · 今日新词">opportunity</span> to grow stronger.`;
+const readingText = 'Starting high school feels like spawning into a brand-new Minecraft world. As a <span class="old-word" data-word="freshman" title="新生 (n.) · Day 1">freshman</span>, you are like a new player on Day 1 — the first <span class="old-word" data-word="impression" title="印象 (n.) · Day 1">impression</span> you make is like the first house you build. Many students feel <span class="new-word" data-word="nervous" title="紧张的 (adj.) · 今日新词">nervous</span> at the start — just like the first night without a shelter.<br><br>But here is the secret of Minecraft: you don\'t need to defeat the Ender Dragon on Day 1. You must <span class="new-word" data-word="adapt" title="适应 (v.) · 今日新词">adapt</span> to the environment first — punch trees, craft basic tools. Every difficult subject is a new <span class="new-word" data-word="challenge" title="挑战 (n.) · 今日新词">challenge</span>, like a new biome with its own rules. Too much <span class="new-word" data-word="pressure" title="压力 (n.) · 今日新词">pressure</span> drains your hunger bar — learn to <span class="new-word" data-word="balance" title="平衡 (v.) · 今日新词">balance</span> mining and resting. A clear <span class="new-word" data-word="schedule" title="日程表 (n.) · 今日新词">schedule</span> is like a signpost guiding your daily tasks.<br><br>As you keep playing, you become more <span class="new-word" data-word="independent" title="独立的 (adj.) · 今日新词">independent</span> and <span class="new-word" data-word="confident" title="自信的 (adj.) · 今日新词">confident</span>. You discover your own learning <span class="new-word" data-word="method" title="方法 (n.) · 今日新词">method</span> — whether it\'s strip-mining or exploring caves. A positive <span class="new-word" data-word="attitude" title="态度 (n.) · 今日新词">attitude</span> is like an enchantment that protects your spirit. When you <span class="new-word" data-word="communicate" title="交流 (v.) · 今日新词">communicate</span> with friends on a server, building something together, you see the <span class="new-word" data-word="benefit" title="益处 (n.) · 今日新词">benefit</span> of teamwork. Every club you join is a side quest that <span class="new-word" data-word="enrich" title="丰富 (v.) · 今日新词">enriches</span> your adventure. The <span class="new-word" data-word="support" title="支持 (n.) · 今日新词">support</span> from your "iron golem" friends keeps your village safe.<br><br>As the Minecraft motto goes, the universe is yours to shape. High school is the same — with the right tools and a clear <span class="new-word" data-word="goal" title="目标 (n.) · 今日新词">goal</span>, every <span class="new-word" data-word="challenge" title="挑战 (n.) · 今日新词">challenge</span> becomes an <span class="new-word" data-word="opportunity" title="机会 (n.) · 今日新词">opportunity</span> to craft something great.';
 
 const readingQuestions = [
-    {type:'主旨大意',q:'What is the passage mainly about?',options:['A. How to play video games.','B. Adapting to high school, compared to a game.','C. The history of Zelda.','D. How to get good grades easily.'],answer:1,exp:'<strong>解析：</strong>全文用游戏比喻高中适应过程。B 最准确。A/C 偏离主题，D 过于片面。'},
-    {type:'细节理解',q:'According to the passage, what is a "quest log" compared to?',options:['A. A video game console.','B. A daily schedule.','C. A health bar.','D. A boss fight.'],answer:1,exp:'<strong>解析：</strong>文中明确说"A clear schedule works like a quest log"。schedule = 日程表 = 任务日志。'},
-    {type:'词义猜测',q:'The word "enrich" in the passage means:',options:['A. make simpler','B. make richer and more meaningful','C. make faster','D. make harder'],answer:1,exp:'<strong>解析：</strong>enrich = 使丰富/充实。社团活动"丰富"你的校园冒险。'},
-    {type:'推理判断',q:'Why does the writer mention "a healer in your party"?',options:['A. To talk about medical treatment.','B. To explain that friends\' support is like healing in games.','C. To suggest playing more games.','D. To discuss game characters.'],answer:1,exp:'<strong>解析：</strong>用游戏比喻说明：朋友的支持就像队伍里有治疗角色，帮你恢复。'},
-    {type:'作者态度',q:'What does the writer think about high school challenges?',options:['A. They are impossible to overcome.','B. They are opportunities to grow.','C. They should be avoided.','D. They are meaningless.'],answer:1,exp:'<strong>解析：</strong>最后一句点题：every challenge becomes an opportunity to grow stronger。态度积极。'}
+    {type:'主旨大意',q:'What is the passage mainly about?',options:['A. How to play Minecraft.','B. Adapting to high school, compared to Minecraft gameplay.','C. How to defeat the Ender Dragon.','D. Minecraft building tips.'],answer:1,exp:'<strong>解析：</strong>全文用 Minecraft 比喻高中适应过程。B 最准确。'},
+    {type:'细节理解',q:'In the passage, what is a "signpost" compared to?',options:['A. A Minecraft server.','B. A daily schedule.','C. An iron golem.','D. A crafting table.'],answer:1,exp:'<strong>解析：</strong>文中说"A clear schedule is like a signpost guiding your daily tasks"。schedule = 日程表。'},
+    {type:'词义猜测',q:'The word "enrich" in the passage means:',options:['A. make simpler','B. make richer and more meaningful','C. make faster','D. destroy'],answer:1,exp:'<strong>解析：</strong>enrich = 丰富/充实。社团活动像支线任务，丰富你的冒险。'},
+    {type:'推理判断',q:'Why does the writer mention "iron golem" in the passage?',options:['A. To talk about village defense.','B. To compare friends\' support to a protector.','C. To suggest playing Minecraft more.','D. To discuss iron farming.'],answer:1,exp:'<strong>解析：</strong>铁傀儡在 Minecraft 中保护村民，比喻朋友的支持保护你。'},
+    {type:'作者态度',q:'What does the writer think about the challenges of high school?',options:['A. They are impossible.','B. They are opportunities to grow, like in Minecraft.','C. They should be ignored.','D. They are less important than gaming.'],answer:1,exp:'<strong>解析：</strong>最后一句：every challenge becomes an opportunity to craft something great。态度积极。'}
 ];
 
 // ==================== 语音 ====================
@@ -467,7 +472,6 @@ function showToast(msg){
     clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2000);
 }
 
-// ==================== Tab ====================
 function switchTab(name){
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
@@ -480,7 +484,6 @@ function switchTab(name){
     }
 }
 
-// ==================== 生词本 ====================
 function toggleWordbook(){
     if(!wordbook.length){showToast('📒 生词本为空');return;}
     const words=wordbook.map(id=>vocabulary.find(v=>v.id===id)).filter(Boolean);
@@ -493,7 +496,6 @@ function toggleSave(id,el){
     saveState();updateProgress();
 }
 
-// ==================== 渲染 ====================
 function renderVocab(){
     const c=document.getElementById('vocab-list');if(!c)return;
     c.innerHTML=vocabulary.map(v=>`
@@ -606,13 +608,12 @@ function resetSentences(){
     document.querySelectorAll('#sentence-content .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});
 }
 
-// ==================== 阅读 ====================
 function showWordTip(word){
     const info = allKnownWords[word];
     if(!info)return;
     const isNew = day2NewWords.includes(word);
     const tooltip = document.getElementById('word-tooltip');
-    tooltip.innerHTML = `<span class="tip-word">${word}</span> <span class="tip-pos">[${info.pos}]</span> <span class="tip-zh">${info.zh}</span> <span class="tip-from">${isNew ? '🆕 今日新词' : '📚 来自 Day '+info.day}</span>`;
+    tooltip.innerHTML = '<span class="tip-word">'+word+'</span> <span class="tip-pos">['+info.pos+']</span> <span class="tip-zh">'+info.zh+'</span> <span class="tip-from">'+(isNew ? '🆕 今日新词' : '📚 来自 Day '+info.day)+'</span>';
     tooltip.classList.add('show');
 }
 
@@ -678,7 +679,7 @@ function showScorePopup(correct,total){
     const score=Math.round(correct/total*100);
     document.getElementById('score-big').textContent=score+'%';
     document.getElementById('score-total').textContent=correct+' / '+total+' 正确';
-    document.getElementById('score-msg').textContent=score>=80?'Level Up! 🎮':score>=60?'Good progress! 💪':'查看解析，再试一次！📚';
+    document.getElementById('score-msg').textContent=score>=80?'Achievement Unlocked! ⛏️':score>=60?'Keep crafting! 💪':'查看解析，再试一次！📚';
     document.getElementById('score-stars').textContent=score>=90?'⭐⭐⭐⭐⭐':score>=80?'⭐⭐⭐⭐':score>=60?'⭐⭐⭐':score>=40?'⭐⭐':'⭐';
     document.getElementById('score-overlay').classList.add('show');
     setTimeout(()=>document.getElementById('score-overlay').classList.remove('show'),3000);
