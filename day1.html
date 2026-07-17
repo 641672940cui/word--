@@ -79,6 +79,7 @@
         .card-title{font-size:1.1rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
         .card-subtitle{font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;}
 
+        /* 词汇卡片 */
         .word-card{
             background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);
             padding:16px;margin-bottom:12px;transition:all 0.2s;
@@ -107,10 +108,75 @@
         .icon-btn:hover{background:#F3F4F6;border-color:#D1D5DB;}
         .icon-btn.saved{background:#FEF3C7;border-color:var(--warning);color:var(--warning);}
 
+        /* 选择题网格 */
+        .choice-grid{
+            display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;
+        }
+        .choice-card{
+            background:#FAFAFA;border:2px solid #E5E7EB;border-radius:var(--radius-sm);
+            padding:14px;cursor:pointer;transition:all 0.15s;text-align:center;
+        }
+        .choice-card:hover{border-color:#BFC7FF;background:#F8F9FF;}
+        .choice-card.selected{border-color:var(--primary);background:var(--primary-light);}
+        .choice-card.correct{border-color:var(--success);background:#ECFDF5;}
+        .choice-card.wrong{border-color:var(--danger);background:#FEF2F2;}
+        .choice-card .word-en{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+        .choice-card .word-num{font-size:0.7rem;color:var(--text-secondary);}
+        .choice-card .choice-options{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;}
+        .choice-card .mini-opt{
+            padding:4px 10px;border-radius:12px;font-size:0.78rem;cursor:pointer;
+            border:1.5px solid #E5E7EB;background:white;transition:all 0.12s;
+        }
+        .choice-card .mini-opt:hover{border-color:var(--primary);background:var(--primary-light);}
+        .choice-card .mini-opt.chosen{border-color:var(--primary);background:var(--primary);color:white;font-weight:600;}
+        .choice-card .mini-opt.right{border-color:var(--success);background:var(--success);color:white;}
+        .choice-card .mini-opt.wrong-chosen{border-color:var(--danger);background:var(--danger);color:white;}
+        .choice-card .mini-fb{font-size:0.75rem;margin-top:6px;min-height:18px;}
+
+        /* 长难句 */
+        .sentence-box{
+            background:#FFFBEB;border-left:4px solid var(--warning);
+            padding:16px 20px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:12px;
+        }
+        .sentence-en{font-weight:600;font-size:1rem;color:#92400E;}
+        .sentence-en b{color:var(--primary);cursor:pointer;}
+        .sentence-zh{font-size:0.88rem;color:#78716C;margin-top:4px;}
+        .analysis-box{
+            background:#F0FDF4;border:1px solid #BBF7D0;
+            border-radius:var(--radius-sm);padding:16px;margin-top:10px;font-size:0.9rem;line-height:1.8;
+        }
+        .hl-sub{background:#DBEAFE;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-verb{background:#FCE7F3;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-obj{background:#D1FAE5;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-clause{background:#FEF3C7;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .practice-label{
+            display:inline-block;background:var(--primary-light);color:var(--primary);
+            padding:4px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;margin-bottom:8px;
+        }
+
+        /* 阅读 */
+        .reading-passage{
+            background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);
+            padding:20px 24px;font-size:1rem;line-height:2;margin-bottom:20px;
+        }
+        .reading-passage .new-word{
+            color:var(--primary);font-weight:700;cursor:pointer;
+            border-bottom:2px dashed var(--primary);padding:0 2px;border-radius:2px;
+        }
+        .reading-passage .new-word:hover{background:var(--primary-light);}
+        .word-tooltip{
+            background:#1F2937;color:white;padding:10px 16px;border-radius:var(--radius-sm);
+            font-size:0.85rem;margin-bottom:16px;display:none;line-height:1.5;
+        }
+        .word-tooltip.show{display:block;}
+        .word-tooltip .tip-word{font-size:1.1rem;font-weight:700;color:#60A5FA;}
+        .word-tooltip .tip-pos{color:#94a3b8;}
+        .word-tooltip .tip-zh{color:#34D399;font-weight:600;}
+
+        /* 阅读选择题 */
         .quiz-item{padding:16px 0;border-bottom:1px solid #F3F4F6;}
         .quiz-item:last-child{border-bottom:none;}
         .quiz-stem{font-weight:500;margin-bottom:10px;line-height:1.6;}
-        .quiz-blank{display:inline-block;border-bottom:2px solid var(--primary);min-width:80px;text-align:center;font-weight:700;color:var(--primary);}
         .quiz-options{display:flex;flex-direction:column;gap:6px;}
         .quiz-option{
             display:flex;align-items:center;gap:10px;padding:10px 14px;
@@ -137,36 +203,6 @@
         .quiz-feedback.show{display:block;}
         .quiz-feedback.ok{background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;}
         .quiz-feedback.err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;}
-
-        .sentence-box{
-            background:#FFFBEB;border-left:4px solid var(--warning);
-            padding:16px 20px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:12px;
-        }
-        .sentence-en{font-weight:600;font-size:1rem;color:#92400E;}
-        .sentence-en b{color:var(--primary);cursor:pointer;}
-        .sentence-zh{font-size:0.88rem;color:#78716C;margin-top:4px;}
-        .analysis-box{
-            background:#F0FDF4;border:1px solid #BBF7D0;
-            border-radius:var(--radius-sm);padding:16px;margin-top:10px;font-size:0.9rem;line-height:1.8;
-        }
-        .hl-sub{background:#DBEAFE;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .hl-verb{background:#FCE7F3;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .hl-obj{background:#D1FAE5;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .hl-clause{background:#FEF3C7;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .practice-label{
-            display:inline-block;background:var(--primary-light);color:var(--primary);
-            padding:4px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;margin-bottom:8px;
-        }
-
-        .reading-passage{
-            background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);
-            padding:20px 24px;font-size:1rem;line-height:2;margin-bottom:20px;
-        }
-        .reading-passage .new-word{
-            color:var(--primary);font-weight:700;cursor:pointer;
-            border-bottom:2px dashed var(--primary);padding:0 2px;border-radius:2px;
-        }
-        .reading-passage .new-word:hover{background:var(--primary-light);}
 
         .btn{padding:10px 24px;border-radius:8px;border:none;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;margin:4px;}
         .btn-primary{background:var(--primary);color:white;}
@@ -199,6 +235,7 @@
         @media(max-width:600px){
             .card{padding:16px;}
             .tab-btn{font-size:0.7rem;padding:8px 4px;min-width:48px;}
+            .choice-grid{grid-template-columns:1fr;}
         }
     </style>
 </head>
@@ -229,7 +266,7 @@
 
     <div class="tab-nav">
         <button class="tab-btn active" onclick="switchTab('vocab')" id="tab-btn-vocab">📝 词汇</button>
-        <button class="tab-btn" onclick="switchTab('choice')" id="tab-btn-choice">✍️ 语境选择</button>
+        <button class="tab-btn" onclick="switchTab('choice')" id="tab-btn-choice">✍️ 词义选择</button>
         <button class="tab-btn" onclick="switchTab('sentence')" id="tab-btn-sentence">🔍 长难句</button>
         <button class="tab-btn" onclick="switchTab('reading')" id="tab-btn-reading">📖 阅读</button>
     </div>
@@ -241,9 +278,9 @@
     </div></div>
 
     <div class="tab-content" id="tab-choice"><div class="card">
-        <div class="card-title">✍️ 语境选择题 <span style="font-size:0.8rem;color:var(--text-secondary);">(共10题 · 4选1)</span></div>
-        <div class="card-subtitle">选择最合适的单词，提交后查看详细解析。</div>
-        <div id="choice-questions"></div>
+        <div class="card-title">✍️ 词义选择题 <span style="font-size:0.8rem;color:var(--text-secondary);">(共20题 · 20个词汇全覆盖)</span></div>
+        <div class="card-subtitle">为每个单词选出正确的中文释义，点击小标签即可作答。提交后查看结果。</div>
+        <div class="choice-grid" id="choice-grid"></div>
         <div style="margin-top:12px;">
             <button class="btn btn-primary" onclick="checkAllChoices()">✅ 全部检查</button>
             <button class="btn btn-secondary" onclick="resetAllChoices()">🔄 重新作答</button>
@@ -260,6 +297,7 @@
             <div class="card-title">📖 分级阅读 <span style="font-size:0.8rem;color:var(--text-secondary);">(CEFR B1 · 约150词)</span></div>
             <div class="card-subtitle">蓝色虚线下划线为新词，点击可听发音。读完后完成5道选择题。</div>
             <div class="reading-passage" id="reading-passage"></div>
+            <div class="word-tooltip" id="word-tooltip"></div>
         </div>
         <div class="card">
             <div class="card-title">❓ 阅读理解 <span style="font-size:0.8rem;color:var(--text-secondary);">(共5题 · 4选1)</span></div>
@@ -308,18 +346,23 @@ const vocabulary = [
     {id:'v20',word:'realize',pos:'v.',zh:'意识到',example:'I soon <b>realized</b> that making friends takes time.'}
 ];
 
-const choiceQuestions = [
-    {stem:'The new <span class="quiz-blank">______</span> was excited to start her first day of high school.',options:['A. freshman','B. impression','C. experience','D. knowledge'],answer:0,exp:'<strong>解析：</strong>句意是"新______很兴奋地开始了高中的第一天"。<strong>freshman</strong>（新生）最符合。<br>impression=印象 · experience=经历 · knowledge=知识'},
-    {stem:'First <span class="quiz-blank">______</span> matters a lot in a new environment.',options:['A. courage','B. impression','C. struggle','D. freshman'],answer:1,exp:'<strong>解析：</strong>固定搭配 <strong>first impression</strong>（第一印象）。<br>courage=勇气 · struggle=奋斗 · freshman=新生'},
-    {stem:'Children are naturally <span class="quiz-blank">______</span> about the world around them.',options:['A. nervous','B. confident','C. curious','D. active'],answer:2,exp:'<strong>解析：</strong><strong>curious</strong>（好奇的）最符合儿童天性。<br>nervous=紧张的 · confident=自信的 · active=积极的'},
-    {stem:'Let\'s <span class="quiz-blank">______</span> the library to see what books they have.',options:['A. require','B. prepare','C. develop','D. explore'],answer:3,exp:'<strong>解析：</strong><strong>explore</strong>（探索）最符合语境。<br>require=需要 · prepare=准备 · develop=培养'},
-    {stem:'It\'s normal to feel <span class="quiz-blank">______</span> before a big event.',options:['A. curious','B. familiar','C. nervous','D. active'],answer:2,exp:'<strong>解析：</strong>在重大事件前感到<strong>nervous</strong>（紧张的）是正常的。<br>curious=好奇的 · familiar=熟悉的 · active=积极的'},
-    {stem:'She showed great <span class="quiz-blank">______</span> by asking questions in front of the whole class.',options:['A. impression','B. knowledge','C. experience','D. courage'],answer:3,exp:'<strong>解析：</strong>在全班面前提问需要<strong>courage</strong>（勇气）。<br>impression=印象 · knowledge=知识 · experience=经历'},
-    {stem:'The campus soon became <span class="quiz-blank">______</span> to all the new students.',options:['A. familiar','B. nervous','C. confident','D. curious'],answer:0,exp:'<strong>解析：</strong>become <strong>familiar</strong> to = 变得熟悉。<br>nervous=紧张的 · confident=自信的 · curious=好奇的'},
-    {stem:'This subject <span class="quiz-blank">______</span> a lot of reading and writing.',options:['A. expects','B. encourages','C. requires','D. explores'],answer:2,exp:'<strong>解析：</strong><strong>requires</strong>（需要/要求）大量阅读和写作。<br>expects=期待 · encourages=鼓励 · explores=探索'},
-    {stem:'My friends always <span class="quiz-blank">______</span> me when I feel down.',options:['A. require','B. struggle','C. realize','D. encourage'],answer:3,exp:'<strong>解析：</strong>朋友在我低落时<strong>encourage</strong>（鼓励）我。<br>require=需要 · struggle=挣扎 · realize=意识到'},
-    {stem:'I soon <span class="quiz-blank">______</span> that making friends takes time.',options:['A. realized','B. required','C. explored','D. developed'],answer:0,exp:'<strong>解析：</strong>我很快<strong>realized</strong>（意识到）交朋友需要时间。<br>required=需要 · explored=探索 · developed=培养'}
-];
+// 为每个词汇生成干扰选项（从其他词汇中随机取3个不重复的）
+function generateChoiceOptions(correctWord){
+    const others = vocabulary.filter(v=>v.word!==correctWord.word);
+    // 随机打乱取3个
+    const shuffled = others.sort(()=>Math.random()-0.5);
+    const distractors = shuffled.slice(0,3).map(v=>v.zh);
+    const options = [...distractors, correctWord.zh];
+    return options.sort(()=>Math.random()-0.5); // 随机排列
+}
+
+// 预生成所有选项（保证一致性）
+const choiceData = vocabulary.map(v=>({
+    id:v.id,
+    word:v.word,
+    correctZh:v.zh,
+    options:generateChoiceOptions(v)
+}));
 
 const sentenceAnalysis = [
     {en:'The first <b>impression</b> that you make on your classmates can last for a long time.',zh:'你给同学们留下的第一印象会持续很长时间。',analysis:'<strong>📌 结构拆解：</strong><br><strong>主干：</strong><span class="hl-sub">The first impression</span> <span class="hl-verb">can last</span> for a long time.<br><strong>定语从句：</strong><span class="hl-clause">that you make on your classmates</span>（修饰 impression）<br><strong>语法点：</strong>关系代词 <strong>that</strong> 引导<strong>定语从句</strong>。'},
@@ -328,22 +371,25 @@ const sentenceAnalysis = [
 
 const sentencePractice = [
     {type:'成分选择',q:'下面句子中，<b>定语从句</b>修饰的是哪个部分？',sentence:'The first impression that you make on your classmates can last for a long time.',options:['A. The first impression','B. can last','C. for a long time','D. you make'],answer:0,exp:'<strong>✅ 正确！</strong>定语从句修饰先行词 <strong>The first impression</strong>。'},
-    {type:'翻译选择',q:'选出下面句子的<b>最佳翻译</b>：',sentence:'I soon realized that high school life requires much more independence.',options:['A. 我很快意识到，高中生活需要更多的独立。','B. 高中生活需要独立，我意识到了。','C. 我意识到高中生活很快需要更多独立。','D. 很快我就需要更独立的高中生活。'],answer:0,exp:'<strong>✅ 正确！</strong>A 准确翻译了主句和宾语从句。B 颠倒了语序，C/D 误解了 soon 和 requires 的逻辑。'}
+    {type:'翻译选择',q:'选出下面句子的<b>最佳翻译</b>：',sentence:'I soon realized that high school life requires much more independence.',options:['A. 我很快意识到，高中生活需要更多的独立。','B. 高中生活需要独立，我意识到了。','C. 我意识到高中生活很快需要更多独立。','D. 很快我就需要更独立的高中生活。'],answer:0,exp:'<strong>✅ 正确！</strong>A 准确翻译了主句和宾语从句。'}
 ];
 
-const readingText = 'Starting high school is a big step for every <span class="new-word" data-word="freshman" title="新生 (n.) · 点击听发音">freshman</span>. The first <span class="new-word" data-word="impression" title="印象 (n.) · 点击听发音">impression</span> you leave on others is important, so many students feel <span class="new-word" data-word="nervous" title="紧张的 (adj.) · 点击听发音">nervous</span> on the first day. I was <span class="new-word" data-word="curious" title="好奇的 (adj.) · 点击听发音">curious</span> about everything—the new teachers, the bigger campus, and the different subjects.<br><br>At first, it took <span class="new-word" data-word="courage" title="勇气 (n.) · 点击听发音">courage</span> to talk to strangers. But with the help of my teachers, who always <span class="new-word" data-word="encourage" title="鼓励 (v.) · 点击听发音">encourage</span> us to be <span class="new-word" data-word="active" title="积极的 (adj.) · 点击听发音">active</span> in class, I <span class="new-word" data-word="gradually" title="逐渐地 (adv.) · 点击听发音">gradually</span> became more <span class="new-word" data-word="confident" title="自信的 (adj.) · 点击听发音">confident</span>. I also <span class="new-word" data-word="realize" title="意识到 (v.) · 点击听发音">realized</span> that this new life <span class="new-word" data-word="require" title="要求 (v.) · 点击听发音">requires</span> me to <span class="new-word" data-word="prepare" title="准备 (v.) · 点击听发音">prepare</span> better and <span class="new-word" data-word="develop" title="培养 (v.) · 点击听发音">develop</span> good habits.<br><br>Now I see high school as a valuable <span class="new-word" data-word="experience" title="经历 (n.) · 点击听发音">experience</span> full of <span class="new-word" data-word="knowledge" title="知识 (n.) · 点击听发音">knowledge</span> and growth. Every day I <span class="new-word" data-word="improve" title="提高 (v.) · 点击听发音">improve</span> a little, and that makes me happy.';
+const readingText = 'Starting high school is a big step for every <span class="new-word" data-word="freshman" title="新生 (n.)">freshman</span>. The first <span class="new-word" data-word="impression" title="印象 (n.)">impression</span> you leave on others is important, so many students feel <span class="new-word" data-word="nervous" title="紧张的 (adj.)">nervous</span> on the first day. I was <span class="new-word" data-word="curious" title="好奇的 (adj.)">curious</span> about everything.<br><br>At first, it took <span class="new-word" data-word="courage" title="勇气 (n.)">courage</span> to talk to strangers. But my teachers <span class="new-word" data-word="encourage" title="鼓励 (v.)">encourage</span> us to be <span class="new-word" data-word="active" title="积极的 (adj.)">active</span> in class. I <span class="new-word" data-word="gradually" title="逐渐地 (adv.)">gradually</span> became more <span class="new-word" data-word="confident" title="自信的 (adj.)">confident</span>. I also <span class="new-word" data-word="realize" title="意识到 (v.)">realized</span> that this new life <span class="new-word" data-word="require" title="要求 (v.)">requires</span> me to <span class="new-word" data-word="prepare" title="准备 (v.)">prepare</span> better and <span class="new-word" data-word="develop" title="培养 (v.)">develop</span> good habits.<br><br>Now I see high school as a valuable <span class="new-word" data-word="experience" title="经历 (n.)">experience</span> full of <span class="new-word" data-word="knowledge" title="知识 (n.)">knowledge</span> and growth. Every day I <span class="new-word" data-word="improve" title="提高 (v.)">improve</span> a little, and that makes me happy.';
 
 const readingQuestions = [
-    {type:'主旨大意',q:'What is the passage mainly about?',options:['A. How to make friends.','B. The writer\'s experience of adapting to high school.','C. The importance of good grades.','D. Different subjects.'],answer:1,exp:'<strong>解析：</strong>全文围绕作者如何逐渐适应高中生活展开。B 最准确。A/C/D 只是细节。'},
-    {type:'细节理解',q:'How did the writer feel on the first day?',options:['A. Confident and active.','B. Curious and nervous.','C. Familiar and relaxed.','D. Proud and excited.'],answer:1,exp:'<strong>解析：</strong>根据第一段"curious about everything"和"feel nervous"，作者既好奇又紧张。'},
-    {type:'词义猜测',q:'The word "gradually" is closest in meaning to:',options:['A. Suddenly','B. Quickly','C. Little by little','D. Finally'],answer:2,exp:'<strong>解析：</strong>gradually = 逐渐地，与 little by little 同义。suddenly=突然 · quickly=快速 · finally=最终。'},
-    {type:'推理判断',q:'What helped the writer become more confident?',options:['A. Getting good grades.','B. Exploring the campus.','C. Teachers\' encouragement and being active.','D. Making many friends.'],answer:2,exp:'<strong>解析：</strong>第二段明确提到"teachers...encourage us to be active...became more confident"。'},
-    {type:'作者态度',q:'The writer\'s attitude at the end is:',options:['A. Worried','B. Negative','C. Positive','D. Uncertain'],answer:2,exp:'<strong>解析：</strong>最后一段"a valuable experience""makes me happy"表明积极态度。'}
+    {type:'主旨大意',q:'What is the passage mainly about?',options:['A. How to make friends.','B. The writer\'s experience of adapting to high school.','C. The importance of good grades.','D. Different subjects.'],answer:1,exp:'<strong>解析：</strong>全文围绕作者如何逐渐适应高中生活展开。B 最准确。'},
+    {type:'细节理解',q:'How did the writer feel on the first day?',options:['A. Confident and active.','B. Curious and nervous.','C. Familiar and relaxed.','D. Proud and excited.'],answer:1,exp:'<strong>解析：</strong>根据"curious about everything"和"feel nervous"，作者既好奇又紧张。'},
+    {type:'词义猜测',q:'"gradually" is closest in meaning to:',options:['A. Suddenly','B. Quickly','C. Little by little','D. Finally'],answer:2,exp:'<strong>解析：</strong>gradually = 逐渐地，与 little by little 同义。'},
+    {type:'推理判断',q:'What helped the writer become more confident?',options:['A. Getting good grades.','B. Exploring the campus.','C. Teachers\' encouragement and being active.','D. Making many friends.'],answer:2,exp:'<strong>解析：</strong>文中"teachers...encourage us to be active...became more confident"。'},
+    {type:'作者态度',q:'The writer\'s attitude at the end is:',options:['A. Worried','B. Negative','C. Positive','D. Uncertain'],answer:2,exp:'<strong>解析：</strong>"a valuable experience""makes me happy"表明积极态度。'}
 ];
+
+const allKnownWords = {};
+vocabulary.forEach(v=>{allKnownWords[v.word]={zh:v.zh,pos:v.pos,day:1};});
 
 // ==================== 语音 ====================
 function speakWord(word){
-    if(!('speechSynthesis' in window)){showToast('⚠️ 浏览器不支持语音');return;}
+    if(!('speechSynthesis' in window))return;
     window.speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(word);
     utter.lang = 'en-US';utter.rate = 0.85;utter.pitch = 1;
@@ -358,10 +404,8 @@ function initState(){
     try{
         wordbook = JSON.parse(localStorage.getItem('wordbook_day1')||'[]');
         completedTabs = new Set(JSON.parse(localStorage.getItem('completed_day1')||'[]'));
-    }catch(e){
-        wordbook = []; completedTabs = new Set();
-    }
-    choiceAnswers = new Array(10).fill(null); choiceSubmitted = false;
+    }catch(e){wordbook=[];completedTabs=new Set();}
+    choiceAnswers = new Array(20).fill(null); choiceSubmitted = false;
     readingAnswers = new Array(5).fill(null); readingSubmitted = false;
     sentenceAnswers = new Array(2).fill(null); sentenceSubmitted = false;
 }
@@ -383,31 +427,25 @@ function updateProgress(){
 function markComplete(tab){
     if(!completedTabs.has(tab)){
         completedTabs.add(tab);saveState();updateProgress();
-        const map={vocab:'核心词汇',choice:'语境选择',sentence:'长难句',reading:'分级阅读'};
+        const map={vocab:'核心词汇',choice:'词义选择',sentence:'长难句',reading:'分级阅读'};
         showToast('✅ '+map[tab]+' 已完成！');
     }
 }
 function showToast(msg){
-    const t=document.getElementById('toast');
-    if(!t)return;
+    const t=document.getElementById('toast');if(!t)return;
     t.textContent=msg;t.classList.add('show');
     clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2000);
 }
 
-// ==================== Tab ====================
 function switchTab(name){
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-    const btn=document.getElementById('tab-btn-'+name);
-    const content=document.getElementById('tab-'+name);
+    const btn=document.getElementById('tab-btn-'+name),content=document.getElementById('tab-'+name);
     if(btn)btn.classList.add('active');
     if(content)content.classList.add('active');
-    if(name==='vocab' && !completedTabs.has('vocab')){
-        setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);
-    }
+    if(name==='vocab'&&!completedTabs.has('vocab')){setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);}
 }
 
-// ==================== 生词本 ====================
 function toggleWordbook(){
     if(!wordbook.length){showToast('📒 生词本为空');return;}
     const words=wordbook.map(id=>vocabulary.find(v=>v.id===id)).filter(Boolean);
@@ -420,11 +458,10 @@ function toggleSave(id,el){
     saveState();updateProgress();
 }
 
-// ==================== 渲染 ====================
+// ==================== 渲染词汇 ====================
 function renderVocab(){
-    const container = document.getElementById('vocab-list');
-    if(!container)return;
-    container.innerHTML = vocabulary.map(v=>`
+    const c=document.getElementById('vocab-list');if(!c)return;
+    c.innerHTML=vocabulary.map(v=>`
         <div class="word-card">
             <div class="word-example-sentence">${v.example}</div>
             <div class="word-info-row">
@@ -439,62 +476,79 @@ function renderVocab(){
         </div>`).join('');
 }
 
+// ==================== 渲染词义选择（20题网格） ====================
 function renderChoice(){
-    const container = document.getElementById('choice-questions');
-    if(!container)return;
-    container.innerHTML = choiceQuestions.map((q,i)=>`
-        <div class="quiz-item" id="choice-item-${i}">
-            <div class="quiz-stem">${i+1}. ${q.stem}</div>
-            <div class="quiz-options">${q.options.map((opt,j)=>`
-                <div class="quiz-option" id="choice-opt-${i}-${j}" onclick="selectChoice(${i},${j})">
-                    <span class="quiz-radio">${String.fromCharCode(65+j)}</span>
-                    <span>${opt.substring(3)}</span>
-                </div>`).join('')}</div>
-            <div class="quiz-feedback" id="choice-fb-${i}"></div>
+    const container = document.getElementById('choice-grid');if(!container)return;
+    container.innerHTML = choiceData.map((cd,i)=>`
+        <div class="choice-card" id="choice-card-${i}">
+            <div class="word-en">${cd.word}</div>
+            <div class="word-num">#${i+1}</div>
+            <div class="choice-options">
+                ${cd.options.map((opt,j)=>`
+                <span class="mini-opt" id="mini-${i}-${j}" onclick="selectMini(${i},${j},'${cd.correctZh.replace(/'/g,"\\'")}')">${opt}</span>
+                `).join('')}
+            </div>
+            <div class="mini-fb" id="mini-fb-${i}"></div>
         </div>`).join('');
-    choiceAnswers=new Array(10).fill(null);choiceSubmitted=false;
+    choiceAnswers = new Array(20).fill(null);
+    choiceSubmitted = false;
 }
 
-function selectChoice(qi,oi){
+function selectMini(cardIdx, optIdx, correctZh){
     if(choiceSubmitted)return;
-    document.querySelectorAll('#choice-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));
-    document.getElementById('choice-opt-'+qi+'-'+oi).classList.add('selected');
-    choiceAnswers[qi]=oi;
+    // 清除该卡片内所有选中
+    document.querySelectorAll(`#choice-card-${cardIdx} .mini-opt`).forEach(o=>o.classList.remove('chosen'));
+    document.getElementById(`mini-${cardIdx}-${optIdx}`).classList.add('chosen');
+    choiceAnswers[cardIdx] = optIdx;
 }
 
 function checkAllChoices(){
-    if(!choiceSubmitted && choiceAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}
+    if(!choiceSubmitted && choiceAnswers.includes(null)){showToast('⚠️ 请完成所有20题');return;}
     let correct=0;
-    choiceQuestions.forEach((q,i)=>{
-        const fb=document.getElementById('choice-fb-'+i);
-        document.querySelectorAll('#choice-item-'+i+' .quiz-option').forEach((o,j)=>{
-            o.classList.add('disabled');
-            if(j===q.answer)o.classList.add('correct');
-            if(j===choiceAnswers[i]&&j!==q.answer)o.classList.add('wrong');
+    choiceData.forEach((cd,i)=>{
+        const chosenOptIdx = choiceAnswers[i];
+        const chosenText = cd.options[chosenOptIdx];
+        const fb = document.getElementById('mini-fb-'+i);
+        // 标记所有选项
+        cd.options.forEach((opt,j)=>{
+            const el = document.getElementById(`mini-${i}-${j}`);
+            if(opt === cd.correctZh) el.classList.add('right');
+            if(j === chosenOptIdx && opt !== cd.correctZh) el.classList.add('wrong-chosen');
+            el.style.pointerEvents = 'none';
         });
-        if(choiceAnswers[i]===q.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML='✅ '+q.exp;}
-        else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+q.exp;}
+        if(chosenText === cd.correctZh){
+            correct++;
+            fb.innerHTML = '<span style="color:#10B981;">✅</span>';
+        }else{
+            fb.innerHTML = '<span style="color:#EF4444;">✅ '+cd.correctZh+'</span>';
+        }
     });
-    choiceSubmitted=true;showScorePopup(correct,10);
-    if(correct>=8)markComplete('choice');
-}
-function resetAllChoices(){
-    choiceAnswers=new Array(10).fill(null);choiceSubmitted=false;
-    document.querySelectorAll('#choice-questions .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));
-    document.querySelectorAll('#choice-questions .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});
+    choiceSubmitted=true;
+    showScorePopup(correct,20);
+    if(correct>=16)markComplete('choice');
 }
 
+function resetAllChoices(){
+    choiceAnswers = new Array(20).fill(null);
+    choiceSubmitted = false;
+    document.querySelectorAll('#choice-grid .mini-opt').forEach(o=>{
+        o.classList.remove('chosen','right','wrong-chosen');
+        o.style.pointerEvents = 'auto';
+    });
+    document.querySelectorAll('#choice-grid .mini-fb').forEach(f=>{f.innerHTML='';});
+}
+
+// ==================== 渲染长难句 ====================
 function renderSentence(){
-    const container = document.getElementById('sentence-content');
-    if(!container)return;
-    let html = '<h3 style="margin-bottom:12px;">📖 句子解析</h3>';
+    const c=document.getElementById('sentence-content');if(!c)return;
+    let html='<h3 style="margin-bottom:12px;">📖 句子解析</h3>';
     sentenceAnalysis.forEach(s=>{
-        html += `<div class="sentence-box"><div class="sentence-en">${s.en}</div><div class="sentence-zh">${s.zh}</div></div>
+        html+=`<div class="sentence-box"><div class="sentence-en">${s.en}</div><div class="sentence-zh">${s.zh}</div></div>
         <div class="analysis-box">${s.analysis}</div><br>`;
     });
-    html += '<h3 style="margin:24px 0 12px;">✏️ 巩固练习</h3>';
+    html+='<h3 style="margin:24px 0 12px;">✏️ 巩固练习</h3>';
     sentencePractice.forEach((p,pi)=>{
-        html += `<div class="quiz-item" id="sentence-item-${pi}">
+        html+=`<div class="quiz-item" id="sentence-item-${pi}">
             <span class="practice-label">练习 ${pi+1}：${p.type}</span>
             <div class="quiz-stem" style="margin-top:8px;">${p.q}</div>
             <div class="sentence-box" style="margin:8px 0;"><div class="sentence-en">${p.sentence}</div></div>
@@ -506,11 +560,9 @@ function renderSentence(){
             <div class="quiz-feedback" id="sentence-fb-${pi}"></div>
         </div>`;
     });
-    html += '<div style="margin-top:12px;"><button class="btn btn-primary" onclick="checkSentences()">✅ 检查练习</button> <button class="btn btn-secondary" onclick="resetSentences()">🔄 重新作答</button></div>';
-    container.innerHTML = html;
-    sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;
+    html+='<div style="margin-top:12px;"><button class="btn btn-primary" onclick="checkSentences()">✅ 检查练习</button> <button class="btn btn-secondary" onclick="resetSentences()">🔄 重新作答</button></div>';
+    c.innerHTML=html;sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;
 }
-
 function selectSentence(qi,oi){
     if(sentenceSubmitted)return;
     document.querySelectorAll('#sentence-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));
@@ -518,7 +570,7 @@ function selectSentence(qi,oi){
     sentenceAnswers[qi]=oi;
 }
 function checkSentences(){
-    if(!sentenceSubmitted && sentenceAnswers.includes(null)){showToast('⚠️ 请完成所有练习');return;}
+    if(!sentenceSubmitted&&sentenceAnswers.includes(null)){showToast('⚠️ 请完成所有练习');return;}
     let correct=0;
     sentencePractice.forEach((p,i)=>{
         const fb=document.getElementById('sentence-fb-'+i);
@@ -539,33 +591,30 @@ function resetSentences(){
     document.querySelectorAll('#sentence-content .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});
 }
 
+// ==================== 阅读 ====================
+function showWordTip(word){
+    const info=allKnownWords[word];if(!info)return;
+    const tooltip=document.getElementById('word-tooltip');
+    tooltip.innerHTML='<span class="tip-word">'+word+'</span> <span class="tip-pos">['+info.pos+']</span> <span class="tip-zh">'+info.zh+'</span>';
+    tooltip.classList.add('show');
+}
+
 function renderReading(){
-    const passageEl = document.getElementById('reading-passage');
-    const questionsEl = document.getElementById('reading-questions');
-    if(!passageEl||!questionsEl)return;
-    passageEl.innerHTML = readingText;
-    passageEl.querySelectorAll('.new-word').forEach(el=>{
-        el.addEventListener('click',function(){
-            const word = this.getAttribute('data-word');
-            if(word)speakWord(word);
-        });
+    const pEl=document.getElementById('reading-passage'),qEl=document.getElementById('reading-questions');
+    if(!pEl||!qEl)return;
+    pEl.innerHTML=readingText;
+    pEl.querySelectorAll('.new-word').forEach(el=>{
+        el.addEventListener('click',function(e){e.stopPropagation();const w=this.getAttribute('data-word');if(w)showWordTip(w);});
     });
-    questionsEl.innerHTML = readingQuestions.map((q,i)=>`
+    pEl.addEventListener('click',function(){document.getElementById('word-tooltip').classList.remove('show');});
+    qEl.innerHTML=readingQuestions.map((q,i)=>`
         <div class="quiz-item" id="reading-item-${i}">
-            <div class="quiz-stem">
-                <span style="color:var(--primary);font-weight:600;">Q${i+1}.</span>
-                <span style="font-size:0.7rem;color:var(--text-secondary);background:#F3F4F6;padding:2px 8px;border-radius:10px;margin:0 6px;">${q.type}</span>${q.q}
-            </div>
-            <div class="quiz-options">${q.options.map((opt,j)=>`
-                <div class="quiz-option" id="reading-opt-${i}-${j}" onclick="selectReading(${i},${j})">
-                    <span class="quiz-radio">${String.fromCharCode(65+j)}</span>
-                    <span>${opt.substring(3)}</span>
-                </div>`).join('')}</div>
+            <div class="quiz-stem"><span style="color:var(--primary);font-weight:600;">Q${i+1}.</span><span style="font-size:0.7rem;color:var(--text-secondary);background:#F3F4F6;padding:2px 8px;border-radius:10px;margin:0 6px;">${q.type}</span>${q.q}</div>
+            <div class="quiz-options">${q.options.map((opt,j)=>`<div class="quiz-option" id="reading-opt-${i}-${j}" onclick="selectReading(${i},${j})"><span class="quiz-radio">${String.fromCharCode(65+j)}</span><span>${opt.substring(3)}</span></div>`).join('')}</div>
             <div class="quiz-feedback" id="reading-fb-${i}"></div>
         </div>`).join('');
     readingAnswers=new Array(5).fill(null);readingSubmitted=false;
 }
-
 function selectReading(qi,oi){
     if(readingSubmitted)return;
     document.querySelectorAll('#reading-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));
@@ -573,7 +622,7 @@ function selectReading(qi,oi){
     readingAnswers[qi]=oi;
 }
 function checkAllReading(){
-    if(!readingSubmitted && readingAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}
+    if(!readingSubmitted&&readingAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}
     let correct=0;
     readingQuestions.forEach((q,i)=>{
         const fb=document.getElementById('reading-fb-'+i);
@@ -605,19 +654,11 @@ function showScorePopup(correct,total){
 }
 function closeScore(){document.getElementById('score-overlay').classList.remove('show');}
 
-// ==================== 初始化 ====================
 function init(){
-    initState();
-    renderVocab();
-    renderChoice();
-    renderSentence();
-    renderReading();
-    updateProgress();
-    if(!completedTabs.has('vocab')){
-        setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);
-    }
+    initState();renderVocab();renderChoice();renderSentence();renderReading();updateProgress();
+    if(!completedTabs.has('vocab')){setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);}
 }
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded',init);
 </script>
 </body>
 </html>
