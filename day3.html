@@ -24,59 +24,29 @@
             --word-old: #D97706;
         }
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{
-            font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
-            background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;
-        }
-        .top-nav{
-            background:var(--card);border-bottom:1px solid var(--border);
-            padding:0 20px;display:flex;align-items:center;justify-content:space-between;
-            height:56px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);
-        }
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;}
+        .top-nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
         .nav-left{display:flex;align-items:center;gap:12px;}
         .nav-logo{font-size:1.3rem;font-weight:700;color:var(--primary);text-decoration:none;}
         .nav-subtitle{font-size:0.85rem;color:var(--text-secondary);background:#F3F4F6;padding:3px 10px;border-radius:12px;font-weight:500;}
         .nav-right{display:flex;align-items:center;gap:16px;}
         .home-link{color:var(--text-secondary);text-decoration:none;font-size:0.9rem;font-weight:500;}
         .home-link:hover{color:var(--primary);}
-        .wordbook-btn{
-            display:flex;align-items:center;gap:6px;background:var(--primary-light);color:var(--primary);
-            border:none;padding:8px 16px;border-radius:20px;font-size:0.9rem;cursor:pointer;font-weight:500;
-        }
+        .wordbook-btn{display:flex;align-items:center;gap:6px;background:var(--primary-light);color:var(--primary);border:none;padding:8px 16px;border-radius:20px;font-size:0.9rem;cursor:pointer;font-weight:500;}
         .wordbook-btn:hover{background:#dce2fd;}
-        .wordbook-count{
-            background:var(--primary);color:white;border-radius:50%;width:22px;height:22px;
-            display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600;
-        }
+        .wordbook-count{background:var(--primary);color:white;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600;}
         .container{max-width:800px;margin:0 auto;padding:20px 16px 40px;}
-        .header-section{
-            background:var(--card);border-radius:var(--radius);padding:20px 24px;
-            margin-bottom:20px;box-shadow:var(--shadow);
-        }
-        .topic-tag{
-            display:inline-flex;align-items:center;gap:6px;background:var(--primary-light);
-            color:var(--primary);padding:6px 14px;border-radius:20px;font-size:0.85rem;font-weight:500;margin-bottom:12px;
-        }
-        .quote-box{
-            background:linear-gradient(135deg,#1a1a2e,#16213e);color:#e2e8f0;
-            padding:16px 20px;border-radius:var(--radius-sm);margin-bottom:12px;
-            font-style:italic;font-size:0.95rem;border-left:4px solid #e10600;
-        }
+        .header-section{background:var(--card);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px;box-shadow:var(--shadow);}
+        .topic-tag{display:inline-flex;align-items:center;gap:6px;background:var(--primary-light);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:0.85rem;font-weight:500;margin-bottom:12px;}
+        .quote-box{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#e2e8f0;padding:16px 20px;border-radius:var(--radius-sm);margin-bottom:12px;font-style:italic;font-size:0.95rem;border-left:4px solid #e10600;}
         .quote-author{color:#94a3b8;font-size:0.8rem;margin-top:4px;font-style:normal;}
         .progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
         .progress-title{font-weight:600;font-size:0.95rem;}
         .progress-percent{font-weight:700;color:var(--primary);font-size:0.9rem;}
         .progress-bar{height:8px;background:#E5E7EB;border-radius:4px;overflow:hidden;}
         .progress-fill{height:100%;background:linear-gradient(90deg,#e10600,#4A6CF7);border-radius:4px;transition:width 0.5s ease;width:0%;}
-        .tab-nav{
-            display:flex;gap:4px;background:var(--card);border-radius:var(--radius);padding:4px;
-            margin-bottom:20px;box-shadow:var(--shadow);overflow-x:auto;
-        }
-        .tab-btn{
-            flex:1;min-width:65px;padding:10px 10px;border:none;background:transparent;
-            border-radius:var(--radius-sm);cursor:pointer;font-size:0.82rem;font-weight:500;
-            color:var(--text-secondary);white-space:nowrap;
-        }
+        .tab-nav{display:flex;gap:4px;background:var(--card);border-radius:var(--radius);padding:4px;margin-bottom:20px;box-shadow:var(--shadow);overflow-x:auto;}
+        .tab-btn{flex:1;min-width:65px;padding:10px 10px;border:none;background:transparent;border-radius:var(--radius-sm);cursor:pointer;font-size:0.82rem;font-weight:500;color:var(--text-secondary);white-space:nowrap;}
         .tab-btn.active{background:var(--primary);color:white;box-shadow:var(--shadow-md);}
         .tab-btn.completed-tab::after{content:' ✅';font-size:0.7rem;}
         .tab-content{display:none;}
@@ -84,107 +54,40 @@
         .card{background:var(--card);border-radius:var(--radius);padding:24px;margin-bottom:16px;box-shadow:var(--shadow);}
         .card-title{font-size:1.1rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
         .card-subtitle{font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;}
-        .word-card{
-            background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);
-            padding:16px;margin-bottom:12px;transition:all 0.2s;
-        }
+        .word-card{background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;transition:all 0.2s;}
         .word-card:hover{border-color:#BFC7FF;box-shadow:0 2px 8px rgba(74,108,247,0.08);}
-        .word-example-sentence{
-            font-size:1rem;color:var(--text);line-height:1.6;margin-bottom:10px;
-            padding-left:12px;border-left:3px solid #e10600;
-        }
+        .word-example-sentence{font-size:1rem;color:var(--text);line-height:1.6;margin-bottom:10px;padding-left:12px;border-left:3px solid #e10600;}
         .word-example-sentence b{color:var(--primary);font-weight:700;cursor:pointer;padding:2px 4px;border-radius:3px;}
         .word-example-sentence b:hover{background:var(--primary-light);text-decoration:underline;}
         .word-info-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-        .word-tag{
-            display:inline-block;background:var(--primary);color:white;
-            padding:4px 12px;border-radius:15px;font-weight:700;font-size:0.9rem;cursor:pointer;
-        }
+        .word-tag{display:inline-block;background:var(--primary);color:white;padding:4px 12px;border-radius:15px;font-weight:700;font-size:0.9rem;cursor:pointer;}
         .word-tag:hover{background:#3B5DE7;}
         .word-pos-tag{font-size:0.8rem;color:var(--text-secondary);font-style:italic;}
         .word-zh-tag{font-size:0.85rem;color:var(--success);font-weight:600;}
         .word-actions{margin-left:auto;display:flex;gap:8px;}
-        .icon-btn{
-            width:32px;height:32px;border-radius:50%;border:1px solid #E5E7EB;
-            background:white;cursor:pointer;font-size:0.9rem;display:flex;
-            align-items:center;justify-content:center;transition:all 0.15s;
-        }
+        .icon-btn{width:32px;height:32px;border-radius:50%;border:1px solid #E5E7EB;background:white;cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
         .icon-btn:hover{background:#F3F4F6;border-color:#D1D5DB;}
         .icon-btn.saved{background:#FEF3C7;border-color:var(--warning);color:var(--warning);}
-        .quiz-item{padding:16px 0;border-bottom:1px solid #F3F4F6;}
-        .quiz-item:last-child{border-bottom:none;}
-        .quiz-stem{font-weight:500;margin-bottom:10px;line-height:1.6;}
-        .quiz-blank{display:inline-block;border-bottom:2px solid var(--primary);min-width:80px;text-align:center;font-weight:700;color:var(--primary);}
-        .quiz-options{display:flex;flex-direction:column;gap:6px;}
-        .quiz-option{
-            display:flex;align-items:center;gap:10px;padding:10px 14px;
-            border:2px solid #E5E7EB;border-radius:var(--radius-sm);cursor:pointer;
-            font-size:0.9rem;background:#FAFAFA;transition:all 0.15s;
-        }
-        .quiz-option:hover{border-color:#BFC7FF;background:#F8F9FF;}
-        .quiz-option.selected{border-color:var(--primary);background:var(--primary-light);font-weight:600;}
-        .quiz-option.correct{border-color:var(--success);background:#ECFDF5;font-weight:600;}
-        .quiz-option.wrong{border-color:var(--danger);background:#FEF2F2;}
-        .quiz-option.disabled{pointer-events:none;opacity:0.85;}
-        .quiz-radio{
-            width:22px;height:22px;border-radius:50%;border:2px solid #D1D5DB;
-            flex-shrink:0;display:flex;align-items:center;justify-content:center;
-            font-size:0.75rem;font-weight:700;color:transparent;
-        }
-        .quiz-option.selected .quiz-radio{border-color:var(--primary);background:var(--primary);color:white;}
-        .quiz-option.correct .quiz-radio{border-color:var(--success);background:var(--success);color:white;}
-        .quiz-option.wrong .quiz-radio{border-color:var(--danger);background:var(--danger);color:white;}
-        .quiz-feedback{
-            margin-top:8px;padding:10px 14px;border-radius:var(--radius-sm);
-            font-size:0.85rem;display:none;line-height:1.5;
-        }
-        .quiz-feedback.show{display:block;}
-        .quiz-feedback.ok{background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;}
-        .quiz-feedback.err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;}
-        .sentence-box{
-            background:#FFFBEB;border-left:4px solid var(--warning);
-            padding:16px 20px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:12px;
-        }
-        .sentence-en{font-weight:600;font-size:1rem;color:#92400E;}
-        .sentence-en b{color:var(--primary);cursor:pointer;}
-        .sentence-zh{font-size:0.88rem;color:#78716C;margin-top:4px;}
-        .analysis-box{
-            background:#F0FDF4;border:1px solid #BBF7D0;
-            border-radius:var(--radius-sm);padding:16px;margin-top:10px;font-size:0.9rem;line-height:1.8;
-        }
-        .hl-sub{background:#DBEAFE;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .hl-verb{background:#FCE7F3;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .hl-obj{background:#D1FAE5;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .hl-clause{background:#FEF3C7;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .practice-label{
-            display:inline-block;background:var(--primary-light);color:var(--primary);
-            padding:4px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;margin-bottom:8px;
-        }
 
-        /* 阅读段落 */
-        .reading-passage{
-            background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);
-            padding:20px 24px;font-size:1rem;line-height:2.2;margin-bottom:8px;
-        }
-        .reading-passage .new-word{
-            color:var(--word-new);font-weight:700;cursor:pointer;
-            border-bottom:2px dashed var(--word-new);padding:0 3px;border-radius:2px;
-            transition:all 0.15s;
-        }
+        .choice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;}
+        .choice-card{background:#FAFAFA;border:2px solid #E5E7EB;border-radius:var(--radius-sm);padding:14px;cursor:pointer;transition:all 0.15s;text-align:center;}
+        .choice-card:hover{border-color:#BFC7FF;background:#F8F9FF;}
+        .choice-card .word-en{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+        .choice-card .word-num{font-size:0.7rem;color:var(--text-secondary);}
+        .choice-card .choice-options{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;}
+        .choice-card .mini-opt{padding:4px 10px;border-radius:12px;font-size:0.78rem;cursor:pointer;border:1.5px solid #E5E7EB;background:white;transition:all 0.12s;}
+        .choice-card .mini-opt:hover{border-color:var(--primary);background:var(--primary-light);}
+        .choice-card .mini-opt.chosen{border-color:var(--primary);background:var(--primary);color:white;font-weight:600;}
+        .choice-card .mini-opt.right{border-color:var(--success);background:var(--success);color:white;}
+        .choice-card .mini-opt.wrong-chosen{border-color:var(--danger);background:var(--danger);color:white;}
+        .choice-card .mini-fb{font-size:0.75rem;margin-top:6px;min-height:18px;}
+
+        .reading-passage{background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);padding:20px 24px;font-size:1rem;line-height:2.2;margin-bottom:8px;}
+        .reading-passage .new-word{color:var(--word-new);font-weight:700;cursor:pointer;border-bottom:2px dashed var(--word-new);padding:0 3px;border-radius:2px;}
         .reading-passage .new-word:hover{background:#EEF1FE;}
-        .reading-passage .old-word{
-            color:var(--word-old);font-weight:700;cursor:pointer;
-            border-bottom:2px dashed var(--word-old);padding:0 3px;border-radius:2px;
-            transition:all 0.15s;
-        }
+        .reading-passage .old-word{color:var(--word-old);font-weight:700;cursor:pointer;border-bottom:2px dashed var(--word-old);padding:0 3px;border-radius:2px;}
         .reading-passage .old-word:hover{background:#FEF3C7;}
-
-        /* 词汇提示条 */
-        .word-tooltip{
-            background:#1F2937;color:white;padding:10px 16px;border-radius:var(--radius-sm);
-            font-size:0.85rem;margin-bottom:16px;display:none;line-height:1.5;
-            animation:fadeIn 0.2s ease;
-        }
+        .word-tooltip{background:#1F2937;color:white;padding:10px 16px;border-radius:var(--radius-sm);font-size:0.85rem;margin-bottom:16px;display:none;line-height:1.5;animation:fadeIn 0.2s ease;}
         .word-tooltip.show{display:block;}
         .word-tooltip .tip-word{font-size:1.1rem;font-weight:700;color:#60A5FA;}
         .word-tooltip .tip-pos{color:#94a3b8;}
@@ -192,128 +95,87 @@
         .word-tooltip .tip-from{color:#FBBF24;font-size:0.8rem;}
         @keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
 
+        .sentence-box{background:#FFFBEB;border-left:4px solid var(--warning);padding:16px 20px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:12px;}
+        .sentence-en{font-weight:600;font-size:1rem;color:#92400E;}
+        .sentence-zh{font-size:0.88rem;color:#78716C;margin-top:4px;}
+        .analysis-box{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:var(--radius-sm);padding:16px;margin-top:10px;font-size:0.9rem;line-height:1.8;}
+        .hl-sub{background:#DBEAFE;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-verb{background:#FCE7F3;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-obj{background:#D1FAE5;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-clause{background:#FEF3C7;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .practice-label{display:inline-block;background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;margin-bottom:8px;}
+
+        .quiz-item{padding:16px 0;border-bottom:1px solid #F3F4F6;}
+        .quiz-item:last-child{border-bottom:none;}
+        .quiz-stem{font-weight:500;margin-bottom:10px;line-height:1.6;}
+        .quiz-options{display:flex;flex-direction:column;gap:6px;}
+        .quiz-option{display:flex;align-items:center;gap:10px;padding:10px 14px;border:2px solid #E5E7EB;border-radius:var(--radius-sm);cursor:pointer;font-size:0.9rem;background:#FAFAFA;transition:all 0.15s;}
+        .quiz-option:hover{border-color:#BFC7FF;background:#F8F9FF;}
+        .quiz-option.selected{border-color:var(--primary);background:var(--primary-light);font-weight:600;}
+        .quiz-option.correct{border-color:var(--success);background:#ECFDF5;font-weight:600;}
+        .quiz-option.wrong{border-color:var(--danger);background:#FEF2F2;}
+        .quiz-option.disabled{pointer-events:none;opacity:0.85;}
+        .quiz-radio{width:22px;height:22px;border-radius:50%;border:2px solid #D1D5DB;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:transparent;}
+        .quiz-option.selected .quiz-radio{border-color:var(--primary);background:var(--primary);color:white;}
+        .quiz-option.correct .quiz-radio{border-color:var(--success);background:var(--success);color:white;}
+        .quiz-option.wrong .quiz-radio{border-color:var(--danger);background:var(--danger);color:white;}
+        .quiz-feedback{margin-top:8px;padding:10px 14px;border-radius:var(--radius-sm);font-size:0.85rem;display:none;line-height:1.5;}
+        .quiz-feedback.show{display:block;}
+        .quiz-feedback.ok{background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;}
+        .quiz-feedback.err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;}
+
         .btn{padding:10px 24px;border-radius:8px;border:none;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;margin:4px;}
         .btn-primary{background:var(--primary);color:white;}
         .btn-primary:hover{background:#3B5DE7;}
         .btn-secondary{background:#F3F4F6;color:var(--text);}
         .btn-secondary:hover{background:#E5E7EB;}
-        .toast{
-            position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#1F2937;
-            color:white;padding:12px 24px;border-radius:25px;font-weight:500;z-index:999;
-            opacity:0;transition:opacity 0.3s;pointer-events:none;font-size:0.9rem;
-        }
+        .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#1F2937;color:white;padding:12px 24px;border-radius:25px;font-weight:500;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;font-size:0.9rem;}
         .toast.show{opacity:1;}
-        .score-overlay{
-            position:fixed;top:0;left:0;width:100%;height:100%;
-            background:rgba(0,0,0,0.5);z-index:200;display:none;
-            align-items:center;justify-content:center;
-        }
+        .score-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:200;display:none;align-items:center;justify-content:center;}
         .score-overlay.show{display:flex;}
-        .score-modal{
-            background:white;border-radius:var(--radius);padding:32px;text-align:center;
-            box-shadow:0 20px 60px rgba(0,0,0,0.2);max-width:400px;width:90%;
-        }
+        .score-modal{background:white;border-radius:var(--radius);padding:32px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.2);max-width:400px;width:90%;}
         .score-big{font-size:4rem;font-weight:800;color:var(--primary);}
         .score-total{font-size:1.5rem;color:var(--text-secondary);}
         .score-msg{margin:16px 0;font-size:1rem;}
         .score-stars{font-size:2rem;margin:10px 0;}
-        @media(max-width:600px){
-            .card{padding:16px;}
-            .tab-btn{font-size:0.7rem;padding:8px 4px;min-width:48px;}
-            .reading-passage{font-size:0.9rem;padding:14px 16px;}
-        }
+        @media(max-width:600px){.card{padding:16px;}.tab-btn{font-size:0.7rem;padding:8px 4px;min-width:48px;}.choice-grid{grid-template-columns:1fr;}.reading-passage{font-size:0.9rem;padding:14px 16px;}}
     </style>
 </head>
 <body>
 
 <nav class="top-nav">
-    <div class="nav-left">
-        <a href="index.html" class="nav-logo">📘 分级词汇</a>
-        <span class="nav-subtitle">Day 3</span>
-    </div>
-    <div class="nav-right">
-        <a href="index.html" class="home-link">🏠 索引</a>
-        <button class="wordbook-btn" onclick="toggleWordbook()">
-            📒 生词本 <span class="wordbook-count" id="wordbook-count">0</span>
-        </button>
-    </div>
+    <div class="nav-left"><a href="index.html" class="nav-logo">📘 分级词汇</a><span class="nav-subtitle">Day 3</span></div>
+    <div class="nav-right"><a href="index.html" class="home-link">🏠 索引</a><button class="wordbook-btn" onclick="toggleWordbook()">📒 生词本 <span class="wordbook-count" id="wordbook-count">0</span></button></div>
 </nav>
 
 <div class="container">
     <div class="header-section">
         <span class="topic-tag">🏎️ F1 赛车的团队协作</span>
-        <div class="quote-box">
-            "I'm not a machine. I'm just a man who works hard — and I have an incredible team behind me."
-            <div class="quote-author">— Lewis Hamilton, 7-time F1 World Champion</div>
-        </div>
-        <div class="progress-header">
-            <span class="progress-title">今日学习进度</span>
-            <span class="progress-percent" id="progress-percent">0%</span>
-        </div>
+        <div class="quote-box">"I'm not a machine. I'm just a man who works hard — and I have an incredible team behind me."<div class="quote-author">— Lewis Hamilton, 7-time F1 World Champion</div></div>
+        <div class="progress-header"><span class="progress-title">今日学习进度</span><span class="progress-percent" id="progress-percent">0%</span></div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
 
     <div class="tab-nav">
         <button class="tab-btn active" onclick="switchTab('vocab')" id="tab-btn-vocab">📝 词汇</button>
-        <button class="tab-btn" onclick="switchTab('choice')" id="tab-btn-choice">✍️ 语境选择</button>
+        <button class="tab-btn" onclick="switchTab('choice')" id="tab-btn-choice">✍️ 词义选择</button>
         <button class="tab-btn" onclick="switchTab('sentence')" id="tab-btn-sentence">🔍 长难句</button>
         <button class="tab-btn" onclick="switchTab('reading')" id="tab-btn-reading">📖 阅读</button>
     </div>
 
-    <div class="tab-content active" id="tab-vocab"><div class="card">
-        <div class="card-title">📝 核心词汇学习 <span style="font-size:0.8rem;color:var(--text-secondary);">(共20个 · 点击单词听发音)</span></div>
-        <div class="card-subtitle">例句先行，在语境中感受词义。点击高亮单词或 🔊 图标听发音。</div>
-        <div id="vocab-list"></div>
-    </div></div>
-
-    <div class="tab-content" id="tab-choice"><div class="card">
-        <div class="card-title">✍️ 语境选择题 <span style="font-size:0.8rem;color:var(--text-secondary);">(共10题 · 4选1)</span></div>
-        <div class="card-subtitle">选择最合适的单词，提交后查看详细解析。</div>
-        <div id="choice-questions"></div>
-        <div style="margin-top:12px;">
-            <button class="btn btn-primary" onclick="checkAllChoices()">✅ 全部检查</button>
-            <button class="btn btn-secondary" onclick="resetAllChoices()">🔄 重新作答</button>
-        </div>
-    </div></div>
-
-    <div class="tab-content" id="tab-sentence"><div class="card">
-        <div class="card-title">🔍 长难句拆解 <span style="font-size:0.8rem;color:var(--text-secondary);">(2句解析 + 2道练习)</span></div>
-        <div id="sentence-content"></div>
-    </div></div>
-
+    <div class="tab-content active" id="tab-vocab"><div class="card"><div class="card-title">📝 核心词汇学习 <span style="font-size:0.8rem;color:var(--text-secondary);">(共20个)</span></div><div class="card-subtitle">例句先行，点击高亮单词或 🔊 听发音。</div><div id="vocab-list"></div></div></div>
+    <div class="tab-content" id="tab-choice"><div class="card"><div class="card-title">✍️ 词义选择题 <span style="font-size:0.8rem;color:var(--text-secondary);">(共20题 · 20个词汇全覆盖)</span></div><div class="card-subtitle">为每个单词选出正确的中文释义。</div><div class="choice-grid" id="choice-grid"></div><div style="margin-top:12px;"><button class="btn btn-primary" onclick="checkAllChoices()">✅ 全部检查</button> <button class="btn btn-secondary" onclick="resetAllChoices()">🔄 重新作答</button></div></div></div>
+    <div class="tab-content" id="tab-sentence"><div class="card"><div class="card-title">🔍 长难句拆解 <span style="font-size:0.8rem;color:var(--text-secondary);">(2句解析 + 2道练习)</span></div><div id="sentence-content"></div></div></div>
     <div class="tab-content" id="tab-reading">
-        <div class="card">
-            <div class="card-title">📖 分级阅读 <span style="font-size:0.8rem;color:var(--text-secondary);">(CEFR B1 · 约180词)</span></div>
-            <div class="card-subtitle">
-                🔵 蓝色 = 今日新词 &nbsp;|&nbsp; 🟡 黄色 = 已学旧词 &nbsp;|&nbsp; 点击单词 → 下方显示释义
-            </div>
-            <div class="reading-passage" id="reading-passage"></div>
-            <div class="word-tooltip" id="word-tooltip"></div>
-        </div>
-        <div class="card">
-            <div class="card-title">❓ 阅读理解 <span style="font-size:0.8rem;color:var(--text-secondary);">(共5题 · 4选1)</span></div>
-            <div id="reading-questions"></div>
-            <div style="margin-top:12px;">
-                <button class="btn btn-primary" onclick="checkAllReading()">✅ 全部检查</button>
-                <button class="btn btn-secondary" onclick="resetAllReading()">🔄 重新作答</button>
-            </div>
-        </div>
+        <div class="card"><div class="card-title">📖 分级阅读 <span style="font-size:0.8rem;color:var(--text-secondary);">(CEFR B1 · 约180词)</span></div><div class="card-subtitle">🔵 蓝色 = 今日新词 &nbsp;|&nbsp; 🟡 黄色 = 已学旧词 &nbsp;|&nbsp; 点击单词 → 下方显示释义</div><div class="reading-passage" id="reading-passage"></div><div class="word-tooltip" id="word-tooltip"></div></div>
+        <div class="card"><div class="card-title">❓ 阅读理解 <span style="font-size:0.8rem;color:var(--text-secondary);">(共5题)</span></div><div id="reading-questions"></div><div style="margin-top:12px;"><button class="btn btn-primary" onclick="checkAllReading()">✅ 全部检查</button> <button class="btn btn-secondary" onclick="resetAllReading()">🔄 重新作答</button></div></div>
     </div>
 </div>
 
 <div class="toast" id="toast"></div>
-<div class="score-overlay" id="score-overlay">
-    <div class="score-modal">
-        <div class="score-stars" id="score-stars"></div>
-        <div class="score-big" id="score-big"></div>
-        <div class="score-total" id="score-total"></div>
-        <div class="score-msg" id="score-msg"></div>
-        <button class="btn btn-primary" onclick="closeScore()">👍 知道了</button>
-    </div>
-</div>
+<div class="score-overlay" id="score-overlay"><div class="score-modal"><div class="score-stars" id="score-stars"></div><div class="score-big" id="score-big"></div><div class="score-total" id="score-total"></div><div class="score-msg" id="score-msg"></div><button class="btn btn-primary" onclick="closeScore()">👍 知道了</button></div></div>
 
 <script>
-// ==================== 数据 ====================
 const vocabulary = [
     {id:'v1',word:'cooperate',pos:'v.',zh:'合作',example:'In F1, the pit <b>crew</b> must <b>cooperate</b> perfectly to change tires in under two seconds.'},
     {id:'v2',word:'efficient',pos:'adj.',zh:'高效的',example:'A pit stop is one of the most <b>efficient</b> operations in all of sports.'},
@@ -325,394 +187,85 @@ const vocabulary = [
     {id:'v8',word:'within',pos:'prep.',zh:'在……之内',example:'Everything must be completed <b>within</b> a very short time window.'},
     {id:'v9',word:'require',pos:'v.',zh:'需要；要求',example:'Success <b>requires</b> not just speed, but perfect teamwork.'},
     {id:'v10',word:'trust',pos:'n./v.',zh:'信任',example:'Drivers must have complete <b>trust</b> in their engineers and mechanics.'},
-    {id:'v11',word:'precise',pos:'adj.',zh:'精确的',example:'Every movement during a pit stop must be <b>precise</b> — one mistake can cost the race.'},
+    {id:'v11',word:'precise',pos:'adj.',zh:'精确的',example:'Every movement during a pit stop must be <b>precise</b>.'},
     {id:'v12',word:'smoothly',pos:'adv.',zh:'顺利地；平稳地',example:'When everything goes <b>smoothly</b>, the car is back on track in seconds.'},
     {id:'v13',word:'training',pos:'n.',zh:'训练',example:'Pit crews go through months of <b>training</b> before a single race.'},
-    {id:'v14',word:'professional',pos:'adj.',zh:'职业的；专业的',example:'Every <b>professional</b> racing team knows that teamwork is the key to victory.'},
+    {id:'v14',word:'professional',pos:'adj.',zh:'职业的；专业的',example:'Every <b>professional</b> racing team knows teamwork is the key.'},
     {id:'v15',word:'react',pos:'v.',zh:'反应',example:'The crew must <b>react</b> instantly when the car enters the pit lane.'},
     {id:'v16',word:'pressure',pos:'n.',zh:'压力',example:'Working under such high <b>pressure</b> is what makes F1 so exciting.'},
     {id:'v17',word:'achieve',pos:'v.',zh:'实现；达到',example:'What can you <b>achieve</b> when every team member gives their best?'},
-    {id:'v18',word:'effort',pos:'n.',zh:'努力',example:'Victory is the result of a collective <b>effort</b>, not just the driver\'s talent.'},
+    {id:'v18',word:'effort',pos:'n.',zh:'努力',example:'Victory is the result of a collective <b>effort</b>.'},
     {id:'v19',word:'rely',pos:'v.',zh:'依靠',example:'Drivers <b>rely</b> on their crew more than most people realize.'},
     {id:'v20',word:'success',pos:'n.',zh:'成功',example:'In racing, <b>success</b> is built on trust, practice, and perfect teamwork.'}
 ];
 
-const choiceQuestions = [
-    {stem:'In an F1 pit stop, crew members must <span class="quiz-blank">______</span> perfectly to finish in two seconds.',options:['A. cooperate','B. replace','C. achieve','D. react'],answer:0,exp:'<strong>解析：</strong>crew members must <strong>cooperate</strong>（合作）才能在两秒内完成换胎。<br>replace=替换 · achieve=实现 · react=反应'},
-    {stem:'The pit stop is an extremely <span class="quiz-blank">______</span> process — no time is wasted.',options:['A. average','B. individual','C. efficient','D. nervous'],answer:2,exp:'<strong>解析：</strong>no time is wasted 说明非常<strong>efficient</strong>（高效）。<br>average=平均的 · individual=个人的 · nervous=紧张的'},
-    {stem:'Each crew member has a clear <span class="quiz-blank">______</span>: one changes the front left tire, another handles the jack.',options:['A. success','B. effort','C. training','D. responsibility'],answer:3,exp:'<strong>解析：</strong>每人有明确的<strong>responsibility</strong>（职责）。<br>success=成功 · effort=努力 · training=训练'},
-    {stem:'They can <span class="quiz-blank">______</span> all four tires in less than three seconds.',options:['A. rely','B. replace','C. require','D. react'],answer:1,exp:'<strong>解析：</strong>换轮胎 = <strong>replace</strong> tires。<br>rely=依靠 · require=需要 · react=反应'},
-    {stem:'The driver must have complete <span class="quiz-blank">______</span> in his team.',options:['A. pressure','B. effort','C. trust','D. crew'],answer:2,exp:'<strong>解析：</strong>车手必须完全<strong>trust</strong>（信任）他的团队。<br>pressure=压力 · effort=努力 · crew=团队'},
-    {stem:'Every movement must be <span class="quiz-blank">______</span> — even one small mistake can ruin the race.',options:['A. smooth','B. precise','C. average','D. professional'],answer:1,exp:'<strong>解析：</strong>一个错误就毁掉比赛 → 动作必须<strong>precise</strong>（精确）。<br>smooth=顺利的 · average=平均的 · professional=专业的'},
-    {stem:'The <span class="quiz-blank">______</span> pit stop time is now just 2.4 seconds.',options:['A. individual','B. efficient','C. precise','D. average'],answer:3,exp:'<strong>解析：</strong>2.4秒是<strong>average</strong>（平均）进站时间。<br>individual=个人的 · efficient=高效的 · precise=精确的'},
-    {stem:'Drivers <span class="quiz-blank">______</span> on their crew more than most fans realize.',options:['A. rely','B. achieve','C. react','D. replace'],answer:0,exp:'<strong>解析：</strong><strong>rely on</strong> = 依靠，固定搭配。<br>achieve=实现 · react=反应 · replace=替换'},
-    {stem:'Months of <span class="quiz-blank">______</span> are needed before a crew member can work on a real race car.',options:['A. success','B. pressure','C. training','D. effort'],answer:2,exp:'<strong>解析：</strong>需要数月<strong>training</strong>（训练）才能上岗。<br>success=成功 · pressure=压力 · effort=努力'},
-    {stem:'What can a team <span class="quiz-blank">______</span> when everyone gives their best effort?',options:['A. rely','B. react','C. replace','D. achieve'],answer:3,exp:'<strong>解析：</strong>全力以赴能<strong>achieve</strong>（实现）什么？<br>rely=依靠 · react=反应 · replace=替换'}
-];
+// 词汇知识库
+const allKnownWords = {
+    'freshman':{zh:'新生',pos:'n.',day:1},'impression':{zh:'印象',pos:'n.',day:1},'curious':{zh:'好奇的',pos:'adj.',day:1},'explore':{zh:'探索',pos:'v.',day:1},'courage':{zh:'勇气',pos:'n.',day:1},'familiar':{zh:'熟悉的',pos:'adj.',day:1},'require':{zh:'需要；要求',pos:'v.',day:1},'expect':{zh:'期待；预期',pos:'v.',day:1},'encourage':{zh:'鼓励',pos:'v.',day:1},'develop':{zh:'培养；发展',pos:'v.',day:1},'struggle':{zh:'挣扎；奋斗',pos:'v./n.',day:1},'improve':{zh:'提高；改善',pos:'v.',day:1},'knowledge':{zh:'知识',pos:'n.',day:1},'prepare':{zh:'准备',pos:'v.',day:1},'active':{zh:'积极的；活跃的',pos:'adj.',day:1},'experience':{zh:'经历；体验',pos:'n./v.',day:1},'gradually':{zh:'逐渐地',pos:'adv.',day:1},'realize':{zh:'意识到',pos:'v.',day:1},'nervous':{zh:'紧张的',pos:'adj.',day:1},'confident':{zh:'自信的',pos:'adj.',day:1},
+    'adapt':{zh:'适应',pos:'v.',day:2},'challenge':{zh:'挑战',pos:'n.',day:2},'pressure':{zh:'压力',pos:'n.',day:2},'balance':{zh:'平衡；均衡',pos:'v./n.',day:2},'schedule':{zh:'日程表',pos:'n.',day:2},'independent':{zh:'独立的',pos:'adj.',day:2},'goal':{zh:'目标',pos:'n.',day:2},'method':{zh:'方法',pos:'n.',day:2},'attitude':{zh:'态度',pos:'n.',day:2},'communicate':{zh:'交流',pos:'v.',day:2},'benefit':{zh:'益处；得益于',pos:'n./v.',day:2},'opportunity':{zh:'机会',pos:'n.',day:2},'volunteer':{zh:'志愿者；自愿做',pos:'n./v.',day:2},'organize':{zh:'组织',pos:'v.',day:2},'manage':{zh:'管理；设法做成',pos:'v.',day:2},'reduce':{zh:'减少',pos:'v.',day:2},'support':{zh:'支持',pos:'n./v.',day:2},'enrich':{zh:'丰富；充实',pos:'v.',day:2}
+};
+vocabulary.forEach(v=>{allKnownWords[v.word]={zh:v.zh,pos:v.pos,day:3};});
+
+function generateChoiceOptions(correctWord){
+    const others = vocabulary.filter(v=>v.word!==correctWord.word);
+    return [...others.sort(()=>Math.random()-0.5).slice(0,3).map(v=>v.zh), correctWord.zh].sort(()=>Math.random()-0.5);
+}
+const choiceData = vocabulary.map(v=>({id:v.id,word:v.word,correctZh:v.zh,options:generateChoiceOptions(v)}));
 
 const sentenceAnalysis = [
-    {en:'Drivers who <b>rely</b> completely on their <b>crew</b> can <b>achieve</b> much better results.',zh:'完全依靠团队的车手能取得更好的成绩。',analysis:'<strong>📌 结构拆解：</strong><br><strong>主干：</strong><span class="hl-sub">Drivers</span> <span class="hl-verb">can achieve</span> <span class="hl-obj">much better results</span>.<br><strong>定语从句：</strong><span class="hl-clause">who rely completely on their crew</span>（修饰 Drivers）<br><strong>语法点：</strong>关系代词 <strong>who</strong> 引导<strong>定语从句</strong>。'},
-    {en:'The <b>success</b> of a Formula 1 team proves that <b>individual</b> talent alone is not enough.',zh:'一支F1车队的成功证明，光靠个人天赋是不够的。',analysis:'<strong>📌 结构拆解：</strong><br><strong>主干：</strong><span class="hl-sub">The success</span> <span class="hl-verb">proves</span>...<br><strong>宾语从句：</strong><span class="hl-clause">that individual talent alone is not enough</span>（作 proves 的宾语）<br><strong>语法点：</strong>连接词 <strong>that</strong> 引导<strong>名词性从句（宾语从句）</strong>。'}
+    {en:'Drivers who <b>rely</b> completely on their <b>crew</b> can <b>achieve</b> much better results.',zh:'完全依靠团队的车手能取得更好的成绩。',analysis:'<strong>📌 主干：</strong><span class="hl-sub">Drivers</span> <span class="hl-verb">can achieve</span> <span class="hl-obj">much better results</span>.<br><strong>定语从句：</strong><span class="hl-clause">who rely completely on their crew</span>（修饰 Drivers）'},
+    {en:'The <b>success</b> of a Formula 1 team proves that <b>individual</b> talent alone is not enough.',zh:'一支F1车队的成功证明，光靠个人天赋是不够的。',analysis:'<strong>📌 主干：</strong><span class="hl-sub">The success</span> <span class="hl-verb">proves</span>...<br><strong>宾语从句：</strong><span class="hl-clause">that individual talent alone is not enough</span>'}
 ];
 
 const sentencePractice = [
-    {type:'成分选择',q:'下面句子中，<b>定语从句</b>修饰的是哪个词？',sentence:'Drivers who rely completely on their crew can achieve much better results.',options:['A. Drivers','B. crew','C. results','D. completely'],answer:0,exp:'<strong>✅ 正确！</strong>定语从句 <em>who rely completely on their crew</em> 修饰先行词 <strong>Drivers</strong>。'},
-    {type:'翻译选择',q:'选出下面句子的<b>最佳翻译</b>：',sentence:'The success of a Formula 1 team proves that individual talent alone is not enough.',options:['A. 一支F1车队的成功证明，光靠个人天赋是不够的。','B. F1车队的成功证明了个人天赋足够。','C. 成功的F1车队不需要个人天赋。','D. 个人天赋足以让F1车队成功。'],answer:0,exp:'<strong>✅ 正确！</strong>A 准确翻译了主句和宾语从句。B/C/D 都误解了 "alone is not enough"（光靠……是不够的）。'}
+    {type:'成分选择',q:'定语从句修饰的是哪个词？',sentence:'Drivers who rely completely on their crew can achieve much better results.',options:['A. Drivers','B. crew','C. results','D. completely'],answer:0,exp:'<strong>✅ 正确！</strong>定语从句修饰 <strong>Drivers</strong>。'},
+    {type:'翻译选择',q:'选出最佳翻译：',sentence:'The success of a Formula 1 team proves that individual talent alone is not enough.',options:['A. 一支F1车队的成功证明，光靠个人天赋是不够的。','B. F1车队的成功证明了个人天赋足够。','C. 成功的F1车队不需要个人天赋。','D. 个人天赋足以让F1车队成功。'],answer:0,exp:'<strong>✅ 正确！</strong>准确翻译了 alone is not enough。'}
 ];
 
-// ==================== 词汇知识库（用于阅读提示条） ====================
-const allKnownWords = {
-    // Day 1 词汇
-    'freshman':{zh:'新生',pos:'n.',day:1},
-    'impression':{zh:'印象',pos:'n.',day:1},
-    'curious':{zh:'好奇的',pos:'adj.',day:1},
-    'explore':{zh:'探索',pos:'v.',day:1},
-    'nervous':{zh:'紧张的',pos:'adj.',day:1},
-    'courage':{zh:'勇气',pos:'n.',day:1},
-    'familiar':{zh:'熟悉的',pos:'adj.',day:1},
-    'require':{zh:'需要；要求',pos:'v.',day:1},
-    'expect':{zh:'期待；预期',pos:'v.',day:1},
-    'encourage':{zh:'鼓励',pos:'v.',day:1},
-    'develop':{zh:'培养；发展',pos:'v.',day:1},
-    'confident':{zh:'自信的',pos:'adj.',day:1},
-    'struggle':{zh:'挣扎；奋斗',pos:'v./n.',day:1},
-    'improve':{zh:'提高；改善',pos:'v.',day:1},
-    'knowledge':{zh:'知识',pos:'n.',day:1},
-    'prepare':{zh:'准备',pos:'v.',day:1},
-    'active':{zh:'积极的；活跃的',pos:'adj.',day:1},
-    'experience':{zh:'经历；体验',pos:'n./v.',day:1},
-    'gradually':{zh:'逐渐地',pos:'adv.',day:1},
-    'realize':{zh:'意识到',pos:'v.',day:1},
-    // Day 2 词汇
-    'adapt':{zh:'适应',pos:'v.',day:2},
-    'challenge':{zh:'挑战',pos:'n.',day:2},
-    'pressure':{zh:'压力',pos:'n.',day:2},
-    'balance':{zh:'平衡；均衡',pos:'v./n.',day:2},
-    'schedule':{zh:'日程表',pos:'n.',day:2},
-    'independent':{zh:'独立的',pos:'adj.',day:2},
-    'goal':{zh:'目标',pos:'n.',day:2},
-    'method':{zh:'方法',pos:'n.',day:2},
-    'attitude':{zh:'态度',pos:'n.',day:2},
-    'communicate':{zh:'交流',pos:'v.',day:2},
-    'benefit':{zh:'益处；得益于',pos:'n./v.',day:2},
-    'opportunity':{zh:'机会',pos:'n.',day:2},
-    'volunteer':{zh:'志愿者；自愿做',pos:'n./v.',day:2},
-    'organize':{zh:'组织',pos:'v.',day:2},
-    'manage':{zh:'管理；设法做成',pos:'v.',day:2},
-    'reduce':{zh:'减少',pos:'v.',day:2},
-    'support':{zh:'支持',pos:'n./v.',day:2},
-    'enrich':{zh:'丰富；充实',pos:'v.',day:2},
-    // Day 3 词汇
-    'cooperate':{zh:'合作',pos:'v.',day:3},
-    'efficient':{zh:'高效的',pos:'adj.',day:3},
-    'responsibility':{zh:'责任',pos:'n.',day:3},
-    'individual':{zh:'个人(的)',pos:'adj./n.',day:3},
-    'crew':{zh:'全体工作人员；团队',pos:'n.',day:3},
-    'replace':{zh:'替换',pos:'v.',day:3},
-    'average':{zh:'平均的；平均数',pos:'adj./n.',day:3},
-    'within':{zh:'在……之内',pos:'prep.',day:3},
-    'trust':{zh:'信任',pos:'n./v.',day:3},
-    'precise':{zh:'精确的',pos:'adj.',day:3},
-    'smoothly':{zh:'顺利地；平稳地',pos:'adv.',day:3},
-    'training':{zh:'训练',pos:'n.',day:3},
-    'professional':{zh:'职业的；专业的',pos:'adj.',day:3},
-    'react':{zh:'反应',pos:'v.',day:3},
-    'achieve':{zh:'实现；达到',pos:'v.',day:3},
-    'effort':{zh:'努力',pos:'n.',day:3},
-    'rely':{zh:'依靠',pos:'v.',day:3},
-    'success':{zh:'成功',pos:'n.',day:3}
-};
-
-// Day 3 新词列表
-const day3NewWords = ['cooperate','efficient','responsibility','individual','crew','replace','average','within','trust','precise','smoothly','training','professional','react','achieve','effort','rely','success'];
-
-// 阅读短文（旧词用黄色，新词用蓝色）
-const readingText = `When you watch a Formula 1 race, you might think the driver does everything alone. But in fact, an <span class="old-word" data-word="individual" title="个人的 (Day 1)">individual</span> driver cannot win without his <span class="new-word" data-word="crew" title="团队 (n.) · 今日新词">crew</span>. During a pit stop, the <span class="new-word" data-word="crew" title="团队 (n.) · 今日新词">crew</span> members must <span class="new-word" data-word="cooperate" title="合作 (v.) · 今日新词">cooperate</span> in a highly <span class="new-word" data-word="efficient" title="高效的 (adj.) · 今日新词">efficient</span> way. Each person has a clear <span class="new-word" data-word="responsibility" title="责任 (n.) · 今日新词">responsibility</span> — one <span class="new-word" data-word="replace" title="替换 (v.) · 今日新词">replaces</span> the front tire, another handles the jack. The <span class="new-word" data-word="average" title="平均的 (adj.) · 今日新词">average</span> pit stop now takes just 2.4 seconds, which means everything must be done <span class="new-word" data-word="within" title="在……之内 (prep.) · 今日新词">within</span> the blink of an eye.<br><br>This level of performance <span class="old-word" data-word="require" title="需要 (v.) · Day 1">requires</span> months of <span class="new-word" data-word="training" title="训练 (n.) · 今日新词">training</span>. Every <span class="new-word" data-word="professional" title="专业的 (adj.) · 今日新词">professional</span> team member must <span class="new-word" data-word="react" title="反应 (v.) · 今日新词">react</span> instantly and move with <span class="new-word" data-word="precise" title="精确的 (adj.) · 今日新词">precise</span> movements. The driver has to <span class="new-word" data-word="trust" title="信任 (v.) · 今日新词">trust</span> them completely — he <span class="new-word" data-word="rely" title="依靠 (v.) · 今日新词">relies</span> on his <span class="new-word" data-word="crew" title="团队 (n.) · 今日新词">crew</span> more than fans <span class="old-word" data-word="realize" title="意识到 (v.) · Day 1">realize</span>. When everything goes <span class="new-word" data-word="smoothly" title="顺利地 (adv.) · 今日新词">smoothly</span>, it is a beautiful display of collective <span class="new-word" data-word="effort" title="努力 (n.) · 今日新词">effort</span> under intense <span class="old-word" data-word="pressure" title="压力 (n.) · Day 2">pressure</span>.<br><br>As Lewis Hamilton once said, he is just a man who works hard, but he has an incredible team behind him. The <span class="new-word" data-word="success" title="成功 (n.) · 今日新词">success</span> of an F1 team proves that what you can <span class="new-word" data-word="achieve" title="实现 (v.) · 今日新词">achieve</span> together is far greater than anything you can do alone. This is a lesson that goes far beyond racing — it applies to school, work, and life.`;
+const readingText = 'When you watch a Formula 1 race, an <span class="old-word" data-word="individual" title="个人的 (adj.) · Day 1">individual</span> driver cannot win without his <span class="new-word" data-word="crew" title="团队 (n.) · 今日新词">crew</span>. During a pit stop, members must <span class="new-word" data-word="cooperate" title="合作 (v.) · 今日新词">cooperate</span> in a highly <span class="new-word" data-word="efficient" title="高效的 (adj.) · 今日新词">efficient</span> way. Each person has a clear <span class="new-word" data-word="responsibility" title="责任 (n.) · 今日新词">responsibility</span> — one <span class="new-word" data-word="replace" title="替换 (v.) · 今日新词">replaces</span> the front tire, another handles the jack. The <span class="new-word" data-word="average" title="平均的 (adj.) · 今日新词">average</span> pit stop now takes just 2.4 seconds, done <span class="new-word" data-word="within" title="在……之内 (prep.) · 今日新词">within</span> the blink of an eye.<br><br>This <span class="old-word" data-word="require" title="需要 (v.) · Day 1">requires</span> months of <span class="new-word" data-word="training" title="训练 (n.) · 今日新词">training</span>. Every <span class="new-word" data-word="professional" title="专业的 (adj.) · 今日新词">professional</span> must <span class="new-word" data-word="react" title="反应 (v.) · 今日新词">react</span> with <span class="new-word" data-word="precise" title="精确的 (adj.) · 今日新词">precise</span> movements. The driver must <span class="new-word" data-word="trust" title="信任 (v.) · 今日新词">trust</span> them — he <span class="new-word" data-word="rely" title="依靠 (v.) · 今日新词">relies</span> on his <span class="new-word" data-word="crew" title="团队 (n.) · 今日新词">crew</span> completely. When everything goes <span class="new-word" data-word="smoothly" title="顺利地 (adv.) · 今日新词">smoothly</span>, it is a display of collective <span class="new-word" data-word="effort" title="努力 (n.) · 今日新词">effort</span> under intense <span class="old-word" data-word="pressure" title="压力 (n.) · Day 2">pressure</span>. The <span class="new-word" data-word="success" title="成功 (n.) · 今日新词">success</span> proves what you can <span class="new-word" data-word="achieve" title="实现 (v.) · 今日新词">achieve</span> together.';
 
 const readingQuestions = [
-    {type:'主旨大意',q:'What is the main idea of this passage?',options:['A. How to drive an F1 car.','B. The importance of teamwork in F1 racing.','C. The history of Formula 1.','D. Lewis Hamilton\'s life story.'],answer:1,exp:'<strong>解析：</strong>全文围绕F1中团队合作的重要性展开。B 最准确。'},
-    {type:'细节理解',q:'How long does the average F1 pit stop take now?',options:['A. 2.4 seconds','B. 5 seconds','C. 10 seconds','D. 1 minute'],answer:0,exp:'<strong>解析：</strong>文中明确提到"The average pit stop now takes just 2.4 seconds"。'},
-    {type:'词义猜测',q:'The word "precise" in the passage means:',options:['A. fast and quick','B. exact and accurate','C. slow and careful','D. strong and powerful'],answer:1,exp:'<strong>解析：</strong>precise = 精确的，与 exact and accurate 同义。fast=快 · slow=慢 · strong=强。'},
-    {type:'推理判断',q:'Why does the driver need to trust his crew?',options:['A. Because they are his friends.','B. Because he relies on them during critical moments.','C. Because they pay him money.','D. Because they drive the car for him.'],answer:1,exp:'<strong>解析：</strong>根据"he relies on his crew more than fans realize"，关键时刻车手依赖团队。'},
-    {type:'作者态度',q:'What lesson does the writer want us to learn from F1?',options:['A. Driving fast is exciting.','B. Teamwork achieves more than individual effort.','C. F1 is a dangerous sport.','D. Only talented people can succeed.'],answer:1,exp:'<strong>解析：</strong>最后一段点题：together is far greater than alone。作者想传达的是团队合作的价值。'}
+    {type:'主旨大意',q:'What is the passage mainly about?',options:['A. How to drive an F1 car.','B. The importance of teamwork in F1.','C. The history of Formula 1.','D. Lewis Hamilton\'s life.'],answer:1,exp:'<strong>解析：</strong>全文围绕F1团队合作。B 最准确。'},
+    {type:'细节理解',q:'How long does the average pit stop take?',options:['A. 2.4 seconds','B. 5 seconds','C. 10 seconds','D. 1 minute'],answer:0,exp:'<strong>解析：</strong>文中"The average pit stop now takes just 2.4 seconds"。'},
+    {type:'词义猜测',q:'"precise" means:',options:['A. fast and quick','B. exact and accurate','C. slow and careful','D. strong and powerful'],answer:1,exp:'<strong>解析：</strong>precise = 精确的。'},
+    {type:'推理判断',q:'Why does the driver need to trust his crew?',options:['A. They are friends.','B. He relies on them in critical moments.','C. They pay him.','D. They drive for him.'],answer:1,exp:'<strong>解析：</strong>关键时刻车手依赖团队。'},
+    {type:'作者态度',q:'What lesson does the writer want us to learn?',options:['A. Driving fast is exciting.','B. Teamwork achieves more than individual effort.','C. F1 is dangerous.','D. Only talented people succeed.'],answer:1,exp:'<strong>解析：</strong>最后一句点题。'}
 ];
 
-// ==================== 语音 ====================
-function speakWord(word){
-    if(!('speechSynthesis' in window))return;
-    window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(word);
-    utter.lang = 'en-US';utter.rate = 0.85;utter.pitch = 1;
-    window.speechSynthesis.speak(utter);
-}
+function speakWord(word){if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=0.85;window.speechSynthesis.speak(u);}
 
-// ==================== 状态 ====================
-let wordbook, completedTabs, choiceAnswers, choiceSubmitted;
-let readingAnswers, readingSubmitted, sentenceAnswers, sentenceSubmitted;
+let wordbook,completedTabs,choiceAnswers,choiceSubmitted,readingAnswers,readingSubmitted,sentenceAnswers,sentenceSubmitted;
+function initState(){try{wordbook=JSON.parse(localStorage.getItem('wordbook_day3')||'[]');completedTabs=new Set(JSON.parse(localStorage.getItem('completed_day3')||'[]'));}catch(e){wordbook=[];completedTabs=new Set();}choiceAnswers=new Array(20).fill(null);choiceSubmitted=false;readingAnswers=new Array(5).fill(null);readingSubmitted=false;sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;}
+function saveState(){localStorage.setItem('wordbook_day3',JSON.stringify(wordbook));localStorage.setItem('completed_day3',JSON.stringify([...completedTabs]));}
+function updateProgress(){const p=Math.round(completedTabs.size/4*100);document.getElementById('progress-percent').textContent=p+'%';document.getElementById('progress-fill').style.width=p+'%';document.getElementById('wordbook-count').textContent=wordbook.length;['vocab','choice','sentence','reading'].forEach(t=>{const b=document.getElementById('tab-btn-'+t);if(b)b.classList.toggle('completed-tab',completedTabs.has(t));});}
+function markComplete(t){if(!completedTabs.has(t)){completedTabs.add(t);saveState();updateProgress();showToast('✅ '+(t==='vocab'?'核心词汇':t==='choice'?'词义选择':t==='sentence'?'长难句':'分级阅读')+' 已完成！');}}
+function showToast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2000);}
+function switchTab(n){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));const b=document.getElementById('tab-btn-'+n),c=document.getElementById('tab-'+n);if(b)b.classList.add('active');if(c)c.classList.add('active');if(n==='vocab'&&!completedTabs.has('vocab')){setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);}}
+function toggleWordbook(){if(!wordbook.length){showToast('📒 生词本为空');return;}alert('📒 生词本 (Day 3)\n\n'+wordbook.map(id=>vocabulary.find(v=>v.id===id)).filter(Boolean).map(w=>'• '+w.word+' ('+w.zh+')').join('\n')+'\n\n共 '+wordbook.length+' 个');}
+function toggleSave(id,el){const i=wordbook.indexOf(id);if(i>-1){wordbook.splice(i,1);el.classList.remove('saved');el.textContent='☆';showToast('已移除');}else{wordbook.push(id);el.classList.add('saved');el.textContent='★';showToast('已加入 ⭐');}saveState();updateProgress();}
 
-function initState(){
-    try{
-        wordbook = JSON.parse(localStorage.getItem('wordbook_day3')||'[]');
-        completedTabs = new Set(JSON.parse(localStorage.getItem('completed_day3')||'[]'));
-    }catch(e){
-        wordbook = []; completedTabs = new Set();
-    }
-    choiceAnswers = new Array(10).fill(null); choiceSubmitted = false;
-    readingAnswers = new Array(5).fill(null); readingSubmitted = false;
-    sentenceAnswers = new Array(2).fill(null); sentenceSubmitted = false;
-}
+function renderVocab(){const c=document.getElementById('vocab-list');if(!c)return;c.innerHTML=vocabulary.map(v=>`<div class="word-card"><div class="word-example-sentence">${v.example}</div><div class="word-info-row"><span class="word-tag" onclick="speakWord('${v.word}')">${v.word}</span><span class="word-pos-tag">${v.pos}</span><span class="word-zh-tag">${v.zh}</span><span class="word-actions"><span class="icon-btn" onclick="speakWord('${v.word}')">🔊</span><span class="icon-btn ${wordbook.includes(v.id)?'saved':''}" onclick="toggleSave('${v.id}',this)">${wordbook.includes(v.id)?'★':'☆'}</span></span></div></div>`).join('');}
 
-function saveState(){
-    localStorage.setItem('wordbook_day3',JSON.stringify(wordbook));
-    localStorage.setItem('completed_day3',JSON.stringify([...completedTabs]));
-}
-function updateProgress(){
-    const pct = Math.round(completedTabs.size/4*100);
-    document.getElementById('progress-percent').textContent = pct+'%';
-    document.getElementById('progress-fill').style.width = pct+'%';
-    document.getElementById('wordbook-count').textContent = wordbook.length;
-    ['vocab','choice','sentence','reading'].forEach(t=>{
-        const btn=document.getElementById('tab-btn-'+t);
-        if(btn)btn.classList.toggle('completed-tab',completedTabs.has(t));
-    });
-}
-function markComplete(tab){
-    if(!completedTabs.has(tab)){
-        completedTabs.add(tab);saveState();updateProgress();
-        const map={vocab:'核心词汇',choice:'语境选择',sentence:'长难句',reading:'分级阅读'};
-        showToast('✅ '+map[tab]+' 已完成！');
-    }
-}
-function showToast(msg){
-    const t=document.getElementById('toast');if(!t)return;
-    t.textContent=msg;t.classList.add('show');
-    clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2000);
-}
+function renderChoice(){const c=document.getElementById('choice-grid');if(!c)return;c.innerHTML=choiceData.map((cd,i)=>`<div class="choice-card" id="choice-card-${i}"><div class="word-en">${cd.word}</div><div class="word-num">#${i+1}</div><div class="choice-options">${cd.options.map((opt,j)=>`<span class="mini-opt" id="mini-${i}-${j}" onclick="selectMini(${i},${j},'${cd.correctZh.replace(/'/g,"\\'")}')">${opt}</span>`).join('')}</div><div class="mini-fb" id="mini-fb-${i}"></div></div>`).join('');choiceAnswers=new Array(20).fill(null);choiceSubmitted=false;}
+function selectMini(ci,oi,czh){if(choiceSubmitted)return;document.querySelectorAll('#choice-card-'+ci+' .mini-opt').forEach(o=>o.classList.remove('chosen'));document.getElementById('mini-'+ci+'-'+oi).classList.add('chosen');choiceAnswers[ci]=oi;}
+function checkAllChoices(){if(!choiceSubmitted&&choiceAnswers.includes(null)){showToast('⚠️ 请完成所有20题');return;}let correct=0;choiceData.forEach((cd,i)=>{const oi=choiceAnswers[i];const ct=cd.options[oi];const fb=document.getElementById('mini-fb-'+i);cd.options.forEach((opt,j)=>{const el=document.getElementById('mini-'+i+'-'+j);if(opt===cd.correctZh)el.classList.add('right');if(j===oi&&opt!==cd.correctZh)el.classList.add('wrong-chosen');el.style.pointerEvents='none';});if(ct===cd.correctZh){correct++;fb.innerHTML='<span style="color:#10B981;">✅</span>';}else{fb.innerHTML='<span style="color:#EF4444;">✅ '+cd.correctZh+'</span>';}});choiceSubmitted=true;showScorePopup(correct,20);if(correct>=16)markComplete('choice');}
+function resetAllChoices(){choiceAnswers=new Array(20).fill(null);choiceSubmitted=false;document.querySelectorAll('#choice-grid .mini-opt').forEach(o=>{o.classList.remove('chosen','right','wrong-chosen');o.style.pointerEvents='auto';});document.querySelectorAll('#choice-grid .mini-fb').forEach(f=>{f.innerHTML='';});}
 
-// ==================== Tab ====================
-function switchTab(name){
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-    const btn=document.getElementById('tab-btn-'+name);
-    const content=document.getElementById('tab-'+name);
-    if(btn)btn.classList.add('active');
-    if(content)content.classList.add('active');
-    if(name==='vocab' && !completedTabs.has('vocab')){
-        setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);
-    }
-}
+function renderSentence(){const c=document.getElementById('sentence-content');if(!c)return;let h='<h3 style="margin-bottom:12px;">📖 句子解析</h3>';sentenceAnalysis.forEach(s=>{h+=`<div class="sentence-box"><div class="sentence-en">${s.en}</div><div class="sentence-zh">${s.zh}</div></div><div class="analysis-box">${s.analysis}</div><br>`;});h+='<h3 style="margin:24px 0 12px;">✏️ 巩固练习</h3>';sentencePractice.forEach((p,pi)=>{h+=`<div class="quiz-item" id="sentence-item-${pi}"><span class="practice-label">练习 ${pi+1}：${p.type}</span><div class="quiz-stem" style="margin-top:8px;">${p.q}</div><div class="sentence-box" style="margin:8px 0;"><div class="sentence-en">${p.sentence}</div></div><div class="quiz-options">${p.options.map((opt,j)=>`<div class="quiz-option" id="sentence-opt-${pi}-${j}" onclick="selectSentence(${pi},${j})"><span class="quiz-radio">${String.fromCharCode(65+j)}</span><span>${opt.substring(3)}</span></div>`).join('')}</div><div class="quiz-feedback" id="sentence-fb-${pi}"></div></div>`;});h+='<div style="margin-top:12px;"><button class="btn btn-primary" onclick="checkSentences()">✅ 检查练习</button> <button class="btn btn-secondary" onclick="resetSentences()">🔄 重新作答</button></div>';c.innerHTML=h;sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;}
+function selectSentence(qi,oi){if(sentenceSubmitted)return;document.querySelectorAll('#sentence-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));document.getElementById('sentence-opt-'+qi+'-'+oi).classList.add('selected');sentenceAnswers[qi]=oi;}
+function checkSentences(){if(!sentenceSubmitted&&sentenceAnswers.includes(null)){showToast('⚠️ 请完成所有练习');return;}let correct=0;sentencePractice.forEach((p,i)=>{const fb=document.getElementById('sentence-fb-'+i);document.querySelectorAll('#sentence-item-'+i+' .quiz-option').forEach((o,j)=>{o.classList.add('disabled');if(j===p.answer)o.classList.add('correct');if(j===sentenceAnswers[i]&&j!==p.answer)o.classList.add('wrong');});if(sentenceAnswers[i]===p.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML=p.exp;}else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+p.exp;}});sentenceSubmitted=true;if(correct===2)markComplete('sentence');}
+function resetSentences(){sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;document.querySelectorAll('#sentence-content .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));document.querySelectorAll('#sentence-content .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});}
 
-// ==================== 生词本 ====================
-function toggleWordbook(){
-    if(!wordbook.length){showToast('📒 生词本为空');return;}
-    const words=wordbook.map(id=>vocabulary.find(v=>v.id===id)).filter(Boolean);
-    alert('📒 生词本 (Day 3)\n\n'+words.map(w=>'• '+w.word+' ('+w.zh+')').join('\n')+'\n\n共 '+words.length+' 个');
-}
-function toggleSave(id,el){
-    const i=wordbook.indexOf(id);
-    if(i>-1){wordbook.splice(i,1);el.classList.remove('saved');el.textContent='☆';showToast('已移除');}
-    else{wordbook.push(id);el.classList.add('saved');el.textContent='★';showToast('已加入 ⭐');}
-    saveState();updateProgress();
-}
+function showWordTip(w){const info=allKnownWords[w];if(!info)return;const isNew=vocabulary.some(v=>v.word===w);const t=document.getElementById('word-tooltip');t.innerHTML='<span class="tip-word">'+w+'</span> <span class="tip-pos">['+info.pos+']</span> <span class="tip-zh">'+info.zh+'</span> <span class="tip-from">'+(isNew?'🆕 今日新词':'📚 来自 Day '+info.day)+'</span>';t.classList.add('show');}
+function renderReading(){const p=document.getElementById('reading-passage'),q=document.getElementById('reading-questions');if(!p||!q)return;p.innerHTML=readingText;p.querySelectorAll('.new-word,.old-word').forEach(el=>{el.addEventListener('click',function(e){e.stopPropagation();const w=this.getAttribute('data-word');if(w)showWordTip(w);});});p.addEventListener('click',function(){document.getElementById('word-tooltip').classList.remove('show');});q.innerHTML=readingQuestions.map((r,i)=>`<div class="quiz-item" id="reading-item-${i}"><div class="quiz-stem"><span style="color:var(--primary);font-weight:600;">Q${i+1}.</span><span style="font-size:0.7rem;color:var(--text-secondary);background:#F3F4F6;padding:2px 8px;border-radius:10px;margin:0 6px;">${r.type}</span>${r.q}</div><div class="quiz-options">${r.options.map((opt,j)=>`<div class="quiz-option" id="reading-opt-${i}-${j}" onclick="selectReading(${i},${j})"><span class="quiz-radio">${String.fromCharCode(65+j)}</span><span>${opt.substring(3)}</span></div>`).join('')}</div><div class="quiz-feedback" id="reading-fb-${i}"></div></div>`).join('');readingAnswers=new Array(5).fill(null);readingSubmitted=false;}
+function selectReading(qi,oi){if(readingSubmitted)return;document.querySelectorAll('#reading-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));document.getElementById('reading-opt-'+qi+'-'+oi).classList.add('selected');readingAnswers[qi]=oi;}
+function checkAllReading(){if(!readingSubmitted&&readingAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}let correct=0;readingQuestions.forEach((r,i)=>{const fb=document.getElementById('reading-fb-'+i);document.querySelectorAll('#reading-item-'+i+' .quiz-option').forEach((o,j)=>{o.classList.add('disabled');if(j===r.answer)o.classList.add('correct');if(j===readingAnswers[i]&&j!==r.answer)o.classList.add('wrong');});if(readingAnswers[i]===r.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML='✅ '+r.exp;}else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+r.exp;}});readingSubmitted=true;showScorePopup(correct,5);if(correct>=4)markComplete('reading');}
+function resetAllReading(){readingAnswers=new Array(5).fill(null);readingSubmitted=false;document.querySelectorAll('#reading-questions .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));document.querySelectorAll('#reading-questions .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});}
 
-// ==================== 渲染 ====================
-function renderVocab(){
-    const c=document.getElementById('vocab-list');if(!c)return;
-    c.innerHTML=vocabulary.map(v=>`
-        <div class="word-card">
-            <div class="word-example-sentence">${v.example}</div>
-            <div class="word-info-row">
-                <span class="word-tag" onclick="speakWord('${v.word}')" title="点击听发音">${v.word}</span>
-                <span class="word-pos-tag">${v.pos}</span>
-                <span class="word-zh-tag">${v.zh}</span>
-                <span class="word-actions">
-                    <span class="icon-btn" onclick="speakWord('${v.word}')" title="听发音">🔊</span>
-                    <span class="icon-btn ${wordbook.includes(v.id)?'saved':''}" onclick="toggleSave('${v.id}',this)" title="生词本">${wordbook.includes(v.id)?'★':'☆'}</span>
-                </span>
-            </div>
-        </div>`).join('');
-}
-
-function renderChoice(){
-    const c=document.getElementById('choice-questions');if(!c)return;
-    c.innerHTML=choiceQuestions.map((q,i)=>`
-        <div class="quiz-item" id="choice-item-${i}">
-            <div class="quiz-stem">${i+1}. ${q.stem}</div>
-            <div class="quiz-options">${q.options.map((opt,j)=>`
-                <div class="quiz-option" id="choice-opt-${i}-${j}" onclick="selectChoice(${i},${j})">
-                    <span class="quiz-radio">${String.fromCharCode(65+j)}</span>
-                    <span>${opt.substring(3)}</span>
-                </div>`).join('')}</div>
-            <div class="quiz-feedback" id="choice-fb-${i}"></div>
-        </div>`).join('');
-    choiceAnswers=new Array(10).fill(null);choiceSubmitted=false;
-}
-function selectChoice(qi,oi){
-    if(choiceSubmitted)return;
-    document.querySelectorAll('#choice-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));
-    document.getElementById('choice-opt-'+qi+'-'+oi).classList.add('selected');
-    choiceAnswers[qi]=oi;
-}
-function checkAllChoices(){
-    if(!choiceSubmitted && choiceAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}
-    let correct=0;
-    choiceQuestions.forEach((q,i)=>{
-        const fb=document.getElementById('choice-fb-'+i);
-        document.querySelectorAll('#choice-item-'+i+' .quiz-option').forEach((o,j)=>{
-            o.classList.add('disabled');
-            if(j===q.answer)o.classList.add('correct');
-            if(j===choiceAnswers[i]&&j!==q.answer)o.classList.add('wrong');
-        });
-        if(choiceAnswers[i]===q.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML='✅ '+q.exp;}
-        else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+q.exp;}
-    });
-    choiceSubmitted=true;showScorePopup(correct,10);
-    if(correct>=8)markComplete('choice');
-}
-function resetAllChoices(){
-    choiceAnswers=new Array(10).fill(null);choiceSubmitted=false;
-    document.querySelectorAll('#choice-questions .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));
-    document.querySelectorAll('#choice-questions .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});
-}
-
-function renderSentence(){
-    const c=document.getElementById('sentence-content');if(!c)return;
-    let html='<h3 style="margin-bottom:12px;">📖 句子解析</h3>';
-    sentenceAnalysis.forEach(s=>{
-        html+=`<div class="sentence-box"><div class="sentence-en">${s.en}</div><div class="sentence-zh">${s.zh}</div></div>
-        <div class="analysis-box">${s.analysis}</div><br>`;
-    });
-    html+='<h3 style="margin:24px 0 12px;">✏️ 巩固练习</h3>';
-    sentencePractice.forEach((p,pi)=>{
-        html+=`<div class="quiz-item" id="sentence-item-${pi}">
-            <span class="practice-label">练习 ${pi+1}：${p.type}</span>
-            <div class="quiz-stem" style="margin-top:8px;">${p.q}</div>
-            <div class="sentence-box" style="margin:8px 0;"><div class="sentence-en">${p.sentence}</div></div>
-            <div class="quiz-options">${p.options.map((opt,j)=>`
-                <div class="quiz-option" id="sentence-opt-${pi}-${j}" onclick="selectSentence(${pi},${j})">
-                    <span class="quiz-radio">${String.fromCharCode(65+j)}</span>
-                    <span>${opt.substring(3)}</span>
-                </div>`).join('')}</div>
-            <div class="quiz-feedback" id="sentence-fb-${pi}"></div>
-        </div>`;
-    });
-    html+='<div style="margin-top:12px;"><button class="btn btn-primary" onclick="checkSentences()">✅ 检查练习</button> <button class="btn btn-secondary" onclick="resetSentences()">🔄 重新作答</button></div>';
-    c.innerHTML=html;
-    sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;
-}
-function selectSentence(qi,oi){
-    if(sentenceSubmitted)return;
-    document.querySelectorAll('#sentence-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));
-    document.getElementById('sentence-opt-'+qi+'-'+oi).classList.add('selected');
-    sentenceAnswers[qi]=oi;
-}
-function checkSentences(){
-    if(!sentenceSubmitted && sentenceAnswers.includes(null)){showToast('⚠️ 请完成所有练习');return;}
-    let correct=0;
-    sentencePractice.forEach((p,i)=>{
-        const fb=document.getElementById('sentence-fb-'+i);
-        document.querySelectorAll('#sentence-item-'+i+' .quiz-option').forEach((o,j)=>{
-            o.classList.add('disabled');
-            if(j===p.answer)o.classList.add('correct');
-            if(j===sentenceAnswers[i]&&j!==p.answer)o.classList.add('wrong');
-        });
-        if(sentenceAnswers[i]===p.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML=p.exp;}
-        else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+p.exp;}
-    });
-    sentenceSubmitted=true;
-    if(correct===2)markComplete('sentence');
-}
-function resetSentences(){
-    sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;
-    document.querySelectorAll('#sentence-content .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));
-    document.querySelectorAll('#sentence-content .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});
-}
-
-// ==================== 阅读（含新旧词标识 + 提示条） ====================
-function showWordTip(word){
-    const info = allKnownWords[word];
-    if(!info)return;
-    const isNew = day3NewWords.includes(word);
-    const tooltip = document.getElementById('word-tooltip');
-    tooltip.innerHTML = `<span class="tip-word">${word}</span> <span class="tip-pos">[${info.pos}]</span> <span class="tip-zh">${info.zh}</span> <span class="tip-from">${isNew ? '🆕 今日新词' : '📚 来自 Day '+info.day}</span>`;
-    tooltip.classList.add('show');
-}
-
-function renderReading(){
-    const pEl=document.getElementById('reading-passage'),qEl=document.getElementById('reading-questions');
-    if(!pEl||!qEl)return;
-    pEl.innerHTML=readingText;
-    // 绑定所有标记词的点击事件
-    pEl.querySelectorAll('.new-word,.old-word').forEach(el=>{
-        el.addEventListener('click',function(e){
-            e.stopPropagation();
-            const w=this.getAttribute('data-word');
-            if(w)showWordTip(w);
-        });
-    });
-    // 点击空白处隐藏提示条
-    pEl.addEventListener('click',function(){
-        document.getElementById('word-tooltip').classList.remove('show');
-    });
-
-    qEl.innerHTML=readingQuestions.map((q,i)=>`
-        <div class="quiz-item" id="reading-item-${i}">
-            <div class="quiz-stem">
-                <span style="color:var(--primary);font-weight:600;">Q${i+1}.</span>
-                <span style="font-size:0.7rem;color:var(--text-secondary);background:#F3F4F6;padding:2px 8px;border-radius:10px;margin:0 6px;">${q.type}</span>${q.q}
-            </div>
-            <div class="quiz-options">${q.options.map((opt,j)=>`
-                <div class="quiz-option" id="reading-opt-${i}-${j}" onclick="selectReading(${i},${j})">
-                    <span class="quiz-radio">${String.fromCharCode(65+j)}</span>
-                    <span>${opt.substring(3)}</span>
-                </div>`).join('')}</div>
-            <div class="quiz-feedback" id="reading-fb-${i}"></div>
-        </div>`).join('');
-    readingAnswers=new Array(5).fill(null);readingSubmitted=false;
-}
-function selectReading(qi,oi){
-    if(readingSubmitted)return;
-    document.querySelectorAll('#reading-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));
-    document.getElementById('reading-opt-'+qi+'-'+oi).classList.add('selected');
-    readingAnswers[qi]=oi;
-}
-function checkAllReading(){
-    if(!readingSubmitted && readingAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}
-    let correct=0;
-    readingQuestions.forEach((q,i)=>{
-        const fb=document.getElementById('reading-fb-'+i);
-        document.querySelectorAll('#reading-item-'+i+' .quiz-option').forEach((o,j)=>{
-            o.classList.add('disabled');
-            if(j===q.answer)o.classList.add('correct');
-            if(j===readingAnswers[i]&&j!==q.answer)o.classList.add('wrong');
-        });
-        if(readingAnswers[i]===q.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML='✅ '+q.exp;}
-        else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+q.exp;}
-    });
-    readingSubmitted=true;showScorePopup(correct,5);
-    if(correct>=4)markComplete('reading');
-}
-function resetAllReading(){
-    readingAnswers=new Array(5).fill(null);readingSubmitted=false;
-    document.querySelectorAll('#reading-questions .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));
-    document.querySelectorAll('#reading-questions .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});
-}
-
-function showScorePopup(correct,total){
-    const score=Math.round(correct/total*100);
-    document.getElementById('score-big').textContent=score+'%';
-    document.getElementById('score-total').textContent=correct+' / '+total+' 正确';
-    document.getElementById('score-msg').textContent=score>=80?'太棒了！🏎️':score>=60?'还不错！💪':'查看解析，再来一次！📚';
-    document.getElementById('score-stars').textContent=score>=90?'⭐⭐⭐⭐⭐':score>=80?'⭐⭐⭐⭐':score>=60?'⭐⭐⭐':score>=40?'⭐⭐':'⭐';
-    document.getElementById('score-overlay').classList.add('show');
-    setTimeout(()=>document.getElementById('score-overlay').classList.remove('show'),3000);
-}
+function showScorePopup(c,t){const s=Math.round(c/t*100);document.getElementById('score-big').textContent=s+'%';document.getElementById('score-total').textContent=c+' / '+t+' 正确';document.getElementById('score-msg').textContent=s>=80?'Podium Finish! 🏎️':s>=60?'Good lap! 💪':'查看解析，再试一次！📚';document.getElementById('score-stars').textContent=s>=90?'⭐⭐⭐⭐⭐':s>=80?'⭐⭐⭐⭐':s>=60?'⭐⭐⭐':s>=40?'⭐⭐':'⭐';document.getElementById('score-overlay').classList.add('show');setTimeout(()=>document.getElementById('score-overlay').classList.remove('show'),3000);}
 function closeScore(){document.getElementById('score-overlay').classList.remove('show');}
 
-function init(){
-    initState();renderVocab();renderChoice();renderSentence();renderReading();updateProgress();
-    if(!completedTabs.has('vocab')){setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);}
-}
+function init(){initState();renderVocab();renderChoice();renderSentence();renderReading();updateProgress();if(!completedTabs.has('vocab')){setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);}}
 document.addEventListener('DOMContentLoaded',init);
 </script>
 </body>
