@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6 - 第一周复习 | 高中英语分级词汇</title>
+    <style>
+        :root {
+            --primary: #4A6CF7;
+            --primary-light: #EEF1FE;
+            --success: #10B981;
+            --danger: #EF4444;
+            --warning: #F59E0B;
+            --bg: #F3F4F6;
+            --card: #FFFFFF;
+            --text: #1F2937;
+            --text-secondary: #6B7280;
+            --border: #E5E7EB;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --word-new: #4A6CF7;
+            --word-old: #D97706;
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;}
+        .top-nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
+        .nav-left{display:flex;align-items:center;gap:12px;}
+        .nav-logo{font-size:1.3rem;font-weight:700;color:var(--primary);text-decoration:none;}
+        .nav-subtitle{font-size:0.85rem;color:var(--text-secondary);background:#F3F4F6;padding:3px 10px;border-radius:12px;font-weight:500;}
+        .nav-right{display:flex;align-items:center;gap:16px;}
+        .home-link{color:var(--text-secondary);text-decoration:none;font-size:0.9rem;font-weight:500;}
+        .home-link:hover{color:var(--primary);}
+        .container{max-width:800px;margin:0 auto;padding:20px 16px 40px;}
+        .header-section{background:var(--card);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px;box-shadow:var(--shadow);}
+        .topic-tag{display:inline-flex;align-items:center;gap:6px;background:var(--primary-light);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:0.85rem;font-weight:500;margin-bottom:12px;}
+        .progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+        .progress-title{font-weight:600;font-size:0.95rem;}
+        .progress-percent{font-weight:700;color:var(--primary);font-size:0.9rem;}
+        .progress-bar{height:8px;background:#E5E7EB;border-radius:4px;overflow:hidden;}
+        .progress-fill{height:100%;background:linear-gradient(90deg,#F59E0B,#10B981,#4A6CF7);border-radius:4px;transition:width 0.5s ease;width:0%;}
+        .tab-nav{display:flex;gap:4px;background:var(--card);border-radius:var(--radius);padding:4px;margin-bottom:20px;box-shadow:var(--shadow);overflow-x:auto;}
+        .tab-btn{flex:1;min-width:65px;padding:10px 10px;border:none;background:transparent;border-radius:var(--radius-sm);cursor:pointer;font-size:0.82rem;font-weight:500;color:var(--text-secondary);white-space:nowrap;}
+        .tab-btn.active{background:var(--primary);color:white;box-shadow:var(--shadow-md);}
+        .tab-btn.completed-tab::after{content:' ✅';font-size:0.7rem;}
+        .tab-content{display:none;}
+        .tab-content.active{display:block;}
+        .card{background:var(--card);border-radius:var(--radius);padding:24px;margin-bottom:16px;box-shadow:var(--shadow);}
+        .card-title{font-size:1.1rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+        .card-subtitle{font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;}
+
+        /* 分组导航 */
+        .group-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+        .group-btn{padding:8px 16px;border-radius:20px;border:2px solid #E5E7EB;background:white;cursor:pointer;font-size:0.85rem;font-weight:500;transition:all 0.15s;}
+        .group-btn:hover{border-color:var(--primary);}
+        .group-btn.active{background:var(--primary);color:white;border-color:var(--primary);}
+        .group-btn.done{border-color:var(--success);background:#ECFDF5;}
+
+        .choice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;}
+        .choice-card{background:#FAFAFA;border:2px solid #E5E7EB;border-radius:var(--radius-sm);padding:14px;transition:all 0.15s;text-align:center;}
+        .choice-card:hover{border-color:#BFC7FF;background:#F8F9FF;}
+        .choice-card .word-en{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+        .choice-card .word-num{font-size:0.7rem;color:var(--text-secondary);}
+        .choice-card .choice-options{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;}
+        .choice-card .mini-opt{padding:4px 10px;border-radius:12px;font-size:0.78rem;cursor:pointer;border:1.5px solid #E5E7EB;background:white;transition:all 0.12s;}
+        .choice-card .mini-opt:hover{border-color:var(--primary);background:var(--primary-light);}
+        .choice-card .mini-opt.chosen{border-color:var(--primary);background:var(--primary);color:white;font-weight:600;}
+        .choice-card .mini-opt.right{border-color:var(--success);background:var(--success);color:white;}
+        .choice-card .mini-opt.wrong-chosen{border-color:var(--danger);background:var(--danger);color:white;}
+        .choice-card .mini-fb{font-size:0.75rem;margin-top:6px;min-height:18px;}
+
+        .reading-passage{background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);padding:20px 24px;font-size:1rem;line-height:2.2;margin-bottom:8px;}
+        .reading-passage .new-word{color:var(--word-new);font-weight:700;cursor:pointer;border-bottom:2px dashed var(--word-new);padding:0 3px;border-radius:2px;}
+        .reading-passage .new-word:hover{background:#EEF1FE;}
+        .reading-passage .old-word{color:var(--word-old);font-weight:700;cursor:pointer;border-bottom:2px dashed var(--word-old);padding:0 3px;border-radius:2px;}
+        .reading-passage .old-word:hover{background:#FEF3C7;}
+        .word-tooltip{background:#1F2937;color:white;padding:10px 16px;border-radius:var(--radius-sm);font-size:0.85rem;margin-bottom:16px;display:none;line-height:1.5;animation:fadeIn 0.2s ease;}
+        .word-tooltip.show{display:block;}
+        .word-tooltip .tip-word{font-size:1.1rem;font-weight:700;color:#60A5FA;}
+        .word-tooltip .tip-pos{color:#94a3b8;}
+        .word-tooltip .tip-zh{color:#34D399;font-weight:600;}
+        .word-tooltip .tip-from{color:#FBBF24;font-size:0.8rem;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+
+        .sentence-box{background:#FFFBEB;border-left:4px solid var(--warning);padding:16px 20px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:12px;}
+        .sentence-en{font-weight:600;font-size:1rem;color:#92400E;}
+        .sentence-zh{font-size:0.88rem;color:#78716C;margin-top:4px;}
+        .analysis-box{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:var(--radius-sm);padding:16px;margin-top:10px;font-size:0.9rem;line-height:1.8;}
+        .hl-sub{background:#DBEAFE;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-verb{background:#FCE7F3;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-obj{background:#D1FAE5;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-clause{background:#FEF3C7;padding:2px 6px;border-radius:3px;font-weight:600;}
+
+        .quiz-item{padding:16px 0;border-bottom:1px solid #F3F4F6;}
+        .quiz-item:last-child{border-bottom:none;}
+        .quiz-stem{font-weight:500;margin-bottom:10px;line-height:1.6;}
+        .quiz-options{display:flex;flex-direction:column;gap:6px;}
+        .quiz-option{display:flex;align-items:center;gap:10px;padding:10px 14px;border:2px solid #E5E7EB;border-radius:var(--radius-sm);cursor:pointer;font-size:0.9rem;background:#FAFAFA;transition:all 0.15s;}
+        .quiz-option:hover{border-color:#BFC7FF;background:#F8F9FF;}
+        .quiz-option.selected{border-color:var(--primary);background:var(--primary-light);font-weight:600;}
+        .quiz-option.correct{border-color:var(--success);background:#ECFDF5;font-weight:600;}
+        .quiz-option.wrong{border-color:var(--danger);background:#FEF2F2;}
+        .quiz-option.disabled{pointer-events:none;opacity:0.85;}
+        .quiz-radio{width:22px;height:22px;border-radius:50%;border:2px solid #D1D5DB;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:transparent;}
+        .quiz-option.selected .quiz-radio{border-color:var(--primary);background:var(--primary);color:white;}
+        .quiz-option.correct .quiz-radio{border-color:var(--success);background:var(--success);color:white;}
+        .quiz-option.wrong .quiz-radio{border-color:var(--danger);background:var(--danger);color:white;}
+        .quiz-feedback{margin-top:8px;padding:10px 14px;border-radius:var(--radius-sm);font-size:0.85rem;display:none;line-height:1.5;}
+        .quiz-feedback.show{display:block;}
+        .quiz-feedback.ok{background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;}
+        .quiz-feedback.err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;}
+
+        /* 复习报告 */
+        .report-card{background:linear-gradient(135deg,#EEF1FE,#F0FDF4);border-radius:var(--radius);padding:24px;text-align:center;margin-top:16px;}
+        .report-big{font-size:3rem;font-weight:800;color:var(--primary);}
+        .report-msg{font-size:1.1rem;font-weight:600;margin:8px 0;}
+
+        .btn{padding:10px 24px;border-radius:8px;border:none;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;margin:4px;}
+        .btn-primary{background:var(--primary);color:white;}
+        .btn-primary:hover{background:#3B5DE7;}
+        .btn-secondary{background:#F3F4F6;color:var(--text);}
+        .btn-secondary:hover{background:#E5E7EB;}
+        .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#1F2937;color:white;padding:12px 24px;border-radius:25px;font-weight:500;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;font-size:0.9rem;}
+        .toast.show{opacity:1;}
+        @media(max-width:600px){.card{padding:16px;}.tab-btn{font-size:0.7rem;padding:8px 4px;min-width:48px;}.choice-grid{grid-template-columns:1fr;}.reading-passage{font-size:0.9rem;padding:14px 16px;}}
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="nav-left"><a href="index.html" class="nav-logo">📘 分级词汇</a><span class="nav-subtitle">Day 6 · 复习</span></div>
+    <div class="nav-right"><a href="index.html" class="home-link">🏠 索引</a></div>
+</nav>
+
+<div class="container">
+    <div class="header-section">
+        <span class="topic-tag">📋 第一周复习 · Week 1 Review</span>
+        <div class="progress-header"><span class="progress-title">复习进度</span><span class="progress-percent" id="progress-percent">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('choice')" id="tab-btn-choice">✍️ 词义选择</button>
+        <button class="tab-btn" onclick="switchTab('sentence')" id="tab-btn-sentence">🔍 长难句</button>
+        <button class="tab-btn" onclick="switchTab('reading')" id="tab-btn-reading">📖 阅读</button>
+    </div>
+
+    <!-- 词义选择 Tab -->
+    <div class="tab-content active" id="tab-choice"><div class="card">
+        <div class="card-title">✍️ 词义复习 <span style="font-size:0.8rem;color:var(--text-secondary);">(100词 · 分5组)</span></div>
+        <div class="card-subtitle">每组对应一天，点击分组切换。提交后查看正确率。</div>
+        <div class="group-nav" id="group-nav">
+            <button class="group-btn active" onclick="switchGroup(0)">Day 1</button>
+            <button class="group-btn" onclick="switchGroup(1)">Day 2</button>
+            <button class="group-btn" onclick="switchGroup(2)">Day 3</button>
+            <button class="group-btn" onclick="switchGroup(3)">Day 4</button>
+            <button class="group-btn" onclick="switchGroup(4)">Day 5</button>
+        </div>
+        <div class="choice-grid" id="choice-grid"></div>
+        <div style="margin-top:12px;">
+            <button class="btn btn-primary" onclick="checkCurrentGroup()">✅ 检查本组</button>
+            <button class="btn btn-secondary" onclick="resetCurrentGroup()">🔄 重做本组</button>
+            <button class="btn btn-primary" onclick="checkAllGroups()" style="background:#F59E0B;">📊 全部检查</button>
+        </div>
+        <div class="report-card" id="choice-report" style="display:none;"></div>
+    </div></div>
+
+    <!-- 长难句 Tab -->
+    <div class="tab-content" id="tab-sentence"><div class="card">
+        <div class="card-title">🔍 长难句回顾 <span style="font-size:0.8rem;color:var(--text-secondary);">(4句精选)</span></div>
+        <div id="sentence-content"></div>
+    </div></div>
+
+    <!-- 阅读 Tab -->
+    <div class="tab-content" id="tab-reading">
+        <div class="card"><div class="card-title">📖 综合阅读 <span style="font-size:0.8rem;color:var(--text-secondary);">(Minecraft × F1 · 约220词)</span></div>
+        <div class="card-subtitle">🔵 蓝色 = Day 1-2 词汇 &nbsp;|&nbsp; 🟡 黄色 = Day 3-5 词汇 &nbsp;|&nbsp; 点击查看释义</div>
+        <div class="reading-passage" id="reading-passage"></div><div class="word-tooltip" id="word-tooltip"></div></div>
+        <div class="card"><div class="card-title">❓ 阅读理解 <span style="font-size:0.8rem;color:var(--text-secondary);">(共5题)</span></div>
+        <div id="reading-questions"></div><div style="margin-top:12px;"><button class="btn btn-primary" onclick="checkAllReading()">✅ 全部检查</button> <button class="btn btn-secondary" onclick="resetAllReading()">🔄 重新作答</button></div></div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ==================== 全部词汇数据 ====================
+const allVocabGroups = [
+    { // Day 1
+        day:1, topic:'新学期适应',
+        words:[
+            {word:'freshman',zh:'新生'},{word:'impression',zh:'印象'},{word:'curious',zh:'好奇的'},{word:'explore',zh:'探索'},
+            {word:'nervous',zh:'紧张的'},{word:'courage',zh:'勇气'},{word:'familiar',zh:'熟悉的'},{word:'require',zh:'需要；要求'},
+            {word:'expect',zh:'期待；预期'},{word:'encourage',zh:'鼓励'},{word:'develop',zh:'培养；发展'},{word:'confident',zh:'自信的'},
+            {word:'struggle',zh:'挣扎；奋斗'},{word:'improve',zh:'提高；改善'},{word:'knowledge',zh:'知识'},{word:'prepare',zh:'准备'},
+            {word:'active',zh:'积极的；活跃的'},{word:'experience',zh:'经历；体验'},{word:'gradually',zh:'逐渐地'},{word:'realize',zh:'意识到'}
+        ]
+    },
+    { // Day 2
+        day:2, topic:'Minecraft 适应高中',
+        words:[
+            {word:'adapt',zh:'适应'},{word:'challenge',zh:'挑战'},{word:'pressure',zh:'压力'},{word:'balance',zh:'平衡；均衡'},
+            {word:'schedule',zh:'日程表'},{word:'independent',zh:'独立的'},{word:'goal',zh:'目标'},{word:'method',zh:'方法'},
+            {word:'attitude',zh:'态度'},{word:'communicate',zh:'交流'},{word:'benefit',zh:'益处；得益于'},{word:'opportunity',zh:'机会'},
+            {word:'volunteer',zh:'志愿者；自愿做'},{word:'organize',zh:'组织'},{word:'manage',zh:'管理；设法做成'},{word:'reduce',zh:'减少'},
+            {word:'support',zh:'支持'},{word:'enrich',zh:'丰富；充实'},{word:'nervous',zh:'紧张的'},{word:'confident',zh:'自信的'}
+        ]
+    },
+    { // Day 3
+        day:3, topic:'F1 团队协作',
+        words:[
+            {word:'cooperate',zh:'合作'},{word:'efficient',zh:'高效的'},{word:'responsibility',zh:'责任'},{word:'individual',zh:'个人(的)'},
+            {word:'crew',zh:'全体工作人员；团队'},{word:'replace',zh:'替换'},{word:'average',zh:'平均的；平均数'},{word:'within',zh:'在……之内'},
+            {word:'trust',zh:'信任'},{word:'precise',zh:'精确的'},{word:'smoothly',zh:'顺利地；平稳地'},{word:'training',zh:'训练'},
+            {word:'professional',zh:'职业的；专业的'},{word:'react',zh:'反应'},{word:'achieve',zh:'实现；达到'},{word:'effort',zh:'努力'},
+            {word:'rely',zh:'依靠'},{word:'success',zh:'成功'},{word:'require',zh:'需要；要求'},{word:'pressure',zh:'压力'}
+        ]
+    },
+    { // Day 4
+        day:4, topic:'F1 策略师时间管理',
+        words:[
+            {word:'arrange',zh:'安排'},{word:'concentrate',zh:'集中注意力'},{word:'avoid',zh:'避免'},{word:'limited',zh:'有限的'},
+            {word:'essential',zh:'必不可少的'},{word:'instead',zh:'相反；代替'},{word:'waste',zh:'浪费'},{word:'realistic',zh:'现实的；切合实际的'},
+            {word:'deadline',zh:'截止日期'},{word:'break',zh:'休息'},{word:'routine',zh:'日常惯例'},{word:'focus',zh:'集中；焦点'},
+            {word:'wisely',zh:'明智地'},{word:'habit',zh:'习惯'},{word:'overcome',zh:'克服'},{word:'strict',zh:'严格的'},
+            {word:'progress',zh:'进步；进展'},{word:'reward',zh:'奖励'},{word:'efficient',zh:'高效的'},{word:'achieve',zh:'实现；达到'}
+        ]
+    },
+    { // Day 5
+        day:5, topic:'F1 车手应对压力',
+        words:[
+            {word:'anxious',zh:'焦虑的；不安的'},{word:'calm',zh:'冷静的；使平静'},{word:'handle',zh:'处理；应对'},{word:'preparation',zh:'准备'},
+            {word:'perform',zh:'表现'},{word:'mental',zh:'精神的；心理的'},{word:'physical',zh:'身体的'},{word:'breath',zh:'呼吸'},
+            {word:'strategy',zh:'策略'},{word:'failure',zh:'失败'},{word:'relief',zh:'轻松；解脱'},{word:'strength',zh:'力量；优势'},
+            {word:'doubt',zh:'怀疑'},{word:'positive',zh:'积极的'},{word:'accept',zh:'接受'},{word:'recover',zh:'恢复'},
+            {word:'shift',zh:'转换；改变'},{word:'embrace',zh:'拥抱；欣然接受'},{word:'confident',zh:'自信的'},{word:'overcome',zh:'克服'}
+        ]
+    }
+];
+
+// 构建全局词汇知识库
+const allKnownWords = {};
+allVocabGroups.forEach(g=>{g.words.forEach(w=>{allKnownWords[w.word]={zh:w.zh,day:g.day};});});
+
+// 为每组生成选项
+function generateOptions(correctWord, groupWords){
+    const others = groupWords.filter(w=>w.word!==correctWord.word);
+    return [...others.sort(()=>Math.random()-0.5).slice(0,3).map(w=>w.zh), correctWord.zh].sort(()=>Math.random()-0.5);
+}
+
+const groupChoiceData = allVocabGroups.map(g=>{
+    return g.words.map(w=>({word:w.word,correctZh:w.zh,options:generateOptions(w,g.words)}));
+});
+
+// ==================== 长难句数据 ====================
+const sentenceReview = [
+    {source:'Day 1',en:'The first impression that you make on your classmates can last for a long time.',zh:'你给同学们留下的第一印象会持续很长时间。',analysis:'<strong>定语从句：</strong><span class="hl-clause">that you make on your classmates</span> 修饰 <span class="hl-sub">The first impression</span>'},
+    {source:'Day 3',en:'Drivers who rely completely on their crew can achieve much better results.',zh:'完全依靠团队的车手能取得更好的成绩。',analysis:'<strong>定语从句：</strong><span class="hl-clause">who rely completely on their crew</span> 修饰 <span class="hl-sub">Drivers</span>'},
+    {source:'Day 5',en:'What makes a champion is not the absence of doubt, but the strength to overcome it.',zh:'成就冠军的不是没有怀疑，而是克服怀疑的力量。',analysis:'<strong>主语从句：</strong><span class="hl-clause">What makes a champion</span> 作主语'},
+    {source:'Day 4',en:'The efficient use of limited time is what separates a good student from a great one.',zh:'高效利用有限的时间，是区分好学生和优秀学生的关键。',analysis:'<strong>表语从句：</strong><span class="hl-clause">what separates a good student from a great one</span> 作表语'}
+];
+
+const sentencePractice = [
+    {q:'"that you make on your classmates" 修饰什么？',sentence:'The first impression that you make on your classmates can last for a long time.',options:['A. The first impression','B. your classmates','C. can last','D. a long time'],answer:0},
+    {q:'"who rely completely on their crew" 修饰什么？',sentence:'Drivers who rely completely on their crew can achieve much better results.',options:['A. crew','B. Drivers','C. results','D. completely'],answer:1},
+    {q:'选出最佳翻译：',sentence:'What makes a champion is not the absence of doubt, but the strength to overcome it.',options:['A. 成就冠军的不是没有怀疑，而是克服怀疑的力量。','B. 冠军没有怀疑，只有力量。','C. 什么是冠军？没有怀疑就是冠军。','D. 冠军的力量来自怀疑。'],answer:0},
+    {q:'选出最佳翻译：',sentence:'The efficient use of limited time is what separates a good student from a great one.',options:['A. 高效利用有限的时间，是区分好学生和优秀学生的关键。','B. 有限时间的高效使用是好的学生。','C. 效率高的学生时间有限。','D. 好学生和优秀学生的区别是时间。'],answer:0}
+];
+
+// ==================== 阅读数据 ====================
+const readingText = 'If high school were a video game, it would be a mix of <span class="new-word" data-word="challenge" title="挑战 (n.) · Day 2">Minecraft</span> and <span class="old-word" data-word="efficient" title="高效的 (adj.) · Day 3">Formula 1</span>. Like a <span class="new-word" data-word="freshman" title="新生 (n.) · Day 1">freshman</span> spawning into a new world, you must <span class="new-word" data-word="explore" title="探索 (v.) · Day 1">explore</span> the campus, gather <span class="new-word" data-word="knowledge" title="知识 (n.) · Day 1">knowledge</span> like resources, and <span class="new-word" data-word="adapt" title="适应 (v.) · Day 2">adapt</span> to every new <span class="new-word" data-word="challenge" title="挑战 (n.) · Day 2">challenge</span>. At first, you may feel <span class="new-word" data-word="anxious" title="焦虑的 (adj.) · Day 5">anxious</span> and <span class="new-word" data-word="nervous" title="紧张的 (adj.) · Day 1">nervous</span> — every player does on the first night.<br><br>But as you <span class="new-word" data-word="develop" title="培养 (v.) · Day 1">develop</span> good <span class="old-word" data-word="habit" title="习惯 (n.) · Day 4">habits</span> and find your own learning <span class="new-word" data-word="method" title="方法 (n.) · Day 2">method</span>, you begin to level up. You learn to <span class="new-word" data-word="balance" title="平衡 (v.) · Day 2">balance</span> study and rest, <span class="old-word" data-word="arrange" title="安排 (v.) · Day 4">arrange</span> your <span class="new-word" data-word="schedule" title="日程表 (n.) · Day 2">schedule</span> <span class="old-word" data-word="wisely" title="明智地 (adv.) · Day 4">wisely</span>, and <span class="old-word" data-word="focus" title="集中 (v.) · Day 4">focus</span> on what matters. Like an F1 pit <span class="old-word" data-word="crew" title="团队 (n.) · Day 3">crew</span>, your friends <span class="old-word" data-word="cooperate" title="合作 (v.) · Day 3">cooperate</span> with you and offer <span class="new-word" data-word="support" title="支持 (n.) · Day 2">support</span> when the <span class="new-word" data-word="pressure" title="压力 (n.) · Day 2">pressure</span> is high.<br><br>Every exam is like a race start — you may feel your heart pound, but <span class="old-word" data-word="preparation" title="准备 (n.) · Day 5">preparation</span> turns fear into <span class="new-word" data-word="confidence" title="自信 (n.) · Day 1">confidence</span>. When you face <span class="old-word" data-word="failure" title="失败 (n.) · Day 5">failure</span>, <span class="old-word" data-word="accept" title="接受 (v.) · Day 5">accept</span> it, <span class="old-word" data-word="recover" title="恢复 (v.) · Day 5">recover</span>, and <span class="old-word" data-word="shift" title="转换 (v.) · Day 5">shift</span> to the next question. Stay <span class="old-word" data-word="calm" title="冷静的 (adj.) · Day 5">calm</span>, take a deep <span class="old-word" data-word="breath" title="呼吸 (n.) · Day 5">breath</span>, and <span class="old-word" data-word="embrace" title="拥抱 (v.) · Day 5">embrace</span> the challenge. As both Minecraft and F1 teach us: with <span class="old-word" data-word="effort" title="努力 (n.) · Day 3">effort</span> and a <span class="old-word" data-word="positive" title="积极的 (adj.) · Day 5">positive</span> <span class="new-word" data-word="attitude" title="态度 (n.) · Day 2">attitude</span>, you can build something amazing.';
+
+const readingQuestions = [
+    {type:'主旨大意',q:'What is the passage mainly about?',options:['A. How to play Minecraft and F1 games.','B. Applying lessons from Minecraft and F1 to high school life.','C. The history of video games.','D. How to become a racing driver.'],answer:1,exp:'<strong>解析：</strong>全文将Minecraft和F1的智慧应用到高中生活中。'},
+    {type:'细节理解',q:'What turns fear into confidence according to the passage?',options:['A. Deep breathing.','B. Preparation.','C. Support from friends.','D. A positive attitude.'],answer:1,exp:'<strong>解析：</strong>"preparation turns fear into confidence"。'},
+    {type:'词义猜测',q:'"embrace" in the passage means:',options:['A. run away from','B. accept willingly','C. fight against','D. ignore'],answer:1,exp:'<strong>解析：</strong>embrace = 欣然接受。'},
+    {type:'推理判断',q:'Why does the writer compare an exam to a race start?',options:['A. Both require driving skills.','B. Both involve pressure and preparation.','C. Both happen on Sundays.','D. Both need a pit crew.'],answer:1,exp:'<strong>解析：</strong>考试和发车都需要面对压力和依赖准备。'},
+    {type:'作者态度',q:'What is the writer\'s overall message?',options:['A. High school is too difficult.','B. With effort and a positive attitude, you can succeed.','C. Video games are more important than school.','D. Only talented people can do well.'],answer:1,exp:'<strong>解析：</strong>最后一句点题：with effort and a positive attitude, you can build something amazing。'}
+];
+
+// ==================== 语音 ====================
+function speakWord(w){if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;window.speechSynthesis.speak(u);}
+
+// ==================== 状态 ====================
+let currentGroup=0;
+let groupSubmitted=[false,false,false,false,false];
+let groupAnswers=[new Array(20).fill(null),new Array(20).fill(null),new Array(20).fill(null),new Array(20).fill(null),new Array(20).fill(null)];
+let groupCorrect=[0,0,0,0,0];
+let completedTabs=new Set(JSON.parse(localStorage.getItem('completed_day6')||'[]'));
+let readingAnswers=new Array(5).fill(null),readingSubmitted=false;
+let sentenceAnswers=new Array(4).fill(null),sentenceSubmitted=false;
+
+function saveState(){localStorage.setItem('completed_day6',JSON.stringify([...completedTabs]));}
+function updateProgress(){const p=Math.round(completedTabs.size/3*100);document.getElementById('progress-percent').textContent=p+'%';document.getElementById('progress-fill').style.width=p+'%';['choice','sentence','reading'].forEach(t=>{const b=document.getElementById('tab-btn-'+t);if(b)b.classList.toggle('completed-tab',completedTabs.has(t));});}
+function markComplete(t){if(!completedTabs.has(t)){completedTabs.add(t);saveState();updateProgress();showToast('✅ '+(t==='choice'?'词义选择':t==='sentence'?'长难句':'综合阅读')+' 已完成！');}}
+function showToast(m){const t=document.getElementById('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2000);}
+function switchTab(n){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));const b=document.getElementById('tab-btn-'+n),c=document.getElementById('tab-'+n);if(b)b.classList.add('active');if(c)c.classList.add('active');}
+
+// ==================== 分组切换 ====================
+function switchGroup(g){
+    currentGroup=g;
+    document.querySelectorAll('.group-btn').forEach((b,i)=>{b.classList.toggle('active',i===g);b.classList.toggle('done',groupSubmitted[i]);});
+    renderChoiceGrid();
+}
+
+function renderChoiceGrid(){
+    const container=document.getElementById('choice-grid');if(!container)return;
+    const data=groupChoiceData[currentGroup];
+    container.innerHTML=data.map((cd,i)=>`
+        <div class="choice-card" id="choice-card-${i}">
+            <div class="word-en">${cd.word}</div>
+            <div class="word-num">#${i+1}</div>
+            <div class="choice-options">${cd.options.map((opt,j)=>`
+                <span class="mini-opt ${groupAnswers[currentGroup][i]===j?'chosen':''} ${groupSubmitted[currentGroup]&&opt===cd.correctZh?'right':''} ${groupSubmitted[currentGroup]&&groupAnswers[currentGroup][i]===j&&opt!==cd.correctZh?'wrong-chosen':''}"
+                      id="mini-${i}-${j}" onclick="selectMini(${i},${j})" style="${groupSubmitted[currentGroup]?'pointer-events:none':''}">${opt}</span>`).join('')}</div>
+            <div class="mini-fb" id="mini-fb-${i}">${groupSubmitted[currentGroup]?(groupAnswers[currentGroup][i]!==null&&data[i].options[groupAnswers[currentGroup][i]]===cd.correctZh?'<span style="color:#10B981;">✅</span>':'<span style="color:#EF4444;">✅ '+cd.correctZh+'</span>'):''}</div>
+        </div>`).join('');
+}
+
+function selectMini(ci,oi){
+    if(groupSubmitted[currentGroup])return;
+    document.querySelectorAll('#choice-card-'+ci+' .mini-opt').forEach(o=>o.classList.remove('chosen'));
+    document.getElementById('mini-'+ci+'-'+oi).classList.add('chosen');
+    groupAnswers[currentGroup][ci]=oi;
+}
+
+function checkCurrentGroup(){
+    if(!groupSubmitted[currentGroup]&&groupAnswers[currentGroup].includes(null)){showToast('⚠️ 请完成本组所有20题');return;}
+    let correct=0;
+    const data=groupChoiceData[currentGroup];
+    data.forEach((cd,i)=>{
+        const oi=groupAnswers[currentGroup][i];
+        if(oi===null)return;
+        if(data[i].options[oi]===cd.correctZh)correct++;
+    });
+    groupCorrect[currentGroup]=correct;
+    groupSubmitted[currentGroup]=true;
+    document.querySelectorAll('.group-btn').forEach((b,i)=>{b.classList.toggle('done',groupSubmitted[i]);});
+    renderChoiceGrid();
+    showToast('Day '+(currentGroup+1)+' 组：'+correct+'/20 正确');
+    updateChoiceReport();
+}
+
+function resetCurrentGroup(){
+    groupSubmitted[currentGroup]=false;
+    groupAnswers[currentGroup]=new Array(20).fill(null);
+    groupCorrect[currentGroup]=0;
+    document.querySelectorAll('.group-btn').forEach((b,i)=>{b.classList.toggle('done',groupSubmitted[i]);});
+    renderChoiceGrid();
+    document.getElementById('choice-report').style.display='none';
+}
+
+function checkAllGroups(){
+    for(let g=0;g<5;g++){
+        if(!groupSubmitted[g]){currentGroup=g;switchGroup(g);checkCurrentGroup();}
+    }
+    // 确保所有组都提交后再显示报告
+    setTimeout(()=>{
+        if(groupSubmitted.every(s=>s)) updateChoiceReport();
+    },500);
+}
+
+function updateChoiceReport(){
+    if(!groupSubmitted.every(s=>s))return;
+    const total=groupCorrect.reduce((a,b)=>a+b,0);
+    const score=Math.round(total/100*100);
+    const report=document.getElementById('choice-report');
+    report.style.display='block';
+    report.innerHTML=`
+        <div class="report-big">${total}/100</div>
+        <div class="report-msg">${score>=90?'🏆 太棒了！你已经掌握了本周大部分词汇！':score>=70?'💪 很不错！继续巩固，下次冲击90+！':'📚 还有提升空间，重点复习低分Day吧！'}</div>
+        <div style="font-size:0.9rem;color:var(--text-secondary);">各组正确率：${groupCorrect.map((c,i)=>'Day'+(i+1)+': '+c+'/20').join(' · ')}</div>
+    `;
+    if(score>=70)markComplete('choice');
+}
+
+// ==================== 长难句 ====================
+function renderSentence(){
+    const c=document.getElementById('sentence-content');if(!c)return;
+    let h='<h3 style="margin-bottom:12px;">📖 句子解析回顾</h3>';
+    sentenceReview.forEach(s=>{h+=`<div class="sentence-box"><div class="sentence-en">${s.en}</div><div class="sentence-zh">${s.zh}</div><span style="font-size:0.75rem;color:var(--text-secondary);">来源：${s.source}</span></div><div class="analysis-box">${s.analysis}</div><br>`;});
+    h+='<h3 style="margin:24px 0 12px;">✏️ 翻译练习</h3>';
+    sentencePractice.forEach((p,pi)=>{h+=`<div class="quiz-item" id="sentence-item-${pi}"><div class="quiz-stem">${pi+1}. ${p.q}</div><div class="sentence-box" style="margin:8px 0;"><div class="sentence-en">${p.sentence}</div></div><div class="quiz-options">${p.options.map((opt,j)=>`<div class="quiz-option" id="sentence-opt-${pi}-${j}" onclick="selectSentence(${pi},${j})"><span class="quiz-radio">${String.fromCharCode(65+j)}</span><span>${opt.substring(3)}</span></div>`).join('')}</div><div class="quiz-feedback" id="sentence-fb-${pi}"></div></div>`;});
+    h+='<div style="margin-top:12px;"><button class="btn btn-primary" onclick="checkSentences()">✅ 检查练习</button> <button class="btn btn-secondary" onclick="resetSentences()">🔄 重新作答</button></div>';
+    c.innerHTML=h;sentenceAnswers=new Array(4).fill(null);sentenceSubmitted=false;
+}
+function selectSentence(qi,oi){if(sentenceSubmitted)return;document.querySelectorAll('#sentence-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));document.getElementById('sentence-opt-'+qi+'-'+oi).classList.add('selected');sentenceAnswers[qi]=oi;}
+function checkSentences(){if(!sentenceSubmitted&&sentenceAnswers.includes(null)){showToast('⚠️ 请完成所有练习');return;}let correct=0;sentencePractice.forEach((p,i)=>{const fb=document.getElementById('sentence-fb-'+i);document.querySelectorAll('#sentence-item-'+i+' .quiz-option').forEach((o,j)=>{o.classList.add('disabled');if(j===p.answer)o.classList.add('correct');if(j===sentenceAnswers[i]&&j!==p.answer)o.classList.add('wrong');});if(sentenceAnswers[i]===p.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML='✅ 正确！';}else{fb.className='quiz-feedback err show';fb.innerHTML='❌ 正确答案是 '+String.fromCharCode(65+p.answer);}});sentenceSubmitted=true;showToast(correct+'/4 正确 · '+(correct===4?'🏆 完美！':'💪 查看解析'));if(correct>=3)markComplete('sentence');}
+function resetSentences(){sentenceAnswers=new Array(4).fill(null);sentenceSubmitted=false;document.querySelectorAll('#sentence-content .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));document.querySelectorAll('#sentence-content .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});}
+
+// ==================== 阅读 ====================
+function showWordTip(w){const info=allKnownWords[w];if(!info)return;const days=['','Day 1','Day 2','Day 3','Day 4','Day 5'];const t=document.getElementById('word-tooltip');const isNew=info.day<=2;t.innerHTML='<span class="tip-word">'+w+'</span> <span class="tip-zh">'+info.zh+'</span> <span class="tip-from">📚 '+days[info.day]+'</span>';t.classList.add('show');}
+function renderReading(){const p=document.getElementById('reading-passage'),q=document.getElementById('reading-questions');if(!p||!q)return;p.innerHTML=readingText;p.querySelectorAll('.new-word,.old-word').forEach(el=>{el.addEventListener('click',function(e){e.stopPropagation();const w=this.getAttribute('data-word');if(w)showWordTip(w);});});p.addEventListener('click',function(){document.getElementById('word-tooltip').classList.remove('show');});q.innerHTML=readingQuestions.map((r,i)=>`<div class="quiz-item" id="reading-item-${i}"><div class="quiz-stem"><span style="color:var(--primary);font-weight:600;">Q${i+1}.</span><span style="font-size:0.7rem;color:var(--text-secondary);background:#F3F4F6;padding:2px 8px;border-radius:10px;margin:0 6px;">${r.type}</span>${r.q}</div><div class="quiz-options">${r.options.map((opt,j)=>`<div class="quiz-option" id="reading-opt-${i}-${j}" onclick="selectReading(${i},${j})"><span class="quiz-radio">${String.fromCharCode(65+j)}</span><span>${opt.substring(3)}</span></div>`).join('')}</div><div class="quiz-feedback" id="reading-fb-${i}"></div></div>`).join('');readingAnswers=new Array(5).fill(null);readingSubmitted=false;}
+function selectReading(qi,oi){if(readingSubmitted)return;document.querySelectorAll('#reading-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));document.getElementById('reading-opt-'+qi+'-'+oi).classList.add('selected');readingAnswers[qi]=oi;}
+function checkAllReading(){if(!readingSubmitted&&readingAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}let correct=0;readingQuestions.forEach((r,i)=>{const fb=document.getElementById('reading-fb-'+i);document.querySelectorAll('#reading-item-'+i+' .quiz-option').forEach((o,j)=>{o.classList.add('disabled');if(j===r.answer)o.classList.add('correct');if(j===readingAnswers[i]&&j!==r.answer)o.classList.add('wrong');});if(readingAnswers[i]===r.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML='✅ '+r.exp;}else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+r.exp;}});readingSubmitted=true;showToast(correct+'/5 正确 · '+(correct>=4?'🏆 阅读理解很棒！':'💪 查看解析'));if(correct>=4)markComplete('reading');}
+function resetAllReading(){readingAnswers=new Array(5).fill(null);readingSubmitted=false;document.querySelectorAll('#reading-questions .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));document.querySelectorAll('#reading-questions .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});}
+
+function init(){
+    renderChoiceGrid();
+    renderSentence();
+    renderReading();
+    updateProgress();
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
