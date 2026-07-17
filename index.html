@@ -3,141 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高中英语700核心词 · 40天攻克计划</title>
+    <title>高中英语分级词汇 · 30天高考高频词</title>
     <style>
-        :root{--primary:#4A6CF7;--primary-light:#EEF1FE;--success:#10B981;--warning:#F59E0B;--danger:#EF4444;--bg:#F0F2F8;--card:#FFFFFF;--text:#1E293B;--text-secondary:#64748B;--border:#E2E8F0;--radius:16px;--radius-sm:10px;}
+        :root {
+            --primary: #4A6CF7;
+            --primary-light: #EEF1FE;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --bg: #F3F4F6;
+            --card: #FFFFFF;
+            --text: #1F2937;
+            --text-secondary: #6B7280;
+            --border: #E5E7EB;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+        }
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-tap-highlight-color:transparent;}
-        .container{max-width:500px;margin:0 auto;padding:16px 16px 40px;}
-        .header{text-align:center;padding:20px 0 12px;}
-        .header .icon{font-size:48px;margin-bottom:8px;}
-        .header h1{font-size:22px;font-weight:700;}
-        .header .subtitle{font-size:13px;color:var(--text-secondary);margin-top:4px;}
-        .progress-section{display:flex;align-items:center;justify-content:center;gap:20px;padding:16px;background:var(--card);border-radius:var(--radius);margin-bottom:16px;border:1px solid var(--border);}
-        .progress-ring{position:relative;width:90px;height:90px;}
-        .progress-ring svg{transform:rotate(-90deg);width:90px;height:90px;}
-        .progress-ring .bg-circle{fill:none;stroke:var(--border);stroke-width:6;}
-        .progress-ring .fg-circle{fill:none;stroke:var(--primary);stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset 0.6s ease;}
-        .progress-ring .inner-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-        .progress-ring .percent{font-size:20px;font-weight:700;color:var(--primary);}
-        .progress-ring .label{font-size:11px;color:var(--text-secondary);}
-        .progress-stats{display:flex;flex-direction:column;gap:6px;}
-        .progress-stats .stat{display:flex;align-items:center;gap:8px;font-size:14px;}
-        .stat .dot{width:10px;height:10px;border-radius:50%;}
-        .dot.blue{background:var(--primary);}
-        .dot.green{background:var(--success);}
-        .dot.orange{background:var(--warning);}
-        .section-title{font-size:16px;font-weight:600;margin:8px 0 12px;display:flex;align-items:center;gap:6px;}
-        .section-title .emoji{font-size:18px;}
-        .theme-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
-        .theme-tag{font-size:12px;padding:6px 14px;border-radius:20px;background:var(--card);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;transition:all 0.2s;font-weight:500;}
-        .theme-tag.active{background:var(--primary);color:#fff;border-color:var(--primary);}
-        .theme-tag:active{transform:scale(0.96);}
-        .day-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
-        .day-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 6px;text-align:center;cursor:pointer;transition:all 0.2s;position:relative;text-decoration:none;color:var(--text);}
-        .day-card:active{transform:scale(0.96);background:var(--primary-light);}
-        .day-card .day-num{font-size:18px;font-weight:700;}
-        .day-card .day-label{font-size:11px;color:var(--text-secondary);margin-top:2px;}
-        .day-card.completed{background:#F0FDF6;border-color:var(--success);}
-        .day-card.completed::after{content:'✓';position:absolute;top:4px;right:6px;font-size:12px;color:var(--success);font-weight:700;}
-        .day-card.current{background:var(--primary-light);border-color:var(--primary);box-shadow:0 0 0 3px rgba(74,108,247,0.12);}
-        .day-card.locked{opacity:0.4;pointer-events:none;}
-        .footer-info{text-align:center;margin-top:20px;font-size:12px;color:#94A3B8;line-height:1.8;}
-        .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#1E293B;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:500;z-index:300;opacity:0;pointer-events:none;transition:opacity 0.3s;white-space:nowrap;}
-        .toast.show{opacity:1;}
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+            background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;
+        }
+        .top-nav{
+            background:var(--card);border-bottom:1px solid var(--border);
+            padding:0 20px;display:flex;align-items:center;justify-content:space-between;
+            height:56px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);
+        }
+        .nav-logo{font-size:1.3rem;font-weight:700;color:var(--primary);}
+        .nav-subtitle{font-size:0.85rem;color:var(--text-secondary);}
+        .container{max-width:800px;margin:0 auto;padding:20px 16px 40px;}
+        .hero{
+            background:linear-gradient(135deg,#1e293b,#334155);color:white;
+            border-radius:var(--radius);padding:32px 24px;margin-bottom:24px;text-align:center;
+        }
+        .hero h1{font-size:1.8rem;margin-bottom:8px;}
+        .hero p{color:#94a3b8;font-size:0.95rem;}
+        .hero .stats{display:flex;gap:24px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+        .hero .stat-item{text-align:center;}
+        .hero .stat-num{font-size:2rem;font-weight:800;color:#60A5FA;}
+        .hero .stat-label{font-size:0.8rem;color:#94a3b8;}
+
+        .week-section{margin-bottom:24px;}
+        .week-title{
+            font-size:1.1rem;font-weight:700;margin-bottom:12px;
+            padding-left:12px;border-left:4px solid var(--primary);
+        }
+        .day-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
+        .day-card{
+            background:var(--card);border-radius:var(--radius-sm);padding:16px;
+            text-decoration:none;color:var(--text);transition:all 0.15s;
+            box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;
+            border:2px solid transparent;
+        }
+        .day-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.1);border-color:#BFC7FF;}
+        .day-card.locked{opacity:0.5;pointer-events:none;}
+        .day-card .day-num{
+            width:44px;height:44px;border-radius:50%;display:flex;
+            align-items:center;justify-content:center;font-weight:800;font-size:1rem;
+            flex-shrink:0;background:var(--primary-light);color:var(--primary);
+        }
+        .day-card .day-num.done{background:#ECFDF5;color:var(--success);}
+        .day-card .day-num.review{background:#FEF3C7;color:var(--warning);}
+        .day-card .day-info{flex:1;min-width:0;}
+        .day-card .day-label{font-size:0.75rem;color:var(--text-secondary);}
+        .day-card .day-topic{font-weight:600;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+        .day-card .day-emoji{font-size:1.2rem;flex-shrink:0;}
+
+        .footer{text-align:center;padding:20px;color:var(--text-secondary);font-size:0.85rem;}
+
+        @media(max-width:600px){
+            .day-grid{grid-template-columns:1fr;}
+            .hero h1{font-size:1.4rem;}
+        }
     </style>
 </head>
 <body>
-<div class="toast" id="toast"></div>
+
+<nav class="top-nav">
+    <div class="nav-left"><span class="nav-logo">📘 分级词汇</span></div>
+    <div class="nav-right"><span class="nav-subtitle">30天 · 高考高频词</span></div>
+</nav>
+
 <div class="container">
-    <div class="header"><div class="icon">📚</div><h1>高中英语700核心词</h1><div class="subtitle">40天攻克计划 · 主题场景记忆法 · 准高考难度</div></div>
-    <div class="progress-section">
-        <div class="progress-ring">
-            <svg viewBox="0 0 90 90"><circle class="bg-circle" cx="45" cy="45" r="38"/><circle class="fg-circle" id="mainProgressCircle" cx="45" cy="45" r="38" stroke-dasharray="238.76" stroke-dashoffset="238.76"/></svg>
-            <div class="inner-text"><span class="percent" id="mainPercent">0%</span><span class="label">总进度</span></div>
-        </div>
-        <div class="progress-stats">
-            <div class="stat"><span class="dot blue"></span> 总词汇：<strong>700</strong></div>
-            <div class="stat"><span class="dot green"></span> 已掌握：<strong id="statMastered">0</strong></div>
-            <div class="stat"><span class="dot orange"></span> 学习中：<strong id="statLearning">700</strong></div>
+    <div class="hero">
+        <h1>🏎️ 高中英语分级词汇</h1>
+        <p>30天攻克600个高考高频词 · Minecraft × F1 × 漫威 × 世界杯</p>
+        <div class="stats">
+            <div class="stat-item"><div class="stat-num">30</div><div class="stat-label">学习天数</div></div>
+            <div class="stat-item"><div class="stat-num">600</div><div class="stat-label">核心词汇</div></div>
+            <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">复习周</div></div>
+            <div class="stat-item"><div class="stat-num">B1</div><div class="stat-label">难度等级</div></div>
         </div>
     </div>
-    <div class="section-title"><span class="emoji">🎯</span> 学习主题</div>
-    <div class="theme-tags">
-        <span class="theme-tag active" onclick="filterDays('all',this)">全部</span>
-        <span class="theme-tag" onclick="filterDays('school',this)">🏫 校园学习</span>
-        <span class="theme-tag" onclick="filterDays('family',this)">👨‍👩‍👧 家庭人际</span>
-        <span class="theme-tag" onclick="filterDays('emotion',this)">💭 情绪思想</span>
-        <span class="theme-tag" onclick="filterDays('society',this)">🌍 社会事件</span>
-        <span class="theme-tag" onclick="filterDays('tech',this)">🔬 科技自然</span>
-        <span class="theme-tag" onclick="filterDays('health',this)">💪 健康生活</span>
-        <span class="theme-tag" onclick="filterDays('abstract',this)">🧠 抽象概念</span>
+
+    <!-- 第一周 -->
+    <div class="week-section">
+        <div class="week-title">📅 第一周 · 速度与激情 <span style="font-size:0.8rem;color:var(--success);">✅ 已完成</span></div>
+        <div class="day-grid">
+            <a href="day1.html" class="day-card"><span class="day-num done">1</span><span class="day-info"><span class="day-label">Day 1</span><span class="day-topic">🎒 新学期适应</span></span></a>
+            <a href="day2.html" class="day-card"><span class="day-num done">2</span><span class="day-info"><span class="day-label">Day 2</span><span class="day-topic">⛏️ Minecraft 适应高中</span></span></a>
+            <a href="day3.html" class="day-card"><span class="day-num done">3</span><span class="day-info"><span class="day-label">Day 3</span><span class="day-topic">🏎️ F1 团队协作</span></span></a>
+            <a href="day4.html" class="day-card"><span class="day-num done">4</span><span class="day-info"><span class="day-label">Day 4</span><span class="day-topic">⏱️ F1 策略时间管理</span></span></a>
+            <a href="day5.html" class="day-card"><span class="day-num done">5</span><span class="day-info"><span class="day-label">Day 5</span><span class="day-topic">🏁 F1 应对压力</span></span></a>
+            <a href="day6.html" class="day-card"><span class="day-num review">6</span><span class="day-info"><span class="day-label">Day 6</span><span class="day-topic">📋 第一周复习</span></span></a>
+        </div>
     </div>
-    <div class="section-title"><span class="emoji">📅</span> 学习日历</div>
-    <div class="day-grid" id="dayGrid"></div>
-    <div class="footer-info">💡 点击天数开始学习 · 进度自动保存到本地<br>建议每日完成20词 + 词义选择 + 短文阅读</div>
+
+    <!-- 第二周 -->
+    <div class="week-section">
+        <div class="week-title">📅 第二周 · 英雄与团队 <span style="font-size:0.8rem;color:var(--success);">✅ 已完成</span></div>
+        <div class="day-grid">
+            <a href="day7.html" class="day-card"><span class="day-num done">7</span><span class="day-info"><span class="day-label">Day 7</span><span class="day-topic">🤖 变形金刚 · 友谊</span></span></a>
+            <a href="day8.html" class="day-card"><span class="day-num done">8</span><span class="day-info"><span class="day-label">Day 8</span><span class="day-topic">🕷️ 蜘蛛侠 · 家庭沟通</span></span></a>
+            <a href="day9.html" class="day-card"><span class="day-num done">9</span><span class="day-info"><span class="day-label">Day 9</span><span class="day-topic">🛡️ 复仇者联盟 · 领导力</span></span></a>
+            <a href="day10.html" class="day-card"><span class="day-num done">10</span><span class="day-info"><span class="day-label">Day 10</span><span class="day-topic">🤖 钢铁侠 · 情绪管理</span></span></a>
+            <a href="day11.html" class="day-card"><span class="day-num done">11</span><span class="day-info"><span class="day-label">Day 11</span><span class="day-topic">⚽ 世界杯 · 面对失败</span></span></a>
+            <a href="day12.html" class="day-card"><span class="day-num review">12</span><span class="day-info"><span class="day-label">Day 12</span><span class="day-topic">📋 第二周复习</span></span></a>
+        </div>
+    </div>
+
+    <!-- 第三周 -->
+    <div class="week-section">
+        <div class="week-title">📅 第三周 · 科技与未来 <span style="font-size:0.8rem;color:var(--text-secondary);">(即将推出)</span></div>
+        <div class="day-grid">
+            <a href="#" class="day-card locked"><span class="day-num">13</span><span class="day-info"><span class="day-label">Day 13</span><span class="day-topic">🤖 AI 与人类</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">14</span><span class="day-info"><span class="day-label">Day 14</span><span class="day-topic">💻 黑客帝国 · 网络安全</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">15</span><span class="day-info"><span class="day-label">Day 15</span><span class="day-topic">🎮 头号玩家 · VR生活</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">16</span><span class="day-info"><span class="day-label">Day 16</span><span class="day-topic">🚀 星际穿越 · 太空</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">17</span><span class="day-info"><span class="day-label">Day 17</span><span class="day-topic">🌿 阿凡达 · 环保</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num review">18</span><span class="day-info"><span class="day-label">Day 18</span><span class="day-topic">📋 第三周复习</span></span></a>
+        </div>
+    </div>
+
+    <!-- 第四周 -->
+    <div class="week-section">
+        <div class="week-title">📅 第四周 · 运动与梦想 <span style="font-size:0.8rem;color:var(--text-secondary);">(即将推出)</span></div>
+        <div class="day-grid">
+            <a href="#" class="day-card locked"><span class="day-num">19</span><span class="day-info"><span class="day-label">Day 19</span><span class="day-topic">⚽ 世界杯 · 体育精神</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">20</span><span class="day-info"><span class="day-label">Day 20</span><span class="day-topic">🏀 NBA · 健康运动</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">21</span><span class="day-info"><span class="day-label">Day 21</span><span class="day-topic">🗺️ 国家地理 · 旅行</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">22</span><span class="day-info"><span class="day-label">Day 22</span><span class="day-topic">💼 职业规划 · 梦想</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">23</span><span class="day-info"><span class="day-label">Day 23</span><span class="day-topic">🏆 乔丹 · 成功失败</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num review">24</span><span class="day-info"><span class="day-label">Day 24</span><span class="day-topic">📋 第四周复习</span></span></a>
+        </div>
+    </div>
+
+    <!-- 第五周 -->
+    <div class="week-section">
+        <div class="week-title">📅 第五周 · 社会与自我 <span style="font-size:0.8rem;color:var(--text-secondary);">(即将推出)</span></div>
+        <div class="day-grid">
+            <a href="#" class="day-card locked"><span class="day-num">25</span><span class="day-info"><span class="day-label">Day 25</span><span class="day-topic">💰 金钱观 · 消费</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">26</span><span class="day-info"><span class="day-label">Day 26</span><span class="day-topic">📰 假新闻 · 批判思维</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">27</span><span class="day-info"><span class="day-label">Day 27</span><span class="day-topic">🌍 文化交流 · 球迷</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">28</span><span class="day-info"><span class="day-label">Day 28</span><span class="day-topic">🦸 志愿服务 · 责任</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num">29</span><span class="day-info"><span class="day-label">Day 29</span><span class="day-topic">🏜️ 沙丘 · 终身学习</span></span></a>
+            <a href="#" class="day-card locked"><span class="day-num review">30</span><span class="day-info"><span class="day-label">Day 30</span><span class="day-topic">📋 总复习</span></span></a>
+        </div>
+    </div>
+
+    <div class="footer">
+        📘 高中英语分级词汇 · 专为准高一设计 · CEFR B1 难度 · 兴趣驱动学习<br>
+        已完成 12/30 天 · 200/600 核心词汇
+    </div>
 </div>
-<script>
-const dayThemes={};
-const themeRanges=[
-    {theme:'school',start:1,end:5},{theme:'school',start:6,end:6,isReview:true},
-    {theme:'family',start:7,end:11},{theme:'family',start:12,end:12,isReview:true},
-    {theme:'emotion',start:13,end:17},{theme:'emotion',start:18,end:18,isReview:true},
-    {theme:'society',start:19,end:23},{theme:'society',start:24,end:24,isReview:true},
-    {theme:'tech',start:25,end:29},{theme:'tech',start:30,end:30,isReview:true},
-    {theme:'health',start:31,end:35},{theme:'health',start:36,end:36,isReview:true},
-    {theme:'abstract',start:37,end:39},{theme:'abstract',start:40,end:40,isReview:true},
-];
-themeRanges.forEach(tr=>{for(let d=tr.start;d<=tr.end;d++)dayThemes[d]={theme:tr.theme,isReview:tr.isReview||false};});
 
-const dayStorageKeys={
-    1:'vocab700_day1_v5',2:'vocab700_day2_v5',3:'vocab700_day3_v1',4:'vocab700_day4_v1',5:'vocab700_day5_v1',
-};
-
-function isDayCompleted(dayNum){
-    const idxP=JSON.parse(localStorage.getItem('vocab700_index')||'{}');
-    if(idxP['day'+dayNum]&&idxP['day'+dayNum].completed)return true;
-    const key=dayStorageKeys[dayNum];
-    if(key){try{const d=JSON.parse(localStorage.getItem(key)||'{}');if(d.completed)return true;}catch(e){}}
-    return false;
-}
-
-function renderDayGrid(){
-    const grid=document.getElementById('dayGrid');let html='';
-    for(let d=1;d<=40;d++){
-        const ti=dayThemes[d]||{theme:'',isReview:false};
-        const isReview=ti.isReview,completed=isDayCompleted(d);
-        let cls='';
-        if(completed)cls='completed';
-        else if(d<=5)cls='current';
-        else if(d>5&&!completed)cls='locked';
-        if(d>1&&!completed&&isDayCompleted(d-1))cls='';
-        if(isReview&&!completed){const ps=d-5;let allDone=true;for(let pd=ps;pd<d;pd++){if(!isDayCompleted(pd)){allDone=false;break;}}if(allDone)cls='';}
-        const label=isReview?'📝复习':('Day '+d);
-        html+=`<div class="day-card ${cls}" onclick="openDay(${d})"><div class="day-num">${isReview?'📝':d}</div><div class="day-label">${label}</div></div>`;
-    }
-    grid.innerHTML=html;
-}
-function updateMainProgress(){
-    let cd=0;for(let d=1;d<=40;d++){if(isDayCompleted(d))cd++;}
-    const pct=Math.round(cd/40*100);
-    document.getElementById('mainPercent').textContent=pct+'%';
-    document.getElementById('statMastered').textContent=Math.round(cd*17.5)+'词';
-    document.getElementById('statLearning').textContent=Math.round(700-cd*17.5)+'词';
-    const circle=document.getElementById('mainProgressCircle'),circ=238.76,offset=circ-(pct/100)*circ;
-    circle.style.strokeDashoffset=offset;
-}
-function filterDays(theme,el){
-    document.querySelectorAll('.theme-tag').forEach(t=>t.classList.remove('active'));el.classList.add('active');
-    document.querySelectorAll('.day-card').forEach((card,i)=>{const d=i+1;if(theme==='all')card.style.display='';else{const info=dayThemes[d];card.style.display=(info&&info.theme===theme)?'':'none';}});
-}
-function openDay(dayNum){
-    if(dayNum<=5)window.location.href='day'+dayNum+'.html';
-    else showToast('Day '+dayNum+' 内容即将上线，敬请期待！');
-}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1800);}
-function init(){renderDayGrid();updateMainProgress();}
-init();
-</script>
 </body>
 </html>
