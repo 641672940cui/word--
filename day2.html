@@ -24,7 +24,6 @@
             --word-old: #D97706;
             --mc-green: #5D8A3C;
             --mc-dirt: #8B6B4A;
-            --mc-stone: #7F8C8D;
         }
         *{margin:0;padding:0;box-sizing:border-box;}
         body{
@@ -64,12 +63,6 @@
             background:linear-gradient(135deg,#2d1f0e,#4a3724);color:#e2e8f0;
             padding:16px 20px;border-radius:var(--radius-sm);margin-bottom:12px;
             font-style:italic;font-size:0.95rem;border-left:4px solid var(--mc-green);
-            position:relative;overflow:hidden;
-        }
-        .quote-box::after{
-            content:'';position:absolute;bottom:0;right:0;width:60px;height:60px;
-            background:radial-gradient(circle at bottom right, rgba(93,138,60,0.15) 0%, transparent 70%);
-            border-radius:50%;
         }
         .quote-author{color:#a89880;font-size:0.8rem;margin-top:4px;font-style:normal;}
         .progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
@@ -120,10 +113,76 @@
         }
         .icon-btn:hover{background:#F3F4F6;border-color:#D1D5DB;}
         .icon-btn.saved{background:#FEF3C7;border-color:var(--warning);color:var(--warning);}
+
+        .choice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;}
+        .choice-card{
+            background:#FAFAFA;border:2px solid #E5E7EB;border-radius:var(--radius-sm);
+            padding:14px;cursor:pointer;transition:all 0.15s;text-align:center;
+        }
+        .choice-card:hover{border-color:#BFC7FF;background:#F8F9FF;}
+        .choice-card.correct{border-color:var(--success);background:#ECFDF5;}
+        .choice-card .word-en{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+        .choice-card .word-num{font-size:0.7rem;color:var(--text-secondary);}
+        .choice-card .choice-options{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;}
+        .choice-card .mini-opt{
+            padding:4px 10px;border-radius:12px;font-size:0.78rem;cursor:pointer;
+            border:1.5px solid #E5E7EB;background:white;transition:all 0.12s;
+        }
+        .choice-card .mini-opt:hover{border-color:var(--primary);background:var(--primary-light);}
+        .choice-card .mini-opt.chosen{border-color:var(--primary);background:var(--primary);color:white;font-weight:600;}
+        .choice-card .mini-opt.right{border-color:var(--success);background:var(--success);color:white;}
+        .choice-card .mini-opt.wrong-chosen{border-color:var(--danger);background:var(--danger);color:white;}
+        .choice-card .mini-fb{font-size:0.75rem;margin-top:6px;min-height:18px;}
+
+        .reading-passage{
+            background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);
+            padding:20px 24px;font-size:1rem;line-height:2.2;margin-bottom:8px;
+        }
+        .reading-passage .new-word{
+            color:var(--word-new);font-weight:700;cursor:pointer;
+            border-bottom:2px dashed var(--word-new);padding:0 3px;border-radius:2px;
+        }
+        .reading-passage .new-word:hover{background:#EEF1FE;}
+        .reading-passage .old-word{
+            color:var(--word-old);font-weight:700;cursor:pointer;
+            border-bottom:2px dashed var(--word-old);padding:0 3px;border-radius:2px;
+        }
+        .reading-passage .old-word:hover{background:#FEF3C7;}
+        .word-tooltip{
+            background:var(--mc-dirt);color:white;padding:10px 16px;border-radius:var(--radius-sm);
+            font-size:0.85rem;margin-bottom:16px;display:none;line-height:1.5;
+            animation:fadeIn 0.2s ease;border:2px solid #6b5335;
+        }
+        .word-tooltip.show{display:block;}
+        .word-tooltip .tip-word{font-size:1.1rem;font-weight:700;color:#FFD700;}
+        .word-tooltip .tip-pos{color:#c4b998;}
+        .word-tooltip .tip-zh{color:#80FF80;font-weight:600;}
+        .word-tooltip .tip-from{color:#FFB347;font-size:0.8rem;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+
+        .sentence-box{
+            background:#FFFBEB;border-left:4px solid var(--warning);
+            padding:16px 20px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:12px;
+        }
+        .sentence-en{font-weight:600;font-size:1rem;color:#92400E;}
+        .sentence-en b{color:var(--primary);cursor:pointer;}
+        .sentence-zh{font-size:0.88rem;color:#78716C;margin-top:4px;}
+        .analysis-box{
+            background:#F0FDF4;border:1px solid #BBF7D0;
+            border-radius:var(--radius-sm);padding:16px;margin-top:10px;font-size:0.9rem;line-height:1.8;
+        }
+        .hl-sub{background:#DBEAFE;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-verb{background:#FCE7F3;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-obj{background:#D1FAE5;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .hl-clause{background:#FEF3C7;padding:2px 6px;border-radius:3px;font-weight:600;}
+        .practice-label{
+            display:inline-block;background:var(--primary-light);color:var(--primary);
+            padding:4px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;margin-bottom:8px;
+        }
+
         .quiz-item{padding:16px 0;border-bottom:1px solid #F3F4F6;}
         .quiz-item:last-child{border-bottom:none;}
         .quiz-stem{font-weight:500;margin-bottom:10px;line-height:1.6;}
-        .quiz-blank{display:inline-block;border-bottom:2px solid var(--primary);min-width:80px;text-align:center;font-weight:700;color:var(--primary);}
         .quiz-options{display:flex;flex-direction:column;gap:6px;}
         .quiz-option{
             display:flex;align-items:center;gap:10px;padding:10px 14px;
@@ -150,52 +209,6 @@
         .quiz-feedback.show{display:block;}
         .quiz-feedback.ok{background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;}
         .quiz-feedback.err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;}
-        .sentence-box{
-            background:#FFFBEB;border-left:4px solid var(--warning);
-            padding:16px 20px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:12px;
-        }
-        .sentence-en{font-weight:600;font-size:1rem;color:#92400E;}
-        .sentence-en b{color:var(--primary);cursor:pointer;}
-        .sentence-zh{font-size:0.88rem;color:#78716C;margin-top:4px;}
-        .analysis-box{
-            background:#F0FDF4;border:1px solid #BBF7D0;
-            border-radius:var(--radius-sm);padding:16px;margin-top:10px;font-size:0.9rem;line-height:1.8;
-        }
-        .hl-sub{background:#DBEAFE;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .hl-verb{background:#FCE7F3;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .hl-obj{background:#D1FAE5;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .hl-clause{background:#FEF3C7;padding:2px 6px;border-radius:3px;font-weight:600;}
-        .practice-label{
-            display:inline-block;background:var(--primary-light);color:var(--primary);
-            padding:4px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;margin-bottom:8px;
-        }
-
-        .reading-passage{
-            background:#FAFAFA;border:1px solid #E5E7EB;border-radius:var(--radius-sm);
-            padding:20px 24px;font-size:1rem;line-height:2.2;margin-bottom:8px;
-        }
-        .reading-passage .new-word{
-            color:var(--word-new);font-weight:700;cursor:pointer;
-            border-bottom:2px dashed var(--word-new);padding:0 3px;border-radius:2px;
-        }
-        .reading-passage .new-word:hover{background:#EEF1FE;}
-        .reading-passage .old-word{
-            color:var(--word-old);font-weight:700;cursor:pointer;
-            border-bottom:2px dashed var(--word-old);padding:0 3px;border-radius:2px;
-        }
-        .reading-passage .old-word:hover{background:#FEF3C7;}
-
-        .word-tooltip{
-            background:var(--mc-dirt);color:white;padding:10px 16px;border-radius:var(--radius-sm);
-            font-size:0.85rem;margin-bottom:16px;display:none;line-height:1.5;
-            animation:fadeIn 0.2s ease;border:2px solid #6b5335;
-        }
-        .word-tooltip.show{display:block;}
-        .word-tooltip .tip-word{font-size:1.1rem;font-weight:700;color:#FFD700;}
-        .word-tooltip .tip-pos{color:#c4b998;}
-        .word-tooltip .tip-zh{color:#80FF80;font-weight:600;}
-        .word-tooltip .tip-from{color:#FFB347;font-size:0.8rem;}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
 
         .btn{padding:10px 24px;border-radius:8px;border:none;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;margin:4px;}
         .btn-primary{background:var(--primary);color:white;}
@@ -225,6 +238,7 @@
         @media(max-width:600px){
             .card{padding:16px;}
             .tab-btn{font-size:0.7rem;padding:8px 4px;min-width:48px;}
+            .choice-grid{grid-template-columns:1fr;}
             .reading-passage{font-size:0.9rem;padding:14px 16px;}
         }
     </style>
@@ -249,8 +263,8 @@
         <span class="topic-tag">⛏️ 像玩 Minecraft 一样适应高中</span>
         <div class="quote-box">
             "The first night is always the hardest — but you punch a tree, craft a crafting table, and start building your world."<br>
-            "Every block you place is a step forward. Every new tool unlocks new possibilities."
-            <div class="quote-author">— Inspired by Minecraft · "The universe is yours to shape."</div>
+            "Every block you place is a step forward."
+            <div class="quote-author">— Inspired by Minecraft</div>
         </div>
         <div class="progress-header">
             <span class="progress-title">今日学习进度</span>
@@ -261,7 +275,7 @@
 
     <div class="tab-nav">
         <button class="tab-btn active" onclick="switchTab('vocab')" id="tab-btn-vocab">📝 词汇</button>
-        <button class="tab-btn" onclick="switchTab('choice')" id="tab-btn-choice">✍️ 语境选择</button>
+        <button class="tab-btn" onclick="switchTab('choice')" id="tab-btn-choice">✍️ 词义选择</button>
         <button class="tab-btn" onclick="switchTab('sentence')" id="tab-btn-sentence">🔍 长难句</button>
         <button class="tab-btn" onclick="switchTab('reading')" id="tab-btn-reading">📖 阅读</button>
     </div>
@@ -273,9 +287,9 @@
     </div></div>
 
     <div class="tab-content" id="tab-choice"><div class="card">
-        <div class="card-title">✍️ 语境选择题 <span style="font-size:0.8rem;color:var(--text-secondary);">(共10题 · 4选1)</span></div>
-        <div class="card-subtitle">选择最合适的单词，提交后查看详细解析。</div>
-        <div id="choice-questions"></div>
+        <div class="card-title">✍️ 词义选择题 <span style="font-size:0.8rem;color:var(--text-secondary);">(共20题 · 20个词汇全覆盖)</span></div>
+        <div class="card-subtitle">为每个单词选出正确的中文释义，点击小标签即可作答。</div>
+        <div class="choice-grid" id="choice-grid"></div>
         <div style="margin-top:12px;">
             <button class="btn btn-primary" onclick="checkAllChoices()">✅ 全部检查</button>
             <button class="btn btn-secondary" onclick="resetAllChoices()">🔄 重新作答</button>
@@ -319,42 +333,51 @@
 </div>
 
 <script>
-// ==================== 数据 ====================
 const vocabulary = [
     {id:'v1',word:'adapt',pos:'v.',zh:'适应',example:'In Minecraft, you must <b>adapt</b> to each new biome — just like adapting to each new subject in high school.'},
     {id:'v2',word:'challenge',pos:'n.',zh:'挑战',example:'Every night in Survival mode brings a new <b>challenge</b> — creepers, skeletons, and difficult exams.'},
-    {id:'v3',word:'pressure',pos:'n.',zh:'压力',example:'Too much <b>pressure</b> is like your hunger bar dropping to zero — you need to find food fast.'},
+    {id:'v3',word:'pressure',pos:'n.',zh:'压力',example:'Too much <b>pressure</b> is like your hunger bar dropping to zero.'},
     {id:'v4',word:'balance',pos:'v./n.',zh:'平衡；均衡',example:'A smart player <b>balances</b> mining and building — just like balancing study and rest.'},
-    {id:'v5',word:'schedule',pos:'n.',zh:'日程表',example:'Your daily <b>schedule</b> is like a to-do list on a signpost — it guides your day.'},
-    {id:'v6',word:'independent',pos:'adj.',zh:'独立的',example:'In a single-player world, you must be completely <b>independent</b> — nobody else will gather wood for you.'},
+    {id:'v5',word:'schedule',pos:'n.',zh:'日程表',example:'Your daily <b>schedule</b> is like a signpost in your base — it guides your day.'},
+    {id:'v6',word:'independent',pos:'adj.',zh:'独立的',example:'In single-player, you must be <b>independent</b> — nobody else will gather wood for you.'},
     {id:'v7',word:'confident',pos:'adj.',zh:'自信的',example:'After crafting your first diamond sword, you feel <b>confident</b> enough to explore any cave.'},
-    {id:'v8',word:'goal',pos:'n.',zh:'目标',example:'My main <b>goal</b> this term is to defeat the Ender Dragon — I mean, to master English grammar.'},
-    {id:'v9',word:'method',pos:'n.',zh:'方法',example:'Finding a good learning <b>method</b> is like discovering the best way to find ancient debris — it takes practice.'},
-    {id:'v10',word:'attitude',pos:'n.',zh:'态度',example:'A positive <b>attitude</b> is your strongest enchantment — it protects you from frustration.'},
+    {id:'v8',word:'goal',pos:'n.',zh:'目标',example:'My main <b>goal</b> is to defeat the Ender Dragon — and master English grammar.'},
+    {id:'v9',word:'method',pos:'n.',zh:'方法',example:'Finding a good learning <b>method</b> is like discovering the best way to find ancient debris.'},
+    {id:'v10',word:'attitude',pos:'n.',zh:'态度',example:'A positive <b>attitude</b> is like a Protection IV enchantment — it shields you from negativity.'},
     {id:'v11',word:'communicate',pos:'v.',zh:'交流',example:'On multiplayer servers, you must <b>communicate</b> with teammates to build something amazing together.'},
-    {id:'v12',word:'nervous',pos:'adj.',zh:'紧张的',example:'I always get <b>nervous</b> before a big exam, just like before exploring a stronghold for the first time.'},
-    {id:'v13',word:'benefit',pos:'n./v.',zh:'益处；得益于',example:'Joining a club <b>benefits</b> you like a beacon gives you extra powers — speed, strength, and new friends.'},
+    {id:'v12',word:'nervous',pos:'adj.',zh:'紧张的',example:'I always get <b>nervous</b> before a big exam, like entering a stronghold for the first time.'},
+    {id:'v13',word:'benefit',pos:'n./v.',zh:'益处；得益于',example:'Joining a club <b>benefits</b> you like a beacon gives extra powers — speed, strength, and friends.'},
     {id:'v14',word:'opportunity',pos:'n.',zh:'机会',example:'Every competition is an <b>opportunity</b> — like finding a woodland mansion on your map.'},
-    {id:'v15',word:'volunteer',pos:'n./v.',zh:'志愿者；自愿做',example:'When you <b>volunteer</b> to help, it\'s like choosing to defend a village from a raid — noble and brave.'},
-    {id:'v16',word:'organize',pos:'v.',zh:'组织',example:'<b>Organize</b> your notes like a well-sorted chest room — everything in its right place.'},
-    {id:'v17',word:'manage',pos:'v.',zh:'管理；设法做成',example:'Can you <b>manage</b> your time like you manage your inventory? Full but never wasted.'},
-    {id:'v18',word:'reduce',pos:'v.',zh:'减少',example:'Listening to Minecraft music can <b>reduce</b> stress — it\'s like drinking a potion of healing.'},
-    {id:'v19',word:'support',pos:'n./v.',zh:'支持',example:'The <b>support</b> from friends is like an iron golem protecting your village — strong and reliable.'},
+    {id:'v15',word:'volunteer',pos:'n./v.',zh:'志愿者；自愿做',example:'When you <b>volunteer</b> to help, it\'s like choosing to defend a village from a raid.'},
+    {id:'v16',word:'organize',pos:'v.',zh:'组织',example:'<b>Organize</b> your notes like a well-sorted chest room.'},
+    {id:'v17',word:'manage',pos:'v.',zh:'管理；设法做成',example:'Can you <b>manage</b> your time like you manage your inventory?'},
+    {id:'v18',word:'reduce',pos:'v.',zh:'减少',example:'Listening to Minecraft music can <b>reduce</b> stress — like a potion of healing.'},
+    {id:'v19',word:'support',pos:'n./v.',zh:'支持',example:'The <b>support</b> from friends is like an iron golem protecting your village.'},
     {id:'v20',word:'enrich',pos:'v.',zh:'丰富；充实',example:'Extracurricular activities <b>enrich</b> your life — they add new recipes to your crafting book.'}
 ];
 
-const choiceQuestions = [
-    {stem:'In Minecraft, you must <span class="quiz-blank">______</span> to each new biome. High school is the same — every subject is a new world.',options:['A. adapt','B. adopt','C. adjust','D. admire'],answer:0,exp:'<strong>解析：</strong><strong>adapt to</strong> = 适应。就像进入新生物群系，你需要适应新环境。<br>adopt=采纳/adjust=调整(不与to连用)/admire=钦佩。'},
-    {stem:'Every night in Survival mode is a <span class="quiz-blank">______</span> — just like every difficult exam.',options:['A. schedule','B. pressure','C. balance','D. challenge'],answer:3,exp:'<strong>解析：</strong>每个生存模式的夜晚都是一场<strong>challenge</strong>（挑战）。<br>schedule=日程表/pressure=压力/balance=平衡。'},
-    {stem:'A smart player <span class="quiz-blank">______</span> mining and building — you need both to survive and thrive.',options:['A. manages','B. reduces','C. balances','D. enriches'],answer:2,exp:'<strong>解析：</strong><strong>balance</strong> A and B = 平衡挖矿和建造。<br>manage=管理/reduce=减少/enrich=丰富。'},
-    {stem:'Your daily <span class="quiz-blank">______</span> is like a signpost in your base — it tells you what to do today.',options:['A. goal','B. method','C. pressure','D. schedule'],answer:3,exp:'<strong>解析：</strong>每日<strong>schedule</strong>（日程表）就像基地里的告示牌。<br>goal=目标/method=方法/pressure=压力。'},
-    {stem:'In single-player, you must be <span class="quiz-blank">______</span> — nobody will mine iron for you.',options:['A. nervous','B. independent','C. confident','D. active'],answer:1,exp:'<strong>解析：</strong>单人模式下必须<strong>independent</strong>（独立）。<br>nervous=紧张的/confident=自信的/active=积极的。'},
-    {stem:'Friends\' <span class="quiz-blank">______</span> is like an iron golem — it protects you when things get hard.',options:['A. pressure','B. challenge','C. support','D. schedule'],answer:2,exp:'<strong>解析：</strong>朋友的<strong>support</strong>（支持）就像铁傀儡保护村庄。<br>pressure=压力/challenge=挑战/schedule=日程表。'},
-    {stem:'A positive <span class="quiz-blank">______</span> is like a Protection IV enchantment — it shields you from negativity.',options:['A. attitude','B. method','C. goal','D. schedule'],answer:0,exp:'<strong>解析：</strong>积极<strong>attitude</strong>（态度）= 保护IV附魔。<br>method=方法/goal=目标/schedule=日程表。'},
-    {stem:'Joining clubs can <span class="quiz-blank">______</span> your school life — like adding new recipes to your crafting table.',options:['A. reduce','B. enrich','C. manage','D. balance'],answer:1,exp:'<strong>解析：</strong>社团<strong>enrich</strong>（丰富）校园生活。<br>reduce=减少/manage=管理/balance=平衡。'},
-    {stem:'Before a big exam, I feel <span class="quiz-blank">______</span> — like entering a stronghold for the first time.',options:['A. confident','B. independent','C. nervous','D. active'],answer:2,exp:'<strong>解析：</strong>大考前感到<strong>nervous</strong>（紧张），像第一次进要塞。<br>confident=自信的/independent=独立的/active=积极的。'},
-    {stem:'Calm music can <span class="quiz-blank">______</span> stress — like drinking a potion of healing in battle.',options:['A. enrich','B. balance','C. manage','D. reduce'],answer:3,exp:'<strong>解析：</strong>平静的音乐能<strong>reduce</strong>（减少）压力，像喝下治疗药水。<br>enrich=丰富/balance=平衡/manage=管理。'}
+// Day 1 词汇（供阅读旧词标识）
+const day1Words = ['freshman','impression','curious','explore','courage','familiar','require','expect','encourage','develop','struggle','improve','knowledge','prepare','active','experience','gradually','realize'];
+const allKnownWords = {};
+// Day 1
+const day1Vocab = [
+    {word:'freshman',zh:'新生',pos:'n.'},{word:'impression',zh:'印象',pos:'n.'},{word:'curious',zh:'好奇的',pos:'adj.'},
+    {word:'explore',zh:'探索',pos:'v.'},{word:'courage',zh:'勇气',pos:'n.'},{word:'familiar',zh:'熟悉的',pos:'adj.'},
+    {word:'require',zh:'需要；要求',pos:'v.'},{word:'expect',zh:'期待；预期',pos:'v.'},{word:'encourage',zh:'鼓励',pos:'v.'},
+    {word:'develop',zh:'培养；发展',pos:'v.'},{word:'struggle',zh:'挣扎；奋斗',pos:'v./n.'},{word:'improve',zh:'提高；改善',pos:'v.'},
+    {word:'knowledge',zh:'知识',pos:'n.'},{word:'prepare',zh:'准备',pos:'v.'},{word:'active',zh:'积极的；活跃的',pos:'adj.'},
+    {word:'experience',zh:'经历；体验',pos:'n./v.'},{word:'gradually',zh:'逐渐地',pos:'adv.'},{word:'realize',zh:'意识到',pos:'v.'},
+    {word:'nervous',zh:'紧张的',pos:'adj.'},{word:'confident',zh:'自信的',pos:'adj.'}
 ];
+day1Vocab.forEach(v=>{allKnownWords[v.word]={zh:v.zh,pos:v.pos,day:1};});
+vocabulary.forEach(v=>{allKnownWords[v.word]={zh:v.zh,pos:v.pos,day:2};});
+
+function generateChoiceOptions(correctWord){
+    const others = vocabulary.filter(v=>v.word!==correctWord.word);
+    const shuffled = others.sort(()=>Math.random()-0.5);
+    return [...shuffled.slice(0,3).map(v=>v.zh), correctWord.zh].sort(()=>Math.random()-0.5);
+}
+const choiceData = vocabulary.map(v=>({id:v.id,word:v.word,correctZh:v.zh,options:generateChoiceOptions(v)}));
 
 const sentenceAnalysis = [
     {en:'Students who can <b>balance</b> their study and hobbies often have a more positive <b>attitude</b> towards life.',zh:'那些能够平衡学习和爱好的学生，通常对生活抱有更积极的态度。',analysis:'<strong>📌 结构拆解：</strong><br><strong>主干：</strong><span class="hl-sub">Students</span> often <span class="hl-verb">have</span> <span class="hl-obj">a more positive attitude</span>.<br><strong>定语从句：</strong><span class="hl-clause">who can balance their study and hobbies</span>（修饰 Students）<br><strong>语法点：</strong>关系代词 <strong>who</strong> 引导<strong>定语从句</strong>。'},
@@ -362,62 +385,18 @@ const sentenceAnalysis = [
 ];
 
 const sentencePractice = [
-    {type:'成分选择',q:'下面句子中，<b>定语从句</b>修饰的是哪个词？',sentence:'Students who can balance their study and hobbies often have a more positive attitude towards life.',options:['A. Students','B. study and hobbies','C. attitude','D. life'],answer:0,exp:'<strong>✅ 正确！</strong>定语从句 <em>who can balance...</em> 修饰先行词 <strong>Students</strong>。'},
-    {type:'翻译选择',q:'选出下面句子的<b>最佳翻译</b>：',sentence:'I truly believe that the support from friends is the key to overcoming challenges.',options:['A. 我坚信，来自朋友的支持是克服挑战的关键。','B. 我相信朋友的支持是挑战的关键。','C. 我真正相信，朋友的支持是克服挑战的钥匙。','D. 来自朋友的支持让我相信能克服挑战。'],answer:0,exp:'<strong>✅ 正确！</strong>A 准确翻译了 truly believe（坚信）和 the key to overcoming challenges（克服挑战的关键）。'}
+    {type:'成分选择',q:'下面句子中，<b>定语从句</b>修饰的是哪个词？',sentence:'Students who can balance their study and hobbies often have a more positive attitude towards life.',options:['A. Students','B. study and hobbies','C. attitude','D. life'],answer:0,exp:'<strong>✅ 正确！</strong>定语从句修饰先行词 <strong>Students</strong>。'},
+    {type:'翻译选择',q:'选出下面句子的<b>最佳翻译</b>：',sentence:'I truly believe that the support from friends is the key to overcoming challenges.',options:['A. 我坚信，来自朋友的支持是克服挑战的关键。','B. 我相信朋友的支持是挑战的关键。','C. 我真正相信，朋友的支持是克服挑战的钥匙。','D. 来自朋友的支持让我相信能克服挑战。'],answer:0,exp:'<strong>✅ 正确！</strong>A 准确翻译了 truly believe 和 the key to overcoming challenges。'}
 ];
 
-// ==================== 词汇知识库 ====================
-const allKnownWords = {
-    'freshman':{zh:'新生',pos:'n.',day:1},
-    'impression':{zh:'印象',pos:'n.',day:1},
-    'curious':{zh:'好奇的',pos:'adj.',day:1},
-    'explore':{zh:'探索',pos:'v.',day:1},
-    'nervous':{zh:'紧张的',pos:'adj.',day:1},
-    'courage':{zh:'勇气',pos:'n.',day:1},
-    'familiar':{zh:'熟悉的',pos:'adj.',day:1},
-    'require':{zh:'需要；要求',pos:'v.',day:1},
-    'expect':{zh:'期待；预期',pos:'v.',day:1},
-    'encourage':{zh:'鼓励',pos:'v.',day:1},
-    'develop':{zh:'培养；发展',pos:'v.',day:1},
-    'confident':{zh:'自信的',pos:'adj.',day:1},
-    'struggle':{zh:'挣扎；奋斗',pos:'v./n.',day:1},
-    'improve':{zh:'提高；改善',pos:'v.',day:1},
-    'knowledge':{zh:'知识',pos:'n.',day:1},
-    'prepare':{zh:'准备',pos:'v.',day:1},
-    'active':{zh:'积极的；活跃的',pos:'adj.',day:1},
-    'experience':{zh:'经历；体验',pos:'n./v.',day:1},
-    'gradually':{zh:'逐渐地',pos:'adv.',day:1},
-    'realize':{zh:'意识到',pos:'v.',day:1},
-    'adapt':{zh:'适应',pos:'v.',day:2},
-    'challenge':{zh:'挑战',pos:'n.',day:2},
-    'pressure':{zh:'压力',pos:'n.',day:2},
-    'balance':{zh:'平衡；均衡',pos:'v./n.',day:2},
-    'schedule':{zh:'日程表',pos:'n.',day:2},
-    'independent':{zh:'独立的',pos:'adj.',day:2},
-    'goal':{zh:'目标',pos:'n.',day:2},
-    'method':{zh:'方法',pos:'n.',day:2},
-    'attitude':{zh:'态度',pos:'n.',day:2},
-    'communicate':{zh:'交流',pos:'v.',day:2},
-    'benefit':{zh:'益处；得益于',pos:'n./v.',day:2},
-    'opportunity':{zh:'机会',pos:'n.',day:2},
-    'volunteer':{zh:'志愿者；自愿做',pos:'n./v.',day:2},
-    'organize':{zh:'组织',pos:'v.',day:2},
-    'manage':{zh:'管理；设法做成',pos:'v.',day:2},
-    'reduce':{zh:'减少',pos:'v.',day:2},
-    'support':{zh:'支持',pos:'n./v.',day:2},
-    'enrich':{zh:'丰富；充实',pos:'v.',day:2}
-};
-
-const day2NewWords = ['adapt','challenge','pressure','balance','schedule','independent','goal','method','attitude','communicate','benefit','opportunity','volunteer','organize','manage','reduce','support','enrich','nervous','confident'];
-
-const readingText = 'Starting high school feels like spawning into a brand-new Minecraft world. As a <span class="old-word" data-word="freshman" title="新生 (n.) · Day 1">freshman</span>, you are like a new player on Day 1 — the first <span class="old-word" data-word="impression" title="印象 (n.) · Day 1">impression</span> you make is like the first house you build. Many students feel <span class="new-word" data-word="nervous" title="紧张的 (adj.) · 今日新词">nervous</span> at the start — just like the first night without a shelter.<br><br>But here is the secret of Minecraft: you don\'t need to defeat the Ender Dragon on Day 1. You must <span class="new-word" data-word="adapt" title="适应 (v.) · 今日新词">adapt</span> to the environment first — punch trees, craft basic tools. Every difficult subject is a new <span class="new-word" data-word="challenge" title="挑战 (n.) · 今日新词">challenge</span>, like a new biome with its own rules. Too much <span class="new-word" data-word="pressure" title="压力 (n.) · 今日新词">pressure</span> drains your hunger bar — learn to <span class="new-word" data-word="balance" title="平衡 (v.) · 今日新词">balance</span> mining and resting. A clear <span class="new-word" data-word="schedule" title="日程表 (n.) · 今日新词">schedule</span> is like a signpost guiding your daily tasks.<br><br>As you keep playing, you become more <span class="new-word" data-word="independent" title="独立的 (adj.) · 今日新词">independent</span> and <span class="new-word" data-word="confident" title="自信的 (adj.) · 今日新词">confident</span>. You discover your own learning <span class="new-word" data-word="method" title="方法 (n.) · 今日新词">method</span> — whether it\'s strip-mining or exploring caves. A positive <span class="new-word" data-word="attitude" title="态度 (n.) · 今日新词">attitude</span> is like an enchantment that protects your spirit. When you <span class="new-word" data-word="communicate" title="交流 (v.) · 今日新词">communicate</span> with friends on a server, building something together, you see the <span class="new-word" data-word="benefit" title="益处 (n.) · 今日新词">benefit</span> of teamwork. Every club you join is a side quest that <span class="new-word" data-word="enrich" title="丰富 (v.) · 今日新词">enriches</span> your adventure. The <span class="new-word" data-word="support" title="支持 (n.) · 今日新词">support</span> from your "iron golem" friends keeps your village safe.<br><br>As the Minecraft motto goes, the universe is yours to shape. High school is the same — with the right tools and a clear <span class="new-word" data-word="goal" title="目标 (n.) · 今日新词">goal</span>, every <span class="new-word" data-word="challenge" title="挑战 (n.) · 今日新词">challenge</span> becomes an <span class="new-word" data-word="opportunity" title="机会 (n.) · 今日新词">opportunity</span> to craft something great.';
+const readingText = 'Starting high school feels like spawning into a brand-new Minecraft world. As a <span class="old-word" data-word="freshman" title="新生 (n.) · Day 1">freshman</span>, you are like a new player on Day 1 — the first <span class="old-word" data-word="impression" title="印象 (n.) · Day 1">impression</span> you make is like the first house you build. Many students feel <span class="new-word" data-word="nervous" title="紧张的 (adj.) · 今日新词">nervous</span> at the start — just like the first night without a shelter.<br><br>But here is the secret of Minecraft: you don\'t need to defeat the Ender Dragon on Day 1. You must <span class="new-word" data-word="adapt" title="适应 (v.) · 今日新词">adapt</span> to the environment first. Every difficult subject is a new <span class="new-word" data-word="challenge" title="挑战 (n.) · 今日新词">challenge</span>, like a new biome. Too much <span class="new-word" data-word="pressure" title="压力 (n.) · 今日新词">pressure</span> drains your hunger bar — learn to <span class="new-word" data-word="balance" title="平衡 (v.) · 今日新词">balance</span> mining and resting. A clear <span class="new-word" data-word="schedule" title="日程表 (n.) · 今日新词">schedule</span> is like a signpost.<br><br>As you keep playing, you become more <span class="new-word" data-word="independent" title="独立的 (adj.) · 今日新词">independent</span> and <span class="new-word" data-word="confident" title="自信的 (adj.) · 今日新词">confident</span>. You discover your own learning <span class="new-word" data-word="method" title="方法 (n.) · 今日新词">method</span>. A positive <span class="new-word" data-word="attitude" title="态度 (n.) · 今日新词">attitude</span> is like an enchantment. When you <span class="new-word" data-word="communicate" title="交流 (v.) · 今日新词">communicate</span> with friends, you see the <span class="new-word" data-word="benefit" title="益处 (n.) · 今日新词">benefit</span> of teamwork. Every club is a side quest that <span class="new-word" data-word="enrich" title="丰富 (v.) · 今日新词">enriches</span> your adventure. The <span class="new-word" data-word="support" title="支持 (n.) · 今日新词">support</span> from "iron golem" friends keeps your village safe. With a clear <span class="new-word" data-word="goal" title="目标 (n.) · 今日新词">goal</span>, every <span class="new-word" data-word="challenge" title="挑战 (n.) · 今日新词">challenge</span> becomes an <span class="new-word" data-word="opportunity" title="机会 (n.) · 今日新词">opportunity</span> to craft something great.';
 
 const readingQuestions = [
-    {type:'主旨大意',q:'What is the passage mainly about?',options:['A. How to play Minecraft.','B. Adapting to high school, compared to Minecraft gameplay.','C. How to defeat the Ender Dragon.','D. Minecraft building tips.'],answer:1,exp:'<strong>解析：</strong>全文用 Minecraft 比喻高中适应过程。B 最准确。'},
-    {type:'细节理解',q:'In the passage, what is a "signpost" compared to?',options:['A. A Minecraft server.','B. A daily schedule.','C. An iron golem.','D. A crafting table.'],answer:1,exp:'<strong>解析：</strong>文中说"A clear schedule is like a signpost guiding your daily tasks"。schedule = 日程表。'},
-    {type:'词义猜测',q:'The word "enrich" in the passage means:',options:['A. make simpler','B. make richer and more meaningful','C. make faster','D. destroy'],answer:1,exp:'<strong>解析：</strong>enrich = 丰富/充实。社团活动像支线任务，丰富你的冒险。'},
-    {type:'推理判断',q:'Why does the writer mention "iron golem" in the passage?',options:['A. To talk about village defense.','B. To compare friends\' support to a protector.','C. To suggest playing Minecraft more.','D. To discuss iron farming.'],answer:1,exp:'<strong>解析：</strong>铁傀儡在 Minecraft 中保护村民，比喻朋友的支持保护你。'},
-    {type:'作者态度',q:'What does the writer think about the challenges of high school?',options:['A. They are impossible.','B. They are opportunities to grow, like in Minecraft.','C. They should be ignored.','D. They are less important than gaming.'],answer:1,exp:'<strong>解析：</strong>最后一句：every challenge becomes an opportunity to craft something great。态度积极。'}
+    {type:'主旨大意',q:'What is the passage mainly about?',options:['A. How to play Minecraft.','B. Adapting to high school, compared to Minecraft.','C. How to defeat the Ender Dragon.','D. Minecraft building tips.'],answer:1,exp:'<strong>解析：</strong>全文用 Minecraft 比喻高中适应。B 最准确。'},
+    {type:'细节理解',q:'What is a "signpost" compared to?',options:['A. A Minecraft server.','B. A daily schedule.','C. An iron golem.','D. A crafting table.'],answer:1,exp:'<strong>解析：</strong>文中"A clear schedule is like a signpost"。'},
+    {type:'词义猜测',q:'The word "enrich" means:',options:['A. make simpler','B. make richer and more meaningful','C. make faster','D. destroy'],answer:1,exp:'<strong>解析：</strong>enrich = 丰富/充实。'},
+    {type:'推理判断',q:'Why does the writer mention "iron golem"?',options:['A. To talk about village defense.','B. To compare friends\' support to a protector.','C. To suggest playing more.','D. To discuss iron farming.'],answer:1,exp:'<strong>解析：</strong>铁傀儡保护村民，比喻朋友的支持。'},
+    {type:'作者态度',q:'What does the writer think about high school challenges?',options:['A. They are impossible.','B. They are opportunities to grow.','C. They should be ignored.','D. They are less important than gaming.'],answer:1,exp:'<strong>解析：</strong>最后一句：every challenge becomes an opportunity。'}
 ];
 
 // ==================== 语音 ====================
@@ -437,10 +416,8 @@ function initState(){
     try{
         wordbook = JSON.parse(localStorage.getItem('wordbook_day2')||'[]');
         completedTabs = new Set(JSON.parse(localStorage.getItem('completed_day2')||'[]'));
-    }catch(e){
-        wordbook = []; completedTabs = new Set();
-    }
-    choiceAnswers = new Array(10).fill(null); choiceSubmitted = false;
+    }catch(e){wordbook=[];completedTabs=new Set();}
+    choiceAnswers = new Array(20).fill(null); choiceSubmitted = false;
     readingAnswers = new Array(5).fill(null); readingSubmitted = false;
     sentenceAnswers = new Array(2).fill(null); sentenceSubmitted = false;
 }
@@ -462,7 +439,7 @@ function updateProgress(){
 function markComplete(tab){
     if(!completedTabs.has(tab)){
         completedTabs.add(tab);saveState();updateProgress();
-        const map={vocab:'核心词汇',choice:'语境选择',sentence:'长难句',reading:'分级阅读'};
+        const map={vocab:'核心词汇',choice:'词义选择',sentence:'长难句',reading:'分级阅读'};
         showToast('✅ '+map[tab]+' 已完成！');
     }
 }
@@ -475,13 +452,10 @@ function showToast(msg){
 function switchTab(name){
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-    const btn=document.getElementById('tab-btn-'+name);
-    const content=document.getElementById('tab-'+name);
+    const btn=document.getElementById('tab-btn-'+name),content=document.getElementById('tab-'+name);
     if(btn)btn.classList.add('active');
     if(content)content.classList.add('active');
-    if(name==='vocab' && !completedTabs.has('vocab')){
-        setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);
-    }
+    if(name==='vocab'&&!completedTabs.has('vocab')){setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);}
 }
 
 function toggleWordbook(){
@@ -513,183 +487,82 @@ function renderVocab(){
         </div>`).join('');
 }
 
+// ==================== 词义选择 ====================
 function renderChoice(){
-    const c=document.getElementById('choice-questions');if(!c)return;
-    c.innerHTML=choiceQuestions.map((q,i)=>`
-        <div class="quiz-item" id="choice-item-${i}">
-            <div class="quiz-stem">${i+1}. ${q.stem}</div>
-            <div class="quiz-options">${q.options.map((opt,j)=>`
-                <div class="quiz-option" id="choice-opt-${i}-${j}" onclick="selectChoice(${i},${j})">
-                    <span class="quiz-radio">${String.fromCharCode(65+j)}</span>
-                    <span>${opt.substring(3)}</span>
-                </div>`).join('')}</div>
-            <div class="quiz-feedback" id="choice-fb-${i}"></div>
+    const container = document.getElementById('choice-grid');if(!container)return;
+    container.innerHTML = choiceData.map((cd,i)=>`
+        <div class="choice-card" id="choice-card-${i}">
+            <div class="word-en">${cd.word}</div>
+            <div class="word-num">#${i+1}</div>
+            <div class="choice-options">
+                ${cd.options.map((opt,j)=>`
+                <span class="mini-opt" id="mini-${i}-${j}" onclick="selectMini(${i},${j},'${cd.correctZh.replace(/'/g,"\\'")}')">${opt}</span>
+                `).join('')}
+            </div>
+            <div class="mini-fb" id="mini-fb-${i}"></div>
         </div>`).join('');
-    choiceAnswers=new Array(10).fill(null);choiceSubmitted=false;
-}
-function selectChoice(qi,oi){
-    if(choiceSubmitted)return;
-    document.querySelectorAll('#choice-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));
-    document.getElementById('choice-opt-'+qi+'-'+oi).classList.add('selected');
-    choiceAnswers[qi]=oi;
-}
-function checkAllChoices(){
-    if(!choiceSubmitted && choiceAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}
-    let correct=0;
-    choiceQuestions.forEach((q,i)=>{
-        const fb=document.getElementById('choice-fb-'+i);
-        document.querySelectorAll('#choice-item-'+i+' .quiz-option').forEach((o,j)=>{
-            o.classList.add('disabled');
-            if(j===q.answer)o.classList.add('correct');
-            if(j===choiceAnswers[i]&&j!==q.answer)o.classList.add('wrong');
-        });
-        if(choiceAnswers[i]===q.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML='✅ '+q.exp;}
-        else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+q.exp;}
-    });
-    choiceSubmitted=true;showScorePopup(correct,10);
-    if(correct>=8)markComplete('choice');
-}
-function resetAllChoices(){
-    choiceAnswers=new Array(10).fill(null);choiceSubmitted=false;
-    document.querySelectorAll('#choice-questions .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));
-    document.querySelectorAll('#choice-questions .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});
+    choiceAnswers = new Array(20).fill(null);
+    choiceSubmitted = false;
 }
 
+function selectMini(cardIdx, optIdx, correctZh){
+    if(choiceSubmitted)return;
+    document.querySelectorAll(`#choice-card-${cardIdx} .mini-opt`).forEach(o=>o.classList.remove('chosen'));
+    document.getElementById(`mini-${cardIdx}-${optIdx}`).classList.add('chosen');
+    choiceAnswers[cardIdx] = optIdx;
+}
+
+function checkAllChoices(){
+    if(!choiceSubmitted && choiceAnswers.includes(null)){showToast('⚠️ 请完成所有20题');return;}
+    let correct=0;
+    choiceData.forEach((cd,i)=>{
+        const chosenOptIdx = choiceAnswers[i];
+        const chosenText = cd.options[chosenOptIdx];
+        const fb = document.getElementById('mini-fb-'+i);
+        cd.options.forEach((opt,j)=>{
+            const el = document.getElementById(`mini-${i}-${j}`);
+            if(opt === cd.correctZh) el.classList.add('right');
+            if(j === chosenOptIdx && opt !== cd.correctZh) el.classList.add('wrong-chosen');
+            el.style.pointerEvents = 'none';
+        });
+        if(chosenText === cd.correctZh){correct++;fb.innerHTML='<span style="color:#10B981;">✅</span>';}
+        else{fb.innerHTML='<span style="color:#EF4444;">✅ '+cd.correctZh+'</span>';}
+    });
+    choiceSubmitted=true;showScorePopup(correct,20);
+    if(correct>=16)markComplete('choice');
+}
+
+function resetAllChoices(){
+    choiceAnswers = new Array(20).fill(null);choiceSubmitted = false;
+    document.querySelectorAll('#choice-grid .mini-opt').forEach(o=>{o.classList.remove('chosen','right','wrong-chosen');o.style.pointerEvents='auto';});
+    document.querySelectorAll('#choice-grid .mini-fb').forEach(f=>{f.innerHTML='';});
+}
+
+// ==================== 长难句 ====================
 function renderSentence(){
     const c=document.getElementById('sentence-content');if(!c)return;
     let html='<h3 style="margin-bottom:12px;">📖 句子解析</h3>';
-    sentenceAnalysis.forEach(s=>{
-        html+=`<div class="sentence-box"><div class="sentence-en">${s.en}</div><div class="sentence-zh">${s.zh}</div></div>
-        <div class="analysis-box">${s.analysis}</div><br>`;
-    });
+    sentenceAnalysis.forEach(s=>{html+=`<div class="sentence-box"><div class="sentence-en">${s.en}</div><div class="sentence-zh">${s.zh}</div></div><div class="analysis-box">${s.analysis}</div><br>`;});
     html+='<h3 style="margin:24px 0 12px;">✏️ 巩固练习</h3>';
-    sentencePractice.forEach((p,pi)=>{
-        html+=`<div class="quiz-item" id="sentence-item-${pi}">
-            <span class="practice-label">练习 ${pi+1}：${p.type}</span>
-            <div class="quiz-stem" style="margin-top:8px;">${p.q}</div>
-            <div class="sentence-box" style="margin:8px 0;"><div class="sentence-en">${p.sentence}</div></div>
-            <div class="quiz-options">${p.options.map((opt,j)=>`
-                <div class="quiz-option" id="sentence-opt-${pi}-${j}" onclick="selectSentence(${pi},${j})">
-                    <span class="quiz-radio">${String.fromCharCode(65+j)}</span>
-                    <span>${opt.substring(3)}</span>
-                </div>`).join('')}</div>
-            <div class="quiz-feedback" id="sentence-fb-${pi}"></div>
-        </div>`;
-    });
+    sentencePractice.forEach((p,pi)=>{html+=`<div class="quiz-item" id="sentence-item-${pi}"><span class="practice-label">练习 ${pi+1}：${p.type}</span><div class="quiz-stem" style="margin-top:8px;">${p.q}</div><div class="sentence-box" style="margin:8px 0;"><div class="sentence-en">${p.sentence}</div></div><div class="quiz-options">${p.options.map((opt,j)=>`<div class="quiz-option" id="sentence-opt-${pi}-${j}" onclick="selectSentence(${pi},${j})"><span class="quiz-radio">${String.fromCharCode(65+j)}</span><span>${opt.substring(3)}</span></div>`).join('')}</div><div class="quiz-feedback" id="sentence-fb-${pi}"></div></div>`;});
     html+='<div style="margin-top:12px;"><button class="btn btn-primary" onclick="checkSentences()">✅ 检查练习</button> <button class="btn btn-secondary" onclick="resetSentences()">🔄 重新作答</button></div>';
-    c.innerHTML=html;
-    sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;
+    c.innerHTML=html;sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;
 }
-function selectSentence(qi,oi){
-    if(sentenceSubmitted)return;
-    document.querySelectorAll('#sentence-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));
-    document.getElementById('sentence-opt-'+qi+'-'+oi).classList.add('selected');
-    sentenceAnswers[qi]=oi;
-}
-function checkSentences(){
-    if(!sentenceSubmitted && sentenceAnswers.includes(null)){showToast('⚠️ 请完成所有练习');return;}
-    let correct=0;
-    sentencePractice.forEach((p,i)=>{
-        const fb=document.getElementById('sentence-fb-'+i);
-        document.querySelectorAll('#sentence-item-'+i+' .quiz-option').forEach((o,j)=>{
-            o.classList.add('disabled');
-            if(j===p.answer)o.classList.add('correct');
-            if(j===sentenceAnswers[i]&&j!==p.answer)o.classList.add('wrong');
-        });
-        if(sentenceAnswers[i]===p.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML=p.exp;}
-        else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+p.exp;}
-    });
-    sentenceSubmitted=true;
-    if(correct===2)markComplete('sentence');
-}
-function resetSentences(){
-    sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;
-    document.querySelectorAll('#sentence-content .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));
-    document.querySelectorAll('#sentence-content .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});
-}
+function selectSentence(qi,oi){if(sentenceSubmitted)return;document.querySelectorAll('#sentence-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));document.getElementById('sentence-opt-'+qi+'-'+oi).classList.add('selected');sentenceAnswers[qi]=oi;}
+function checkSentences(){if(!sentenceSubmitted&&sentenceAnswers.includes(null)){showToast('⚠️ 请完成所有练习');return;}let correct=0;sentencePractice.forEach((p,i)=>{const fb=document.getElementById('sentence-fb-'+i);document.querySelectorAll('#sentence-item-'+i+' .quiz-option').forEach((o,j)=>{o.classList.add('disabled');if(j===p.answer)o.classList.add('correct');if(j===sentenceAnswers[i]&&j!==p.answer)o.classList.add('wrong');});if(sentenceAnswers[i]===p.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML=p.exp;}else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+p.exp;}});sentenceSubmitted=true;if(correct===2)markComplete('sentence');}
+function resetSentences(){sentenceAnswers=new Array(2).fill(null);sentenceSubmitted=false;document.querySelectorAll('#sentence-content .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));document.querySelectorAll('#sentence-content .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});}
 
-function showWordTip(word){
-    const info = allKnownWords[word];
-    if(!info)return;
-    const isNew = day2NewWords.includes(word);
-    const tooltip = document.getElementById('word-tooltip');
-    tooltip.innerHTML = '<span class="tip-word">'+word+'</span> <span class="tip-pos">['+info.pos+']</span> <span class="tip-zh">'+info.zh+'</span> <span class="tip-from">'+(isNew ? '🆕 今日新词' : '📚 来自 Day '+info.day)+'</span>';
-    tooltip.classList.add('show');
-}
+// ==================== 阅读 ====================
+function showWordTip(word){const info=allKnownWords[word];if(!info)return;const isNew=vocabulary.some(v=>v.word===word);const tooltip=document.getElementById('word-tooltip');tooltip.innerHTML='<span class="tip-word">'+word+'</span> <span class="tip-pos">['+info.pos+']</span> <span class="tip-zh">'+info.zh+'</span> <span class="tip-from">'+(isNew?'🆕 今日新词':'📚 来自 Day '+info.day)+'</span>';tooltip.classList.add('show');}
+function renderReading(){const pEl=document.getElementById('reading-passage'),qEl=document.getElementById('reading-questions');if(!pEl||!qEl)return;pEl.innerHTML=readingText;pEl.querySelectorAll('.new-word,.old-word').forEach(el=>{el.addEventListener('click',function(e){e.stopPropagation();const w=this.getAttribute('data-word');if(w)showWordTip(w);});});pEl.addEventListener('click',function(){document.getElementById('word-tooltip').classList.remove('show');});qEl.innerHTML=readingQuestions.map((q,i)=>`<div class="quiz-item" id="reading-item-${i}"><div class="quiz-stem"><span style="color:var(--primary);font-weight:600;">Q${i+1}.</span><span style="font-size:0.7rem;color:var(--text-secondary);background:#F3F4F6;padding:2px 8px;border-radius:10px;margin:0 6px;">${q.type}</span>${q.q}</div><div class="quiz-options">${q.options.map((opt,j)=>`<div class="quiz-option" id="reading-opt-${i}-${j}" onclick="selectReading(${i},${j})"><span class="quiz-radio">${String.fromCharCode(65+j)}</span><span>${opt.substring(3)}</span></div>`).join('')}</div><div class="quiz-feedback" id="reading-fb-${i}"></div></div>`).join('');readingAnswers=new Array(5).fill(null);readingSubmitted=false;}
+function selectReading(qi,oi){if(readingSubmitted)return;document.querySelectorAll('#reading-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));document.getElementById('reading-opt-'+qi+'-'+oi).classList.add('selected');readingAnswers[qi]=oi;}
+function checkAllReading(){if(!readingSubmitted&&readingAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}let correct=0;readingQuestions.forEach((q,i)=>{const fb=document.getElementById('reading-fb-'+i);document.querySelectorAll('#reading-item-'+i+' .quiz-option').forEach((o,j)=>{o.classList.add('disabled');if(j===q.answer)o.classList.add('correct');if(j===readingAnswers[i]&&j!==q.answer)o.classList.add('wrong');});if(readingAnswers[i]===q.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML='✅ '+q.exp;}else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+q.exp;}});readingSubmitted=true;showScorePopup(correct,5);if(correct>=4)markComplete('reading');}
+function resetAllReading(){readingAnswers=new Array(5).fill(null);readingSubmitted=false;document.querySelectorAll('#reading-questions .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));document.querySelectorAll('#reading-questions .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});}
 
-function renderReading(){
-    const pEl=document.getElementById('reading-passage'),qEl=document.getElementById('reading-questions');
-    if(!pEl||!qEl)return;
-    pEl.innerHTML=readingText;
-    pEl.querySelectorAll('.new-word,.old-word').forEach(el=>{
-        el.addEventListener('click',function(e){
-            e.stopPropagation();
-            const w=this.getAttribute('data-word');
-            if(w)showWordTip(w);
-        });
-    });
-    pEl.addEventListener('click',function(){
-        document.getElementById('word-tooltip').classList.remove('show');
-    });
-
-    qEl.innerHTML=readingQuestions.map((q,i)=>`
-        <div class="quiz-item" id="reading-item-${i}">
-            <div class="quiz-stem">
-                <span style="color:var(--primary);font-weight:600;">Q${i+1}.</span>
-                <span style="font-size:0.7rem;color:var(--text-secondary);background:#F3F4F6;padding:2px 8px;border-radius:10px;margin:0 6px;">${q.type}</span>${q.q}
-            </div>
-            <div class="quiz-options">${q.options.map((opt,j)=>`
-                <div class="quiz-option" id="reading-opt-${i}-${j}" onclick="selectReading(${i},${j})">
-                    <span class="quiz-radio">${String.fromCharCode(65+j)}</span>
-                    <span>${opt.substring(3)}</span>
-                </div>`).join('')}</div>
-            <div class="quiz-feedback" id="reading-fb-${i}"></div>
-        </div>`).join('');
-    readingAnswers=new Array(5).fill(null);readingSubmitted=false;
-}
-function selectReading(qi,oi){
-    if(readingSubmitted)return;
-    document.querySelectorAll('#reading-item-'+qi+' .quiz-option').forEach(o=>o.classList.remove('selected'));
-    document.getElementById('reading-opt-'+qi+'-'+oi).classList.add('selected');
-    readingAnswers[qi]=oi;
-}
-function checkAllReading(){
-    if(!readingSubmitted && readingAnswers.includes(null)){showToast('⚠️ 请完成所有题目');return;}
-    let correct=0;
-    readingQuestions.forEach((q,i)=>{
-        const fb=document.getElementById('reading-fb-'+i);
-        document.querySelectorAll('#reading-item-'+i+' .quiz-option').forEach((o,j)=>{
-            o.classList.add('disabled');
-            if(j===q.answer)o.classList.add('correct');
-            if(j===readingAnswers[i]&&j!==q.answer)o.classList.add('wrong');
-        });
-        if(readingAnswers[i]===q.answer){correct++;fb.className='quiz-feedback ok show';fb.innerHTML='✅ '+q.exp;}
-        else{fb.className='quiz-feedback err show';fb.innerHTML='❌ '+q.exp;}
-    });
-    readingSubmitted=true;showScorePopup(correct,5);
-    if(correct>=4)markComplete('reading');
-}
-function resetAllReading(){
-    readingAnswers=new Array(5).fill(null);readingSubmitted=false;
-    document.querySelectorAll('#reading-questions .quiz-option').forEach(o=>o.classList.remove('selected','correct','wrong','disabled'));
-    document.querySelectorAll('#reading-questions .quiz-feedback').forEach(f=>{f.className='quiz-feedback';f.innerHTML='';});
-}
-
-function showScorePopup(correct,total){
-    const score=Math.round(correct/total*100);
-    document.getElementById('score-big').textContent=score+'%';
-    document.getElementById('score-total').textContent=correct+' / '+total+' 正确';
-    document.getElementById('score-msg').textContent=score>=80?'Achievement Unlocked! ⛏️':score>=60?'Keep crafting! 💪':'查看解析，再试一次！📚';
-    document.getElementById('score-stars').textContent=score>=90?'⭐⭐⭐⭐⭐':score>=80?'⭐⭐⭐⭐':score>=60?'⭐⭐⭐':score>=40?'⭐⭐':'⭐';
-    document.getElementById('score-overlay').classList.add('show');
-    setTimeout(()=>document.getElementById('score-overlay').classList.remove('show'),3000);
-}
+function showScorePopup(correct,total){const score=Math.round(correct/total*100);document.getElementById('score-big').textContent=score+'%';document.getElementById('score-total').textContent=correct+' / '+total+' 正确';document.getElementById('score-msg').textContent=score>=80?'Achievement Unlocked! ⛏️':score>=60?'Keep crafting! 💪':'查看解析，再试一次！📚';document.getElementById('score-stars').textContent=score>=90?'⭐⭐⭐⭐⭐':score>=80?'⭐⭐⭐⭐':score>=60?'⭐⭐⭐':score>=40?'⭐⭐':'⭐';document.getElementById('score-overlay').classList.add('show');setTimeout(()=>document.getElementById('score-overlay').classList.remove('show'),3000);}
 function closeScore(){document.getElementById('score-overlay').classList.remove('show');}
 
-function init(){
-    initState();renderVocab();renderChoice();renderSentence();renderReading();updateProgress();
-    if(!completedTabs.has('vocab')){setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);}
-}
+function init(){initState();renderVocab();renderChoice();renderSentence();renderReading();updateProgress();if(!completedTabs.has('vocab')){setTimeout(()=>{if(!completedTabs.has('vocab'))markComplete('vocab');},3000);}}
 document.addEventListener('DOMContentLoaded',init);
 </script>
 </body>
