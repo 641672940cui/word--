@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>第二周 · 高考阅读（真题风格·5篇）</title>
+    <title>第二周 · 高考阅读（初中词汇版·题干带翻译）</title>
     <style>
         * {
             box-sizing: border-box;
@@ -123,6 +123,7 @@
             text-decoration-thickness: 2px;
             font-weight: 600;
             color: #b13e2e;
+            cursor: help;
         }
         .highlight-words {
             background: #fef5e7;
@@ -157,6 +158,16 @@
             font-weight: 700;
             color: #1f5880;
             margin-right: 6px;
+        }
+        /* 题干中带下划线的翻译提示 */
+        .q-item u[title] {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #2a7faa;
+            text-decoration-style: dotted;
+            cursor: help;
+            color: #1a4d6b;
+            font-weight: 600;
         }
         .options {
             padding-left: 18px;
@@ -305,6 +316,7 @@
             padding: 12px 0 4px;
             border-top: 1px solid #d5e0ea;
         }
+        /* 移动端适配 */
         @media (max-width: 480px) {
             .passage-card {
                 padding: 14px 10px;
@@ -321,86 +333,81 @@
 </head>
 <body>
     <div class="container">
-        <h1>📘 第二周 · 高考阅读（真题风格）</h1>
-        <div class="sub">⭐ 5篇全新 · 4阅读+4长难句+1语法 · 选项均匀分布 · 真题提问方式</div>
+        <h1>📘 第二周 · 高考阅读（初中词汇版）</h1>
+        <div class="sub">⭐ 初中词汇为主 · 每篇5个高中词 · 题干悬停显示中文翻译</div>
 
         <div class="tab-bar" id="tabBar"></div>
         <div id="passageContainer"></div>
 
-        <div class="footer-note">⚡ 每篇9题 · 题干/选项对标高考 · 提交后显示答案与解析</div>
+        <div class="footer-note">⚡ 每篇9题 · 悬停下划线短语可看中文翻译 · 提交后显示答案与解析</div>
     </div>
 
     <script>
         // ============================================================
-        // 数据：5篇新文章（P6～P10），全部按高考真题风格重新设计
-        // 1. 题干措辞：间接/隐含/同义转述
-        // 2. 正确选项：均匀分布（A/B/C/D各约25%）
-        // 3. 干扰项：每个都"似对实错"
-        // 4. 新增写作目的题
+        // 数据：5篇，初中词汇为主，保留5个高中词/篇，题干带翻译
         // ============================================================
         const passagesData = [{
-            // ========== P6: A篇 应用文 ==========
             title: '🌊 P6 海洋志愿者',
             badge: 'A篇 · 应用文',
-            text: `Are you passionate about the ocean? Our organization is now <u>recruit</u>ing volunteers for a coastal clean-up project. This is a great chance to help <u>conserve</u> marine life and protect our beaches from plastic waste. Every year, thousands of sea animals are harmed by garbage thrown into the sea. We believe that with enough volunteers, we can make a real difference.<br><br>
+            text: `Are you passionate about the ocean? Our group is now <u>recruit</u>ing volunteers for a beach clean-up project. This is a great chance to help <u>conserve</u> marine life and protect our beaches from plastic waste. Every year, thousands of sea animals are hurt by trash in the sea. We believe that with enough volunteers, we can make a real difference.<br><br>
 
-            Volunteers will <u>monitor</u> the shoreline every weekend, carefully record data on waste types and quantities, and guide visitors on eco-friendly practices. We will <u>evaluate</u> your performance monthly and provide certificates of participation. To <u>sustain</u> this long-term effort, we need at least 50 regular helpers who can commit to at least two Saturdays per month.<br><br>
+            Volunteers will <u>monitor</u> the shoreline every weekend, write down data on waste types and amounts, and teach visitors how to be eco-friendly. We will <u>evaluate</u> your work each month and give you a certificate. To <u>sustain</u> this long-term effort, we need at least 50 regular helpers who can come at least two Saturdays each month.<br><br>
 
-            No previous experience is needed—just a love for nature and a strong sense of responsibility. Training sessions will be provided on the first Saturday of each month. Join us every Saturday morning from 8:00 to 11:00 at Sandy Bay. You can sign up online through our official website or visit our local office at 22 Green Street. Let's work together to protect our blue planet!`,
+            No experience is needed—just a love for nature and a sense of duty. Training is given on the first Saturday of each month. Join us every Saturday morning from 8:00 to 11:00 at Sandy Bay. You can sign up online or at our local office at 22 Green Street. Let's work together to protect our blue planet!`,
             vocab: `<strong>📌 高一词汇 · 英文释义</strong><br>
-                    <em>recruit</em> (v.) — to find new people to join an organization.<br>
-                    <em>conserve</em> (v.) — to protect and keep from harm.<br>
-                    <em>monitor</em> (v.) — to watch and check carefully over time.<br>
-                    <em>evaluate</em> (v.) — to judge the value or quality of something.<br>
-                    <em>sustain</em> (v.) — to keep something continuing over a long period.`,
+                    <em>recruit</em> (v.) — to find new people to join.<br>
+                    <em>conserve</em> (v.) — to protect from harm.<br>
+                    <em>monitor</em> (v.) — to watch and check.<br>
+                    <em>evaluate</em> (v.) — to judge the value.<br>
+                    <em>sustain</em> (v.) — to keep going over time.`,
             questions: [{
-                q: 'According to the passage, what is one of the primary duties of the volunteers?',
+                q: `<u title="根据文章">According to the passage</u>, what is one of the main jobs of the volunteers?`,
                 options: [
-                    'A. To organize fundraising events for marine research.',
-                    'B. To keep track of the types of waste found on the shore.',
-                    'C. To teach local residents how to swim safely.',
-                    'D. To build new facilities for beach visitors.'
+                    'A. To raise money for sea animals.',
+                    'B. To record information about waste on the beach.',
+                    'C. To teach children how to swim.',
+                    'D. To build new houses near the sea.'
                 ],
                 answer: 1
             }, {
-                q: 'The underlined word "sustain" in Paragraph 2 is closest in meaning to ______.',
+                q: `The underlined word "<u title="维持">sustain</u>" in Paragraph 2 is closest in meaning to ______.`,
                 options: [
                     'A. begin',
                     'B. interrupt',
-                    'C. maintain',
-                    'D. transform'
+                    'C. keep going',
+                    'D. change'
                 ],
                 answer: 2
             }, {
-                q: 'What can be inferred about the organization\'s requirement for volunteers?',
+                q: `<u title="可以推断出">What can be inferred</u> about the volunteers needed for this project?`,
                 options: [
-                    'A. They must have previous experience in environmental work.',
-                    'B. They are expected to participate regularly over time.',
-                    'C. They need to bring their own equipment to the site.',
-                    'D. They should be available every single day of the week.'
+                    'A. They must have worked in this field before.',
+                    'B. They need to come regularly over time.',
+                    'C. They have to bring their own tools.',
+                    'D. They should be free every single day.'
                 ],
                 answer: 1
             }, {
-                q: 'What is the author\'s main purpose in writing this passage?',
+                q: `<u title="作者的主要目的是">What is the author\'s main purpose</u> in writing this passage?`,
                 options: [
-                    'A. To persuade readers to join a coastal protection effort.',
-                    'B. To describe the daily life of marine animals.',
-                    'C. To compare different environmental organizations.',
-                    'D. To explain the history of beach conservation.'
+                    'A. To ask people to join a beach protection project.',
+                    'B. To describe the life of sea animals.',
+                    'C. To compare different environmental groups.',
+                    'D. To tell the history of beach cleaning.'
                 ],
                 answer: 0
             }],
             longSentences: [{
-                display: '🔹 <em>Volunteers will monitor the shoreline every weekend, carefully record data on waste types and quantities, and guide visitors on eco-friendly practices.</em>',
+                display: '🔹 <em>Volunteers will monitor the shoreline every weekend, write down data on waste types and amounts, and teach visitors how to be eco-friendly.</em>',
                 q1: '5. 本句的主句 (main clause) 是？',
                 opts1: [
                     'A. Volunteers will monitor the shoreline',
-                    'B. record data on waste types',
-                    'C. guide visitors on eco-friendly practices',
-                    'D. Volunteers will monitor the shoreline, record data, and guide visitors'
+                    'B. write down data on waste types',
+                    'C. teach visitors how to be eco-friendly',
+                    'D. Volunteers will monitor, write down, and teach'
                 ],
                 ans1: 3,
-                q2: '6. 句中的三个动词短语 (monitor, record, guide) 是什么关系？',
+                q2: '6. 句中的三个动词 (monitor, write, teach) 是什么关系？',
                 opts2: [
                     'A. 并列谓语 (compound predicate)',
                     'B. 主谓宾结构',
@@ -408,7 +415,7 @@
                     'D. 定语从句'
                 ],
                 ans2: 0,
-                analysis: '📖 拆解：主语 <strong>Volunteers</strong>，三个并列谓语动词 <strong>will monitor, record, guide</strong>，构成并列谓语结构。'
+                analysis: '📖 拆解：主语 <strong>Volunteers</strong>，三个并列谓语动词 <strong>will monitor, write, teach</strong>，构成并列谓语结构。'
             }, {
                 display: '🔹 <em>We believe that with enough volunteers, we can make a real difference.</em>',
                 q1: '7. 本句的主句 (main clause) 是？',
@@ -427,65 +434,64 @@
                     'D. 主语从句 (subject clause)'
                 ],
                 ans2: 1,
-                analysis: '📖 拆解：主句 <strong>We believe</strong>；<strong>that</strong> 引导宾语从句，从句中 <strong>with enough volunteers</strong> 作状语。'
+                analysis: '📖 拆解：主句 <strong>We believe</strong>；<strong>that</strong> 引导宾语从句，<strong>with enough volunteers</strong> 作状语。'
             }],
             grammar: {
-                q: '9. <em>No previous experience ______ needed for this volunteer position.</em>',
+                q: '9. <em>No experience ______ needed for this volunteer job.</em>',
                 options: ['A. is', 'B. are', 'C. was', 'D. have'],
                 answer: 0,
-                analysis: '💡 正确答案 <strong>A</strong>。主语 <em>experience</em> 为不可数名词，谓语用单数 <em>is</em>。'
+                analysis: '💡 正确答案 <strong>A</strong>。主语 <em>experience</em> 不可数，谓语用 <em>is</em>。'
             },
             allAnswers: ['B', 'C', 'B', 'A', 'D', 'A', 'D', 'B', 'A'],
-            allExplanations: '1. 第二段明确任务"record data on waste types" → B为同义转述；2. sustain = maintain（维持）；3. 第二段"need at least 50 regular helpers who can commit to two Saturdays per month" → 要求定期参与；4. 全文目的为招募志愿者 → A；5. 三个动词并列构成完整主句；6. 并列谓语；7. 主句为完整句；8. that引导宾语从句；9. experience不可数，用is。'
+            allExplanations: '1. 第二段"write down data on waste types" → B；2. sustain = keep going；3. 第二段"need at least 50 regular helpers who can come at least two Saturdays" → 需定期参与 → B；4. 全文目的为招募志愿者 → A；5. 三个动词并列构成主句；6. 并列谓语；7. 主句为完整句；8. that引导宾语从句；9. experience不可数，用is。'
         }, {
-            // ========== P7: B篇 记叙文 ==========
             title: '🪵 P7 爷爷的手艺',
             badge: 'B篇 · 记叙文',
             text: `My grandfather is a carpenter. He has spent sixty years perfecting his <u>craft</u>. For him, woodworking is not just a job—it is a family <u>heritage</u> passed down from his father, and from his grandfather before that. Every piece of furniture he makes tells a story of patience and love.<br><br>
 
             Every piece he creates is <u>delicate</u> and full of detail. He spends days carving flowers and birds on wooden chairs and tables. When an old chair breaks, he never throws it away. Instead, he carefully <u>restore</u>s it to its former beauty, fixing every crack and polishing every surface. He believes that to <u>preserve</u> the past is to respect our ancestors and keep their memory alive.<br><br>
 
-            I used to think his work was old-fashioned and slow. But now I realize that his hands carry stories that no machine can ever tell. His workshop is filled with the warm smell of wood and the gentle sound of hammering—a true treasure of our family. Every time I watch him work, I understand more deeply what it means to dedicate one's life to a calling.`,
+            I used to think his work was old-fashioned and slow. But now I realize that his hands carry stories that no machine can ever tell. His workshop is filled with the warm smell of wood and the gentle sound of hammering—a true treasure of our family.`,
             vocab: `<strong>📌 高一词汇 · 英文释义</strong><br>
-                    <em>craft</em> (n.) — a skill, especially a traditional one requiring practice.<br>
-                    <em>heritage</em> (n.) — traditions or qualities that are passed down through generations.<br>
-                    <em>delicate</em> (adj.) — easily broken; finely made with care.<br>
-                    <em>restore</em> (v.) — to bring something back to a good condition.<br>
-                    <em>preserve</em> (v.) — to keep something safe from harm or decay.`,
+                    <em>craft</em> (n.) — a traditional skill.<br>
+                    <em>heritage</em> (n.) — things passed down from the past.<br>
+                    <em>delicate</em> (adj.) — finely made and easily broken.<br>
+                    <em>restore</em> (v.) — to bring back to good condition.<br>
+                    <em>preserve</em> (v.) — to keep safe from harm.`,
             questions: [{
-                q: 'How does the grandfather deal with broken furniture according to the passage?',
+                q: `<u title="根据文章">According to the passage</u>, how does the grandfather deal with broken furniture?`,
                 options: [
-                    'A. He replaces it with modern designs.',
-                    'B. He gives it away to poor families.',
-                    'C. He repairs it carefully to its original state.',
-                    'D. He uses it as firewood for his workshop.'
+                    'A. He throws it away.',
+                    'B. He gives it to others.',
+                    'C. He repairs it carefully.',
+                    'D. He burns it for wood.'
                 ],
                 answer: 2
             }, {
-                q: 'The word "heritage" in Paragraph 1 refers to ______.',
+                q: `The word "<u title="遗产">heritage</u>" in Paragraph 1 refers to ______.`,
                 options: [
-                    'A. a set of traditional skills passed down in the family',
-                    'B. a modern machine for making furniture',
-                    'C. a valuable collection of paintings',
-                    'D. the money inherited from ancestors'
+                    'A. a set of family skills passed down',
+                    'B. a modern machine',
+                    'C. a collection of paintings',
+                    'D. money from ancestors'
                 ],
                 answer: 0
             }, {
-                q: 'What is the author\'s attitude toward his grandfather\'s work?',
+                q: `<u title="可以推断出">What can be inferred</u> about the author\'s feeling toward his grandfather\'s work?`,
                 options: [
-                    'A. He considers it outdated and inefficient.',
-                    'B. He feels indifferent about the craft.',
-                    'C. He wishes to learn it as a future career.',
-                    'D. He has come to appreciate its deeper value.'
+                    'A. He thinks it is boring.',
+                    'B. He doesn\'t care about it.',
+                    'C. He wants to learn it as a job.',
+                    'D. He has come to value it deeply.'
                 ],
                 answer: 3
             }, {
-                q: 'What is the best title for this passage?',
+                q: `<u title="最佳标题是">What is the best title</u> for this passage?`,
                 options: [
                     'A. The History of Woodworking Tools',
-                    'B. A Grandfather\'s Craft: Family Heritage and Love',
-                    'C. How to Build Furniture Step by Step',
-                    'D. Modern Carpentry vs. Traditional Skills'
+                    'B. A Grandfather\'s Craft and Family Love',
+                    'C. How to Build Furniture Easily',
+                    'D. Modern Carpentry Skills'
                 ],
                 answer: 1
             }],
@@ -502,12 +508,12 @@
                 q2: '6. "passed down from his father" 在句中充当什么成分？',
                 opts2: [
                     'A. 定语从句 (attributive clause)',
-                    'B. 过去分词短语作后置定语 (past participle phrase as attribute)',
+                    'B. 过去分词短语作后置定语',
                     'C. 状语从句',
                     'D. 宾语从句'
                 ],
                 ans2: 1,
-                analysis: '📖 拆解：两个分句由破折号连接，共同构成并列主句；<strong>passed down</strong> 为过去分词短语，修饰 <em>heritage</em>。'
+                analysis: '📖 拆解：破折号连接两个分句，构成并列主句；<strong>passed down</strong> 为过去分词短语，修饰 <em>heritage</em>。'
             }, {
                 display: '🔹 <em>He believes that to preserve the past is to respect our ancestors and keep their memory alive.</em>',
                 q1: '7. 本句的主句 (main clause) 是？',
@@ -526,79 +532,78 @@
                     'D. 主语从句 (subject clause)'
                 ],
                 ans2: 1,
-                analysis: '📖 拆解：主句 <strong>He believes</strong>；<strong>that</strong> 引导宾语从句，从句中不定式 <strong>to preserve</strong> 作主语，<strong>to respect</strong> 作表语。'
+                analysis: '📖 拆解：主句 <strong>He believes</strong>；<strong>that</strong> 引导宾语从句。'
             }],
             grammar: {
-                q: '9. <em>His workshop ______ always filled with the pleasant smell of wood.</em>',
+                q: '9. <em>His workshop ______ always filled with the smell of wood.</em>',
                 options: ['A. is', 'B. are', 'C. were', 'D. have'],
                 answer: 0,
                 analysis: '💡 正确答案 <strong>A</strong>。主语 <em>workshop</em> 为单数，谓语用 <em>is</em>。'
             },
             allAnswers: ['C', 'A', 'D', 'B', 'D', 'B', 'D', 'B', 'A'],
-            allExplanations: '1. 第二段"restores it to its former beauty" → C为同义转述；2. heritage指家族木工传统 → A；3. 末段"realize his hands carry stories" → 作者开始欣赏其价值 → D；4. 全文围绕家族手艺传承 → B；5. 破折号连接并列主句；6. 过去分词作后置定语；7. 主句为完整句；8. that引导宾语从句；9. workshop单数，用is。'
+            allExplanations: '1. 第二段"restores it to its former beauty" → C；2. heritage 指家族传统技能 → A；3. 末段"realize his hands carry stories" → 作者开始珍惜 → D；4. 全文围绕家族手艺传承 → B；5. 破折号连接并列主句；6. 过去分词作后置定语；7. 主句为完整句；8. that引导宾语从句；9. workshop单数，用is。'
         }, {
-            // ========== P8: C篇 议论文 ==========
             title: '📚 P8 阅读习惯之变',
             badge: 'C篇 · 议论文',
-            text: `In recent years, there has been a noticeable <u>shift</u> in teenagers' reading habits. Many are spending significantly less time with printed books and more time scrolling through short online articles and social media posts. This <u>decline</u> in deep, focused reading is worrying educators and parents alike. Studies show that prolonged screen reading can reduce concentration and weaken comprehension skills.<br><br>
+            text: `In recent years, there has been a noticeable <u>shift</u> in teenagers' reading habits. Many are spending much less time with printed books and more time on short online articles and social media. This <u>decline</u> in deep, focused reading worries teachers and parents. Studies show that reading on screens for a long time can reduce focus and weaken understanding.<br><br>
 
-            However, some experts argue that digital reading can actually <u>stimulate</u> curiosity if guided properly. They believe that the real key is to develop <u>critical</u> thinking skills, regardless of the medium. Instead of judging the format, we should focus on the <u>perspective</u> that reading offers—whether on paper or on a screen. A good book in any form can open minds and broaden horizons.<br><br>
+            However, some experts say that digital reading can actually <u>stimulate</u> curiosity if guided well. They believe that the real key is to develop <u>critical</u> thinking skills, no matter what you read on. Instead of judging the format, we should focus on the <u>perspective</u> that reading gives us—whether on paper or on a screen. A good book in any form can open our minds.<br><br>
 
-            The goal is not to force students to read more, but to help them enjoy reading meaningfully. Schools should encourage a balanced mix of print and digital materials. With the right approach, the future of reading could be richer than ever before.`,
+            The goal is not to force students to read more, but to help them enjoy reading in a meaningful way. Schools should encourage a balanced mix of print and digital materials. With the right approach, the future of reading could be richer than ever.`,
             vocab: `<strong>📌 高一词汇 · 英文释义</strong><br>
-                    <em>shift</em> (n.) — a change in position, direction, or tendency.<br>
-                    <em>decline</em> (n.) — a gradual decrease in amount or quality.<br>
-                    <em>stimulate</em> (v.) — to encourage or excite activity or interest.<br>
-                    <em>critical</em> (adj.) — involving careful judgment and analysis.<br>
-                    <em>perspective</em> (n.) — a particular way of viewing or understanding things.`,
+                    <em>shift</em> (n.) — a change.<br>
+                    <em>decline</em> (n.) — a gradual decrease.<br>
+                    <em>stimulate</em> (v.) — to encourage or excite.<br>
+                    <em>critical</em> (adj.) — involving careful judgment.<br>
+                    <em>perspective</em> (n.) — a way of viewing things.`,
             questions: [{
-                q: 'What change in teenagers\' reading behavior is described in the passage?',
+                q: `<u title="根据文章">According to the passage</u>, what change is happening in teenagers\' reading?`,
                 options: [
-                    'A. They have shifted from print books to shorter digital content.',
-                    'B. They are reading more books than previous generations.',
-                    'C. They have completely abandoned reading for entertainment.',
-                    'D. They prefer listening to audio books over reading.'
+                    'A. They are reading more printed books.',
+                    'B. They are reading more short digital content.',
+                    'C. They have stopped reading for fun.',
+                    'D. They prefer listening to books.'
                 ],
-                answer: 0
+                answer: 1
             }, {
-                q: 'The underlined word "stimulate" in Paragraph 2 is closest in meaning to ______.',
+                q: `The underlined word "<u title="激发">stimulate</u>" in Paragraph 2 is closest in meaning to ______.`,
                 options: [
                     'A. discourage',
                     'B. excite',
                     'C. ignore',
-                    'D. postpone'
+                    'D. delay'
                 ],
                 answer: 1
             }, {
-                q: 'What does the author suggest schools should do?',
+                q: `<u title="作者建议学校做什么">What does the author suggest schools should do</u>?`,
                 options: [
-                    'A. Ban digital reading materials completely.',
-                    'B. Encourage students to read only printed books.',
-                    'C. Provide a balanced combination of print and digital resources.',
-                    'D. Increase the amount of reading homework.'
+                    'A. Ban digital reading completely.',
+                    'B. Only use printed books.',
+                    'C. Use a mix of print and digital materials.',
+                    'D. Give more reading homework.'
                 ],
                 answer: 2
             }, {
-                q: 'What is the author\'s attitude toward the future of reading?',
+                q: `<u title="作者对阅读未来的态度是">What is the author\'s attitude</u> toward the future of reading?`,
                 options: [
-                    'A. Pessimistic about the decline of printed books.',
-                    'B. Optimistic that a balanced approach can enrich reading.',
-                    'C. Indifferent to the changes in reading habits.',
-                    'D. Strongly opposed to any digital reading.'
+                    'A. Worried that printed books will disappear.',
+                    'B. Hopeful that a balanced way can make reading better.',
+                    'C. Not interested in the change.',
+                    'D. Strongly against digital reading.'
                 ],
                 answer: 1
             }],
             longSentences: [{
-                display: '🔹 <em>Instead of judging the format, we should focus on the perspective that reading offers—whether on paper or on a screen.</em>',
+                display: '🔹 <em>Instead of judging the format, we should focus on the perspective that reading gives us—whether on paper or on a screen.</em>',
                 q1: '5. 本句的主句 (main clause) 是？',
                 opts1: [
                     'A. Instead of judging the format',
                     'B. we should focus on the perspective',
-                    'C. that reading offers',
-                    'D. we should focus on the perspective that reading offers'
+                    'C. that reading gives us',
+                    'D. we should focus on the perspective that reading gives us'
                 ],
                 ans1: 3,
-                q2: '6. "that reading offers" 在句中充当什么成分？',
+                q2: '6. "that reading gives us" 在句中充当什么成分？',
                 opts2: [
                     'A. 定语从句 (attributive clause) — 修饰 perspective',
                     'B. 宾语从句 (object clause)',
@@ -606,18 +611,18 @@
                     'D. 主语从句 (subject clause)'
                 ],
                 ans2: 0,
-                analysis: '📖 拆解：主句 <strong>we should focus on the perspective</strong>；<strong>that</strong> 引导定语从句修饰 <em>perspective</em>；破折号后补充说明。'
+                analysis: '📖 拆解：主句 <strong>we should focus on the perspective</strong>；<strong>that</strong> 引导定语从句修饰 <em>perspective</em>。'
             }, {
-                display: '🔹 <em>Studies show that prolonged screen reading can reduce concentration and weaken comprehension skills.</em>',
+                display: '🔹 <em>Studies show that reading on screens for a long time can reduce focus and weaken understanding.</em>',
                 q1: '7. 本句的主句 (main clause) 是？',
                 opts1: [
                     'A. Studies show',
-                    'B. that prolonged screen reading can reduce concentration',
-                    'C. and weaken comprehension skills',
-                    'D. Studies show that prolonged screen reading can reduce concentration and weaken comprehension skills'
+                    'B. that reading on screens for a long time can reduce focus',
+                    'C. and weaken understanding',
+                    'D. Studies show that reading on screens for a long time can reduce focus and weaken understanding'
                 ],
                 ans1: 3,
-                q2: '8. "that prolonged screen reading can reduce concentration and weaken comprehension skills" 在句中充当什么成分？',
+                q2: '8. "that reading on screens for a long time can reduce focus and weaken understanding" 在句中充当什么成分？',
                 opts2: [
                     'A. 定语从句 (attributive clause)',
                     'B. 宾语从句 (object clause)',
@@ -625,79 +630,78 @@
                     'D. 主语从句 (subject clause)'
                 ],
                 ans2: 1,
-                analysis: '📖 拆解：主句 <strong>Studies show</strong>；<strong>that</strong> 引导宾语从句，从句中 <strong>prolonged screen reading</strong> 作主语，两个并列谓语 <strong>can reduce... and weaken...</strong>。'
+                analysis: '📖 拆解：主句 <strong>Studies show</strong>；<strong>that</strong> 引导宾语从句。'
             }],
             grammar: {
                 q: '9. <em>______ judging the medium, we should focus on the value of reading itself.</em>',
                 options: ['A. Instead of', 'B. In spite of', 'C. Because of', 'D. As for'],
                 answer: 0,
-                analysis: '💡 正确答案 <strong>A</strong>。Instead of 表示"而不是"，符合句意"不要评判媒介，而要关注阅读本身的价值"。'
+                analysis: '💡 正确答案 <strong>A</strong>。Instead of 表示"而不是"。'
             },
-            allAnswers: ['A', 'B', 'C', 'B', 'D', 'A', 'D', 'B', 'A'],
-            allExplanations: '1. 第一段"spending less time with printed books and more time on online articles" → A为同义转述；2. stimulate = excite（激发）；3. 末段"encourage a balanced mix of print and digital" → C；4. 末段"future could be richer" → 乐观态度 → B；5. 主句为完整部分；6. that引导定语从句；7. 主句为完整句；8. that引导宾语从句；9. Instead of表对比。'
+            allAnswers: ['B', 'B', 'C', 'B', 'D', 'A', 'D', 'B', 'A'],
+            allExplanations: '1. 第一段"spending much less time with printed books and more time on online articles" → B；2. stimulate = excite；3. 末段"encourage a balanced mix" → C；4. "future could be richer" → 乐观 → B；5. 主句为完整部分；6. that引导定语从句；7. 主句为完整句；8. that引导宾语从句；9. Instead of表对比。'
         }, {
-            // ========== P9: D篇 说明文 ==========
             title: '🤖 P9 AI辅助医疗',
             badge: 'D篇 · 说明文',
-            text: `Artificial Intelligence (AI) is increasingly playing a vital role in modern healthcare. Doctors now use advanced AI systems to <u>diagnose</u> diseases from medical images such as X-rays and MRIs. These systems rely on complex <u>algorithm</u>s that learn from thousands of previous cases, constantly improving their accuracy over time.<br><br>
+            text: `Artificial Intelligence (AI) is now playing an important role in healthcare. Doctors use AI systems to <u>diagnose</u> diseases from X-rays and other medical pictures. These systems use complex <u>algorithm</u>s that learn from thousands of past cases, getting better over time.<br><br>
 
-            Recent studies have shown that AI can be as <u>accurate</u> as experienced human doctors, and in some cases, even more precise. In <u>clinical</u> settings, AI helps reduce diagnostic errors, speed up treatment decisions, and improve patient outcomes. However, the use of AI also raises important <u>ethical</u> questions: Who is responsible when an AI system makes a mistake? How do we ensure patient privacy when data is shared with machines?<br><br>
+            Recent studies have shown that AI can be as <u>accurate</u> as human doctors, and sometimes even more exact. In <u>clinical</u> settings, AI helps reduce mistakes, speed up decisions, and improve patient care. However, AI also raises <u>ethical</u> questions: Who is responsible when AI makes a mistake? How do we protect patient privacy?<br><br>
 
-            Experts agree that AI should assist, not replace, human judgment. Doctors must always have the final say in patient care. With proper regulation and continuous human oversight, AI could become a powerful and trustworthy tool to improve healthcare worldwide. The future of medicine lies not in machines alone, but in the partnership between human expertise and artificial intelligence.`,
+            Experts agree that AI should help doctors, not replace them. Doctors must always make the final decision. With proper rules and human oversight, AI could become a powerful and reliable tool for healthcare worldwide.`,
             vocab: `<strong>📌 高一词汇 · 英文释义</strong><br>
-                    <em>diagnose</em> (v.) — to identify a disease or condition from symptoms or images.<br>
-                    <em>algorithm</em> (n.) — a set of step-by-step rules for solving a problem.<br>
-                    <em>accurate</em> (adj.) — correct, precise, and without errors.<br>
-                    <em>clinical</em> (adj.) — relating to the direct examination and treatment of patients.<br>
-                    <em>ethical</em> (adj.) — relating to moral principles of right and wrong.`,
+                    <em>diagnose</em> (v.) — to identify a disease.<br>
+                    <em>algorithm</em> (n.) — a set of rules for solving a problem.<br>
+                    <em>accurate</em> (adj.) — correct and exact.<br>
+                    <em>clinical</em> (adj.) — relating to patient care.<br>
+                    <em>ethical</em> (adj.) — relating to moral principles.`,
             questions: [{
-                q: 'According to the passage, how do doctors currently use AI systems?',
+                q: `<u title="根据文章">According to the passage</u>, how do doctors currently use AI?`,
                 options: [
-                    'A. To manage hospital finances and budgets.',
-                    'B. To perform surgeries without human assistance.',
+                    'A. To manage hospital money.',
+                    'B. To perform surgeries.',
                     'C. To identify diseases from medical images.',
-                    'D. To replace nurses in patient care.'
+                    'D. To replace nurses.'
                 ],
                 answer: 2
             }, {
-                q: 'The word "accurate" in Paragraph 2 is closest in meaning to ______.',
+                q: `The word "<u title="精确的">accurate</u>" in Paragraph 2 is closest in meaning to ______.`,
                 options: [
                     'A. approximate',
-                    'B. precise',
+                    'B. exact',
                     'C. unreliable',
                     'D. flexible'
                 ],
                 answer: 1
             }, {
-                q: 'What concern about AI in healthcare is raised in the passage?',
+                q: `<u title="文章中提到了什么担忧">What concern about AI is raised</u> in the passage?`,
                 options: [
-                    'A. It may reduce the number of doctors needed.',
-                    'B. It could lead to errors and unclear responsibility.',
-                    'C. It is too expensive for most hospitals.',
-                    'D. It cannot process medical images quickly.'
+                    'A. It may reduce the number of doctors.',
+                    'B. It could cause errors and unclear responsibility.',
+                    'C. It is too expensive.',
+                    'D. It cannot process images quickly.'
                 ],
                 answer: 1
             }, {
-                q: 'What is the author\'s main point about the role of AI in medicine?',
+                q: `<u title="作者的主要观点是">What is the author\'s main point</u> about AI in medicine?`,
                 options: [
-                    'A. AI will eventually replace all human doctors.',
-                    'B. AI should support doctors rather than replace them.',
-                    'C. AI is too risky to be used in healthcare.',
-                    'D. AI has no significant impact on medical practice.'
+                    'A. AI will replace all doctors.',
+                    'B. AI should support doctors, not replace them.',
+                    'C. AI is too risky to use.',
+                    'D. AI has no real effect on medicine.'
                 ],
                 answer: 1
             }],
             longSentences: [{
-                display: '🔹 <em>These systems rely on complex algorithms that learn from thousands of previous cases, constantly improving their accuracy over time.</em>',
+                display: '🔹 <em>These systems use complex algorithms that learn from thousands of past cases, getting better over time.</em>',
                 q1: '5. 本句的主句 (main clause) 是？',
                 opts1: [
-                    'A. These systems rely on complex algorithms',
-                    'B. that learn from thousands of previous cases',
-                    'C. constantly improving their accuracy',
-                    'D. These systems rely on complex algorithms that learn from thousands of cases'
+                    'A. These systems use complex algorithms',
+                    'B. that learn from thousands of past cases',
+                    'C. getting better over time',
+                    'D. These systems use complex algorithms that learn from thousands of cases'
                 ],
                 ans1: 3,
-                q2: '6. "that learn from thousands of previous cases" 在句中充当什么成分？',
+                q2: '6. "that learn from thousands of past cases" 在句中充当什么成分？',
                 opts2: [
                     'A. 状语从句 (adverbial clause)',
                     'B. 定语从句 (attributive clause) — 修饰 algorithms',
@@ -705,18 +709,18 @@
                     'D. 主语从句 (subject clause)'
                 ],
                 ans2: 1,
-                analysis: '📖 拆解：主句 <strong>These systems rely on complex algorithms</strong>；<strong>that</strong> 引导定语从句修饰 <em>algorithms</em>；<strong>improving</strong> 为现在分词作伴随状语。'
+                analysis: '📖 拆解：主句 <strong>These systems use complex algorithms</strong>；<strong>that</strong> 引导定语从句修饰 <em>algorithms</em>。'
             }, {
-                display: '🔹 <em>Experts agree that AI should assist, not replace, human judgment.</em>',
+                display: '🔹 <em>Experts agree that AI should help doctors, not replace them.</em>',
                 q1: '7. 本句的主句 (main clause) 是？',
                 opts1: [
                     'A. Experts agree',
-                    'B. that AI should assist',
-                    'C. not replace human judgment',
-                    'D. Experts agree that AI should assist, not replace, human judgment'
+                    'B. that AI should help doctors',
+                    'C. not replace them',
+                    'D. Experts agree that AI should help doctors, not replace them'
                 ],
                 ans1: 3,
-                q2: '8. "that AI should assist, not replace, human judgment" 在句中充当什么成分？',
+                q2: '8. "that AI should help doctors, not replace them" 在句中充当什么成分？',
                 opts2: [
                     'A. 定语从句 (attributive clause)',
                     'B. 宾语从句 (object clause)',
@@ -724,76 +728,75 @@
                     'D. 主语从句 (subject clause)'
                 ],
                 ans2: 1,
-                analysis: '📖 拆解：主句 <strong>Experts agree</strong>；<strong>that</strong> 引导宾语从句，从句中 <strong>assist, not replace</strong> 为并列谓语。'
+                analysis: '📖 拆解：主句 <strong>Experts agree</strong>；<strong>that</strong> 引导宾语从句。'
             }],
             grammar: {
-                q: '9. <em>AI ______ assist, not replace, human judgment in medical practice.</em>',
+                q: '9. <em>AI ______ help, not replace, human doctors.</em>',
                 options: ['A. may', 'B. should', 'C. mustn\'t', 'D. need'],
                 answer: 1,
-                analysis: '💡 正确答案 <strong>B</strong>。should 表示"应该"，符合专家建议"AI应辅助而非替代"。'
+                analysis: '💡 正确答案 <strong>B</strong>。should 表示"应该"。'
             },
             allAnswers: ['C', 'B', 'B', 'B', 'D', 'B', 'D', 'B', 'B'],
-            allExplanations: '1. 第一段"diagnose diseases from medical images" → C；2. accurate = precise（精确的）；3. 第二段"Who is responsible when AI makes a mistake" → B；4. 末段"assist, not replace" → B；5. 主句为完整句；6. that引导定语从句；7. 主句为完整句；8. that引导宾语从句；9. should表建议。'
+            allExplanations: '1. 第一段"diagnose diseases from X-rays" → C；2. accurate = exact；3. 第二段"Who is responsible when AI makes a mistake" → B；4. 末段"help doctors, not replace" → B；5. 主句为完整句；6. that引导定语从句；7. 主句为完整句；8. that引导宾语从句；9. should表建议。'
         }, {
-            // ========== P10: D篇 议论文 ==========
             title: '🏙️ P10 城市孤独与社区花园',
             badge: 'D篇 · 议论文',
-            text: `Living in a big city can often make people feel <u>isolate</u>d, even when they are surrounded by crowds of strangers. Many city residents long for a genuine sense of <u>community</u> and belonging. One surprisingly simple and effective solution is the community garden—a shared green space where neighbors come together to grow plants, vegetables, and flowers.<br><br>
+            text: `Living in a big city can make people feel <u>isolate</u>d, even when they are surrounded by crowds. Many city people long for a true sense of <u>community</u>. One simple and effective answer is the community garden—a shared green space where neighbors come together to grow plants and vegetables.<br><br>
 
-            Gardening helps build strong <u>bond</u>s between people who might otherwise never speak to each other. It encourages cooperation, breaks down social walls, and creates a sense of shared purpose. Local governments should support such <u>initiative</u>s by providing land, tools, and seeds. Some cities have already used community gardens to <u>revive</u> old neighborhoods and bring life back to public spaces that had been forgotten.<br><br>
+            Gardening helps build strong <u>bond</u>s between people who might never talk to each other. It encourages teamwork, breaks down social walls, and creates a shared purpose. Local governments should support such <u>initiative</u>s by providing land and tools. Some cities have already used gardens to <u>revive</u> old neighborhoods and bring life back to forgotten public spaces.<br><br>
 
-            The goal is not just to grow fresh vegetables, but to grow trust among neighbors. When people work side by side in the garden, they naturally start to talk, share stories, and care for one another. A community garden is more than just a piece of green—it is a bridge to human connection. In a world that is increasingly digital, these small green spaces remind us of the value of real, face-to-face relationships.`,
+            The goal is not just to grow food, but to grow trust. When people work side by side, they talk, share stories, and care for each other. A community garden is more than green space—it is a bridge to human connection.`,
             vocab: `<strong>📌 高一词汇 · 英文释义</strong><br>
-                    <em>isolate</em> (v.) — to set apart or separate from others.<br>
-                    <em>community</em> (n.) — a group of people living together in one area.<br>
-                    <em>bond</em> (n.) — a close connection or relationship between people.<br>
-                    <em>initiative</em> (n.) — a new plan or action to solve a problem.<br>
-                    <em>revive</em> (v.) — to bring something back to life, activity, or use.`,
+                    <em>isolate</em> (v.) — to set apart from others.<br>
+                    <em>community</em> (n.) — a group of people living together.<br>
+                    <em>bond</em> (n.) — a close connection.<br>
+                    <em>initiative</em> (n.) — a new plan or action.<br>
+                    <em>revive</em> (v.) — to bring back to life.`,
             questions: [{
-                q: 'What problem in urban areas does the passage primarily address?',
+                q: `<u title="文章主要讨论什么城市问题">What problem in cities does the passage mainly discuss</u>?`,
                 options: [
-                    'A. The rising cost of housing.',
-                    'B. The feeling of loneliness despite living among many people.',
-                    'C. The lack of public transportation.',
-                    'D. The decrease in job opportunities.'
+                    'A. High housing costs.',
+                    'B. The feeling of being lonely.',
+                    'C. Lack of public transport.',
+                    'D. Few job opportunities.'
                 ],
                 answer: 1
             }, {
-                q: 'The underlined word "initiative" in Paragraph 2 is closest in meaning to ______.',
+                q: `The underlined word "<u title="倡议">initiative</u>" in Paragraph 2 is closest in meaning to ______.`,
                 options: [
                     'A. a financial investment',
                     'B. a new project or plan',
-                    'C. a government regulation',
+                    'C. a government rule',
                     'D. a personal hobby'
                 ],
                 answer: 1
             }, {
-                q: 'What does the author suggest local governments should do?',
+                q: `<u title="作者建议当地政府做什么">What does the author suggest local governments should do</u>?`,
                 options: [
-                    'A. Build more shopping centers to attract visitors.',
-                    'B. Provide resources to support community garden projects.',
-                    'C. Reduce the number of public parks in the city.',
-                    'D. Increase taxes on urban gardening activities.'
+                    'A. Build more shopping centers.',
+                    'B. Provide resources for community garden projects.',
+                    'C. Reduce the number of parks.',
+                    'D. Increase taxes on gardening.'
                 ],
                 answer: 1
             }, {
-                q: 'What is the author\'s purpose in writing this passage?',
+                q: `<u title="作者写这篇文章的目的是">What is the author\'s purpose</u> in writing this passage?`,
                 options: [
-                    'A. To criticize city planning policies.',
-                    'B. To promote community gardens as a way to rebuild social connections.',
-                    'C. To describe the history of urban agriculture.',
-                    'D. To compare different types of green spaces in cities.'
+                    'A. To criticize city planning.',
+                    'B. To promote community gardens as a way to rebuild social ties.',
+                    'C. To describe the history of urban farming.',
+                    'D. To compare different types of green spaces.'
                 ],
                 answer: 1
             }],
             longSentences: [{
-                display: '🔹 <em>One surprisingly simple and effective solution is the community garden—a shared green space where neighbors come together to grow plants, vegetables, and flowers.</em>',
+                display: '🔹 <em>One simple and effective answer is the community garden—a shared green space where neighbors come together to grow plants and vegetables.</em>',
                 q1: '5. 本句的主句 (main clause) 是？',
                 opts1: [
-                    'A. One surprisingly simple solution is the community garden',
+                    'A. One simple and effective answer is the community garden',
                     'B. a shared green space where neighbors come together',
-                    'C. to grow plants, vegetables, and flowers',
-                    'D. One solution is the community garden—a shared green space where neighbors come together'
+                    'C. to grow plants and vegetables',
+                    'D. One answer is the community garden—a shared green space where neighbors come together'
                 ],
                 ans1: 3,
                 q2: '6. "where neighbors come together to grow plants" 在句中充当什么成分？',
@@ -804,18 +807,18 @@
                     'D. 主语从句 (subject clause)'
                 ],
                 ans2: 1,
-                analysis: '📖 拆解：主句 <strong>One solution is the community garden</strong>；破折号后为同位语，<strong>where</strong> 引导定语从句修饰 <em>space</em>。'
+                analysis: '📖 拆解：主句 <strong>One answer is the community garden</strong>；<strong>where</strong> 引导定语从句修饰 <em>space</em>。'
             }, {
-                display: '🔹 <em>When people work side by side in the garden, they naturally start to talk, share stories, and care for one another.</em>',
+                display: '🔹 <em>When people work side by side, they talk, share stories, and care for each other.</em>',
                 q1: '7. 本句的主句 (main clause) 是？',
                 opts1: [
-                    'A. When people work side by side in the garden',
-                    'B. they naturally start to talk',
-                    'C. share stories, and care for one another',
-                    'D. they naturally start to talk, share stories, and care for one another'
+                    'A. When people work side by side',
+                    'B. they talk, share stories, and care for each other',
+                    'C. they talk, share stories',
+                    'D. When people work side by side, they talk, share stories, and care for each other'
                 ],
                 ans1: 3,
-                q2: '8. "When people work side by side in the garden" 在句中充当什么成分？',
+                q2: '8. "When people work side by side" 在句中充当什么成分？',
                 opts2: [
                     'A. 时间状语从句 (adverbial clause of time)',
                     'B. 定语从句 (attributive clause)',
@@ -823,16 +826,16 @@
                     'D. 主语从句 (subject clause)'
                 ],
                 ans2: 0,
-                analysis: '📖 拆解：<strong>When</strong> 引导时间状语从句；主句为三个并列谓语 <strong>start to talk, share, care</strong>。'
+                analysis: '📖 拆解：<strong>When</strong> 引导时间状语从句；主句为三个并列谓语。'
             }],
             grammar: {
-                q: '9. <em>A community garden is more than just green space—it is a bridge ______ human connection.</em>',
+                q: '9. <em>A community garden is more than green space—it is a bridge ______ human connection.</em>',
                 options: ['A. for', 'B. to', 'C. with', 'D. of'],
                 answer: 1,
-                analysis: '💡 正确答案 <strong>B</strong>。固定搭配 <em>a bridge to</em> 表示"通向……的桥梁"。'
+                analysis: '💡 正确答案 <strong>B</strong>。固定搭配 <em>a bridge to</em>。'
             },
             allAnswers: ['B', 'B', 'B', 'B', 'D', 'B', 'D', 'A', 'B'],
-            allExplanations: '1. 第一段"feel isolated even surrounded by crowds" → B；2. initiative = a new project or plan（新计划）；3. 第二段"should support such initiatives by providing land, tools" → B；4. 全文目的为推广社区花园促进社交连接 → B；5. 主句为完整句；6. where引导定语从句；7. 主句为完整句；8. When引导时间状语从句；9. bridge to固定搭配。'
+            allExplanations: '1. 第一段"feel isolated" → B；2. initiative = a new project；3. 第二段"support such initiatives by providing land" → B；4. 全文目的为推广社区花园 → B；5. 主句为完整句；6. where引导定语从句；7. 主句为完整句；8. When引导时间状语从句；9. bridge to固定搭配。'
         }];
 
         // ============================================================
@@ -873,13 +876,12 @@
             });
             html += `</div>`;
 
-            // 长难句板块：2个句子，每个拆2道题 (Q5-Q8)
+            // 长难句板块
             html += `<div class="grammar-section">`;
             html += `<div class="sec-title"><span>📐 长难句结构 · 选择题（2句）</span><span class="tag">主句 + 从句</span></div>`;
             p.longSentences.forEach((s, si) => {
                 const baseNum = 5 + si * 2;
                 html += `<div class="sentence-display">${s.display}</div>`;
-                // Q (主句)
                 html += `<div class="q-item" data-q="${baseNum}">`;
                 html += `<div class="q-label">${baseNum}.</div> ${s.q1}`;
                 html += `<div class="options">`;
@@ -888,7 +890,6 @@
                         `<label class="opt-label"><input type="radio" name="q${idx}_${baseNum}" value="${oi}"> ${opt}</label>`;
                 });
                 html += `</div></div>`;
-                // Q+1 (从句)
                 const q2Num = baseNum + 1;
                 html += `<div class="q-item" data-q="${q2Num}">`;
                 html += `<div class="q-label">${q2Num}.</div> ${s.q2}`;
@@ -898,7 +899,6 @@
                         `<label class="opt-label"><input type="radio" name="q${idx}_${q2Num}" value="${oi}"> ${opt}</label>`;
                 });
                 html += `</div></div>`;
-                // 拆解示例（每个句子后跟一个）
                 html += `<div class="analysis-box">${s.analysis}</div>`;
             });
             html += `</div>`;
@@ -966,7 +966,7 @@
         }
 
         // ============================================================
-        // 提交 & 批改 (9题)
+        // 提交 & 批改
         // ============================================================
         function submitPassage(idx) {
             const p = passagesData[idx];
